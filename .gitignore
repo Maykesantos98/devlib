@@ -6,3 +6,6 @@ desktop.ini
 
 # Local tooling (screenshots/build) lives outside this repo by design
 node_modules/
+
+# Claude Code local config
+.claude/
