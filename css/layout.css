@@ -1,0 +1,145 @@
+/* ─────────────────────────────────────────────────────────────
+ * layout.css — Structural primitives
+ * .shell (container) · .hero · .section · .index ·
+ * .bento (grid) · .footer (wrapper).
+ * Component visuals live in components.css.
+ * ───────────────────────────────────────────────────────────── */
+
+/* ── Container ──────────────────────────────────────── */
+.shell {
+  position: relative;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ── Hero ───────────────────────────────────────────── */
+.hero {
+  position: relative;
+  padding: clamp(5rem, 9vw, 7rem) 0 clamp(2rem, 3.5vw, 3.5rem);
+}
+
+/* Horizon glow — signature 21st.dev/SaaS premium look.
+   Big soft radial ellipse anchored at the bottom edge. */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -55%;
+  width: 130%;
+  height: 540px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse 50% 50% at 50% 50%,
+    rgba(124, 58, 237, 0.28) 0%,
+    rgba(34, 211, 238, 0.10) 45%,
+    transparent 72%
+  );
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Section wrappers ───────────────────────────────── */
+.section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+
+.index {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.method {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+/* ── Section header (eyebrow, title, desc) ─────────── */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet-400);
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--violet-400);
+}
+
+.section-title {
+  max-width: 22ch;
+  margin: 0 0 0.8rem;
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.section-title em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.section-desc {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--t-lead);
+}
+
+.section-desc kbd {
+  padding: 0.1rem 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
+/* ── Bento grid ─────────────────────────────────────── */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1rem;
+  /* NOTE: content-visibility removed on purpose — combined with the
+     view-timeline card reveal it collapsed section height and left
+     cards stuck at opacity:0 when jumping via anchor (TOC links).
+     86 lightweight cards (no images) don't need it. */
+}
+
+/* ── Footer wrapper ─────────────────────────────────── */
+.footer {
+  margin-top: 6rem;
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-base {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  color: var(--text-faint);
+}

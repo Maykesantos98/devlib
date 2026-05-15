@@ -1,0 +1,160 @@
+/* ─────────────────────────────────────────────────────────────
+ * base.css — Reset, root elements, ambient layers
+ * Box-sizing, smooth scroll, body typography, link/button defaults,
+ * focus styles, selection, aurora + grid background.
+ * ───────────────────────────────────────────────────────────── */
+
+/* ── Reset ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-base);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--t-base);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+/* ── Focus + selection ─────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--violet-400);
+  outline-offset: 3px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.18);
+}
+
+/* Buttons & filters keep their pill shape on focus */
+.btn:focus-visible,
+.filter:focus-visible,
+.nav-cta:focus-visible,
+.to-top:focus-visible {
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+::selection {
+  background: var(--violet-600);
+  color: white;
+}
+
+/* ── Skip-link (only visible on keyboard focus) ────── */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 200;
+  padding: 0.7rem 1.2rem;
+  background: var(--violet-600);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  border-radius: 0 0 12px 12px;
+  transform: translate(-50%, -110%);
+  transition: transform 200ms var(--ease);
+}
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+  outline: none;
+  box-shadow: 0 4px 24px rgba(124, 58, 237, 0.5);
+}
+
+/* ── Ambient: Aurora ──────────────────────────────── */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.aurora .blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  transform: translateZ(0);
+}
+
+.aurora .blob-1 {
+  top: -15%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.45) 0%, transparent 60%);
+  animation: floatA 40s ease-in-out infinite alternate;
+}
+
+.aurora .blob-2 {
+  right: -10%;
+  bottom: -20%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.32) 0%, transparent 60%);
+  animation: floatB 50s ease-in-out infinite alternate;
+}
+
+.aurora .blob-3 {
+  top: 35%;
+  left: 38%;
+  width: 38vw;
+  height: 38vw;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.20) 0%, transparent 62%);
+  animation: floatC 64s ease-in-out infinite alternate;
+}
+
+/* translate-only — scaling a blurred layer forces a full re-raster
+   every frame; pure translate just moves the composited bitmap. */
+@keyframes floatA {
+  to { transform: translate3d(6vw, 4vh, 0); }
+}
+
+@keyframes floatB {
+  to { transform: translate3d(-5vw, -4vh, 0); }
+}
+
+@keyframes floatC {
+  to { transform: translate3d(-7vw, 6vh, 0); }
+}
+
+/* ── Ambient: Grid overlay ─────────────────────────── */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 90%);
+  contain: strict;
+}

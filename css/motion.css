@@ -1,0 +1,698 @@
+/* ─────────────────────────────────────────────────────────────
+ * motion.css — Award-grade animations (2026 techniques)
+ *   1. Scroll progress bar            (animation-timeline: scroll)
+ *   2. Cards reveal via view-timeline (native compositor reveal)
+ *   3. TOC reveal via view-timeline
+ *   4. Hero parallax + blur on scroll
+ *   5. Mouse spotlight gradient        (CSS variables, updated by JS)
+ *   6. Magnetic button transform       (variables driven by JS)
+ *   7. Sticky chapter bars on scroll
+ *
+ * All effects degrade gracefully:
+ *   - Browsers without animation-timeline: JS IntersectionObserver
+ *     still adds `.in` class via script.js (kept as fallback).
+ *   - prefers-reduced-motion disables all motion in responsive.css.
+ * ───────────────────────────────────────────────────────────── */
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  1 · Scroll progress bar                                    */
+/* ═══════════════════════════════════════════════════════════ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 110;
+  background: linear-gradient(90deg, var(--violet-500), var(--cyan-400), var(--pink-400));
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progressGrow linear forwards;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes progressGrow {
+  to { transform: scaleX(1); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  2 · Cards reveal via view-timeline (native, GPU)          */
+/* ═══════════════════════════════════════════════════════════ */
+@supports (animation-timeline: view()) {
+  .card {
+    /* Override JS-driven reveal — native timeline takes over */
+    opacity: 1;
+    transform: none;
+    transition:
+      border-color var(--dur),
+      background var(--dur),
+      box-shadow var(--dur),
+      transform var(--dur);
+    animation: cardReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.94);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  3 · TOC reveal via view-timeline                           */
+/* ═══════════════════════════════════════════════════════════ */
+@supports (animation-timeline: view()) {
+  .toc a {
+    opacity: 1;
+    transform: none;
+    animation: tocReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 30%;
+  }
+}
+
+@keyframes tocReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  4 · Hero scroll parallax (subtle)                          */
+/* ═══════════════════════════════════════════════════════════ */
+@supports (animation-timeline: scroll()) {
+  .hero-title,
+  .hero-lead {
+    animation: heroDrift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 60vh;
+  }
+  .hero-pill {
+    animation: heroPillDrift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 50vh;
+  }
+}
+
+@keyframes heroDrift {
+  to {
+    transform: translateY(-28px);
+    opacity: 0.45;
+  }
+}
+
+@keyframes heroPillDrift {
+  to {
+    transform: translateY(-14px) scale(0.92);
+    opacity: 0;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  5 · Mouse spotlight on cards                               */
+/* ═══════════════════════════════════════════════════════════ */
+@media (hover: hover) and (pointer: fine) {
+  .card {
+    /* Radial gradient follows mouse — set by JS via --mx/--my */
+    background-image:
+      radial-gradient(
+        circle 420px at var(--mx, -200px) var(--my, -200px),
+        rgba(124, 58, 237, 0.14),
+        transparent 45%
+      );
+  }
+  .card[data-tone="cyan"]    { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(34, 211, 238, 0.14),  transparent 45%); }
+  .card[data-tone="pink"]    { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(244, 114, 182, 0.14), transparent 45%); }
+  .card[data-tone="amber"]   { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(251, 191, 36, 0.12),  transparent 45%); }
+  .card[data-tone="emerald"] { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(52, 211, 153, 0.12),  transparent 45%); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  6 · Magnetic buttons (slight pull toward cursor)           */
+/* ═══════════════════════════════════════════════════════════ */
+@media (hover: hover) and (pointer: fine) {
+  [data-magnetic] {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  [data-magnetic]:hover {
+    /* JS updates --mag-x / --mag-y on mousemove */
+    transform: translate(var(--mag-x, 0), var(--mag-y, 0));
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  7 · Chapter-bar reveal on enter (view-timeline)            */
+/* ═══════════════════════════════════════════════════════════ */
+@supports (animation-timeline: view()) {
+  .chapter-bar {
+    animation: chapterReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+}
+
+@keyframes chapterReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  7b · Whole-site reveal — every section element fades up    */
+/*       on scroll. Compositor-only (opacity/transform) so it  */
+/*       stays at 144fps. Scroll-linked → no JS.               */
+/* ═══════════════════════════════════════════════════════════ */
+@supports (animation-timeline: view()) {
+  .section-eyebrow,
+  .section-title,
+  .section-desc,
+  .toolbar,
+  .filters,
+  .stats-strip,
+  .principle,
+  .footer-grid > div {
+    animation: revealUp linear both;
+    animation-timeline: view();
+    animation-range: entry 2% cover 22%;
+  }
+  /* Stats sit just below the hero (in view on load) — let them
+     settle quickly instead of waiting for a scroll. */
+  .stats-strip { animation-range: entry 0% cover 8%; }
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  8 · 3D card tilt on hover (perspective rotation)          */
+/* ═══════════════════════════════════════════════════════════ */
+@media (hover: hover) and (pointer: fine) {
+  .bento {
+    perspective: 1400px;
+  }
+  /* No preserve-3d: children aren't 3D-positioned; rotateX/Y works
+     via .bento { perspective }. will-change ONLY on hover so we
+     promote 1 layer at a time, not 103 permanent GPU layers. */
+  .card:hover {
+    will-change: transform;
+    transform:
+      translateY(-4px)
+      rotateX(var(--rx, 0deg))
+      rotateY(var(--ry, 0deg));
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  9 · View Transitions API — smooth filter crossfade        */
+/*    (Chrome/Edge 111+, Safari 18+ · graceful fallback)      */
+/* ═══════════════════════════════════════════════════════════ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  10 · Shortcuts dialog                                     */
+/* ═══════════════════════════════════════════════════════════ */
+.shortcuts {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  width: min(440px, calc(100vw - 2rem));
+  max-height: 90vh;
+  margin: auto;
+  padding: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 20px;
+  color: var(--text);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 24px 60px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(124, 58, 237, 0.18);
+  overflow: hidden;
+}
+
+.shortcuts::backdrop {
+  background: rgba(7, 8, 15, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.shortcuts[open] {
+  animation: dialogIn 0.35s var(--ease) both;
+}
+.shortcuts[open]::backdrop {
+  animation: backdropIn 0.35s var(--ease) both;
+}
+
+@keyframes dialogIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.shortcuts-inner { padding: 1.5rem; }
+
+.shortcuts-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.shortcuts-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.shortcuts-close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-soft);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+}
+.shortcuts-close:hover {
+  color: var(--text);
+  border-color: var(--border-bright);
+}
+
+.shortcuts-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+.shortcuts-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, auto) 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.shortcuts-list dt {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.shortcuts-list dd {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--t-sm);
+}
+.shortcuts-list kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 0.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-bright);
+  border-radius: 5px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.shortcuts-hint {
+  margin: 1.2rem 0 0;
+  color: var(--text-faint);
+  font-size: var(--t-xs);
+  text-align: center;
+}
+.shortcuts-hint code {
+  padding: 0.15rem 0.4rem;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid var(--border-glow);
+  border-radius: 4px;
+  color: var(--violet-400);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  10b · Command palette (⌘K)                                */
+/* ═══════════════════════════════════════════════════════════ */
+.cmdk {
+  position: fixed;
+  inset: 0;
+  z-index: 320;
+  width: min(580px, calc(100vw - 2rem));
+  margin: 12vh auto auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  overflow: visible;
+}
+.cmdk::backdrop {
+  background: rgba(7, 8, 15, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.cmdk[open] {
+  animation: dialogIn 0.28s var(--ease) both;
+}
+.cmdk[open]::backdrop {
+  animation: backdropIn 0.28s var(--ease) both;
+}
+
+.cmdk-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 16px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 30px 70px -15px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(124, 58, 237, 0.18);
+  overflow: hidden;
+}
+
+.cmdk-input-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+.cmdk-input-row svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-faint);
+  stroke-width: 2;
+  fill: none;
+}
+.cmdk-input-row input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+.cmdk-input-row input::placeholder { color: var(--text-dim); }
+.cmdk-input-row kbd {
+  padding: 0.15rem 0.45rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.cmdk-list {
+  max-height: 52vh;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-bright) transparent;
+}
+
+.cmdk-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 9px;
+  cursor: pointer;
+  scroll-margin: 0.4rem;
+}
+.cmdk-item.active {
+  background: rgba(124, 58, 237, 0.16);
+  box-shadow: inset 0 0 0 1px var(--border-glow);
+}
+.cmdk-kind {
+  padding: 0.15rem 0.45rem;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cmdk-item[data-type="cmd"] .cmdk-kind {
+  color: var(--violet-400);
+  border-color: var(--border-glow);
+  background: rgba(124, 58, 237, 0.1);
+}
+.cmdk-label {
+  color: var(--text);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cmdk-item.active .cmdk-label { color: var(--violet-300); }
+.cmdk-sub {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+.cmdk-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: var(--t-sm);
+}
+
+.cmdk-foot {
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+  padding: 0.65rem 1.1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-faint);
+  font-size: 0.7rem;
+}
+.cmdk-foot kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 0.3rem;
+  margin-right: 0.15rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+}
+.cmdk-count { margin-left: auto; font-family: var(--font-mono); }
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  11 · Matrix mode (Konami easter egg)                      */
+/* ═══════════════════════════════════════════════════════════ */
+html.matrix-mode {
+  --violet-400: #22c55e;
+  --violet-500: #16a34a;
+  --violet-600: #15803d;
+  --violet-700: #166534;
+  --cyan-400:   #4ade80;
+  --pink-400:   #86efac;
+  --amber-400:  #bbf7d0;
+  --emerald-400: #22c55e;
+  --border-glow: rgba(34, 197, 94, 0.45);
+}
+html.matrix-mode body {
+  font-family: var(--font-mono) !important;
+}
+html.matrix-mode .hero-title,
+html.matrix-mode .section-title,
+html.matrix-mode .card-title,
+html.matrix-mode .toc-name,
+html.matrix-mode .principle h3 {
+  font-family: var(--font-mono) !important;
+  letter-spacing: -0.02em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  12 · DEVLIB mascot (alive book-bot, CSS/SVG only)          */
+/* ═══════════════════════════════════════════════════════════ */
+.mascot {
+  position: fixed;
+  left: 1.4rem;
+  bottom: 1.4rem;
+  z-index: 90;
+  width: 80px;
+  height: 92px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mascot-svg {
+  width: 80px;
+  height: 92px;
+  overflow: visible;
+  filter: drop-shadow(0 10px 20px rgba(124, 58, 237, 0.35));
+}
+.m-droid {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mFloat 4s ease-in-out infinite;
+}
+.mascot:hover .m-droid { animation-play-state: paused; }
+.mascot:hover .mascot-svg {
+  transform: translateY(-4px) scale(1.05);
+  transition: transform var(--dur) var(--ease);
+}
+.mascot.pop .mascot-svg { animation: mPop 0.5s var(--ease-back, cubic-bezier(.34,1.56,.64,1)); }
+
+/* EVE-style floating droid */
+.m-shadow  { fill: #000; opacity: 0.32; transform-box: fill-box; transform-origin: center; animation: mShadow 4s ease-in-out infinite; }
+.m-head    { stroke: rgba(255,255,255,0.10); stroke-width: 1; }
+.m-spec    { fill: #fff; opacity: 0.10; }
+.m-visor   { fill: #05060c; }
+.m-sheen   { fill: #fff; opacity: 0.05; }
+.m-eye {
+  fill: var(--cyan-300);
+  filter: drop-shadow(0 0 4px var(--cyan-400));
+}
+.m-led     { fill: var(--cyan-400); animation: mLed 2.4s ease-in-out infinite; }
+.m-pupils  { transition: transform 0.16s ease-out; }
+.m-eyes    { transform-box: fill-box; transform-origin: center; animation: mBlink 5.4s infinite; }
+.mascot:hover .m-eye { fill: var(--violet-300); filter: drop-shadow(0 0 6px var(--violet-400)); }
+
+@keyframes mFloat  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes mShadow { 0%,100% { transform: scaleX(1); opacity: 0.32; } 50% { transform: scaleX(0.78); opacity: 0.18; } }
+@keyframes mLed    { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes mBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94%, 96%      { transform: scaleY(0.1); }
+}
+@keyframes mPop {
+  0% { transform: scale(1); } 35% { transform: scale(0.86) translateY(2px); }
+  70% { transform: scale(1.08) translateY(-4px); } 100% { transform: scale(1); }
+}
+
+/* Speech bubble */
+.mascot-bubble {
+  position: absolute;
+  left: 4px;
+  right: auto;
+  bottom: calc(100% + 14px);
+  width: max-content;
+  max-width: min(300px, 72vw);
+  padding: 0.7rem 0.9rem;
+  background: #14162a;
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 16px 36px -10px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(124, 58, 237, 0.15);
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom left;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.mascot-bubble.show { opacity: 1; transform: translateY(0) scale(1); }
+.mascot-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 26px;
+  border: 7px solid transparent;
+  border-top-color: #14162a;
+}
+.mascot-bubble code {
+  color: var(--violet-300);
+  background: rgba(124, 58, 237, 0.14);
+  padding: 0.05rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+.mascot-bubble em {
+  color: var(--cyan-300);
+  font-style: italic;
+}
+/* "Transmitting" — LED blinks faster while the droid talks */
+.mascot.talking .m-led { animation-duration: 0.7s; }
+
+@media (max-width: 640px) {
+  .mascot { width: 60px; height: 70px; left: 1rem; bottom: 1rem; }
+  .mascot-svg { width: 60px; height: 70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m-droid, .m-shadow, .m-led, .m-eyes { animation: none !important; }
+  .m-pupils { transition: none !important; }
+}

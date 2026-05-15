@@ -1,0 +1,171 @@
+/* ─────────────────────────────────────────────────────────────
+ * responsive.css — Breakpoints + accessibility queries
+ *   Loaded last so media-query overrides win the cascade.
+ *   - 1024px : tablet
+ *   -  640px : mobile
+ *   -  480px : small mobile (TOC collapse)
+ *   - prefers-reduced-motion : kill animations
+ * ───────────────────────────────────────────────────────────── */
+
+
+/* ── ≤ 1024px · Tablet ─────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Layout collapses bento to 4 columns */
+  .bento { grid-template-columns: repeat(4, 1fr); }
+
+  .card               { grid-column: span 2; }
+  .card.x3,
+  .card.x4,
+  .card.x6            { grid-column: span 4; }
+  .card.feature {
+    grid-column: span 4;
+    grid-row: span 1;
+    min-height: 280px;
+  }
+
+  .footer-grid        { grid-template-columns: 1fr 1fr; }
+  .toc                { grid-template-columns: repeat(2, 1fr); }
+  .principles         { grid-template-columns: 1fr; }
+
+  /* Hide center nav links — keep logo + CTA */
+  .nav-links          { display: none; }
+}
+
+
+/* ── ≤ 640px · Mobile ──────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Bento → single column, all cards full width */
+  .bento { grid-template-columns: 1fr; }
+
+  .card,
+  .card.feature,
+  .card.x2,
+  .card.x3,
+  .card.x4,
+  .card.x6 {
+    grid-column: span 1;
+    grid-row: auto;
+    min-height: auto;
+  }
+
+  .toolbar            { grid-template-columns: 1fr; }
+  .nav-cta span       { display: none; }
+
+  /* Chapter bar — stack vertically (eyebrow over title) */
+  .chapter-bar {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin: 2.2rem 0 1.2rem;
+  }
+  .chapter-bar .count-pill { display: none; }
+  .chapter-num { justify-self: start; }
+
+  /* Stats — clean 2×2 grid instead of cramped overflow row */
+  .stats-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem 1.2rem;
+    overflow: visible;
+  }
+  .stat-divider { display: none; }
+
+  /* Footer — tighter, single column, less empty space */
+  .footer { margin-top: 3rem; padding: 2.5rem 0 1.5rem; }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+  .footer-grid ul { gap: 0.45rem; }
+  .footer-logo { height: 52px; }
+
+  /* Hero — trim vertical run a touch */
+  .hero { padding-top: 5.5rem; }
+  .hero-orb { height: 110px; margin-top: 1.5rem; }
+}
+
+/* ── ≤ 420px · very small phones ─────────────────────── */
+@media (max-width: 420px) {
+  .stats-inner { grid-template-columns: 1fr; gap: 0.5rem; }
+  .hero-actions .btn { flex: 1; justify-content: center; }
+  .filters { gap: 0.35rem; }
+  .filter { padding: 0.45rem 0.8rem; }
+}
+
+
+/* ── ≤ 480px · Small mobile ────────────────────────── */
+@media (max-width: 480px) {
+  .toc { grid-template-columns: 1fr; }
+}
+
+
+/* ── Print — clean, ink-friendly ───────────────────── */
+@media print {
+  /* Force light background, dark text */
+  body {
+    background: white;
+    color: black;
+  }
+
+  /* Hide ambient + interactive chrome */
+  .aurora,
+  .grid-bg,
+  .nav,
+  .to-top,
+  .marquee,
+  .toolbar,
+  .filters,
+  .skip-link {
+    display: none !important;
+  }
+
+  /* Show URLs after each link for paper context */
+  a[href^="http"]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* Cards become bordered blocks */
+  .card,
+  .toc a,
+  .principle,
+  .stat {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    color: black !important;
+    page-break-inside: avoid;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Bento collapses to single column */
+  .bento,
+  .toc,
+  .principles,
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ── A11y — respect user's motion preference ──────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .card                       { opacity: 1 !important; transform: none !important; }
+  .hero-pill,
+  .hero-lead,
+  .hero-actions,
+  .stats-strip                { animation: none !important; }
+  .hero-title .word           { transform: none !important; }
+}

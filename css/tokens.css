@@ -1,0 +1,65 @@
+/* ─────────────────────────────────────────────────────────────
+ * tokens.css — Design tokens
+ * Single source of truth for colors, typography, spacing,
+ * radius, motion. Change values here, the rest follows.
+ * ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────── */
+  --bg-base:    #07080F;
+  --bg-deep:    #0A0B14;
+  --bg-elev:    #14162A;
+  --bg-card:    #11131F;
+  --bg-card-hi: #181B2A;
+
+  /* ── Foreground ───────────────────────────────────── */
+  --text:       #F5F5F7;
+  --text-soft:  #A1A1AA;
+  --text-faint: #71717A;
+  --text-dim:   #52525B;
+
+  /* ── Borders ──────────────────────────────────────── */
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-bright: rgba(255, 255, 255, 0.16);
+  --border-glow:   rgba(124, 58, 237, 0.45);
+
+  /* ── Accents ──────────────────────────────────────── */
+  --violet-400: #A78BFA;
+  --violet-500: #8B5CF6;
+  --violet-600: #7C3AED;
+  --violet-700: #6D28D9;
+  --cyan-400:   #22D3EE;
+  --cyan-500:   #06B6D4;
+  --pink-400:   #F472B6;
+  --amber-400:  #FBBF24;
+  --emerald-400: #34D399;
+
+  /* ── Typography stack ─────────────────────────────── */
+  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-sans:    'Geist', system-ui, sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, monospace;
+
+  /* ── Fluid type scale (clamp: min, fluid, max) ────── */
+  --t-xs:   clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --t-sm:   clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);
+  --t-base: clamp(0.94rem, 0.88rem + 0.3vw, 1.05rem);
+  --t-lead: clamp(1.08rem, 0.98rem + 0.5vw, 1.32rem);
+  --t-h4:   clamp(1.25rem, 1rem + 1vw, 1.6rem);
+  --t-h2:   clamp(1.8rem, 1.4rem + 2vw, 3rem);
+  --t-h1:   clamp(2.4rem, 1.8rem + 3.5vw, 4.6rem);
+
+  /* ── Layout ───────────────────────────────────────── */
+  --max:    1320px;
+  --gutter: clamp(1.25rem, 3vw, 3rem);
+
+  /* ── Radius ───────────────────────────────────────── */
+  --radius-lg: 22px;
+
+  /* ── Motion ───────────────────────────────────────── */
+  --dur-fast: 220ms;
+  --dur:      380ms;
+  --ease:     cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Color scheme hint ────────────────────────────── */
+  color-scheme: dark;
+}

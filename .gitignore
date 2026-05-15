@@ -1,0 +1,8 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Local tooling (screenshots/build) lives outside this repo by design
+node_modules/

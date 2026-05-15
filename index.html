@@ -1,0 +1,1398 @@
+
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DEVLIB — acervo curado de bibliotecas, protocolos e skills para desenvolvedores que constroem com agentes." />
+  <meta name="theme-color" content="#07080F" />
+  <title>DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes</title>
+
+  <meta property="og:title" content="DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes" />
+  <meta property="og:description" content="Acervo curado de 103 bibliotecas, protocolos e skills para quem constrói com agentes." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap">
+
+  <link rel="icon" type="image/png" href="public/favicon.png">
+  <link rel="apple-touch-icon" href="public/favicon.png">
+
+  <!-- CSS modules — cascade: tokens → base → layout → components → motion → responsive -->
+  <link rel="stylesheet" href="css/app.min.css">
+
+  <script src="js/app.min.js" defer></script>
+
+  <!-- Safety net: if JS is disabled, force-reveal content (cards start hidden
+       for the scroll-reveal; no-JS + no view-timeline would blank the page). -->
+  <noscript>
+    <style>
+      .card, .toc a { opacity: 1 !important; transform: none !important; }
+      .scroll-progress, .cmdk, .shortcuts { display: none !important; }
+      .hero-pill, .hero-lead, .hero-actions, .stats-strip,
+      .hero-title .word { animation: none !important; opacity: 1 !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <!-- A11y: skip-link (only visible on keyboard focus) -->
+  <a class="skip-link" href="#acervo">Pular para o acervo</a>
+
+  <!-- Scroll progress bar (CSS scroll-timeline — no JS) -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- HUD frame (tech border with corner brackets) -->
+  <div class="hud" aria-hidden="true">
+    <span class="hud-c hud-tl"></span>
+    <span class="hud-c hud-tr"></span>
+    <span class="hud-c hud-bl"></span>
+    <span class="hud-c hud-br"></span>
+  </div>
+
+  <!-- Background -->
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- ─── Nav ──────────────────────────────────────────────── -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo">
+        <img class="logo-mark-img" src="public/favicon.png" alt="" width="30" height="30" />
+        <b>DEVLIB</b>
+        <span>·&nbsp;v01</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#indice">Índice</a>
+        <a href="#acervo">Acervo</a>
+        <a href="#metodo">Método</a>
+      </nav>
+      <a href="#acervo" class="nav-cta" data-magnetic>
+        <span>Explorar</span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ─── Hero ────────────────────────────────────────── -->
+    <section class="hero shell">
+
+      <!-- Animated particle field (CSS-only, compositor-safe) -->
+      <div class="hero-particles" aria-hidden="true">
+        <span style="left:6%;top:22%;animation-duration:7s;animation-delay:0s"></span>
+        <span style="left:14%;top:68%;animation-duration:9s;animation-delay:1.2s"></span>
+        <span style="left:21%;top:40%;animation-duration:6s;animation-delay:.4s"></span>
+        <span style="left:27%;top:80%;animation-duration:8s;animation-delay:2s"></span>
+        <span style="left:33%;top:14%;animation-duration:10s;animation-delay:.8s"></span>
+        <span style="left:38%;top:55%;animation-duration:7s;animation-delay:3s"></span>
+        <span style="left:44%;top:30%;animation-duration:9s;animation-delay:1.6s"></span>
+        <span style="left:49%;top:75%;animation-duration:6s;animation-delay:.2s"></span>
+        <span style="left:55%;top:18%;animation-duration:8s;animation-delay:2.4s"></span>
+        <span style="left:60%;top:62%;animation-duration:11s;animation-delay:1s"></span>
+        <span style="left:66%;top:38%;animation-duration:7s;animation-delay:3.4s"></span>
+        <span style="left:71%;top:84%;animation-duration:9s;animation-delay:.6s"></span>
+        <span style="left:77%;top:26%;animation-duration:6s;animation-delay:2.2s"></span>
+        <span style="left:82%;top:58%;animation-duration:10s;animation-delay:1.4s"></span>
+        <span style="left:88%;top:44%;animation-duration:8s;animation-delay:.3s"></span>
+        <span style="left:93%;top:72%;animation-duration:7s;animation-delay:2.8s"></span>
+        <span style="left:9%;top:48%;animation-duration:9s;animation-delay:1.8s"></span>
+        <span style="left:18%;top:12%;animation-duration:6s;animation-delay:3.2s"></span>
+        <span style="left:52%;top:46%;animation-duration:11s;animation-delay:.5s"></span>
+        <span style="left:74%;top:10%;animation-duration:8s;animation-delay:2.6s"></span>
+        <span style="left:85%;top:88%;animation-duration:7s;animation-delay:1.1s"></span>
+        <span style="left:40%;top:90%;animation-duration:9s;animation-delay:3.6s"></span>
+      </div>
+
+      <a href="#acervo" class="hero-pill">
+        <span class="badge">Novo</span>
+        <b>103 bibliotecas</b>
+        <span>·&nbsp;curado para 2026</span>
+        <svg class="hero-pill-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+
+      <h1 class="hero-title">
+        <span class="line line-grad"><span class="word">As</span> <span class="word">bibliotecas</span></span>
+        <span class="line line-plain"><span class="word">que</span> <span class="word">entregam.</span></span>
+      </h1>
+
+      <p class="hero-lead">
+        Acervo curado dos frameworks, protocolos e skills que de fato entram em produção — organizado pelo que <i>fazem</i>, não pelo que prometem.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#acervo" class="btn ghost" data-magnetic>Explorar acervo</a>
+        <a href="#indice" class="btn ghost" data-magnetic>Ver índice</a>
+      </div>
+
+      <div class="hero-orb" aria-hidden="true">
+        <svg class="hero-orb-svg" viewBox="0 0 220 70" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="orbGrad" x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#F472B6"/>
+              <stop offset="0.5" stop-color="#A78BFA"/>
+              <stop offset="1" stop-color="#22D3EE"/>
+            </linearGradient>
+          </defs>
+          <path d="M10 35 C 45 -5, 75 75, 110 35 S 175 -5, 210 35"
+                fill="none" stroke="url(#orbGrad)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 35 C 45 75, 75 -5, 110 35 S 175 75, 210 35"
+                fill="none" stroke="url(#orbGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+          <circle class="m-spark" cx="0" cy="0" r="3"/>
+          <circle class="m-spark m-spark2" cx="0" cy="0" r="2.4"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ─── Stats strip (compact horizontal band) ────── -->
+    <section class="stats-strip" aria-label="Resumo do acervo">
+      <div class="shell stats-inner">
+        <div class="stat-item">
+          <span class="stat-num gradient" data-count="103">103</span>
+          <span class="stat-tag">bibliotecas</span>
+        </div>
+        <span class="stat-divider" aria-hidden="true"></span>
+        <div class="stat-item">
+          <span class="stat-num" data-count="9">9</span>
+          <span class="stat-tag">categorias</span>
+        </div>
+        <span class="stat-divider" aria-hidden="true"></span>
+        <div class="stat-item">
+          <span class="stat-num live"><span class="status-dot" aria-hidden="true"></span>Ativo</span>
+          <span class="stat-tag">status</span>
+        </div>
+        <span class="stat-divider" aria-hidden="true"></span>
+        <div class="stat-item">
+          <span class="stat-num small">2026</span>
+          <span class="stat-tag">atualizado</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Marquee ─────────────────────────────────────── -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>react</span><span aria-hidden="true">✦</span>
+        <span>typescript</span><span aria-hidden="true">✦</span>
+        <span>postgres</span><span aria-hidden="true">✦</span>
+        <span>mcp</span><span aria-hidden="true">✦</span>
+        <span>edge</span><span aria-hidden="true">✦</span>
+        <span>tailwind</span><span aria-hidden="true">✦</span>
+        <span>agentes</span><span aria-hidden="true">✦</span>
+        <span>rag</span><span aria-hidden="true">✦</span>
+        <span>open source</span><span aria-hidden="true">✦</span>
+        <span>2026</span><span aria-hidden="true">✦</span>
+        <span>react</span><span aria-hidden="true">✦</span>
+        <span>typescript</span><span aria-hidden="true">✦</span>
+        <span>postgres</span><span aria-hidden="true">✦</span>
+        <span>mcp</span><span aria-hidden="true">✦</span>
+        <span>edge</span><span aria-hidden="true">✦</span>
+        <span>tailwind</span><span aria-hidden="true">✦</span>
+        <span>agentes</span><span aria-hidden="true">✦</span>
+        <span>rag</span><span aria-hidden="true">✦</span>
+        <span>open source</span><span aria-hidden="true">✦</span>
+        <span>2026</span><span aria-hidden="true">✦</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ─── Índice (TOC) ──────────────────────────────────── -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="index shell" id="indice" aria-labelledby="indice-title">
+      <span class="section-eyebrow">— Índice</span>
+      <h2 class="section-title" id="indice-title">9 <em>categorias.</em></h2>
+      <p class="section-desc">Navegue direto para a área que interessa. Cada categoria abre na seção correspondente do acervo.</p>
+
+      <ol class="toc">
+        <li>
+          <a href="#kit">
+            <span class="toc-num">§01</span>
+            <span class="toc-meta">
+              <span class="toc-name">Kit</span>
+              <span class="toc-desc">Fundações &amp; skills</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">10</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#agentes">
+            <span class="toc-num">§02</span>
+            <span class="toc-meta">
+              <span class="toc-name">Agentes</span>
+              <span class="toc-desc">Frameworks &amp; SDKs</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">12</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#mcp">
+            <span class="toc-num">§03</span>
+            <span class="toc-meta">
+              <span class="toc-name">MCP</span>
+              <span class="toc-desc">Protocolos &amp; servidores</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">10</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#interface">
+            <span class="toc-num">§04</span>
+            <span class="toc-meta">
+              <span class="toc-name">Interface</span>
+              <span class="toc-desc">Frontend &amp; design</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">18</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#servidor">
+            <span class="toc-num">§05</span>
+            <span class="toc-meta">
+              <span class="toc-name">Servidor</span>
+              <span class="toc-desc">APIs, bancos &amp; ORMs</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">13</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#seguranca">
+            <span class="toc-num">§06</span>
+            <span class="toc-meta">
+              <span class="toc-name">Segurança</span>
+              <span class="toc-desc">Auth &amp; appsec</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">10</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#build">
+            <span class="toc-num">§07</span>
+            <span class="toc-meta">
+              <span class="toc-name">Build</span>
+              <span class="toc-desc">Build, testes &amp; obs.</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">10</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#apps">
+            <span class="toc-num">§08</span>
+            <span class="toc-meta">
+              <span class="toc-name">Apps</span>
+              <span class="toc-desc">Mobile &amp; IA on-device</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">10</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#trade">
+            <span class="toc-num">§09</span>
+            <span class="toc-meta">
+              <span class="toc-name">Trade</span>
+              <span class="toc-desc">Agentes &amp; quant</span>
+            </span>
+            <span class="toc-right">
+              <span class="toc-count">10</span>
+              <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ─── Acervo (bento) ─────────────────────────────── -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="section shell" id="acervo">
+
+      <span class="section-eyebrow">— Acervo aberto</span>
+      <h2 class="section-title">Tudo, <em>organizado.</em></h2>
+      <p class="section-desc">Pressione <kbd>⌘K</kbd> para buscar entre as 103 entradas. Filtre por categoria para refinar.</p>
+
+      <div class="toolbar" role="search">
+        <label class="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="searchInput" type="search" placeholder="Buscar — react, mcp, postgres…" autocomplete="off" aria-label="Buscar no acervo">
+          <kbd>⌘ K</kbd>
+        </label>
+        <span class="count"><b id="visibleCount">103</b>bibliotecas</span>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filtrar por categoria" style="margin-bottom: 2rem;">
+        <button class="filter active" data-filter="all" aria-pressed="true">Todos</button>
+        <button class="filter filter-accent" data-filter="top" aria-pressed="false">★ Top estrelas</button>
+        <button class="filter filter-accent" data-filter="recent" aria-pressed="false">● Recentes</button>
+        <button class="filter" data-filter="frontend" aria-pressed="false">Front-end</button>
+        <button class="filter" data-filter="backend" aria-pressed="false">Back-end</button>
+        <button class="filter" data-filter="kit" aria-pressed="false">Kit</button>
+        <button class="filter" data-filter="agents" aria-pressed="false">Agentes</button>
+        <button class="filter" data-filter="mcp" aria-pressed="false">MCP</button>
+        <button class="filter" data-filter="interface" aria-pressed="false">Interface</button>
+        <button class="filter" data-filter="server" aria-pressed="false">Servidor</button>
+        <button class="filter" data-filter="guard" aria-pressed="false">Segurança</button>
+        <button class="filter" data-filter="run" aria-pressed="false">Build</button>
+        <button class="filter" data-filter="ship" aria-pressed="false">Apps</button>
+        <button class="filter" data-filter="trade" aria-pressed="false">Trade</button>
+      </div>
+
+      <!-- §01 KIT -->
+      <div class="chapter-bar" data-chapter="kit" id="kit">
+        <span class="chapter-num">§01 · Kit</span>
+        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>
+        <span class="count-pill">10 itens</span>
+      </div>
+
+      <div class="bento">
+        <article class="card feature" data-kind="kit docs" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Referência · Docs ao vivo</span><span class="card-badge">Destaque</span></div>
+          <h3 class="card-title">Context7</h3>
+          <p class="card-body">Documentação e exemplos atualizados sob demanda. Antes de implementar qualquer biblioteca, verifique aqui — reduz drasticamente alucinação de API em agentes e elimina código baseado em versões obsoletas.</p>
+          <div class="card-tags"><span>npx ctx7</span><span>docs</span><span>contexto</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://context7.com/" target="_blank" rel="noopener">Abrir context7.com<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="kit skills" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Catálogo · Agentes</span><span class="card-badge">Skill</span></div>
+          <h3 class="card-title">skills.sh</h3>
+          <p class="card-body">Catálogo de skills prontas para acelerar a configuração de agentes especializados. Padrões reutilizáveis para evitar reinventar a roda.</p>
+          <div class="card-tags"><span>skills</span><span>templates</span><span>agentes</span></div>
+          <a class="card-link" href="https://skills.sh/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="kit skills interface" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Skill · Anthropic</span><span class="card-badge">UI</span></div>
+          <h3 class="card-title">frontend-design</h3>
+          <p class="card-body">Skill focada em criar interfaces bem desenhadas, organizadas e com acabamento profissional.</p>
+          <div class="card-tags"><span>ui</span><span>frontend</span></div>
+          <a class="card-link" href="https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="kit skills run" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Skill · Anthropic</span><span class="card-badge">QA</span></div>
+          <h3 class="card-title">webapp-testing</h3>
+          <p class="card-body">Teste o sistema como usuário — abrir páginas, clicar, preencher fluxos e capturar evidências.</p>
+          <div class="card-tags"><span>playwright</span><span>navegador</span></div>
+          <a class="card-link" href="https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="kit agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Sistema · Open source</span><span class="card-badge">Otimização</span></div>
+          <h3 class="card-title">everything-claude-code</h3>
+          <p class="card-body">Sistema de otimização de performance para agentes — skills, instintos, memória e segurança para Claude Code, Cursor, Codex e outros.</p>
+          <div class="card-tags"><span>agentes</span><span>skills</span><span>performance</span></div>
+          <a class="card-link" href="https://github.com/affaan-m/everything-claude-code" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="kit run" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Lista curada · Plano grátis</span><span class="card-badge">Lista</span></div>
+          <h3 class="card-title">free-for-dev</h3>
+          <p class="card-body">Serviços com planos gratuitos para desenvolvimento, protótipos, testes, deploy, banco, observabilidade e infra.</p>
+          <div class="card-tags"><span>plano grátis</span><span>infra</span><span>ferramentas</span></div>
+          <a class="card-link" href="https://github.com/jixserver/free-for-dev" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="kit agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Agente CLI · Anthropic</span><span class="card-badge">Oficial</span></div>
+          <h3 class="card-title">Claude Code</h3>
+          <p class="card-body">O agente de código no terminal da Anthropic — edita arquivos, roda comandos, usa MCP e trabalha o codebase inteiro. Base de boa parte do dev com agentes hoje.</p>
+          <div class="card-tags"><span>cli</span><span>agente</span><span>mcp</span></div>
+          <a class="card-link" href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="kit agents" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Agente autônomo · MIT</span><span class="card-badge">~72k ★</span></div>
+          <h3 class="card-title">OpenHands</h3>
+          <p class="card-body">Agente autônomo que entrega features ponta a ponta. Planning Mode escreve um plano pra você revisar antes de executar. O coding agent open source mais estrelado.</p>
+          <div class="card-tags"><span>autônomo</span><span>features</span><span>planning</span></div>
+          <a class="card-link" href="https://github.com/All-Hands-AI/OpenHands" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="kit agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Agente VS Code · ~61k ★</span><span class="card-badge">IDE</span></div>
+          <h3 class="card-title">Cline</h3>
+          <p class="card-body">Agente autônomo model-agnostic no VS Code: planeja, edita arquivos, roda comandos e usa o browser, com aprovação humana em cada passo.</p>
+          <div class="card-tags"><span>vs code</span><span>autônomo</span><span>browser</span></div>
+          <a class="card-link" href="https://github.com/cline/cline" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="kit agents mcp" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Agente local · Block</span><span class="card-badge">MCP</span></div>
+          <h3 class="card-title">Goose</h3>
+          <p class="card-body">Agente extensível que roda localmente, on-device, e se integra a qualquer servidor MCP — automatiza tarefas de engenharia no seu ambiente.</p>
+          <div class="card-tags"><span>local</span><span>mcp</span><span>extensível</span></div>
+          <a class="card-link" href="https://github.com/block/goose" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §02 AGENTES -->
+      <div class="chapter-bar" data-chapter="agents" id="agentes">
+        <span class="chapter-num">§02 · Agentes</span>
+        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>
+        <span class="count-pill">12 itens</span>
+      </div>
+
+      <div class="bento">
+        <article class="card feature" data-kind="agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>TypeScript · OpenAI</span><span class="card-badge">Oficial</span></div>
+          <h3 class="card-title">OpenAI Agents SDK · JS</h3>
+          <p class="card-body">Framework TypeScript para agentes com ferramentas, handoffs, guardrails, sessões, tracing e integração nativa com MCP. Stack oficial para construir agentes em produção.</p>
+          <div class="card-tags"><span>typescript</span><span>tools</span><span>handoffs</span><span>mcp</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://github.com/openai/openai-agents-js" target="_blank" rel="noopener">Abrir repositório<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Python · OpenAI</span><span class="card-badge">SDK</span></div>
+          <h3 class="card-title">OpenAI Agents SDK · Python</h3>
+          <p class="card-body">SDK Python leve para workflows multiagente, ferramentas, guardrails, tracing e orquestração com handoffs.</p>
+          <div class="card-tags"><span>python</span><span>multi-agente</span><span>tracing</span></div>
+          <a class="card-link" href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="agents" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>LangChain</span><span class="card-badge">Stateful</span></div>
+          <h3 class="card-title">LangGraph</h3>
+          <p class="card-body">Orquestração em grafos para agentes stateful, workflows longos e execução durável.</p>
+          <div class="card-tags"><span>grafos</span><span>memória</span></div>
+          <a class="card-link" href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="agents" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Python · Times</span><span class="card-badge">Multi</span></div>
+          <h3 class="card-title">CrewAI</h3>
+          <p class="card-body">Framework para montar equipes de agentes com papéis, tarefas e workflows estruturados.</p>
+          <div class="card-tags"><span>papéis</span><span>times</span></div>
+          <a class="card-link" href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="agents guard" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Tipado · Pydantic</span><span class="card-badge">Typed</span></div>
+          <h3 class="card-title">PydanticAI</h3>
+          <p class="card-body">Framework Python para agentes com tipagem forte, validação, ferramentas e outputs estruturados.</p>
+          <div class="card-tags"><span>tipado</span><span>validação</span><span>estruturado</span></div>
+          <a class="card-link" href="https://github.com/pydantic/pydantic-ai" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="agents" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>RAG · Dados</span><span class="card-badge">RAG</span></div>
+          <h3 class="card-title">LlamaIndex</h3>
+          <p class="card-body">Framework para agentes sobre dados, RAG, documentos, integrações, memória e pipelines de conhecimento.</p>
+          <div class="card-tags"><span>rag</span><span>documentos</span><span>dados</span></div>
+          <a class="card-link" href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Runtime multimodal</span><span class="card-badge">Plataforma</span></div>
+          <h3 class="card-title">Agno</h3>
+          <p class="card-body">Stack Python para construir, rodar e gerenciar agentes multimodais e sistemas multiagente.</p>
+          <div class="card-tags"><span>multimodal</span><span>memória</span></div>
+          <a class="card-link" href="https://github.com/agno-agi/agno" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="agents mcp" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Microsoft · Enterprise</span><span class="card-badge">.NET / Py</span></div>
+          <h3 class="card-title">Microsoft Agent Framework</h3>
+          <p class="card-body">Framework Python/.NET para agentes e workflows multiagente com MCP, A2A, checkpointing, telemetry e DevUI.</p>
+          <div class="card-tags"><span>python</span><span>.net</span><span>workflows</span></div>
+          <a class="card-link" href="https://github.com/microsoft/agent-framework" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="agents" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>LLMs locais · Open source</span><span class="card-badge">Local</span></div>
+          <h3 class="card-title">Ollama</h3>
+          <p class="card-body">Rode modelos como Llama, Mistral e Gemma localmente com uma CLI simples. Padrão de fato para LLMs no seu próprio hardware.</p>
+          <div class="card-tags"><span>llms</span><span>local</span><span>cli</span></div>
+          <a class="card-link" href="https://github.com/ollama/ollama" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Inference engine · C/C++</span><span class="card-badge">Engine</span></div>
+          <h3 class="card-title">llama.cpp</h3>
+          <p class="card-body">Inference de LLMs em C/C++ puro com quantização GGUF. Roda em CPU, GPU, Apple Silicon — engine por trás do Ollama.</p>
+          <div class="card-tags"><span>c++</span><span>ggml</span><span>quantização</span></div>
+          <a class="card-link" href="https://github.com/ggerganov/llama.cpp" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="agents kit" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>AI code editor · Open source</span><span class="card-badge">IDE</span></div>
+          <h3 class="card-title">Continue.dev</h3>
+          <p class="card-body">Assistente de IA open source — alternativa ao Cursor/Copilot. Roda com qualquer modelo, inclusive local via Ollama, em VS Code e JetBrains.</p>
+          <div class="card-tags"><span>ide</span><span>autocomplete</span><span>chat</span></div>
+          <a class="card-link" href="https://github.com/continuedev/continue" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="agents kit" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Pair programming · CLI</span><span class="card-badge">CLI</span></div>
+          <h3 class="card-title">Aider</h3>
+          <p class="card-body">Edita código no seu terminal usando LLMs. Funciona via git, faz commits semânticos, trabalha em qualquer linguagem com qualquer modelo.</p>
+          <div class="card-tags"><span>cli</span><span>git</span><span>pair programming</span></div>
+          <a class="card-link" href="https://github.com/Aider-AI/aider" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §03 MCP -->
+      <div class="chapter-bar" data-chapter="mcp" id="mcp">
+        <span class="chapter-num">§03 · MCP</span>
+        <h3>Model Context Protocol <em>— a fiação.</em></h3>
+        <span class="count-pill">10 itens</span>
+      </div>
+
+      <div class="bento">
+        <article class="card x3" data-kind="mcp" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Protocolo oficial</span><span class="card-badge">Spec</span></div>
+          <h3 class="card-title">MCP Specification</h3>
+          <p class="card-body">Documentação e especificação oficial do Model Context Protocol para conectar agentes a dados, ferramentas e serviços.</p>
+          <div class="card-tags"><span>mcp</span><span>spec</span><span>agentes</span></div>
+          <a class="card-link" href="https://github.com/modelcontextprotocol/modelcontextprotocol" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="mcp" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Servidores referência</span><span class="card-badge">Servers</span></div>
+          <h3 class="card-title">modelcontextprotocol/servers</h3>
+          <p class="card-body">Referências de servidores MCP como filesystem, git, memory, fetch e exemplos para criar integrações próprias.</p>
+          <div class="card-tags"><span>filesystem</span><span>git</span><span>memory</span></div>
+          <a class="card-link" href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="mcp" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Comunidade</span><span class="card-badge">Registro</span></div>
+          <h3 class="card-title">MCP Registry</h3>
+          <p class="card-body">Registro comunitário de servidores MCP para descoberta, publicação e organização de integrações.</p>
+          <div class="card-tags"><span>registro</span><span>discovery</span></div>
+          <a class="card-link" href="https://github.com/modelcontextprotocol/registry" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="mcp" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Lista curada</span><span class="card-badge">Curado</span></div>
+          <h3 class="card-title">awesome-mcp-servers</h3>
+          <p class="card-body">Lista curada de servidores MCP para descobrir integrações úteis antes de instalar algo no ambiente.</p>
+          <div class="card-tags"><span>curado</span><span>servers</span></div>
+          <a class="card-link" href="https://github.com/appcypher/awesome-mcp-servers" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="mcp guard" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Invariant Labs</span><span class="card-badge">Segurança</span></div>
+          <h3 class="card-title">mcp-scan</h3>
+          <p class="card-body">Descobrir, registrar, restringir e escanear conexões MCP locais ou remotas contra riscos de segurança.</p>
+          <div class="card-tags"><span>prompt injection</span><span>scan</span></div>
+          <a class="card-link" href="https://github.com/invariantlabs-ai/mcp-scan" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card feature" data-kind="mcp agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Framework · Python</span><span class="card-badge">Destaque</span></div>
+          <h3 class="card-title">FastMCP</h3>
+          <p class="card-body">A forma rápida e pythônica de construir servidores e clientes MCP. Roda ~70% de todos os servidores MCP do ecossistema — decorators, auth, deploy e tooling completo.</p>
+          <div class="card-tags"><span>python</span><span>server</span><span>client</span><span>auth</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://github.com/jlowin/fastmcp" target="_blank" rel="noopener">Abrir repositório<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="mcp agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Debug oficial · Anthropic</span><span class="card-badge">Inspector</span></div>
+          <h3 class="card-title">MCP Inspector</h3>
+          <p class="card-body">Ferramenta oficial pra inspecionar e debugar servidores MCP — logs em tempo real, validação de protocolo e suporte a múltiplos transports.</p>
+          <div class="card-tags"><span>debug</span><span>inspector</span><span>oficial</span></div>
+          <a class="card-link" href="https://github.com/modelcontextprotocol/inspector" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="mcp agents" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Server oficial · GitHub</span><span class="card-badge">Go</span></div>
+          <h3 class="card-title">GitHub MCP Server</h3>
+          <p class="card-body">Servidor MCP oficial do GitHub: repos, pull requests, issues, code search e operações de arquivo — dá ao agente acesso completo à API do GitHub.</p>
+          <div class="card-tags"><span>github</span><span>pr</span><span>issues</span></div>
+          <a class="card-link" href="https://github.com/github/github-mcp-server" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="mcp agents" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Browser · Microsoft</span><span class="card-badge">a11y tree</span></div>
+          <h3 class="card-title">Playwright MCP</h3>
+          <p class="card-body">Servidor MCP que deixa o agente navegar a web via árvore de acessibilidade (não screenshots) — mais rápido, menos tokens e mais preciso.</p>
+          <div class="card-tags"><span>browser</span><span>automation</span><span>a11y</span></div>
+          <a class="card-link" href="https://github.com/microsoft/playwright-mcp" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="mcp agents" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Integrações · Gateway</span><span class="card-badge">500+ apps</span></div>
+          <h3 class="card-title">Composio</h3>
+          <p class="card-body">Plataforma de integração agêntica com MCP Gateway: 500+ integrações gerenciadas (Slack, GitHub, Jira, Salesforce…) prontas pra dar ferramentas ao agente.</p>
+          <div class="card-tags"><span>integrações</span><span>gateway</span><span>tools</span></div>
+          <a class="card-link" href="https://github.com/ComposioHQ/composio" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §04 INTERFACE -->
+      <div class="chapter-bar" data-chapter="interface" id="interface">
+        <span class="chapter-num">§04 · Interface</span>
+        <h3>Frontend <em>— a superfície do produto.</em></h3>
+        <span class="count-pill">18 itens</span>
+      </div>
+
+      <div class="bento">
+        <article class="card x3" data-kind="interface" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>React · Animado</span><span class="card-badge">UI</span></div>
+          <h3 class="card-title">React Bits</h3>
+          <p class="card-body">Coleção open source de componentes React interativos, animados e customizáveis para interfaces memoráveis.</p>
+          <div class="card-tags"><span>react</span><span>animações</span></div>
+          <a class="card-link" href="https://reactbits.dev/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Copy-paste UI</span><span class="card-badge">Componentes</span></div>
+          <h3 class="card-title">shadcn/ui</h3>
+          <p class="card-body">Componentes acessíveis e editáveis para criar sua própria biblioteca UI em React, Next.js, Tailwind e Radix.</p>
+          <div class="card-tags"><span>react</span><span>tailwind</span><span>radix</span></div>
+          <a class="card-link" href="https://github.com/shadcn-ui/ui" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Marketplace</span><span class="card-badge">Kits</span></div>
+          <h3 class="card-title">21st.dev</h3>
+          <p class="card-body">Biblioteca e inspiração para componentes React modernos.</p>
+          <div class="card-tags"><span>componentes</span><span>react</span></div>
+          <a class="card-link" href="https://21st.dev/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface run" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Component IDE</span><span class="card-badge">Workshop</span></div>
+          <h3 class="card-title">Storybook</h3>
+          <p class="card-body">Construir, documentar e testar componentes isolados, com testes de interação e visual review.</p>
+          <div class="card-tags"><span>docs</span><span>componentes</span></div>
+          <a class="card-link" href="https://github.com/storybookjs/storybook" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface run" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Build frontend</span><span class="card-badge">Build</span></div>
+          <h3 class="card-title">Vite</h3>
+          <p class="card-body">Build tool moderno com dev server rápido, HMR, plugins, TypeScript e builds otimizados.</p>
+          <div class="card-tags"><span>build</span><span>hmr</span></div>
+          <a class="card-link" href="https://github.com/vitejs/vite" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Utility-first</span><span class="card-badge">CSS</span></div>
+          <h3 class="card-title">Tailwind CSS</h3>
+          <p class="card-body">Framework CSS utility-first para interfaces responsivas com design consistente.</p>
+          <div class="card-tags"><span>css</span><span>utility</span></div>
+          <a class="card-link" href="https://github.com/tailwindlabs/tailwindcss" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Acessível</span><span class="card-badge">Radix</span></div>
+          <h3 class="card-title">Radix Primitives</h3>
+          <p class="card-body">Primitivas React acessíveis para dialogs, menus, selects, tooltips e design systems customizados.</p>
+          <div class="card-tags"><span>a11y</span><span>primitives</span></div>
+          <a class="card-link" href="https://github.com/radix-ui/primitives" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface server" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Server state</span><span class="card-badge">Estado</span></div>
+          <h3 class="card-title">TanStack Query</h3>
+          <p class="card-body">Gerenciamento de server state para buscar, cachear, sincronizar e atualizar dados.</p>
+          <div class="card-tags"><span>cache</span><span>fetching</span></div>
+          <a class="card-link" href="https://github.com/TanStack/query" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Cenas 3D</span><span class="card-badge">3D</span></div>
+          <h3 class="card-title">Spline</h3>
+          <p class="card-body">Ferramenta para criar cenas 3D interativas e experiências visuais para web.</p>
+          <div class="card-tags"><span>3d</span><span>interativo</span></div>
+          <a class="card-link" href="https://spline.design/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Design &amp; publicar</span><span class="card-badge">Tool</span></div>
+          <h3 class="card-title">Framer</h3>
+          <p class="card-body">Plataforma para criar, prototipar e publicar sites com foco em design visual e animações.</p>
+          <div class="card-tags"><span>protótipo</span><span>motion</span></div>
+          <a class="card-link" href="https://www.framer.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="interface kit" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>DESIGN.md</span><span class="card-badge">Referência</span></div>
+          <h3 class="card-title">awesome-design-md</h3>
+          <p class="card-body">Modelos DESIGN.md para orientar estética, componentes e consistência visual.</p>
+          <div class="card-tags"><span>design.md</span><span>inspiração</span></div>
+          <a class="card-link" href="https://github.com/voltagent/awesome-design-md" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card feature" data-kind="interface" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>React framework · Vercel</span><span class="card-badge">Framework</span></div>
+          <h3 class="card-title">Next.js</h3>
+          <p class="card-body">O framework React mais usado em produção. App Router, Server Components, file-based routing, otimizações automáticas, suporte nativo a streaming e ISR. Padrão da indústria.</p>
+          <div class="card-tags"><span>react</span><span>ssr</span><span>app router</span><span>server components</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://github.com/vercel/next.js" target="_blank" rel="noopener">Abrir repositório<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="interface" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Content framework · Multi</span><span class="card-badge">SSG</span></div>
+          <h3 class="card-title">Astro</h3>
+          <p class="card-body">Framework #1 pra sites de conteúdo. Zero JS por default, islands architecture, suporte a React/Vue/Svelte no mesmo projeto.</p>
+          <div class="card-tags"><span>ssg</span><span>islands</span><span>content</span></div>
+          <a class="card-link" href="https://github.com/withastro/astro" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>3D na web · WebGL</span><span class="card-badge">3D</span></div>
+          <h3 class="card-title">Three.js</h3>
+          <p class="card-body">Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shaders, animações. Por trás de quase toda experiência 3D moderna.</p>
+          <div class="card-tags"><span>webgl</span><span>3d</span><span>shaders</span></div>
+          <a class="card-link" href="https://github.com/mrdoob/three.js" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="interface" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Animações React · Motion</span><span class="card-badge">Motion</span></div>
+          <h3 class="card-title">Framer Motion</h3>
+          <p class="card-body">Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.</p>
+          <div class="card-tags"><span>react</span><span>motion</span><span>gestures</span></div>
+          <a class="card-link" href="https://github.com/motiondivision/motion" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="interface" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Command palette · React</span><span class="card-badge">⌘K</span></div>
+          <h3 class="card-title">cmdk</h3>
+          <p class="card-body">Componente React para command palettes estilo Raycast. Headless, acessível, com fuzzy search. Por trás do Command do shadcn/ui.</p>
+          <div class="card-tags"><span>react</span><span>⌘k</span><span>palette</span></div>
+          <a class="card-link" href="https://github.com/pacocoursey/cmdk" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Componentes UI · Copy-paste</span><span class="card-badge">Site</span></div>
+          <h3 class="card-title">UIverse</h3>
+          <p class="card-body">Biblioteca enorme de elementos UI open source — botões, checkboxes, cards, loaders — prontos pra copiar e colar (CSS/Tailwind) no projeto.</p>
+          <div class="card-tags"><span>ui</span><span>css</span><span>copy-paste</span></div>
+          <a class="card-link" href="https://uiverse.io/" target="_blank" rel="noopener">Abrir uiverse.io<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="interface" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Referência de design · Mobbin</span><span class="card-badge">Patterns</span></div>
+          <h3 class="card-title">Mobbin</h3>
+          <p class="card-body">Maior biblioteca de design mobile e web — 300k+ telas de apps reais bem desenhados pra estudar padrões de UX e buscar inspiração.</p>
+          <div class="card-tags"><span>design</span><span>ux</span><span>inspiração</span></div>
+          <a class="card-link" href="https://mobbin.com/" target="_blank" rel="noopener">Abrir mobbin.com<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §05 SERVIDOR -->
+      <div class="chapter-bar" data-chapter="server" id="servidor">
+        <span class="chapter-num">§05 · Servidor</span>
+        <h3>Sala de máquinas <em>— APIs, bancos, ORMs.</em></h3>
+        <span class="count-pill">13 itens</span>
+      </div>
+
+      <div class="bento">
+        <article class="card feature" data-kind="server" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Postgres BaaS</span><span class="card-badge">Destaque</span></div>
+          <h3 class="card-title">Supabase</h3>
+          <p class="card-body">Plataforma Postgres completa para banco, autenticação, storage, APIs, realtime, edge functions e recursos para apps com AI. A backend-as-a-service mais popular para projetos modernos.</p>
+          <div class="card-tags"><span>postgres</span><span>auth</span><span>realtime</span><span>edge</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://github.com/supabase/supabase" target="_blank" rel="noopener">Abrir repositório<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="server" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Self-host BaaS</span><span class="card-badge">Open</span></div>
+          <h3 class="card-title">Appwrite</h3>
+          <p class="card-body">Infra backend open source com auth, databases, storage, functions, messaging, realtime e hosting integrado.</p>
+          <div class="card-tags"><span>baas</span><span>self-host</span><span>functions</span></div>
+          <a class="card-link" href="https://github.com/appwrite/appwrite" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="server" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>API edge</span><span class="card-badge">TS</span></div>
+          <h3 class="card-title">Hono</h3>
+          <p class="card-body">Framework TypeScript ultraleve para Node, Bun, Deno, Workers e edge.</p>
+          <div class="card-tags"><span>typescript</span><span>edge</span></div>
+          <a class="card-link" href="https://github.com/honojs/hono" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="server" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>API Node</span><span class="card-badge">Rápido</span></div>
+          <h3 class="card-title">Fastify</h3>
+          <p class="card-body">Framework Node.js de baixa sobrecarga para APIs com plugins, validação e performance.</p>
+          <div class="card-tags"><span>node.js</span><span>plugins</span></div>
+          <a class="card-link" href="https://github.com/fastify/fastify" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="server" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>SQL tipado</span><span class="card-badge">ORM</span></div>
+          <h3 class="card-title">Drizzle ORM</h3>
+          <p class="card-body">ORM TypeScript leve e SQL-first para PostgreSQL, MySQL, SQLite e ambientes serverless/edge.</p>
+          <div class="card-tags"><span>sql</span><span>migrations</span><span>tipos</span></div>
+          <a class="card-link" href="https://github.com/drizzle-team/drizzle-orm" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="server" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Database toolkit</span><span class="card-badge">ORM</span></div>
+          <h3 class="card-title">Prisma ORM</h3>
+          <p class="card-body">Toolkit Node/TypeScript para modelagem, migrations, Prisma Client tipado e Studio.</p>
+          <div class="card-tags"><span>orm</span><span>migrate</span><span>studio</span></div>
+          <a class="card-link" href="https://github.com/prisma/prisma" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="server" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Postgres serverless</span><span class="card-badge">Neon</span></div>
+          <h3 class="card-title">Neon</h3>
+          <p class="card-body">Postgres serverless com separação de compute/storage, autoscaling, branching e scale-to-zero.</p>
+          <div class="card-tags"><span>postgres</span><span>branching</span></div>
+          <a class="card-link" href="https://github.com/neondatabase/neon" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="server agents" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Dados serverless</span><span class="card-badge">Upstash</span></div>
+          <h3 class="card-title">Upstash</h3>
+          <p class="card-body">Plataforma serverless para Redis, Vector, QStash e workflows — cache, filas e AI apps.</p>
+          <div class="card-tags"><span>redis</span><span>vector</span></div>
+          <a class="card-link" href="https://upstash.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="server kit" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Docs de API</span><span class="card-badge">OpenAPI</span></div>
+          <h3 class="card-title">Scalar</h3>
+          <p class="card-body">Plataforma open source para documentar, descobrir e testar APIs com suporte a OpenAPI/Swagger.</p>
+          <div class="card-tags"><span>openapi</span><span>api client</span></div>
+          <a class="card-link" href="https://github.com/scalar/scalar" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="server interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Schema validation · TypeScript</span><span class="card-badge">Validation</span></div>
+          <h3 class="card-title">Zod</h3>
+          <p class="card-body">Validação de schemas TypeScript com inferência automática de tipos. Padrão de fato para validar entrada de APIs, formulários e variáveis de ambiente.</p>
+          <div class="card-tags"><span>typescript</span><span>schema</span><span>validation</span></div>
+          <a class="card-link" href="https://github.com/colinhacks/zod" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="server interface" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Typesafe APIs · End-to-end</span><span class="card-badge">Typed</span></div>
+          <h3 class="card-title">tRPC</h3>
+          <p class="card-body">APIs end-to-end typesafe sem schema. Defina no servidor, ganhe autocomplete no cliente. Ideal para monorepos full-stack TypeScript.</p>
+          <div class="card-tags"><span>typescript</span><span>rpc</span><span>monorepo</span></div>
+          <a class="card-link" href="https://github.com/trpc/trpc" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="server" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>BaaS num binário · Go</span><span class="card-badge">Open</span></div>
+          <h3 class="card-title">PocketBase</h3>
+          <p class="card-body">Backend-as-a-service num único binário Go: SQLite, auth, realtime, storage, admin UI. Self-hosted em qualquer VPS com zero config.</p>
+          <div class="card-tags"><span>go</span><span>sqlite</span><span>baas</span></div>
+          <a class="card-link" href="https://github.com/pocketbase/pocketbase" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="server agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Vector search · Postgres extension</span><span class="card-badge">AI</span></div>
+          <h3 class="card-title">pgvector</h3>
+          <p class="card-body">Extensão Postgres para vector search. Embeddings, similaridade, índices HNSW/IVFFlat. Permite RAG sem precisar de banco vetorial dedicado.</p>
+          <div class="card-tags"><span>postgres</span><span>vectors</span><span>rag</span></div>
+          <a class="card-link" href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §06 SEGURANÇA -->
+      <div class="chapter-bar" data-chapter="guard" id="seguranca">
+        <span class="chapter-num">§06 · Segurança</span>
+        <h3>Auth &amp; appsec <em>— chato até deixar de ser.</em></h3>
+        <span class="count-pill">10 itens</span>
+      </div>
+
+      <div class="bento">
+        <article class="card x3" data-kind="guard server" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Autenticação</span><span class="card-badge">Auth</span></div>
+          <h3 class="card-title">Better Auth</h3>
+          <p class="card-body">Framework de autenticação TypeScript com OAuth, 2FA, organizações, SSO, plugins e suporte a vários frameworks.</p>
+          <div class="card-tags"><span>oauth</span><span>2fa</span><span>sso</span></div>
+          <a class="card-link" href="https://github.com/better-auth/better-auth" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="guard" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>OWASP</span><span class="card-badge">Guias</span></div>
+          <h3 class="card-title">OWASP Cheat Sheet Series</h3>
+          <p class="card-body">Guias práticos de segurança para autenticação, sessão, APIs, XSS, SSRF, secrets e hardening de apps.</p>
+          <div class="card-tags"><span>owasp</span><span>appsec</span></div>
+          <a class="card-link" href="https://github.com/OWASP/CheatSheetSeries" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="guard run" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Análise estática</span><span class="card-badge">SAST</span></div>
+          <h3 class="card-title">Opengrep</h3>
+          <p class="card-body">Engine open source de análise estática para vulnerabilidades em várias linguagens.</p>
+          <div class="card-tags"><span>sast</span><span>sarif</span></div>
+          <a class="card-link" href="https://github.com/opengrep/opengrep" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="guard run" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Secrets</span><span class="card-badge">Scan</span></div>
+          <h3 class="card-title">Gitleaks</h3>
+          <p class="card-body">Scanner para detectar e prevenir secrets hardcoded em repos, pre-commit e pipelines.</p>
+          <div class="card-tags"><span>tokens</span><span>pre-commit</span></div>
+          <a class="card-link" href="https://github.com/gitleaks/gitleaks" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card" data-kind="guard run" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Secrets verificados</span><span class="card-badge">Scan</span></div>
+          <h3 class="card-title">TruffleHog</h3>
+          <p class="card-body">Scanner que classifica credenciais, verifica se estão ativas e prioriza vazamentos reais.</p>
+          <div class="card-tags"><span>verified</span><span>docker</span></div>
+          <a class="card-link" href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="guard run" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Google · Dependências</span><span class="card-badge">Vulns</span></div>
+          <h3 class="card-title">OSV-Scanner</h3>
+          <p class="card-body">Scanner oficial do OSV para vulnerabilidades em dependências, lockfiles e imagens de container.</p>
+          <div class="card-tags"><span>dependências</span><span>sbom</span><span>containers</span></div>
+          <a class="card-link" href="https://github.com/google/osv-scanner" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="guard agents" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Guardrails LLM · NVIDIA</span><span class="card-badge">Colang</span></div>
+          <h3 class="card-title">NeMo Guardrails</h3>
+          <p class="card-body">Toolkit pra adicionar guardrails programáveis a apps LLM — protege contra jailbreaks e prompt injection, e modela o diálogo usuário↔agente com a DSL Colang.</p>
+          <div class="card-tags"><span>jailbreak</span><span>prompt injection</span><span>dialog</span></div>
+          <a class="card-link" href="https://github.com/NVIDIA-NeMo/Guardrails" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="guard agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Validação de output · OSS</span><span class="card-badge">Validators</span></div>
+          <h3 class="card-title">Guardrails AI</h3>
+          <p class="card-body">Framework pra validar saídas do LLM contra schemas e regras (validators) — garante outputs estruturados e seguros do agente.</p>
+          <div class="card-tags"><span>validação</span><span>schema</span><span>output</span></div>
+          <a class="card-link" href="https://github.com/guardrails-ai/guardrails" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="guard agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Scanners I/O · Protect AI</span><span class="card-badge">MIT</span></div>
+          <h3 class="card-title">LLM Guard</h3>
+          <p class="card-body">Toolkit de segurança com 15 scanners de input e 20 de output. O scanner de PromptInjection usa ML treinado em padrões reais — pega injeção indireta.</p>
+          <div class="card-tags"><span>scanners</span><span>prompt injection</span><span>pii</span></div>
+          <a class="card-link" href="https://github.com/protectai/llm-guard" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="guard agents" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Red-team LLM · NVIDIA</span><span class="card-badge">Scanner</span></div>
+          <h3 class="card-title">Garak</h3>
+          <p class="card-body">Scanner de vulnerabilidades pra LLMs — sonda jailbreak, prompt injection, vazamento de dados, toxicidade e mais. O nmap dos modelos.</p>
+          <div class="card-tags"><span>red-team</span><span>vuln scan</span><span>jailbreak</span></div>
+          <a class="card-link" href="https://github.com/NVIDIA/garak" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §07 BUILD -->
+      <div class="chapter-bar" data-chapter="run" id="build">
+        <span class="chapter-num">§07 · Build</span>
+        <h3>Build, test, observar <em>— a coreografia invisível.</em></h3>
+        <span class="count-pill">10 itens</span>
+      </div>
+
+      <div class="bento">
+        <article class="card x2" data-kind="run" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Lint &amp; format</span><span class="card-badge">Tool</span></div>
+          <h3 class="card-title">Biome</h3>
+          <p class="card-body">Toolchain rápido para formatar e lintar JavaScript, TypeScript, JSX, JSON, CSS e GraphQL.</p>
+          <div class="card-tags"><span>formatter</span><span>linter</span></div>
+          <a class="card-link" href="https://github.com/biomejs/biome" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="run" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Gerenciador</span><span class="card-badge">pnpm</span></div>
+          <h3 class="card-title">pnpm</h3>
+          <p class="card-body">Gerenciador de pacotes rápido e eficiente em disco, ótimo para workspaces e monorepos.</p>
+          <div class="card-tags"><span>workspaces</span><span>monorepo</span></div>
+          <a class="card-link" href="https://github.com/pnpm/pnpm" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="run" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Monorepo</span><span class="card-badge">Build</span></div>
+          <h3 class="card-title">Turborepo</h3>
+          <p class="card-body">Sistema de build de alta performance para JS/TS com cache e pipelines por pacote.</p>
+          <div class="card-tags"><span>cache</span><span>tasks</span></div>
+          <a class="card-link" href="https://github.com/vercel/turborepo" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="run guard" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Atualização de deps</span><span class="card-badge">Bot</span></div>
+          <h3 class="card-title">Renovate</h3>
+          <p class="card-body">Automação de atualização de dependências com PRs, suporte amplo a linguagens e configuração granular.</p>
+          <div class="card-tags"><span>dependências</span><span>prs</span><span>automação</span></div>
+          <a class="card-link" href="https://github.com/renovatebot/renovate" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="run" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>OpenTelemetry</span><span class="card-badge">Tracing</span></div>
+          <h3 class="card-title">OpenTelemetry JS</h3>
+          <p class="card-body">SDK JavaScript para instrumentar traces, métricas e logs em Node.js e web com padrão aberto.</p>
+          <div class="card-tags"><span>traces</span><span>métricas</span><span>logs</span></div>
+          <a class="card-link" href="https://github.com/open-telemetry/opentelemetry-js" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="run" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Observabilidade</span><span class="card-badge">Dashboards</span></div>
+          <h3 class="card-title">Grafana</h3>
+          <p class="card-body">Plataforma aberta para visualizar métricas, logs e traces com dashboards e alertas.</p>
+          <div class="card-tags"><span>métricas</span><span>logs</span></div>
+          <a class="card-link" href="https://github.com/grafana/grafana" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="run guard" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Tracking de erros</span><span class="card-badge">APM</span></div>
+          <h3 class="card-title">Sentry</h3>
+          <p class="card-body">Rastrear erros, performance, releases e falhas em apps web, backend e mobile.</p>
+          <div class="card-tags"><span>erros</span><span>apm</span></div>
+          <a class="card-link" href="https://github.com/getsentry/sentry" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="run interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>E2E browser</span><span class="card-badge">Teste</span></div>
+          <h3 class="card-title">Playwright</h3>
+          <p class="card-body">Testes e automação web com Chromium, Firefox, WebKit, CLI para agentes e Playwright MCP.</p>
+          <div class="card-tags"><span>e2e</span><span>mcp</span></div>
+          <a class="card-link" href="https://github.com/microsoft/playwright" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x2" data-kind="run interface" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Testes unitários</span><span class="card-badge">Vitest</span></div>
+          <h3 class="card-title">Vitest</h3>
+          <p class="card-body">Test runner rápido, compatível com Jest, integrado ao ecossistema Vite.</p>
+          <div class="card-tags"><span>unit</span><span>coverage</span></div>
+          <a class="card-link" href="https://github.com/vitest-dev/vitest" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x2" data-kind="run server" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Runtime · JS/TS</span><span class="card-badge">Runtime</span></div>
+          <h3 class="card-title">Bun</h3>
+          <p class="card-body">Runtime JavaScript drop-in para Node, com bundler, test runner e package manager nativos. Escrito em Zig, muito mais rápido em todos os benchmarks.</p>
+          <div class="card-tags"><span>runtime</span><span>bundler</span><span>zig</span></div>
+          <a class="card-link" href="https://github.com/oven-sh/bun" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §08 APPS -->
+      <div class="chapter-bar" data-chapter="ship" id="apps">
+        <span class="chapter-num">§08 · Apps</span>
+        <h3>Mobile <em>— apps &amp; IA on-device.</em></h3>
+        <span class="count-pill">10 itens</span>
+      </div>
+
+      <div class="bento">
+
+        <article class="card feature" data-kind="ship interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Cross-platform · Google</span><span class="card-badge">~176k ★</span></div>
+          <h3 class="card-title">Flutter</h3>
+          <p class="card-body">O framework mobile mais popular do mundo. UI nativa de alta fidelidade pra iOS e Android a partir de um único código Dart — compila pra código nativo. Suporta GenAI on-device via LiteRT-LM.</p>
+          <div class="card-tags"><span>dart</span><span>ios</span><span>android</span><span>genai</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://github.com/flutter/flutter" target="_blank" rel="noopener">Abrir repositório<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="ship interface" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Mobile · Meta</span><span class="card-badge">~126k ★</span></div>
+          <h3 class="card-title">React Native</h3>
+          <p class="card-body">Base pra apps iOS/Android nativos a partir de um código JavaScript. New Architecture com comunicação JS↔nativo direta. Ecossistema enorme pra apps de IA.</p>
+          <div class="card-tags"><span>react</span><span>ios</span><span>android</span></div>
+          <a class="card-link" href="https://github.com/facebook/react-native" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="ship interface" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Apps universais · React Native</span><span class="card-badge">Mobile</span></div>
+          <h3 class="card-title">Expo</h3>
+          <p class="card-body">Framework para criar apps mobile nativos com React Native — iOS, Android e serviços EAS de build/deploy. Stack de fato pra apps de agentes mobile.</p>
+          <div class="card-tags"><span>react native</span><span>eas</span><span>otas</span></div>
+          <a class="card-link" href="https://github.com/expo/expo" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="ship agents" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>LLM on-device · MLC AI</span><span class="card-badge">On-device</span></div>
+          <h3 class="card-title">MLC LLM</h3>
+          <p class="card-body">Compilador e engine que roda LLMs nativamente no celular (iOS/Android), GPU local, sem servidor. Base pra agentes que rodam 100% no dispositivo.</p>
+          <div class="card-tags"><span>on-device</span><span>ios</span><span>android</span></div>
+          <a class="card-link" href="https://github.com/mlc-ai/mlc-llm" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="ship agents" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>On-device · PyTorch</span><span class="card-badge">Meta</span></div>
+          <h3 class="card-title">ExecuTorch</h3>
+          <p class="card-body">Solução do PyTorch pra inferência on-device em mobile e edge. Roda a IA on-device do Instagram, WhatsApp, Quest 3 e Ray-Ban Meta.</p>
+          <div class="card-tags"><span>pytorch</span><span>on-device</span><span>edge</span></div>
+          <a class="card-link" href="https://github.com/pytorch/executorch" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x2" data-kind="ship agents interface" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>RN on-device · Software Mansion</span><span class="card-badge">RN</span></div>
+          <h3 class="card-title">react-native-executorch</h3>
+          <p class="card-body">Forma declarativa de rodar LLMs e modelos de visão on-device em React Native, sobre o ExecuTorch.</p>
+          <div class="card-tags"><span>react native</span><span>on-device</span></div>
+          <a class="card-link" href="https://github.com/software-mansion/react-native-executorch" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x2" data-kind="ship agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>On-device ML · Google</span><span class="card-badge">Edge</span></div>
+          <h3 class="card-title">MediaPipe</h3>
+          <p class="card-body">Suite do Google AI Edge pra ML/LLM on-device em mobile — visão, áudio e LLM Inference API direto no celular.</p>
+          <div class="card-tags"><span>on-device</span><span>llm</span><span>vision</span></div>
+          <a class="card-link" href="https://github.com/google-ai-edge/mediapipe" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x2" data-kind="ship interface" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Web → nativo · Ionic</span><span class="card-badge">Bridge</span></div>
+          <h3 class="card-title">Capacitor</h3>
+          <p class="card-body">Empacota apps web (incl. clientes de agente) como apps nativos iOS/Android com acesso a APIs do dispositivo.</p>
+          <div class="card-tags"><span>web</span><span>ios</span><span>android</span></div>
+          <a class="card-link" href="https://github.com/ionic-team/capacitor" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="ship agents" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>RN on-device · Callstack</span><span class="card-badge">AI SDK</span></div>
+          <h3 class="card-title">react-native-ai</h3>
+          <p class="card-body">Roda LLMs on-device em apps React Native via MLC Engine, integrado ao Vercel AI SDK — agentes que funcionam offline no celular.</p>
+          <div class="card-tags"><span>react native</span><span>on-device</span><span>ai sdk</span></div>
+          <a class="card-link" href="https://github.com/callstackincubator/react-native-ai" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="ship agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Inference mobile · Cactus</span><span class="card-badge">Cross</span></div>
+          <h3 class="card-title">Cactus</h3>
+          <p class="card-body">Framework cross-platform de inferência de LLM/VLM no celular — roda agentes locais em iOS e Android com baixo consumo.</p>
+          <div class="card-tags"><span>on-device</span><span>llm</span><span>vlm</span></div>
+          <a class="card-link" href="https://github.com/cactus-compute/cactus" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+      </div>
+
+      <!-- §09 TRADE -->
+      <div class="chapter-bar" data-chapter="trade" id="trade">
+        <span class="chapter-num">§09 · Trade</span>
+        <h3>Agentes &amp; quant <em>— mercados, bots, backtest.</em></h3>
+        <span class="count-pill">10 itens</span>
+      </div>
+
+      <div class="bento">
+
+        <article class="card feature" data-kind="trade agents" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Multi-agente LLM · Tauric</span><span class="card-badge">Destaque</span></div>
+          <h3 class="card-title">TradingAgents</h3>
+          <p class="card-body">Framework de trading com múltiplos agentes LLM que imita uma mesa real: analistas fundamentalista, de sentimento e técnico colaboram para decidir. v0.2 (2026) com GPT-5.x, Gemini 3, Claude 4, Grok, DeepSeek, Qwen e Ollama local.</p>
+          <div class="card-tags"><span>multi-agente</span><span>llm</span><span>finance</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener">Abrir repositório<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="trade agents" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Agent-native · HKUDS</span><span class="card-badge">Auto</span></div>
+          <h3 class="card-title">AI-Trader</h3>
+          <p class="card-body">Trading 100% automatizado agent-native, modular e fácil de operar por agentes. Inclui paper trading no Polymarket com dados reais e auto-settlement.</p>
+          <div class="card-tags"><span>agent-native</span><span>polymarket</span><span>auto</span></div>
+          <a class="card-link" href="https://github.com/HKUDS/AI-Trader" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="trade agents" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>LLM + memória · Open Finance Lab</span><span class="card-badge">Memory</span></div>
+          <h3 class="card-title">AgenticTrading</h3>
+          <p class="card-body">Agentes LLM com memória Neo4j para contexto longo, memória vetorial semântica, comunicação A2A entre agentes e execução em DAG dinâmico.</p>
+          <div class="card-tags"><span>neo4j</span><span>a2a</span><span>dag</span></div>
+          <a class="card-link" href="https://github.com/Open-Finance-Lab/AgenticTrading" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="trade" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Bot crypto · Open source</span><span class="card-badge">~50k ★</span></div>
+          <h3 class="card-title">Freqtrade</h3>
+          <p class="card-body">Bot de trading de cripto livre e open source. Suporta os principais exchanges, controle via Telegram, backtest, otimização de hiperparâmetros e ML.</p>
+          <div class="card-tags"><span>crypto</span><span>telegram</span><span>backtest</span></div>
+          <a class="card-link" href="https://github.com/freqtrade/freqtrade" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="trade" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>HFT &amp; market making</span><span class="card-badge">~18k ★</span></div>
+          <h3 class="card-title">Hummingbot</h3>
+          <p class="card-body">Software open source para criar e rodar estratégias de high-frequency trading e market making em exchanges centralizados e DEXs.</p>
+          <div class="card-tags"><span>hft</span><span>market making</span><span>dex</span></div>
+          <a class="card-link" href="https://github.com/hummingbot/hummingbot" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x2" data-kind="trade" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Backtesting · Python</span><span class="card-badge">~21k ★</span></div>
+          <h3 class="card-title">Backtrader</h3>
+          <p class="card-body">Biblioteca Python event-driven, madura, para backtest de estratégias com indicadores, brokers e live trading.</p>
+          <div class="card-tags"><span>backtest</span><span>python</span></div>
+          <a class="card-link" href="https://github.com/mementum/backtrader" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x2" data-kind="trade" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Algo trading lib</span><span class="card-badge">~20k ★</span></div>
+          <h3 class="card-title">Zipline</h3>
+          <p class="card-body">Biblioteca Pythonic event-driven para backtest de estratégias algorítmicas, usada pela Quantopian.</p>
+          <div class="card-tags"><span>backtest</span><span>quant</span></div>
+          <a class="card-link" href="https://github.com/quantopian/zipline" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x2" data-kind="trade" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Engine · QuantConnect</span><span class="card-badge">~19k ★</span></div>
+          <h3 class="card-title">Lean</h3>
+          <p class="card-body">Engine de trading algorítmico da QuantConnect, suporta Python e C#, backtest e live em múltiplos ativos e mercados.</p>
+          <div class="card-tags"><span>c#</span><span>python</span><span>engine</span></div>
+          <a class="card-link" href="https://github.com/QuantConnect/Lean" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="trade agents kit" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Skills oficiais · Bybit</span><span class="card-badge">Exchange</span></div>
+          <h3 class="card-title">bybit-exchange/skills</h3>
+          <p class="card-body">Skills oficiais da Bybit para agentes de IA — ferramentas prontas pra consultar mercado, executar ordens e gerenciar conta na exchange via agentes.</p>
+          <div class="card-tags"><span>bybit</span><span>skills</span><span>exchange</span></div>
+          <a class="card-link" href="https://github.com/bybit-exchange/skills" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+        <article class="card x3" data-kind="trade agents kit" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Lista curada · LLM in finance</span><span class="card-badge">Awesome</span></div>
+          <h3 class="card-title">awesome-ai-in-finance</h3>
+          <p class="card-body">Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading.</p>
+          <div class="card-tags"><span>curado</span><span>llm</span><span>deep learning</span></div>
+          <a class="card-link" href="https://github.com/georgezouq/awesome-ai-in-finance" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+
+      </div>
+
+      <div class="empty hidden" id="emptyState" role="status">
+        <b>Nada encontrado para essa busca.</b> Tente outro termo ou limpe o filtro.
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ─── Método ──────────────────────────────────────────── -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="method shell" id="metodo" aria-labelledby="metodo-title">
+      <span class="section-eyebrow">— Método</span>
+      <h2 class="section-title" id="metodo-title">Como <em>usamos.</em></h2>
+      <p class="section-desc">Quatro princípios que organizam o uso deste acervo no dia a dia. Pequenos hábitos, grande diferença na qualidade do que entregamos.</p>
+
+      <ol class="principles">
+        <li class="principle">
+          <span class="principle-num">01</span>
+          <h3>Pesquise antes de codar.</h3>
+          <p>Use Context7 ou docs oficiais para confirmar APIs, versões e exemplos atuais antes de qualquer implementação.</p>
+        </li>
+        <li class="principle">
+          <span class="principle-num">02</span>
+          <h3>Verifique com docs ao vivo.</h3>
+          <p>Treine ceticismo: bibliotecas evoluem, e código baseado em versões antigas é fonte comum de bugs sutis.</p>
+        </li>
+        <li class="principle">
+          <span class="principle-num">03</span>
+          <h3>Teste como o usuário.</h3>
+          <p>Use webapp-testing ou Playwright para validar o fluxo real no navegador antes de declarar pronto.</p>
+        </li>
+        <li class="principle">
+          <span class="principle-num">04</span>
+          <h3>Entregue em passos pequenos.</h3>
+          <p>Commits atômicos, deploys focados, rollback fácil. A coreografia invisível que mantém o produto vivo.</p>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer (slim) ─────────────────────────────────── -->
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="public/logo.png" alt="DEVLIB — Bibliotecas para desenvolvedores" />
+          <p>Acervo curado de 103 bibliotecas, protocolos e skills para quem constrói com agentes. Três arquivos estáticos, zero dependências.</p>
+        </div>
+        <div>
+          <h4>— Navegação</h4>
+          <ul>
+            <li><a href="#indice">Índice</a></li>
+            <li><a href="#acervo">Acervo</a></li>
+            <li><a href="#metodo">Método</a></li>
+            <li><a href="#top">Voltar ao topo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>— Construído com</h4>
+          <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Geist · Geist Mono</li>
+            <li>Zero dependências</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-base">
+        <span>© <span id="year">2026</span> · DEVLIB — Edição 01</span>
+        <span>Acervo aberto · Sem tracker · Sem build</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Voltar ao topo" id="toTop">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <!-- DEVLIB mascot — floating droid (CSS/SVG only, follows cursor) -->
+  <button class="mascot" id="mascot" type="button" aria-label="Mascote DEVLIB — clique para uma dica">
+    <span class="mascot-bubble" id="mascotBubble" role="status" aria-live="polite"></span>
+    <svg class="mascot-svg" viewBox="0 0 88 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="mHead" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#252a44"/>
+          <stop offset="0.55" stop-color="#171a2c"/>
+          <stop offset="1" stop-color="#0d0f1c"/>
+        </linearGradient>
+        <linearGradient id="mVisor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0a0c16"/>
+          <stop offset="1" stop-color="#04050b"/>
+        </linearGradient>
+      </defs>
+
+      <!-- floating ground shadow -->
+      <ellipse class="m-shadow" cx="44" cy="95" rx="22" ry="4.5"/>
+
+      <!-- droid body (the part that bobs) -->
+      <g class="m-droid">
+        <!-- head -->
+        <ellipse class="m-head" cx="44" cy="42" rx="33" ry="31" fill="url(#mHead)"/>
+        <!-- top specular highlight -->
+        <ellipse class="m-spec" cx="34" cy="24" rx="15" ry="8"/>
+        <!-- visor band -->
+        <rect class="m-visor" x="16" y="33" width="56" height="24" rx="12" fill="url(#mVisor)"/>
+        <rect class="m-sheen" x="20" y="35" width="48" height="6" rx="3"/>
+        <!-- status dot -->
+        <circle class="m-led" cx="63" cy="45" r="2.4"/>
+        <!-- eyes (blink group → follow group) -->
+        <g class="m-eyes">
+          <g class="m-pupils" id="mascotPupils">
+            <rect class="m-eye" x="33" y="40" width="7" height="10" rx="3.5" transform="rotate(-8 36.5 45)"/>
+            <rect class="m-eye" x="48" y="40" width="7" height="10" rx="3.5" transform="rotate(8 51.5 45)"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </button>
+
+  <!-- Command palette (⌘K) — Raycast/cmdk style -->
+  <dialog class="cmdk" id="cmdk" aria-label="Paleta de comandos">
+    <div class="cmdk-box">
+      <div class="cmdk-input-row">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="cmdkInput" type="text" placeholder="Buscar biblioteca ou comando…" autocomplete="off" spellcheck="false" aria-controls="cmdkList">
+        <kbd>esc</kbd>
+      </div>
+      <ul class="cmdk-list" id="cmdkList" role="listbox" aria-label="Resultados"></ul>
+      <div class="cmdk-foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+        <span><kbd>↵</kbd> abrir</span>
+        <span><kbd>esc</kbd> fechar</span>
+        <span class="cmdk-count" id="cmdkCount"></span>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Keyboard shortcuts dialog (native <dialog> — pressione ? para abrir) -->
+  <dialog class="shortcuts" id="shortcutsDialog" aria-labelledby="shortcuts-title">
+    <div class="shortcuts-inner">
+      <header class="shortcuts-head">
+        <h2 id="shortcuts-title">Atalhos</h2>
+        <button class="shortcuts-close" type="button" aria-label="Fechar" data-close>×</button>
+      </header>
+
+      <dl class="shortcuts-list">
+        <div><dt><kbd>⌘</kbd><kbd>K</kbd></dt><dd>Focar busca</dd></div>
+        <div><dt><kbd>?</kbd></dt><dd>Mostrar atalhos</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Limpar busca · fechar dialog</dd></div>
+        <div><dt><kbd>1</kbd>–<kbd>8</kbd></dt><dd>Filtrar por categoria</dd></div>
+        <div><dt><kbd>G</kbd><kbd>T</kbd></dt><dd>Voltar ao topo</dd></div>
+        <div><dt><kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd></dt><dd>?</dd></div>
+      </dl>
+
+      <p class="shortcuts-hint">
+        Aberto o DevTools? Tente <code>devlib.help()</code> no console.
+      </p>
+    </div>
+  </dialog>
+
+</body>
+</html>
