@@ -84,6 +84,43 @@
   /* Hero — trim vertical run a touch */
   .hero { padding-top: 5.5rem; }
   .hero-orb { height: 110px; margin-top: 1.5rem; }
+
+  /* ── Mobile motion budget ──────────────────────────────
+     Scroll-driven reveals (animation-timeline: view()) are
+     unreliable on mobile — fast flicks & anchor jumps leave
+     ~130 elements stuck at opacity:0 (blank gaps). And 180+
+     concurrent animations stutter on low-end phones. So on
+     mobile: force every reveal target to its final visible
+     state and stop the ambient/parallax loops. */
+  .card,
+  .toc a,
+  .chapter-bar,
+  .section-eyebrow,
+  .section-title,
+  .section-desc,
+  .toolbar,
+  .filters,
+  .stats-strip,
+  .principle,
+  .footer-grid > div,
+  .hero-title,
+  .hero-title .word,
+  .hero-lead,
+  .hero-pill {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .card { will-change: auto; }
+
+  /* 22 decorative particle animations — drop entirely */
+  .hero-particles { display: none; }
+
+  /* Aurora stays (ambient depth) but stops drifting */
+  .aurora .blob-1,
+  .aurora .blob-2,
+  .aurora .blob-3 { animation: none !important; }
 }
 
 /* ── ≤ 420px · very small phones ─────────────────────── */
