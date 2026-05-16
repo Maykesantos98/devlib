@@ -147,16 +147,34 @@
   .section-glow,
   [class*="glow"] { filter: none !important; }
 
-  /* 4. 103 cards all painted on a 33k-px page = memory
-     pressure → blank tiles. Let the browser skip the
-     off-screen ones. Safe now (reveals are off on mobile;
-     intrinsic-size keeps page height stable for anchors). */
-  .card {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 340px;
+  /* 4. The mascot is position:fixed with 4 infinite SVG
+     animations — a fixed ANIMATED layer re-composites every
+     scroll frame the entire 33k-px page = constant stutter.
+     Keep it (still pops jokes) but make it perfectly static.
+     Same for every other idle infinite loop: on a low-end
+     phone the page must have ZERO continuous animation while
+     scrolling (only the compositor scroll-progress bar). */
+  .mascot,
+  .m-shadow,
+  .m-led,
+  .m-eyes,
+  .hero-orb-svg,
+  .m-spark,
+  .status-dot,
+  .marquee-track,
+  [style*="orbFloat"] {
+    animation: none !important;
+  }
+  /* belt-and-suspenders: nuke any leftover infinite loop */
+  *:not(.scroll-progress) {
+    animation-iteration-count: 1 !important;
   }
 
-  /* 5. Continuous marquee transform = constant compositing */
+  /* 5. One less fixed composited layer (fine 1px grid that
+     must stay pinned while a huge page scrolls under it) */
+  .grid-bg { display: none; }
+
+  /* 6. Continuous marquee transform = constant compositing */
   .marquee { display: none; }
 }
 
