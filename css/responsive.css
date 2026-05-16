@@ -37,6 +37,19 @@
   .nav-inner          { grid-template-columns: 1fr auto; gap: 1rem; }
   .nav-links          { display: none; }
   .nav-cta            { justify-self: end; width: auto; flex: 0 0 auto; }
+
+  /* The fixed nav was transparent by default (only got a bg via
+     the JS `.scrolled` class). On a phone that meant ALL page
+     content scrolled visibly THROUGH the logo/button — the
+     "broken/double-exposure menu". Make it a solid opaque bar
+     here, independent of JS, in every state. */
+  .nav {
+    background: rgba(8, 9, 18, 0.94);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .nav.scrolled { background: rgba(8, 9, 18, 0.97); }
 }
 
 
@@ -182,6 +195,21 @@
   /* 5. One less fixed composited layer (fine 1px grid that
      must stay pinned while a huge page scrolls under it) */
   .grid-bg { display: none; }
+
+  /* Mascot was covering card text. Shrink it into the very
+     corner and fade it when idle so it never obstructs
+     reading — still taps/pops jokes (the bubble is the point,
+     and it lifts to full opacity while speaking). */
+  .mascot,
+  .mascot-svg { width: 44px !important; height: 51px !important; }
+  .mascot {
+    left: 0.6rem;
+    bottom: 0.6rem;
+    opacity: 0.5;
+    transition: opacity 0.25s;
+  }
+  .mascot.talking,
+  .mascot:active { opacity: 1; }
 
   /* 6. Continuous marquee transform = constant compositing */
   .marquee { display: none; }
