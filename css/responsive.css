@@ -117,10 +117,47 @@
   /* 22 decorative particle animations — drop entirely */
   .hero-particles { display: none; }
 
-  /* Aurora stays (ambient depth) but stops drifting */
-  .aurora .blob-1,
-  .aurora .blob-2,
-  .aurora .blob-3 { animation: none !important; }
+  /* ── Mobile GPU budget ─────────────────────────────────
+     CPU emulation hid these; on a real phone scrolling a
+     ~33k-px page they are the real "slow + broken":
+
+     1. backdrop-filter on the FIXED nav re-blurs everything
+        behind it every scroll frame. Replace with opaque bg. */
+  .nav.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(7, 8, 15, 0.96) !important;
+  }
+
+  /* 2. filter: blur(64px) aurora = giant offscreen buffer
+     recomposited the whole scroll → kill it; swap in a
+     static, blur-free gradient so it still has depth. */
+  .aurora { display: none !important; }
+  body {
+    background:
+      radial-gradient(60% 50% at 18% 0%, rgba(124, 58, 237, 0.16), transparent 60%),
+      radial-gradient(55% 45% at 92% 12%, rgba(34, 211, 238, 0.12), transparent 60%),
+      var(--bg, #070810);
+    background-attachment: scroll;
+  }
+
+  /* 3. Other decorative blur layers (hero/section glow) */
+  .hero-orb::before,
+  .hero-orb-glow,
+  .section-glow,
+  [class*="glow"] { filter: none !important; }
+
+  /* 4. 103 cards all painted on a 33k-px page = memory
+     pressure → blank tiles. Let the browser skip the
+     off-screen ones. Safe now (reveals are off on mobile;
+     intrinsic-size keeps page height stable for anchors). */
+  .card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 340px;
+  }
+
+  /* 5. Continuous marquee transform = constant compositing */
+  .marquee { display: none; }
 }
 
 /* ── ≤ 420px · very small phones ─────────────────────── */
