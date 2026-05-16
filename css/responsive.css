@@ -28,8 +28,15 @@
   .toc                { grid-template-columns: repeat(2, 1fr); }
   .principles         { grid-template-columns: 1fr; }
 
-  /* Hide center nav links — keep logo + CTA */
+  /* Hide center nav links — keep logo + CTA.
+     Grid was `auto 1fr auto` (logo · links · cta); with the
+     links removed the cta auto-placed into the 1fr track and
+     stretched full-width (the "broken menu"). Collapse to a
+     clean 2-col bar and pin the cta to the right at content
+     width so it never stretches. */
+  .nav-inner          { grid-template-columns: 1fr auto; gap: 1rem; }
   .nav-links          { display: none; }
+  .nav-cta            { justify-self: end; width: auto; flex: 0 0 auto; }
 }
 
 
@@ -51,7 +58,9 @@
   }
 
   .toolbar            { grid-template-columns: 1fr; }
-  .nav-cta span       { display: none; }
+  /* Keep the "Explorar" label — a lone arrow looked broken/
+     empty. Just make the pill compact. */
+  .nav-cta            { padding: 0.5rem 0.95rem; font-size: var(--t-sm); }
 
   /* Chapter bar — stack vertically (eyebrow over title) */
   .chapter-bar {
