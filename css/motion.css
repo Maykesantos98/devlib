@@ -224,7 +224,7 @@
   }
   /* No preserve-3d: children aren't 3D-positioned; rotateX/Y works
      via .bento { perspective }. will-change ONLY on hover so we
-     promote 1 layer at a time, not 103 permanent GPU layers. */
+     promote 1 layer at a time, not every card as a permanent GPU layer. */
   .card:hover {
     will-change: transform;
     transform:

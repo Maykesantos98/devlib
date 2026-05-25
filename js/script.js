@@ -347,7 +347,7 @@
       'color:#A78BFA;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1;'
     );
     console.log(
-      '%cBem-vindo, dev. 103 bibliotecas · 9 categorias · 0 dependências.',
+      '%cBem-vindo, dev. 117 bibliotecas · 9 categorias · 0 dependências.',
       'color:#22D3EE;font-size:13px;font-weight:600;'
     );
     console.log(
@@ -422,7 +422,7 @@
         '%cDEVLIB — Edição 01 · 2026',
         'color:#A78BFA;font-weight:600;font-size:14px;'
       );
-      console.log('Acervo curado de 103 bibliotecas para devs que constroem com agentes.');
+      console.log('Acervo curado de 117 bibliotecas para devs que constroem com agentes.');
       console.log('Stack: HTML · CSS · JavaScript vanilla. Zero CDN, zero dependências.');
       console.log('CSS scroll-driven animations (animation-timeline). View Transitions API.');
       return '🛠️';
@@ -466,7 +466,7 @@
 
   // Special filters that don't map to a single data-kind token.
   // RECENT — newest additions (coding agents, MCP tooling, guardrails,
-  // trade agents, mobile on-device, UI). Updated for the 103-lib archive.
+  // trade agents, mobile on-device, UI). Updated for the 117-lib archive.
   const RECENT = new Set([
     'Claude Code', 'OpenHands', 'Cline', 'Goose',
     'FastMCP', 'MCP Inspector', 'GitHub MCP Server', 'Playwright MCP', 'Composio',
@@ -476,12 +476,16 @@
     'Flutter', 'React Native', 'MLC LLM', 'ExecuTorch',
     'react-native-executorch', 'MediaPipe', 'Capacitor',
     'react-native-ai', 'Cactus', 'UIverse', 'Mobbin',
+    'ReUI', 'Magic UI', 'Aceternity UI', 'HeroUI', 'Shadcn Blocks',
+    'Eldora UI', 'Cult UI', 'Skiper UI', 'Square UI',
+    'Ali Imam Components', 'Liquid Metal', 'Dot Matrix', 'Balloons.js',
   ]);
   // TOP — highest GitHub-star / iconic repos across the archive.
   const TOP = new Set([
     'Flutter', 'React Native', 'Next.js', 'Three.js', 'Ollama', 'Bun',
     'llama.cpp', 'OpenHands', 'Cline', 'Goose', 'Supabase', 'Tailwind CSS',
-    'Vite', 'shadcn/ui', 'Storybook', 'Astro', 'Freqtrade', 'Appwrite',
+    'Vite', 'shadcn/ui', 'ReUI', 'Magic UI', 'Aceternity UI', 'HeroUI',
+    'Storybook', 'Astro', 'Freqtrade', 'Appwrite',
     'PocketBase', 'Prisma ORM', 'Playwright', 'Grafana', 'Sentry',
     'Zod', 'tRPC', 'Claude Code', 'MediaPipe', 'Expo',
   ]);

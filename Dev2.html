@@ -10,7 +10,7 @@
   <title>DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes</title>
 
   <meta property="og:title" content="DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes" />
-  <meta property="og:description" content="Acervo curado de 103 bibliotecas, protocolos e skills para quem constrói com agentes." />
+  <meta property="og:description" content="Acervo curado de 117 bibliotecas, protocolos e skills para quem constrói com agentes." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,13 +29,14 @@
   <link rel="stylesheet" href="css/responsive.css">
 
   <script src="js/script.js" defer></script>
+  <script type="module" src="js/hero3d.js"></script>
 
   <!-- Safety net: if JS is disabled, force-reveal content (cards start hidden
        for the scroll-reveal; no-JS + no view-timeline would blank the page). -->
   <noscript>
     <style>
       .card, .toc a { opacity: 1 !important; transform: none !important; }
-      .scroll-progress, .cmdk, .shortcuts { display: none !important; }
+      .scroll-progress, .cmdk, .shortcuts, .hero-3d { display: none !important; }
       .hero-pill, .hero-lead, .hero-actions, .stats-strip,
       .hero-title .word { animation: none !important; opacity: 1 !important; }
     </style>
@@ -116,9 +117,18 @@
         <span style="left:40%;top:90%;animation-duration:9s;animation-delay:3.6s"></span>
       </div>
 
+      <div class="hero-3d" aria-hidden="true">
+        <canvas id="devlibHero3d" class="hero-3d-canvas"></canvas>
+        <div class="hero-3d-hud">
+          <span>three.js scene</span>
+          <span>interactive orbit</span>
+          <span>117 libs mapped</span>
+        </div>
+      </div>
+
       <a href="#acervo" class="hero-pill">
         <span class="badge">Novo</span>
-        <b>103 bibliotecas</b>
+        <b>117 bibliotecas</b>
         <span>·&nbsp;curado para 2026</span>
         <svg class="hero-pill-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
       </a>
@@ -156,11 +166,29 @@
       </div>
     </section>
 
+    <section class="blueprint-strip shell" aria-label="Exemplos reais de stack visual">
+      <div class="blueprint-card">
+        <span class="blueprint-kicker">3D layer</span>
+        <h2>Three.js no hero</h2>
+        <p>Cena WebGL separada do conteúdo, com canvas transparente, resize responsivo, movimento reduzido respeitado e fallback quando WebGL/CDN falha.</p>
+      </div>
+      <div class="blueprint-card">
+        <span class="blueprint-kicker">UI layer</span>
+        <h2>shadcn + ReUI + Magic</h2>
+        <p>Use shadcn como base editável, ReUI para padrões complexos e Magic/Aceternity para efeitos de hero, backgrounds e microinterações.</p>
+      </div>
+      <div class="blueprint-card">
+        <span class="blueprint-kicker">Motion layer</span>
+        <h2>Motion com intenção</h2>
+        <p>Animações ficam nos estados de entrada, hover e foco. O layout não pula: só `transform`, `opacity` e canvas independente.</p>
+      </div>
+    </section>
+
     <!-- ─── Stats strip (compact horizontal band) ────── -->
     <section class="stats-strip" aria-label="Resumo do acervo">
       <div class="shell stats-inner">
         <div class="stat-item">
-          <span class="stat-num gradient" data-count="103">103</span>
+          <span class="stat-num gradient" data-count="117">117</span>
           <span class="stat-tag">bibliotecas</span>
         </div>
         <span class="stat-divider" aria-hidden="true"></span>
@@ -263,7 +291,7 @@
               <span class="toc-desc">Frontend &amp; design</span>
             </span>
             <span class="toc-right">
-              <span class="toc-count">18</span>
+              <span class="toc-count">31</span>
               <svg class="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
             </span>
           </a>
@@ -343,7 +371,7 @@
 
       <span class="section-eyebrow">— Acervo aberto</span>
       <h2 class="section-title">Tudo, <em>organizado.</em></h2>
-      <p class="section-desc">Pressione <kbd>⌘K</kbd> para buscar entre as 103 entradas. Filtre por categoria para refinar.</p>
+      <p class="section-desc">Pressione <kbd>⌘K</kbd> para buscar entre as 117 entradas. Filtre por categoria para refinar.</p>
 
       <div class="toolbar" role="search">
         <label class="search">
@@ -351,7 +379,7 @@
           <input id="searchInput" type="search" placeholder="Buscar — react, mcp, postgres…" autocomplete="off" aria-label="Buscar no acervo">
           <kbd>⌘ K</kbd>
         </label>
-        <span class="count"><b id="visibleCount">103</b>bibliotecas</span>
+        <span class="count"><b id="visibleCount">117</b>bibliotecas</span>
       </div>
 
       <div class="filters" role="group" aria-label="Filtrar por categoria" style="margin-bottom: 2rem;">
@@ -652,7 +680,7 @@
       <div class="chapter-bar" data-chapter="interface" id="interface">
         <span class="chapter-num">§04 · Interface</span>
         <h3>Frontend <em>— a superfície do produto.</em></h3>
-        <span class="count-pill">18 itens</span>
+        <span class="count-pill">31 itens</span>
       </div>
 
       <div class="bento">
@@ -669,6 +697,77 @@
           <p class="card-body">Componentes acessíveis e editáveis para criar sua própria biblioteca UI em React, Next.js, Tailwind e Radix.</p>
           <div class="card-tags"><span>react</span><span>tailwind</span><span>radix</span></div>
           <a class="card-link" href="https://github.com/shadcn-ui/ui" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card feature" data-kind="interface kit" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>shadcn registry · Open source</span><span class="card-badge">1000+</span></div>
+          <h3 class="card-title">ReUI</h3>
+          <p class="card-body">Catálogo amplo de componentes e blocks para shadcn/ui, com versões Base UI e Radix. Bom ponto de partida para fluxos reais como data grid, filtros, uploads e kanban.</p>
+          <div class="card-tags"><span>shadcn</span><span>base ui</span><span>radix</span><span>blocks</span></div>
+          <div class="card-visual" aria-hidden="true"></div>
+          <a class="card-link" href="https://reui.io/" target="_blank" rel="noopener">Abrir reui.io<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Motion UI · shadcn companion</span><span class="card-badge">Free</span></div>
+          <h3 class="card-title">Magic UI</h3>
+          <p class="card-body">Componentes animados, backgrounds e efeitos para React, Tailwind e Motion. Excelente para dar acabamento visual a landing pages sem criar tudo do zero.</p>
+          <div class="card-tags"><span>motion</span><span>tailwind</span><span>landing</span></div>
+          <a class="card-link" href="https://magicui.design/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Tailwind + Motion</span><span class="card-badge">Free + Pro</span></div>
+          <h3 class="card-title">Aceternity UI</h3>
+          <p class="card-body">Componentes e blocks com Tailwind e Motion para landing pages, pricing, hero sections, backgrounds e interações de alto impacto.</p>
+          <div class="card-tags"><span>tailwind</span><span>motion</span><span>blocks</span></div>
+          <a class="card-link" href="https://ui.aceternity.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Design system · React Aria</span><span class="card-badge">Open</span></div>
+          <h3 class="card-title">HeroUI</h3>
+          <p class="card-body">Sistema de design React completo, sucessor do NextUI, com acessibilidade via React Aria, Tailwind, temas e componentes prontos para apps.</p>
+          <div class="card-tags"><span>react aria</span><span>design system</span><span>tailwind</span></div>
+          <a class="card-link" href="https://www.heroui.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="amber">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Blocks · shadcn/Tailwind</span><span class="card-badge">Free + Pro</span></div>
+          <h3 class="card-title">Shadcn Blocks</h3>
+          <p class="card-body">Biblioteca grande de blocos, componentes e templates para shadcn/ui e Tailwind. Útil para montar páginas inteiras a partir de padrões prontos.</p>
+          <div class="card-tags"><span>blocks</span><span>templates</span><span>tailwind</span></div>
+          <a class="card-link" href="https://www.shadcnblocks.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Animated shadcn · Open source</span><span class="card-badge">150+</span></div>
+          <h3 class="card-title">Eldora UI</h3>
+          <p class="card-body">Coleção open source de componentes, blocks e efeitos animados com React, TypeScript, Tailwind e Motion, instaláveis pelo shadcn CLI.</p>
+          <div class="card-tags"><span>animated</span><span>motion</span><span>shadcn</span></div>
+          <a class="card-link" href="https://www.eldoraui.site/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Animated components · Cult</span><span class="card-badge">Free + Pro</span></div>
+          <h3 class="card-title">Cult UI</h3>
+          <p class="card-body">Componentes animados, blocks e templates compatíveis com shadcn. Bom para marketing pages, SaaS e interfaces com microinterações mais refinadas.</p>
+          <div class="card-tags"><span>shadcn</span><span>templates</span><span>motion</span></div>
+          <a class="card-link" href="https://www.cult-ui.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Componentes incomuns · shadcn</span><span class="card-badge">Free + Pago</span></div>
+          <h3 class="card-title">Skiper UI</h3>
+          <p class="card-body">Coleções de componentes shadcn com animações e padrões menos comuns. Bom para detalhes visuais quando a base padrão já está pronta.</p>
+          <div class="card-tags"><span>shadcn</span><span>premium</span><span>animations</span></div>
+          <a class="card-link" href="https://skiper-ui.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="violet">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Layouts · shadcn</span><span class="card-badge">Open + Pro</span></div>
+          <h3 class="card-title">Square UI</h3>
+          <p class="card-body">Layouts completos construídos com shadcn/ui, úteis para dashboards, trackers e páginas que precisam sair do wireframe rapidamente.</p>
+          <div class="card-tags"><span>layouts</span><span>dashboard</span><span>shadcn</span></div>
+          <a class="card-link" href="https://square.lndev.me/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface kit" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Coleção pessoal · Components</span><span class="card-badge">Free</span></div>
+          <h3 class="card-title">Ali Imam Components</h3>
+          <p class="card-body">Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações.</p>
+          <div class="card-tags"><span>components</span><span>effects</span><span>registry</span></div>
+          <a class="card-link" href="https://aliimam.in/components" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
         <article class="card x2" data-kind="interface" data-tone="pink">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Marketplace</span><span class="card-badge">Kits</span></div>
@@ -765,6 +864,27 @@
           <p class="card-body">Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.</p>
           <div class="card-tags"><span>react</span><span>motion</span><span>gestures</span></div>
           <a class="card-link" href="https://github.com/motiondivision/motion" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface" data-tone="emerald">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>WebGL effect · Buttons</span><span class="card-badge">OSS</span></div>
+          <h3 class="card-title">Liquid Metal</h3>
+          <p class="card-body">Efeito WebGL de metal líquido para botões, chips e controles. Use como tempero visual pontual, não como base de design system.</p>
+          <div class="card-tags"><span>webgl</span><span>buttons</span><span>effect</span></div>
+          <a class="card-link" href="https://metal.jakubantalik.com/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface" data-tone="cyan">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Loaders · Dot matrix</span><span class="card-badge">55+</span></div>
+          <h3 class="card-title">Dot Matrix</h3>
+          <p class="card-body">Loaders em estilo dot matrix feitos com React, TypeScript, Tailwind e shadcn. Nichado, mas ótimo para estados de carregamento com personalidade.</p>
+          <div class="card-tags"><span>loaders</span><span>react</span><span>shadcn</span></div>
+          <a class="card-link" href="https://dotmatrix.zzzzshawn.cloud/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </article>
+        <article class="card x3" data-kind="interface" data-tone="pink">
+          <div class="card-head"><span class="card-meta"><span class="dot"></span>Celebração · Zero dependency</span><span class="card-badge">JS</span></div>
+          <h3 class="card-title">Balloons.js</h3>
+          <p class="card-body">Biblioteca pequena para animações de balões em tela cheia. Útil para celebrações, sucesso de onboarding e momentos de recompensa.</p>
+          <div class="card-tags"><span>celebration</span><span>animation</span><span>vanilla</span></div>
+          <a class="card-link" href="https://arturbien.github.io/balloons-js/" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
         <article class="card x3" data-kind="interface" data-tone="violet">
@@ -1292,7 +1412,7 @@
       <div class="footer-grid">
         <div>
           <img class="footer-logo" src="public/logo.png" alt="DEVLIB — Bibliotecas para desenvolvedores" width="118" height="64" decoding="async" loading="lazy" />
-          <p>Acervo curado de 103 bibliotecas, protocolos e skills para quem constrói com agentes. Três arquivos estáticos, zero dependências.</p>
+          <p>Acervo curado de 117 bibliotecas, protocolos e skills para quem constrói com agentes. Três arquivos estáticos, zero dependências.</p>
         </div>
         <div>
           <h4>— Navegação</h4>

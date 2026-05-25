@@ -322,6 +322,138 @@
   animation: fadeUp 0.8s var(--ease) 0.65s both;
 }
 
+.hero-3d {
+  position: absolute;
+  inset: clamp(3.5rem, 8vw, 6rem) max(-7vw, -6rem) -1.5rem 38%;
+  z-index: 0;
+  min-height: 440px;
+  pointer-events: none;
+  opacity: 0.96;
+  transform: translateZ(0);
+  mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 14%, black 82%, transparent 100%);
+}
+
+.hero-3d::before,
+.hero-3d::after {
+  content: '';
+  position: absolute;
+  inset: 12% 8%;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-3d::before {
+  background:
+    radial-gradient(circle at 42% 42%, rgba(34, 211, 238, 0.24), transparent 34%),
+    radial-gradient(circle at 58% 48%, rgba(167, 139, 250, 0.28), transparent 42%);
+  filter: blur(36px);
+}
+
+.hero-3d::after {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transform: rotate(-8deg) scale(0.82);
+}
+
+.hero-3d-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+.hero-3d.is-static .hero-3d-canvas {
+  display: none;
+}
+
+.hero-3d.is-static {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(34, 211, 238, 0.20), transparent 32%),
+    radial-gradient(circle at 48% 50%, rgba(167, 139, 250, 0.32), transparent 44%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 18px);
+  border-radius: 50%;
+  filter: blur(0.2px);
+}
+
+.hero-3d-hud {
+  position: absolute;
+  right: clamp(1rem, 6vw, 5rem);
+  bottom: clamp(1rem, 4vw, 2.4rem);
+  display: grid;
+  gap: 0.35rem;
+  color: rgba(245, 245, 247, 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.hero-3d-hud span {
+  display: block;
+  padding: 0.22rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  white-space: nowrap;
+}
+
+.blueprint-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(0.5rem, 2vw, 1.4rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--border);
+  background: var(--border);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.blueprint-card {
+  position: relative;
+  min-height: 170px;
+  padding: 1.35rem;
+  background:
+    linear-gradient(135deg, rgba(124, 58, 237, 0.08), transparent 58%),
+    var(--bg-card);
+}
+
+.blueprint-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 1.35rem 1.15rem 1.35rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--violet-400), transparent);
+  opacity: 0.5;
+}
+
+.blueprint-kicker {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
+  color: var(--cyan-400);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blueprint-card h2 {
+  margin: 0 0 0.45rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.blueprint-card p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: var(--t-sm);
+  line-height: 1.55;
+}
+
 /* Button — base + primary variant */
 .btn {
   display: inline-flex;
