@@ -29,14 +29,13 @@
   <link rel="stylesheet" href="css/responsive.css">
 
   <script src="js/script.js" defer></script>
-  <script type="module" src="js/hero3d.js"></script>
 
   <!-- Safety net: if JS is disabled, force-reveal content (cards start hidden
        for the scroll-reveal; no-JS + no view-timeline would blank the page). -->
   <noscript>
     <style>
       .card, .toc a { opacity: 1 !important; transform: none !important; }
-      .scroll-progress, .cmdk, .shortcuts, .hero-3d { display: none !important; }
+      .scroll-progress, .cmdk, .shortcuts { display: none !important; }
       .hero-pill, .hero-lead, .hero-actions, .stats-strip,
       .hero-title .word { animation: none !important; opacity: 1 !important; }
     </style>
@@ -49,14 +48,6 @@
 
   <!-- Scroll progress bar (CSS scroll-timeline — no JS) -->
   <div class="scroll-progress" aria-hidden="true"></div>
-
-  <!-- HUD frame (tech border with corner brackets) -->
-  <div class="hud" aria-hidden="true">
-    <span class="hud-c hud-tl"></span>
-    <span class="hud-c hud-tr"></span>
-    <span class="hud-c hud-bl"></span>
-    <span class="hud-c hud-br"></span>
-  </div>
 
   <!-- Background -->
   <div class="aurora" aria-hidden="true">
@@ -74,114 +65,112 @@
         <b>DEVLIB</b>
         <span>·&nbsp;v01</span>
       </a>
-      <nav class="nav-links" aria-label="Navegação principal">
-        <a href="#indice">Índice</a>
-        <a href="#acervo">Acervo</a>
-        <a href="#metodo">Método</a>
+      <nav class="nav-links nav-menu" aria-label="Navegação principal">
+        <div class="nav-group">
+          <span>Explore</span>
+          <a href="#acervo">Componentes</a>
+          <a href="#agentes">Agentes</a>
+          <a href="#mcp">MCP</a>
+        </div>
+        <div class="nav-group">
+          <span>Build</span>
+          <a href="#interface">UI kits</a>
+          <a href="#servidor">Backend</a>
+          <a href="#metodo">Método</a>
+        </div>
       </nav>
-      <a href="#acervo" class="nav-cta" data-magnetic>
-        <span>Explorar</span>
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <button class="nav-cta nav-search" type="button" data-open-command data-magnetic>
+        <span>Search</span>
+        <kbd>⌘K</kbd>
+      </button>
     </div>
   </header>
 
   <main id="top">
 
     <!-- ─── Hero ────────────────────────────────────────── -->
-    <section class="hero shell">
+    <section class="hero home-catalog shell">
+      <aside class="home-rail" aria-label="Menu de descoberta">
+        <span class="home-rail-kicker">Explore</span>
+        <a href="#interface"><span>Components</span><b>31</b></a>
+        <a href="#agentes"><span>Agent templates</span><b>13</b></a>
+        <a href="#mcp"><span>MCP tools</span><b>10</b></a>
+        <a href="#servidor"><span>Backend stack</span><b>13</b></a>
+      </aside>
 
-      <!-- Animated particle field (CSS-only, compositor-safe) -->
-      <div class="hero-particles" aria-hidden="true">
-        <span style="left:6%;top:22%;animation-duration:7s;animation-delay:0s"></span>
-        <span style="left:14%;top:68%;animation-duration:9s;animation-delay:1.2s"></span>
-        <span style="left:21%;top:40%;animation-duration:6s;animation-delay:.4s"></span>
-        <span style="left:27%;top:80%;animation-duration:8s;animation-delay:2s"></span>
-        <span style="left:33%;top:14%;animation-duration:10s;animation-delay:.8s"></span>
-        <span style="left:38%;top:55%;animation-duration:7s;animation-delay:3s"></span>
-        <span style="left:44%;top:30%;animation-duration:9s;animation-delay:1.6s"></span>
-        <span style="left:49%;top:75%;animation-duration:6s;animation-delay:.2s"></span>
-        <span style="left:55%;top:18%;animation-duration:8s;animation-delay:2.4s"></span>
-        <span style="left:60%;top:62%;animation-duration:11s;animation-delay:1s"></span>
-        <span style="left:66%;top:38%;animation-duration:7s;animation-delay:3.4s"></span>
-        <span style="left:71%;top:84%;animation-duration:9s;animation-delay:.6s"></span>
-        <span style="left:77%;top:26%;animation-duration:6s;animation-delay:2.2s"></span>
-        <span style="left:82%;top:58%;animation-duration:10s;animation-delay:1.4s"></span>
-        <span style="left:88%;top:44%;animation-duration:8s;animation-delay:.3s"></span>
-        <span style="left:93%;top:72%;animation-duration:7s;animation-delay:2.8s"></span>
-        <span style="left:9%;top:48%;animation-duration:9s;animation-delay:1.8s"></span>
-        <span style="left:18%;top:12%;animation-duration:6s;animation-delay:3.2s"></span>
-        <span style="left:52%;top:46%;animation-duration:11s;animation-delay:.5s"></span>
-        <span style="left:74%;top:10%;animation-duration:8s;animation-delay:2.6s"></span>
-        <span style="left:85%;top:88%;animation-duration:7s;animation-delay:1.1s"></span>
-        <span style="left:40%;top:90%;animation-duration:9s;animation-delay:3.6s"></span>
-      </div>
+      <div class="home-main">
+        <a href="#acervo" class="hero-pill">
+          <span class="badge">Curado</span>
+          <b>117 bibliotecas</b>
+          <span>·&nbsp;menu inspirado em catálogo</span>
+          <svg class="hero-pill-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
 
-      <div class="hero-3d" aria-hidden="true">
-        <canvas id="devlibHero3d" class="hero-3d-canvas"></canvas>
-        <div class="hero-3d-hud">
-          <span>three.js scene</span>
-          <span>interactive orbit</span>
-          <span>117 libs mapped</span>
+        <h1 class="hero-title">
+          <span class="line line-grad"><span class="word">Descubra</span> <span class="word">componentes</span></span>
+          <span class="line line-plain"><span class="word">que</span> <span class="word">viram produto.</span></span>
+        </h1>
+
+        <p class="hero-lead">
+          DEVLIB agora funciona como um catálogo: busque, filtre e monte uma stack visual, agêntica ou backend sem sair caçando links soltos.
+        </p>
+
+        <div class="home-search" role="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <button type="button" data-open-command>Buscar React, MCP, shadcn, Three.js...</button>
+          <kbd>⌘K</kbd>
+        </div>
+
+        <div class="home-actions">
+          <a href="#acervo" class="btn primary" data-magnetic>Explorar acervo</a>
+          <a href="#interface" class="btn ghost" data-magnetic>Ver UI kits</a>
         </div>
       </div>
 
-      <a href="#acervo" class="hero-pill">
-        <span class="badge">Novo</span>
-        <b>117 bibliotecas</b>
-        <span>·&nbsp;curado para 2026</span>
-        <svg class="hero-pill-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-
-      <h1 class="hero-title">
-        <span class="line line-grad"><span class="word">As</span> <span class="word">bibliotecas</span></span>
-        <span class="line line-plain"><span class="word">que</span> <span class="word">entregam.</span></span>
-      </h1>
-
-      <p class="hero-lead">
-        Acervo curado dos frameworks, protocolos e skills que de fato entram em produção — organizado pelo que <i>fazem</i>, não pelo que prometem.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#acervo" class="btn ghost" data-magnetic>Explorar acervo</a>
-        <a href="#indice" class="btn ghost" data-magnetic>Ver índice</a>
-      </div>
-
-      <div class="hero-orb" aria-hidden="true">
-        <svg class="hero-orb-svg" viewBox="0 0 220 70" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <linearGradient id="orbGrad" x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#F472B6"/>
-              <stop offset="0.5" stop-color="#A78BFA"/>
-              <stop offset="1" stop-color="#22D3EE"/>
-            </linearGradient>
-          </defs>
-          <path d="M10 35 C 45 -5, 75 75, 110 35 S 175 -5, 210 35"
-                fill="none" stroke="url(#orbGrad)" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M10 35 C 45 75, 75 -5, 110 35 S 175 75, 210 35"
-                fill="none" stroke="url(#orbGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
-          <circle class="m-spark" cx="0" cy="0" r="3"/>
-          <circle class="m-spark m-spark2" cx="0" cy="0" r="2.4"/>
-        </svg>
+      <div class="home-preview home-stack" aria-label="Stack recomendada">
+        <div class="stack-card stack-primary">
+          <span class="stack-kicker">Stack inicial</span>
+          <h2>Interface moderna</h2>
+          <p>Comece por shadcn/ui, expanda com ReUI e finalize motion com Magic UI ou Aceternity.</p>
+          <a href="#interface">Ver UI kits<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        </div>
+        <div class="stack-grid">
+          <a href="#agentes">
+            <span>Agentes</span>
+            <b>OpenAI SDK, LangGraph, CrewAI</b>
+          </a>
+          <a href="#mcp">
+            <span>Automação</span>
+            <b>Playwright MCP, Agent Browser</b>
+          </a>
+          <a href="#servidor">
+            <span>Backend</span>
+            <b>Supabase, Hono, Fastify</b>
+          </a>
+          <a href="#seguranca">
+            <span>Segurança</span>
+            <b>OWASP, scanners, guardrails</b>
+          </a>
+        </div>
       </div>
     </section>
 
     <section class="blueprint-strip shell" aria-label="Exemplos reais de stack visual">
-      <div class="blueprint-card">
-        <span class="blueprint-kicker">3D layer</span>
-        <h2>Three.js no hero</h2>
-        <p>Cena WebGL separada do conteúdo, com canvas transparente, resize responsivo, movimento reduzido respeitado e fallback quando WebGL/CDN falha.</p>
-      </div>
-      <div class="blueprint-card">
-        <span class="blueprint-kicker">UI layer</span>
-        <h2>shadcn + ReUI + Magic</h2>
-        <p>Use shadcn como base editável, ReUI para padrões complexos e Magic/Aceternity para efeitos de hero, backgrounds e microinterações.</p>
-      </div>
-      <div class="blueprint-card">
-        <span class="blueprint-kicker">Motion layer</span>
-        <h2>Motion com intenção</h2>
-        <p>Animações ficam nos estados de entrada, hover e foco. O layout não pula: só `transform`, `opacity` e canvas independente.</p>
-      </div>
+      <a class="blueprint-card" href="#interface">
+        <span class="blueprint-kicker">Components</span>
+        <h2>shadcn + ReUI</h2>
+        <p>Base editável, padrões complexos e blocos prontos para montar interfaces reais.</p>
+      </a>
+      <a class="blueprint-card" href="#interface">
+        <span class="blueprint-kicker">Motion</span>
+        <h2>Magic + Aceternity</h2>
+        <p>Hero sections, backgrounds, microinterações e CTAs com acabamento visual.</p>
+      </a>
+      <a class="blueprint-card" href="#agentes">
+        <span class="blueprint-kicker">Agents</span>
+        <h2>SDK + browser tools</h2>
+        <p>Combine frameworks de agentes com automação de navegador e MCP.</p>
+      </a>
     </section>
 
     <!-- ─── Stats strip (compact horizontal band) ────── -->
@@ -1409,33 +1398,44 @@
   <!-- ─── Footer (slim) ─────────────────────────────────── -->
   <footer class="footer">
     <div class="shell">
-      <div class="footer-grid">
-        <div>
+      <div class="footer-grid footer-menu">
+        <div class="footer-brand">
           <img class="footer-logo" src="public/logo.png" alt="DEVLIB — Bibliotecas para desenvolvedores" width="118" height="64" decoding="async" loading="lazy" />
           <p>Acervo curado de 117 bibliotecas, protocolos e skills para quem constrói com agentes. Três arquivos estáticos, zero dependências.</p>
+          <button class="footer-command" type="button" data-open-command>Search <kbd>⌘K</kbd></button>
         </div>
-        <div>
-          <h4>— Navegação</h4>
+        <div class="footer-col">
+          <h4>Explore</h4>
           <ul>
-            <li><a href="#indice">Índice</a></li>
-            <li><a href="#acervo">Acervo</a></li>
-            <li><a href="#metodo">Método</a></li>
-            <li><a href="#top">Voltar ao topo</a></li>
+            <li><a href="#acervo">Todos os componentes</a></li>
+            <li><a href="#interface">Interface &amp; UI kits</a></li>
+            <li><a href="#agentes">Agentes</a></li>
+            <li><a href="#mcp">MCP</a></li>
           </ul>
         </div>
-        <div>
-          <h4>— Construído com</h4>
+        <div class="footer-col">
+          <h4>Build</h4>
           <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Geist · Geist Mono</li>
-            <li>Zero dependências</li>
+            <li><a href="#servidor">Backend stack</a></li>
+            <li><a href="#seguranca">Segurança</a></li>
+            <li><a href="#build">Build &amp; observability</a></li>
+            <li><a href="#apps">Apps mobile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Reference</h4>
+          <ul>
+            <li><a href="#indice">Índice</a></li>
+            <li><a href="#metodo">Método</a></li>
+            <li><a href="#trade">Trade</a></li>
+            <li><a href="#top">Voltar ao topo</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-base">
         <span>© <span id="year">2026</span> · DEVLIB — Edição 01</span>
-        <span>Acervo aberto · Sem tracker · Sem build</span>
+        <span>Menu final reorganizado · Sem tracker · Sem build</span>
       </div>
     </div>
   </footer>

@@ -200,6 +200,7 @@
   const cmdkInput = document.getElementById('cmdkInput');
   const cmdkList  = document.getElementById('cmdkList');
   const cmdkCount = document.getElementById('cmdkCount');
+  const commandTriggers = document.querySelectorAll('[data-open-command]');
 
   const escapeHtml = (s) =>
     s.replace(/[&<>"]/g, (c) => (
@@ -330,6 +331,9 @@
   // Click on backdrop closes
   cmdk?.addEventListener('click', (e) => {
     if (e.target === cmdk) cmdk.close();
+  });
+  commandTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', openCmdk);
   });
 
   /* ─── Console easter egg + dev API ────────────────────── */

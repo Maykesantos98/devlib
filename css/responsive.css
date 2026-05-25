@@ -24,7 +24,8 @@
     min-height: 280px;
   }
 
-  .footer-grid        { grid-template-columns: 1fr 1fr; }
+  .footer-grid,
+  .footer-menu        { grid-template-columns: 1fr 1fr; }
   .toc                { grid-template-columns: repeat(2, 1fr); }
   .principles         { grid-template-columns: 1fr; }
 
@@ -105,20 +106,45 @@
 
   /* Hero — trim vertical run a touch */
   .hero { padding-top: 5.5rem; }
+  .hero.home-catalog {
+    grid-template-columns: 1fr;
+    gap: 0.95rem;
+    padding: 5.5rem var(--gutter) 2rem;
+  }
+  .home-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.65rem;
+    border-radius: 14px;
+  }
+  .home-rail-kicker {
+    grid-column: 1 / -1;
+    padding: 0.25rem 0.4rem 0.45rem;
+    font-size: 0.64rem;
+  }
+  .home-rail a {
+    min-height: 40px;
+    padding: 0.45rem 0.4rem;
+    font-size: 0.8rem;
+  }
+  .home-main {
+    min-height: auto;
+    padding: 0.65rem 0 0;
+  }
+  .home-main .hero-title {
+    max-width: 10.5ch;
+    margin-bottom: 0.9rem;
+    font-size: clamp(2.65rem, 13vw, 3.35rem);
+    line-height: 0.95;
+  }
+  .home-main .hero-lead {
+    margin-bottom: 1rem;
+  }
+  .home-preview {
+    display: none;
+  }
   .hero-orb { height: 110px; margin-top: 1.5rem; }
-  .hero-3d {
-    position: relative;
-    inset: auto;
-    width: min(100%, 720px);
-    min-height: 300px;
-    margin: 1.5rem auto 0;
-    mask-image: linear-gradient(180deg, black 0%, black 74%, transparent 100%);
-    -webkit-mask-image: linear-gradient(180deg, black 0%, black 74%, transparent 100%);
-  }
-  .hero-3d-hud {
-    right: 1rem;
-    bottom: 0.75rem;
-  }
   .blueprint-strip {
     grid-template-columns: 1fr;
   }
@@ -154,11 +180,12 @@
 
   /* 22 decorative particle animations — drop entirely */
   .hero-particles { display: none; }
-  .hero-3d {
-    min-height: 260px;
-    margin-top: 1rem;
+  .home-search {
+    grid-template-columns: auto minmax(0, 1fr);
+    min-height: 52px;
+    margin-bottom: 0.9rem;
   }
-  .hero-3d-hud {
+  .home-search kbd {
     display: none;
   }
   .blueprint-card {
@@ -302,7 +329,8 @@
   .bento,
   .toc,
   .principles,
-  .footer-grid {
+  .footer-grid,
+  .footer-menu {
     grid-template-columns: 1fr !important;
   }
 }

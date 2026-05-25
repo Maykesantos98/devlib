@@ -10,7 +10,6 @@ O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha de
 - Busca e filtros no front-end.
 - Command palette com `Ctrl+K` / `Cmd+K`.
 - Atalhos de teclado e comandos no console via `devlib.help()`.
-- Hero 3D com Three.js, fallback estatico e modo reduzido de movimento.
 - Blueprints visuais com exemplos de uso de shadcn, ReUI, Magic UI, Aceternity UI e Motion.
 
 ## Estrutura
@@ -21,7 +20,6 @@ O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha de
 |-- Dev2.html           # Variante/backup da pagina
 |-- css/                # CSS modular
 |-- js/                 # JavaScript principal
-|   `-- hero3d.js       # Cena Three.js do hero
 `-- public/             # Logo e favicon
 ```
 
