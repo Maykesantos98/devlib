@@ -1,0 +1,144 @@
+/* ─────────────────────────────────────────────────────────────
+ * jogos.css — DEVLIB Arcade
+ * Hero retrô (fliperama) + cards de jogos (apenas links).
+ * Builds on tokens.css — reusa .card / .shell / .bento / .nav.
+ * ───────────────────────────────────────────────────────────── */
+
+/* ══ Hero: retro cabinet ════════════════════════════════════ */
+.arcade-hero .home-main { max-width: 60ch; }
+
+.arcade-cabinet {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1.1rem;
+  padding: 1.4rem;
+  background: linear-gradient(160deg, var(--bg-card-hi), var(--bg-card));
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 30px 70px -30px rgba(124, 58, 237, 0.45);
+  overflow: hidden;
+}
+
+.cab-screen {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  background: radial-gradient(circle at 50% 35%, #0c1330, #04050b 75%);
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.cab-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 4px);
+  pointer-events: none;
+}
+
+.cab-pixels {
+  display: grid;
+  grid-template-columns: repeat(4, 26px);
+  gap: 6px;
+}
+.cab-pixels span {
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  background: var(--violet-500);
+  box-shadow: 0 0 14px var(--violet-500);
+  animation: cabBlink 2.4s var(--ease) infinite;
+}
+.cab-pixels span:nth-child(3n)   { background: var(--cyan-400);   box-shadow: 0 0 14px var(--cyan-400);   animation-delay: .3s; }
+.cab-pixels span:nth-child(4n)   { background: var(--pink-400);   box-shadow: 0 0 14px var(--pink-400);   animation-delay: .6s; }
+.cab-pixels span:nth-child(5n)   { background: var(--amber-400);  box-shadow: 0 0 14px var(--amber-400);  animation-delay: .9s; }
+.cab-pixels span:nth-child(7n)   { background: var(--emerald-400);box-shadow: 0 0 14px var(--emerald-400);animation-delay: 1.2s; }
+
+@keyframes cabBlink {
+  0%, 100% { opacity: .25; transform: scale(.85); }
+  50%      { opacity: 1;   transform: scale(1); }
+}
+
+.cab-press {
+  position: absolute;
+  bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.22em;
+  color: var(--cyan-400);
+  text-shadow: 0 0 12px var(--cyan-400);
+  animation: cabPress 1.3s steps(1) infinite;
+}
+@keyframes cabPress { 50% { opacity: 0; } }
+
+.cab-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0 .4rem;
+}
+.cab-stick {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ef4444, #991b1b);
+  box-shadow: 0 6px 0 -2px rgba(0,0,0,.5), inset 0 2px 3px rgba(255,255,255,.4);
+}
+.cab-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 3px rgba(255,255,255,.35), 0 4px 0 -1px rgba(0,0,0,.45);
+}
+.cab-btn-a { background: radial-gradient(circle at 35% 30%, #fbbf24, #b45309); }
+.cab-btn-b { background: radial-gradient(circle at 35% 30%, #22d3ee, #0e7490); margin-left: -.3rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cab-pixels span, .cab-press { animation: none; }
+}
+
+/* ══ Cards de jogos ═════════════════════════════════════════ */
+.game-card { display: flex; flex-direction: column; }
+
+/* Mini thumbnail de pixels no card principal (Cobrinha) */
+.game-thumb {
+  position: relative;
+  height: 84px;
+  margin: .2rem 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(124,58,237,.18), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 12px),
+    var(--bg-deep);
+  overflow: hidden;
+}
+.game-thumb .px {
+  position: absolute;
+  width: 12px; height: 12px;
+  border-radius: 3px;
+}
+.thumb-snake .p1 { left: 24px; top: 36px; background: var(--violet-400); box-shadow: 0 0 10px var(--violet-400); animation: snakeRun 3.2s steps(1) infinite; }
+.thumb-snake .p2 { left: 36px; top: 36px; background: var(--violet-500); animation: snakeRun 3.2s steps(1) infinite .1s; }
+.thumb-snake .p3 { left: 48px; top: 36px; background: var(--violet-600); animation: snakeRun 3.2s steps(1) infinite .2s; }
+.thumb-snake .food { background: var(--pink-400); box-shadow: 0 0 12px var(--pink-400); right: 28px; top: 24px; }
+
+@keyframes snakeRun {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(48px, -12px); }
+  66%  { transform: translate(72px, 12px); }
+  100% { transform: translate(0, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .thumb-snake .px { animation: none; } }
+
+/* ══ Responsive ═════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .arcade-cabinet { display: none; }
+  .arcade-hero .home-main { max-width: none; }
+}
