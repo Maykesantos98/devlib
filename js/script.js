@@ -351,7 +351,7 @@
       'color:#F59E0B;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1;'
     );
     console.log(
-      '%cBem-vindo, dev. 133 bibliotecas · 9 categorias · 0 dependências.',
+      '%cBem-vindo, dev. 117 bibliotecas · 9 categorias · 0 dependências.',
       'color:#2DD4BF;font-size:13px;font-weight:600;'
     );
     console.log(
@@ -426,7 +426,7 @@
         '%cDEVLIB — Edição 01 · 2026',
         'color:#F59E0B;font-weight:600;font-size:14px;'
       );
-      console.log('Acervo curado de 133 bibliotecas para devs que constroem com agentes.');
+      console.log('Acervo curado de 117 bibliotecas para devs que constroem com agentes.');
       console.log('Stack: HTML · CSS · JavaScript vanilla. Zero CDN, zero dependências.');
       console.log('CSS scroll-driven animations (animation-timeline).');
       return '🛠️';
@@ -470,7 +470,7 @@
 
   // Special filters that don't map to a single data-kind token.
   // RECENT — newest additions (coding agents, MCP tooling, guardrails,
-  // trade agents, mobile on-device, UI). Updated for the 133-lib archive.
+  // trade agents, mobile on-device, UI). Updated for the 117-lib archive.
   const RECENT = new Set([
     'Claude Code', 'OpenHands', 'Cline', 'Goose',
     'FastMCP', 'MCP Inspector', 'GitHub MCP Server', 'Playwright MCP', 'Composio',
@@ -680,7 +680,7 @@
       'Não é bug, é uma <em>feature</em> não documentada.',
       'Tem 10 tipos de gente: as que entendem binário e as que não.',
       '<code>git commit -m "fix"</code> … pela 7ª vez 😅',
-      '99 bugs no código. Corrige 1. Agora são 133.',
+      '99 bugs no código. Corrige 1. Agora são 117.',
       'Por que o dev quebrou? Usou todo o <em>cache</em>. 💸',
       'Eu transformo café em código. ☕ → 💻',
       'Deploy na sexta 17h: coragem ou loucura?',

@@ -1,6 +1,6 @@
 # DEVLIB
 
-Acervo curado com 133 bibliotecas, frameworks e ferramentas para desenvolvedores que constroem produtos com agentes de IA.
+Acervo curado com 117 bibliotecas, frameworks e ferramentas para desenvolvedores que constroem produtos com agentes de IA.
 
 O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha dependencias obrigatorias, build step ou framework.
 
