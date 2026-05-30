@@ -211,8 +211,8 @@
   .aurora { display: none !important; }
   body {
     background:
-      radial-gradient(60% 50% at 18% 0%, rgba(124, 58, 237, 0.16), transparent 60%),
-      radial-gradient(55% 45% at 92% 12%, rgba(34, 211, 238, 0.12), transparent 60%),
+      radial-gradient(60% 50% at 18% 0%, rgb(var(--accent-rgb) / 0.16), transparent 60%),
+      radial-gradient(55% 45% at 92% 12%, rgb(var(--accent-alt-rgb) / 0.12), transparent 60%),
       var(--bg, #070810);
     background-attachment: scroll;
   }

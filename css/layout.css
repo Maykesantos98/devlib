@@ -31,8 +31,8 @@
   transform: translateX(-50%);
   background: radial-gradient(
     ellipse 50% 50% at 50% 50%,
-    rgba(124, 58, 237, 0.28) 0%,
-    rgba(34, 211, 238, 0.10) 45%,
+    rgb(var(--accent-rgb) / 0.24) 0%,
+    rgb(var(--accent-alt-rgb) / 0.10) 45%,
     transparent 72%
   );
   filter: blur(30px);

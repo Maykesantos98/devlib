@@ -60,7 +60,7 @@
   height: 28px;
   border-radius: 8px;
   background: linear-gradient(135deg, var(--violet-500), var(--violet-700));
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 4px 14px rgb(var(--accent-solid-rgb) / 0.4);
   color: white;
   font-size: 0.8rem;
   font-weight: 700;
@@ -73,7 +73,7 @@
   border-radius: 8px;
   object-fit: cover;
   background: #fff;
-  box-shadow: 0 4px 14px rgba(34, 211, 238, 0.25);
+  box-shadow: 0 4px 14px rgb(var(--accent-alt-rgb) / 0.25);
 }
 
 /* Footer full lockup */
@@ -137,13 +137,13 @@
   color: white;
   font-size: var(--t-sm);
   font-weight: 500;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 14px rgb(var(--accent-solid-rgb) / 0.3);
   transition: box-shadow var(--dur), transform var(--dur);
 }
 
 .nav-cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.45);
+  box-shadow: 0 8px 22px rgb(var(--accent-solid-rgb) / 0.45);
 }
 
 .nav-cta svg {
@@ -218,7 +218,7 @@
 }
 .hero-pill:hover {
   border-color: var(--border-glow);
-  background: rgba(124, 58, 237, 0.06);
+  background: rgb(var(--accent-rgb) / 0.06);
 }
 .hero-pill-chevron {
   width: 13px;
@@ -339,7 +339,7 @@
   min-height: 170px;
   padding: 1.35rem;
   background:
-    linear-gradient(135deg, rgba(124, 58, 237, 0.08), transparent 58%),
+    linear-gradient(135deg, rgb(var(--accent-rgb) / 0.08), transparent 58%),
     var(--bg-card);
 }
 
@@ -598,8 +598,8 @@
   min-height: 210px;
   align-content: end;
   background:
-    radial-gradient(circle at 12% 0%, rgba(34, 211, 238, 0.18), transparent 36%),
-    linear-gradient(135deg, rgba(124, 58, 237, 0.18), transparent 58%),
+    radial-gradient(circle at 12% 0%, rgb(var(--accent-alt-rgb) / 0.18), transparent 36%),
+    linear-gradient(135deg, rgb(var(--accent-rgb) / 0.18), transparent 58%),
     rgba(255, 255, 255, 0.045);
 }
 
@@ -768,7 +768,7 @@
 .btn:hover {
   transform: translateY(-2px);
   border-color: var(--border-glow);
-  background: rgba(124, 58, 237, 0.08);
+  background: rgb(var(--accent-rgb) / 0.08);
   box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.4);
 }
 
@@ -779,13 +779,13 @@
   border-color: transparent;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.15) inset,
-    0 6px 18px rgba(124, 58, 237, 0.32);
+    0 6px 18px rgb(var(--accent-solid-rgb) / 0.32);
 }
 
 .btn.primary:hover {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
-    0 12px 28px rgba(124, 58, 237, 0.5);
+    0 12px 28px rgb(var(--accent-solid-rgb) / 0.5);
 }
 
 .btn svg {
@@ -1036,7 +1036,7 @@
   color: white;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.15) inset,
-    0 4px 14px rgba(124, 58, 237, 0.35);
+    0 4px 14px rgb(var(--accent-solid-rgb) / 0.35);
 }
 
 
@@ -1085,7 +1085,7 @@
   border-color: var(--border-glow);
   box-shadow:
     0 10px 24px -10px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(124, 58, 237, 0.08);
+    0 0 0 1px rgb(var(--accent-rgb) / 0.08);
 }
 
 .toc a::before {
@@ -1093,7 +1093,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.06), transparent 60%);
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.06), transparent 60%);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur);
@@ -1103,7 +1103,7 @@
 
 .toc-num {
   padding: 0.3rem 0.55rem;
-  background: rgba(124, 58, 237, 0.08);
+  background: rgb(var(--accent-rgb) / 0.08);
   border: 1px solid var(--border-glow);
   border-radius: 6px;
   color: var(--violet-400);
@@ -1181,7 +1181,7 @@
 
 .chapter-num {
   padding: 0.3rem 0.7rem;
-  background: rgba(124, 58, 237, 0.08);
+  background: rgb(var(--accent-rgb) / 0.08);
   border: 1px solid var(--border-glow);
   border-radius: 999px;
   color: var(--violet-400);
@@ -1250,7 +1250,7 @@
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.05) inset,
     0 12px 30px -12px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(124, 58, 237, 0.08);
+    0 0 0 1px rgb(var(--accent-rgb) / 0.08);
 }
 
 /* Dot-pattern texture — fades in on hover (21st.dev/Aceternity signature) */
@@ -1278,7 +1278,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.10), transparent 60%);
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.10), transparent 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity var(--dur);
@@ -1438,7 +1438,7 @@
   height: 60px;
   opacity: 0.6;
   background:
-    linear-gradient(180deg, transparent, rgba(124, 58, 237, 0.06)),
+    linear-gradient(180deg, transparent, rgb(var(--accent-rgb) / 0.06)),
     repeating-linear-gradient(90deg, var(--violet-500) 0 2px, transparent 2px 14px);
   mask-image: linear-gradient(180deg, transparent, black 30%);
 }
@@ -1596,7 +1596,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.06), transparent 60%);
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.06), transparent 60%);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur);
@@ -1681,9 +1681,9 @@
 .hero-lead i { color: var(--violet-300); font-style: normal; font-weight: 500; }
 .hero-actions { justify-content: center; }
 
-/* Title: line 1 gradient (pink→violet), line 2 solid white */
+/* Title: line 1 gradient (archive amber → teal), line 2 solid white */
 .hero-title .line-grad .word {
-  background: linear-gradient(100deg, #F472B6 0%, #C084FC 52%, #A78BFA 100%);
+  background: linear-gradient(100deg, var(--violet-300) 0%, var(--violet-400) 54%, var(--cyan-300) 100%);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -1704,8 +1704,8 @@
 }
 .btn.ghost:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(196, 132, 252, 0.55);
-  box-shadow: 0 0 24px -6px rgba(168, 85, 247, 0.45);
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  box-shadow: 0 0 24px -6px rgb(var(--accent-rgb) / 0.45);
 }
 
 /* Glowing centerpiece — abstract helix echo (no 3D asset) */
@@ -1733,8 +1733,8 @@
   transform: translate(-50%, -42%);
   background: radial-gradient(
     ellipse 50% 50% at 50% 50%,
-    rgba(168, 85, 247, 0.35) 0%,
-    rgba(34, 211, 238, 0.12) 45%,
+    rgb(var(--accent-rgb) / 0.35) 0%,
+    rgb(var(--accent-alt-rgb) / 0.12) 45%,
     transparent 72%
   );
   filter: blur(38px);
@@ -1745,7 +1745,7 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.55));
+  filter: drop-shadow(0 0 12px rgb(var(--accent-rgb) / 0.55));
   animation: orbFloat 6s ease-in-out infinite;
 }
 @keyframes orbFloat {
@@ -1783,7 +1783,7 @@
   color: var(--violet-300);
 }
 .filter.filter-accent:hover {
-  background: rgba(124, 58, 237, 0.10);
+  background: rgb(var(--accent-rgb) / 0.10);
   color: var(--violet-300);
   border-color: var(--violet-500);
 }

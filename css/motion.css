@@ -25,11 +25,11 @@
   right: 0;
   height: 2px;
   z-index: 110;
-  background: linear-gradient(90deg, var(--violet-500), var(--cyan-400), var(--pink-400));
+  background: linear-gradient(90deg, var(--violet-500), var(--violet-400), var(--cyan-400));
   transform: scaleX(0);
   transform-origin: left center;
   pointer-events: none;
-  box-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 12px rgb(var(--accent-solid-rgb) / 0.5);
 }
 
 @supports (animation-timeline: scroll()) {
@@ -137,14 +137,14 @@
     background-image:
       radial-gradient(
         circle 420px at var(--mx, -200px) var(--my, -200px),
-        rgba(124, 58, 237, 0.14),
+        rgb(var(--accent-rgb) / 0.14),
         transparent 45%
       );
   }
-  .card[data-tone="cyan"]    { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(34, 211, 238, 0.14),  transparent 45%); }
-  .card[data-tone="pink"]    { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(244, 114, 182, 0.14), transparent 45%); }
-  .card[data-tone="amber"]   { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(251, 191, 36, 0.12),  transparent 45%); }
-  .card[data-tone="emerald"] { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgba(52, 211, 153, 0.12),  transparent 45%); }
+  .card[data-tone="cyan"]    { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgb(var(--accent-alt-rgb) / 0.14), transparent 45%); }
+  .card[data-tone="pink"]    { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgb(var(--accent-rgb) / 0.12), transparent 45%); }
+  .card[data-tone="amber"]   { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgb(var(--accent-rgb) / 0.12), transparent 45%); }
+  .card[data-tone="emerald"] { background-image: radial-gradient(circle 420px at var(--mx, -200px) var(--my, -200px), rgb(var(--accent-alt-rgb) / 0.12), transparent 45%); }
 }
 
 
@@ -264,7 +264,7 @@
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.05) inset,
     0 24px 60px -12px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(124, 58, 237, 0.18);
+    0 0 0 1px rgb(var(--accent-rgb) / 0.18);
   overflow: hidden;
 }
 
@@ -377,7 +377,7 @@
 }
 .shortcuts-hint code {
   padding: 0.15rem 0.4rem;
-  background: rgba(124, 58, 237, 0.1);
+  background: rgb(var(--accent-rgb) / 0.10);
   border: 1px solid var(--border-glow);
   border-radius: 4px;
   color: var(--violet-400);
@@ -419,7 +419,7 @@
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
     0 30px 70px -15px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(124, 58, 237, 0.18);
+    0 0 0 1px rgb(var(--accent-rgb) / 0.18);
   overflow: hidden;
 }
 
@@ -480,7 +480,7 @@
   scroll-margin: 0.4rem;
 }
 .cmdk-item.active {
-  background: rgba(124, 58, 237, 0.16);
+  background: rgb(var(--accent-rgb) / 0.16);
   box-shadow: inset 0 0 0 1px var(--border-glow);
 }
 .cmdk-kind {
@@ -497,7 +497,7 @@
 .cmdk-item[data-type="cmd"] .cmdk-kind {
   color: var(--violet-400);
   border-color: var(--border-glow);
-  background: rgba(124, 58, 237, 0.1);
+  background: rgb(var(--accent-rgb) / 0.10);
 }
 .cmdk-label {
   color: var(--text);
@@ -593,7 +593,7 @@ html.matrix-mode .principle h3 {
   width: 80px;
   height: 92px;
   overflow: visible;
-  filter: drop-shadow(0 10px 20px rgba(124, 58, 237, 0.35));
+  filter: drop-shadow(0 10px 20px rgb(var(--accent-rgb) / 0.35));
 }
 .m-droid {
   transform-box: fill-box;
@@ -656,7 +656,7 @@ html.matrix-mode .principle h3 {
   box-shadow:
     0 1px 0 rgba(255,255,255,0.06) inset,
     0 16px 36px -10px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(124, 58, 237, 0.15);
+    0 0 0 1px rgb(var(--accent-rgb) / 0.15);
   opacity: 0;
   transform: translateY(8px) scale(0.96);
   transform-origin: bottom left;
@@ -674,7 +674,7 @@ html.matrix-mode .principle h3 {
 }
 .mascot-bubble code {
   color: var(--violet-300);
-  background: rgba(124, 58, 237, 0.14);
+  background: rgb(var(--accent-rgb) / 0.14);
   padding: 0.05rem 0.3rem;
   border-radius: 4px;
   font-family: var(--font-mono);

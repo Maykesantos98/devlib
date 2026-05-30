@@ -21,18 +21,28 @@
   /* ── Borders ──────────────────────────────────────── */
   --border:        rgba(255, 255, 255, 0.08);
   --border-bright: rgba(255, 255, 255, 0.16);
-  --border-glow:   rgba(124, 58, 237, 0.45);
+  --border-glow:   rgb(var(--accent-rgb) / 0.45);
 
   /* ── Accents ──────────────────────────────────────── */
-  --violet-400: #A78BFA;
-  --violet-500: #8B5CF6;
-  --violet-600: #7C3AED;
-  --violet-700: #6D28D9;
-  --cyan-400:   #22D3EE;
-  --cyan-500:   #06B6D4;
-  --pink-400:   #F472B6;
-  --amber-400:  #FBBF24;
-  --emerald-400: #34D399;
+  --accent:       #F59E0B;
+  --accent-solid: #A45112;
+  --accent-alt:   #2DD4BF;
+  --accent-rgb:       245 158 11;
+  --accent-solid-rgb: 164 81 18;
+  --accent-alt-rgb:   45 212 191;
+
+  /* Legacy tone aliases keep existing components token-driven. */
+  --violet-300: #F8C77E;
+  --violet-400: var(--accent);
+  --violet-500: var(--accent-solid);
+  --violet-600: var(--accent-solid);
+  --violet-700: #7C2D12;
+  --cyan-300:   #7FEADC;
+  --cyan-400:   var(--accent-alt);
+  --cyan-500:   #0F766E;
+  --pink-400:   var(--accent);
+  --amber-400:  var(--accent);
+  --emerald-400: var(--accent-alt);
 
   /* ── Typography stack ─────────────────────────────── */
   --font-display: 'Bricolage Grotesque', 'Geist', system-ui, -apple-system, sans-serif;
