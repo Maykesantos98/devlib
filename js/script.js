@@ -348,15 +348,15 @@
 `;
     console.log(
       `%c${banner}`,
-      'color:#A78BFA;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1;'
+      'color:#F59E0B;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1;'
     );
     console.log(
-      '%cBem-vindo, dev. 117 bibliotecas · 9 categorias · 0 dependências.',
-      'color:#22D3EE;font-size:13px;font-weight:600;'
+      '%cBem-vindo, dev. 133 bibliotecas · 9 categorias · 0 dependências.',
+      'color:#2DD4BF;font-size:13px;font-weight:600;'
     );
     console.log(
       '%cExperimente: devlib.help()',
-      'color:#71717A;font-style:italic;font-size:12px;'
+      'color:#B3B8C2;font-style:italic;font-size:12px;'
     );
   }
 
@@ -364,7 +364,7 @@
   window.aStack = {
     /** Mostra todos os comandos disponíveis */
     help() {
-      console.group('%cdevlib · comandos', 'color:#A78BFA;font-weight:600;');
+      console.group('%cdevlib · comandos', 'color:#F59E0B;font-weight:600;');
       console.log('devlib.shuffle()   → embaralha a ordem dos cards');
       console.log('devlib.reset()     → restaura ordem original');
       console.log('devlib.matrix()    → ativa modo Matrix (verde)');
@@ -376,9 +376,9 @@
       console.groupEnd();
       console.log(
         '%cAtalhos: %c⌘K %csearch · %c? %catalhos · %c1-8 %cfiltro',
-        'color:#71717A;', 'color:#A78BFA;font-weight:600;', 'color:#71717A;',
-        'color:#A78BFA;font-weight:600;', 'color:#71717A;',
-        'color:#A78BFA;font-weight:600;', 'color:#71717A;'
+        'color:#B3B8C2;', 'color:#F59E0B;font-weight:600;', 'color:#B3B8C2;',
+        'color:#F59E0B;font-weight:600;', 'color:#B3B8C2;',
+        'color:#F59E0B;font-weight:600;', 'color:#B3B8C2;'
       );
       return '✓ pronto. tente um comando.';
     },
@@ -424,9 +424,9 @@
     about() {
       console.log(
         '%cDEVLIB — Edição 01 · 2026',
-        'color:#A78BFA;font-weight:600;font-size:14px;'
+        'color:#F59E0B;font-weight:600;font-size:14px;'
       );
-      console.log('Acervo curado de 117 bibliotecas para devs que constroem com agentes.');
+      console.log('Acervo curado de 133 bibliotecas para devs que constroem com agentes.');
       console.log('Stack: HTML · CSS · JavaScript vanilla. Zero CDN, zero dependências.');
       console.log('CSS scroll-driven animations (animation-timeline). View Transitions API.');
       return '🛠️';
@@ -470,7 +470,7 @@
 
   // Special filters that don't map to a single data-kind token.
   // RECENT — newest additions (coding agents, MCP tooling, guardrails,
-  // trade agents, mobile on-device, UI). Updated for the 117-lib archive.
+  // trade agents, mobile on-device, UI). Updated for the 133-lib archive.
   const RECENT = new Set([
     'Claude Code', 'OpenHands', 'Cline', 'Goose',
     'FastMCP', 'MCP Inspector', 'GitHub MCP Server', 'Playwright MCP', 'Composio',
@@ -685,7 +685,7 @@
       'Não é bug, é uma <em>feature</em> não documentada.',
       'Tem 10 tipos de gente: as que entendem binário e as que não.',
       '<code>git commit -m "fix"</code> … pela 7ª vez 😅',
-      '99 bugs no código. Corrige 1. Agora são 117. 🐛',
+      '99 bugs no código. Corrige 1. Agora são 133.',
       'Por que o dev quebrou? Usou todo o <em>cache</em>. 💸',
       'Eu transformo café em código. ☕ → 💻',
       'Deploy na sexta 17h: coragem ou loucura?',
