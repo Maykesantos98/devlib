@@ -35,7 +35,7 @@
   --emerald-400: #34D399;
 
   /* ── Typography stack ─────────────────────────────── */
-  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Geist', system-ui, -apple-system, sans-serif;
   --font-sans:    'Geist', system-ui, sans-serif;
   --font-mono:    'Geist Mono', ui-monospace, monospace;
 
