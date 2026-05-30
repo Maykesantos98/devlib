@@ -236,8 +236,8 @@
 
 
 /* ═══════════════════════════════════════════════════════════ */
-/*  9 · View Transitions API — smooth filter crossfade        */
-/*    (Chrome/Edge 111+, Safari 18+ · graceful fallback)      */
+/*  9 · Root transition timing hook                           */
+/*    Reserved for browser-level navigations and experiments. */
 /* ═══════════════════════════════════════════════════════════ */
 ::view-transition-old(root),
 ::view-transition-new(root) {

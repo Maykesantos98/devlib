@@ -428,7 +428,7 @@
       );
       console.log('Acervo curado de 133 bibliotecas para devs que constroem com agentes.');
       console.log('Stack: HTML · CSS · JavaScript vanilla. Zero CDN, zero dependências.');
-      console.log('CSS scroll-driven animations (animation-timeline). View Transitions API.');
+      console.log('CSS scroll-driven animations (animation-timeline).');
       return '🛠️';
     },
   };
@@ -533,13 +533,8 @@
     if (emptyEl)   emptyEl.classList.toggle('hidden', count > 0);
   }
 
-  // Wrap filter in View Transitions API for smooth crossfade
   function applyFilters() {
-    if (document.startViewTransition && !reduced) {
-      document.startViewTransition(runFilterPass);
-    } else {
-      runFilterPass();
-    }
+    runFilterPass();
   }
 
   filterBtns.forEach((btn) => {
