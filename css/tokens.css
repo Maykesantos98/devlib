@@ -15,8 +15,8 @@
   /* ── Foreground ───────────────────────────────────── */
   --text:       #F5F5F7;
   --text-soft:  #A1A1AA;
-  --text-faint: #71717A;
-  --text-dim:   #52525B;
+  --text-faint: #B3B8C2;
+  --text-dim:   #8F96A3;
 
   /* ── Borders ──────────────────────────────────────── */
   --border:        rgba(255, 255, 255, 0.08);
