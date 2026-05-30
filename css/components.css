@@ -1194,20 +1194,20 @@
   isolation: isolate;
   display: inline-grid;
   place-items: center;
-  min-width: min(100%, clamp(7.2rem, 10vw, 9rem));
-  padding: 0.72rem 1rem 0.68rem 2.2rem;
+  min-width: var(--chapter-stamp-min);
+  padding: var(--chapter-stamp-pad);
   overflow: hidden;
   background:
     linear-gradient(135deg, rgb(var(--accent-rgb) / 0.16), rgb(var(--accent-alt-rgb) / 0.07)),
     var(--bg-card);
   border: 1px solid var(--border-glow);
-  border-radius: 8px;
+  border-radius: var(--radius-stamp);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
     0 16px 32px -24px rgb(var(--accent-rgb) / 0.6);
   color: var(--text);
   font-family: var(--font-display);
-  font-size: clamp(0.92rem, 0.84rem + 0.35vw, 1.08rem);
+  font-size: var(--t-chapter);
   font-weight: 600;
   letter-spacing: 0.08em;
   line-height: 1;
@@ -1221,12 +1221,12 @@
 .chapter-num::before {
   content: '§';
   position: absolute;
-  left: 0.08rem;
-  bottom: -0.58rem;
+  left: var(--chapter-mark-left);
+  bottom: var(--chapter-mark-bottom);
   z-index: -1;
   color: rgb(var(--accent-rgb) / 0.24);
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 5.6vw, 4.8rem);
+  font-size: var(--t-chapter-mark);
   line-height: 1;
   transform: rotate(-8deg);
 }
@@ -1236,7 +1236,7 @@
   position: absolute;
   right: 0.8rem;
   bottom: 0.42rem;
-  width: 2rem;
+  width: var(--chapter-rule-width);
   height: 2px;
   background: linear-gradient(90deg, var(--cyan-400), transparent);
   transform-origin: left center;
@@ -1249,7 +1249,7 @@
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.10) inset,
       0 20px 38px -24px rgb(var(--accent-alt-rgb) / 0.65);
-    transform: translateX(0.25rem);
+    transform: translateX(var(--chapter-hover-shift));
   }
 
   .chapter-bar:hover .chapter-num::after {

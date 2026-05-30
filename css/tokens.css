@@ -57,13 +57,22 @@
   --t-h4:   clamp(1.25rem, 1rem + 1vw, 1.6rem);
   --t-h2:   clamp(1.8rem, 1.4rem + 2vw, 3rem);
   --t-h1:   clamp(2.4rem, 1.8rem + 3.5vw, 4.6rem);
+  --t-chapter: clamp(0.92rem, 0.84rem + 0.35vw, 1.08rem);
+  --t-chapter-mark: clamp(3.2rem, 5.6vw, 4.8rem);
 
   /* ── Layout ───────────────────────────────────────── */
   --max:    1320px;
   --gutter: clamp(1.25rem, 3vw, 3rem);
+  --chapter-stamp-min: min(100%, clamp(7.2rem, 10vw, 9rem));
+  --chapter-stamp-pad: 0.72rem 1rem 0.68rem 2.2rem;
+  --chapter-mark-left: 0.08rem;
+  --chapter-mark-bottom: -0.58rem;
+  --chapter-rule-width: 2rem;
+  --chapter-hover-shift: 0.25rem;
 
   /* ── Radius ───────────────────────────────────────── */
   --radius-lg: 22px;
+  --radius-stamp: 8px;
 
   /* ── Motion ───────────────────────────────────────── */
   --dur-fast: 220ms;
