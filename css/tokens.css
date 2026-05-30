@@ -69,10 +69,15 @@
   --chapter-mark-bottom: -0.58rem;
   --chapter-rule-width: 2rem;
   --chapter-hover-shift: 0.25rem;
+  --chapter-bar-gap: clamp(0.9rem, 2vw, 1.5rem);
+  --chapter-bar-pad: clamp(1rem, 2vw, 1.35rem);
+  --chapter-bar-inset: clamp(1rem, 2vw, 1.35rem);
+  --chapter-bar-margin: clamp(2.4rem, 5vw, 3.6rem) 0 1.35rem;
 
   /* ── Radius ───────────────────────────────────────── */
   --radius-lg: 22px;
   --radius-stamp: 8px;
+  --radius-chapter: 18px;
 
   /* ── Motion ───────────────────────────────────────── */
   --dur-fast: 220ms;

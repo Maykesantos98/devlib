@@ -1172,21 +1172,44 @@
 .chapter-bar {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1.5rem;
-  margin: 3rem 0 1.5rem;
-  padding: 1.15rem 0 1rem;
-  border-top: 0;
+  gap: var(--chapter-bar-gap);
+  margin: var(--chapter-bar-margin);
+  padding: var(--chapter-bar-pad);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0% 0%, rgb(var(--accent-rgb) / 0.14), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+    var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-chapter);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 20px 50px -42px rgb(var(--accent-rgb) / 0.75);
 }
 
 .chapter-bar::before {
   content: '';
   position: absolute;
-  inset: 0 0 auto;
-  height: 1px;
-  background: linear-gradient(90deg, var(--violet-400), rgb(var(--accent-alt-rgb) / 0.55), transparent 82%);
-  opacity: 0.75;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--violet-400), var(--cyan-400));
+  opacity: 0.95;
+}
+
+.chapter-bar::after {
+  content: attr(data-chapter);
+  position: absolute;
+  right: var(--chapter-bar-inset);
+  bottom: -0.78em;
+  color: rgb(var(--accent-rgb) / 0.08);
+  font-family: var(--font-display);
+  font-size: clamp(3.6rem, 8vw, 6.8rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  pointer-events: none;
 }
 
 .chapter-num {
@@ -1198,14 +1221,13 @@
   padding: var(--chapter-stamp-pad);
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgb(var(--accent-rgb) / 0.16), rgb(var(--accent-alt-rgb) / 0.07)),
-    var(--bg-card);
-  border: 1px solid var(--border-glow);
+    linear-gradient(135deg, var(--violet-500), var(--violet-700));
+  border: 1px solid rgb(var(--accent-rgb) / 0.62);
   border-radius: var(--radius-stamp);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 16px 32px -24px rgb(var(--accent-rgb) / 0.6);
-  color: var(--text);
+    0 1px 0 rgba(255, 255, 255, 0.16) inset,
+    0 18px 34px -24px rgb(var(--accent-solid-rgb) / 0.95);
+  color: white;
   font-family: var(--font-display);
   font-size: var(--t-chapter);
   font-weight: 600;
@@ -1224,7 +1246,7 @@
   left: var(--chapter-mark-left);
   bottom: var(--chapter-mark-bottom);
   z-index: -1;
-  color: rgb(var(--accent-rgb) / 0.24);
+  color: rgba(255, 255, 255, 0.18);
   font-family: var(--font-display);
   font-size: var(--t-chapter-mark);
   line-height: 1;
@@ -1238,7 +1260,7 @@
   bottom: 0.42rem;
   width: var(--chapter-rule-width);
   height: 2px;
-  background: linear-gradient(90deg, var(--cyan-400), transparent);
+  background: linear-gradient(90deg, var(--cyan-400), rgba(255, 255, 255, 0.18));
   transform-origin: left center;
   transition: transform var(--dur-fast) var(--ease);
 }
@@ -1247,8 +1269,8 @@
   .chapter-bar:hover .chapter-num {
     border-color: var(--cyan-400);
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.10) inset,
-      0 20px 38px -24px rgb(var(--accent-alt-rgb) / 0.65);
+      0 1px 0 rgba(255, 255, 255, 0.18) inset,
+      0 22px 44px -24px rgb(var(--accent-alt-rgb) / 0.75);
     transform: translateX(var(--chapter-hover-shift));
   }
 
@@ -1258,23 +1280,42 @@
 }
 
 .chapter-bar h3 {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.25rem;
   margin: 0;
+  color: var(--text);
   font-family: var(--font-display);
   font-size: var(--t-h4);
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
 .chapter-bar h3 em {
-  color: var(--text-faint);
+  color: var(--text-soft);
+  font-family: var(--font-sans);
+  font-size: var(--t-base);
   font-style: normal;
   font-weight: 400;
+  line-height: 1.45;
 }
 
 .chapter-bar .count-pill {
-  color: var(--text-faint);
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  padding: 0.42rem 0.72rem;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-soft);
   font-family: var(--font-mono);
   font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 
