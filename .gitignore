@@ -28,3 +28,8 @@ dist-ssr
 
 # Coverage output
 coverage/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/

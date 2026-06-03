@@ -13,7 +13,9 @@
     "new:guide": "node scripts/new-content.mjs guide",
     "validate:content": "node --experimental-strip-types scripts/validate-content.mjs",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/js-yaml": "^4.0.9",
