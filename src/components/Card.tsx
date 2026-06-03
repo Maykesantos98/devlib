@@ -166,7 +166,8 @@ export const Card: React.FC<CardProps> = ({ data, isInStack, onToggleStack, onCl
         ))}
       </div>
 
-      <div className="card-visual" aria-hidden="true"></div>
+      <div className="card-spotlight" aria-hidden="true" />
+      <div className="card-visual" aria-hidden="true" />
     </motion.article>
   );
 };
