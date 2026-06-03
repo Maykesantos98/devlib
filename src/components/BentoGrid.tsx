@@ -89,6 +89,9 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
         if (filters.type !== 'any' && !meta?.tags.includes(filters.type)) {
           return false;
         }
+        if (filters.lang !== 'any' && !meta?.tags.includes(filters.lang)) {
+          return false;
+        }
 
         // 2. Text match (title, body, kinds, tags)
         const contentString = `${card.title} ${card.body} ${card.meta} ${card.kind} ${(card.tags || []).join(' ')}`;

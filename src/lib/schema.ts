@@ -105,6 +105,10 @@ export const GuideSchema = z.object({
   publishedAt: IsoDate,
   updatedAt: IsoDate.optional(),
   readingMinutes: z.number().int().min(1),
+  /** Slug of the reading path series this guide belongs to. */
+  series: z.string().optional(),
+  /** Position within the series (1-indexed). */
+  seriesOrder: z.number().int().min(1).optional(),
   body: z.string().optional(),
 });
 export type Guide = z.infer<typeof GuideSchema>;

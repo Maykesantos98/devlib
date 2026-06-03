@@ -1,5 +1,12 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { findGuide, loadGuideBody, findLibrary, findRecipe } from '../lib/content';
+import {
+  findGuide,
+  loadGuideBody,
+  findLibrary,
+  findRecipe,
+  neighborsInSeries,
+  GUIDE_SERIES,
+} from '../lib/content';
 import { categoryMeta } from '../lib/schema';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
@@ -14,6 +21,8 @@ export default function GuidePage() {
   }
 
   const meta = guide.category ? categoryMeta(guide.category) : null;
+  const { prev, next } = neighborsInSeries(guide);
+  const seriesMeta = guide.series ? GUIDE_SERIES.find((s) => s.id === guide.series) : null;
 
   return (
     <PageShell>
@@ -26,6 +35,15 @@ export default function GuidePage() {
       <article className="shell" style={{ paddingTop: '4rem', maxWidth: '780px' }}>
         <nav style={{ marginBottom: '1.5rem', fontSize: '0.85rem' }}>
           <Link to="/guias" style={{ color: 'var(--text-soft)' }}>← Guias</Link>
+          {seriesMeta && (
+            <>
+              <span style={{ color: 'var(--text-dim)' }}> · </span>
+              <span style={{ color: 'var(--text-soft)' }}>
+                {seriesMeta.emoji} {seriesMeta.title}
+                {guide.seriesOrder && ` · parte ${guide.seriesOrder}`}
+              </span>
+            </>
+          )}
         </nav>
 
         {meta && (
@@ -44,6 +62,24 @@ export default function GuidePage() {
         <div style={{ marginTop: '3rem' }}>
           <MdxBody loader={loadGuideBody(guide.slug)} />
         </div>
+
+        {/* H · Prev/Next in series */}
+        {(prev || next) && (
+          <nav className="series-nav" aria-label="Navegação na série">
+            {prev ? (
+              <Link to={`/guia/${prev.slug}`} className="series-nav-link series-nav-prev">
+                <span className="series-nav-label">← Anterior</span>
+                <span className="series-nav-title">{prev.title}</span>
+              </Link>
+            ) : <span />}
+            {next ? (
+              <Link to={`/guia/${next.slug}`} className="series-nav-link series-nav-next">
+                <span className="series-nav-label">Próximo →</span>
+                <span className="series-nav-title">{next.title}</span>
+              </Link>
+            ) : <span />}
+          </nav>
+        )}
 
         {(guide.relatedRecipes.length > 0 || guide.relatedLibraries.length > 0) && (
           <aside style={{ marginTop: '4rem', padding: '1.5rem', border: '1px solid var(--border)', borderRadius: '14px' }}>

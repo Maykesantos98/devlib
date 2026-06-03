@@ -125,6 +125,53 @@ export function alternativesFor(library: Library, limit = 4): Library[] {
     .slice(0, limit);
 }
 
+/* ── Guide series / reading paths (H) ────────────────────── */
+
+export interface SeriesMeta {
+  id: string;
+  title: string;
+  description: string;
+  emoji: string;
+}
+
+export const GUIDE_SERIES: readonly SeriesMeta[] = [
+  {
+    id: 'setup-saas',
+    title: 'Caminho: Lançar um SaaS',
+    description: 'Da escolha da stack até observability. 4 leituras na ordem certa.',
+    emoji: '🚀',
+  },
+  {
+    id: 'setup-agente',
+    title: 'Caminho: Construir agente',
+    description: 'Primeiro agente MCP até decisões de runtime.',
+    emoji: '🤖',
+  },
+];
+
+/**
+ * Guides that belong to the given series, sorted by seriesOrder.
+ */
+export function guidesInSeries(seriesId: string): Guide[] {
+  return guides
+    .filter((g) => g.series === seriesId)
+    .sort((a, b) => (a.seriesOrder ?? 999) - (b.seriesOrder ?? 999));
+}
+
+/**
+ * Returns the previous and next guides in the same series.
+ */
+export function neighborsInSeries(guide: Guide): { prev: Guide | null; next: Guide | null } {
+  if (!guide.series) return { prev: null, next: null };
+  const siblings = guidesInSeries(guide.series);
+  const idx = siblings.findIndex((g) => g.slug === guide.slug);
+  if (idx === -1) return { prev: null, next: null };
+  return {
+    prev: idx > 0 ? siblings[idx - 1] : null,
+    next: idx < siblings.length - 1 ? siblings[idx + 1] : null,
+  };
+}
+
 /* ── BentoGrid adapter ───────────────────────────────────── */
 
 const CATEGORY_TONE: Record<CategoryId, CardData['tone']> = {

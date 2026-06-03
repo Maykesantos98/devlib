@@ -4,12 +4,14 @@ export interface FilterState {
   category: string;
   difficulty: string;
   type: string;
+  lang: string;
 }
 
 export const INITIAL_FILTERS: FilterState = {
   category: 'all',
   difficulty: 'any',
   type: 'any',
+  lang: 'any',
 };
 
 interface FiltersProps {
@@ -73,6 +75,15 @@ const TYPE_OPTIONS = [
   { id: 'saas', label: 'SaaS' },
 ] as const;
 
+const LANG_OPTIONS = [
+  { id: 'any',             label: 'Qualquer linguagem' },
+  { id: 'lang:typescript', label: 'TypeScript' },
+  { id: 'lang:python',     label: 'Python' },
+  { id: 'lang:rust',       label: 'Rust' },
+  { id: 'lang:go',         label: 'Go' },
+  { id: 'lang:dart',       label: 'Dart' },
+] as const;
+
 /**
  * Multi-axis filter panel.
  * Renders 3 pill groups: category, difficulty, type.
@@ -101,6 +112,14 @@ export function Filters({ value, onChange }: FiltersProps) {
         field="type"
         value={value.type}
         options={TYPE_OPTIONS}
+        onChange={onChange}
+        state={value}
+      />
+      <PillGroup
+        label="Linguagem"
+        field="lang"
+        value={value.lang}
+        options={LANG_OPTIONS}
         onChange={onChange}
         state={value}
       />

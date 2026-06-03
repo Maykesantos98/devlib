@@ -8,6 +8,7 @@ const RecipePage   = lazy(() => import('./pages/RecipePage'));
 const RecipesIndex = lazy(() => import('./pages/RecipesIndex'));
 const GuidePage    = lazy(() => import('./pages/GuidePage'));
 const GuidesIndex  = lazy(() => import('./pages/GuidesIndex'));
+const ComparePage  = lazy(() => import('./pages/ComparePage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function Fallback() {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
   { path: '/receita/:slug',          element: <Suspense fallback={<Fallback />}><RecipePage   /></Suspense> },
   { path: '/guias',                  element: <Suspense fallback={<Fallback />}><GuidesIndex  /></Suspense> },
   { path: '/guia/:slug',             element: <Suspense fallback={<Fallback />}><GuidePage    /></Suspense> },
+  { path: '/comparar',               element: <Suspense fallback={<Fallback />}><ComparePage  /></Suspense> },
   { path: '*',                       element: <Suspense fallback={<Fallback />}><NotFoundPage /></Suspense> },
 ]);
 

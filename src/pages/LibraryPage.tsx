@@ -128,6 +128,17 @@ export default function LibraryPage() {
                 </li>
               ))}
             </ul>
+
+            {alternatives.length >= 2 && (
+              <p style={{ marginTop: '1.5rem', textAlign: 'right' }}>
+                <Link
+                  to={`/comparar?slugs=${[lib.slug, ...alternatives.slice(0, 2).map((a) => a.slug)].join(',')}`}
+                  style={{ color: 'var(--accent)', fontSize: '0.9rem' }}
+                >
+                  Comparar lado a lado →
+                </Link>
+              </p>
+            )}
           </section>
         )}
       </section>
