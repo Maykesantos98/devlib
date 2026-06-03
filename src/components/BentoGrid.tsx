@@ -2,11 +2,13 @@ import React, { useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import type { ChapterData, CardData } from '../types';
 import { Card } from './Card';
+import { libraries } from '../lib/content';
+import type { FilterState } from './Filters';
 
 interface BentoGridProps {
   data: ChapterData[];
   searchQuery: string;
-  activeFilter: string;
+  filters: FilterState;
   selectedStack: string[];
   onToggleStack: (title: string) => void;
   onCardClick: (card: CardData) => void;
@@ -37,19 +39,10 @@ const RECENT = new Set([
   'Ali Imam Components', 'Liquid Metal', 'Dot Matrix', 'Balloons.js',
 ]);
 
-const TOP = new Set([
-  'Flutter', 'React Native', 'Next.js', 'Three.js', 'Ollama', 'Bun',
-  'llama.cpp', 'OpenHands', 'Cline', 'Goose', 'Supabase', 'Tailwind CSS',
-  'Vite', 'shadcn/ui', 'ReUI', 'Magic UI', 'Aceternity UI', 'HeroUI',
-  'Storybook', 'Astro', 'Freqtrade', 'Appwrite',
-  'PocketBase', 'Prisma ORM', 'Playwright', 'Grafana', 'Sentry',
-  'Zod', 'tRPC', 'Claude Code', 'MediaPipe', 'Expo',
-]);
-
 export const BentoGrid: React.FC<BentoGridProps> = ({
   data,
   searchQuery,
-  activeFilter,
+  filters,
   selectedStack,
   onToggleStack,
   onCardClick,
@@ -58,7 +51,16 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
   const normalize = (s: string) =>
     s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-  // Filter logic — pure computation, no side effects.
+  // Title → Library lookup so difficulty + tags can drive multi-axis filter.
+  const metaByTitle = useMemo(() => {
+    const map = new Map<string, { difficulty: string; tags: ReadonlyArray<string> }>();
+    for (const lib of libraries) {
+      map.set(lib.title, { difficulty: lib.difficulty, tags: lib.tags });
+    }
+    return map;
+  }, []);
+
+  // Filter logic — multi-axis (category + difficulty + type + text).
   const filteredData = useMemo(() => {
     const q = normalize(searchQuery.trim());
 
@@ -67,24 +69,25 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
         // 1. Kind/category match
         let inKind = false;
 
-        switch (activeFilter) {
+        switch (filters.category) {
           case 'all':
             inKind = true;
-            break;
-          case 'frontend':
-            inKind = chapter.chapter.startsWith('interface');
-            break;
-          case 'backend':
-            inKind = chapter.chapter.startsWith('server');
             break;
           case 'recent':
             inKind = RECENT.has(card.title);
             break;
-          case 'top':
-            inKind = TOP.has(card.title);
-            break;
           default:
-            inKind = chapter.chapter === activeFilter;
+            inKind = chapter.chapter === filters.category;
+        }
+        if (!inKind) return false;
+
+        // Difficulty + type axes via Library lookup
+        const meta = metaByTitle.get(card.title);
+        if (filters.difficulty !== 'any' && meta?.difficulty !== filters.difficulty) {
+          return false;
+        }
+        if (filters.type !== 'any' && !meta?.tags.includes(filters.type)) {
+          return false;
         }
 
         // 2. Text match (title, body, kinds, tags)
@@ -99,7 +102,7 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
         cards: filteredCards,
       };
     }).filter((chapter) => chapter.cards.length > 0); // Hide empty chapters
-  }, [data, searchQuery, activeFilter]);
+  }, [data, searchQuery, filters, metaByTitle]);
 
   // Notify parent of visible count — kept as side effect so render stays pure.
   useEffect(() => {

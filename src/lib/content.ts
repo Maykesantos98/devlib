@@ -90,6 +90,41 @@ export function loadGuideBody(slug: string) {
   return guideBody[`/content/guides/${slug}.mdx`];
 }
 
+/* ── Cross-references (B) ────────────────────────────────── */
+
+/**
+ * Recipes that include this library in their stack.
+ */
+export function recipesUsingLibrary(librarySlug: string): Recipe[] {
+  return recipes.filter((r) => r.stack.some((s) => s.library === librarySlug));
+}
+
+/**
+ * Guides that explicitly relate to this library.
+ */
+export function guidesMentioningLibrary(librarySlug: string): Guide[] {
+  return guides.filter((g) => g.relatedLibraries.includes(librarySlug));
+}
+
+/**
+ * Suggest alternatives: same category, sorted by editorial weight.
+ * Items with a hand-written body win; then `featured`; then alphabetical.
+ */
+export function alternativesFor(library: Library, limit = 4): Library[] {
+  return libraries
+    .filter((l) => l.category === library.category && l.slug !== library.slug)
+    .sort((a, b) => {
+      const aHasBody = a.body && a.body.length > 50 ? 1 : 0;
+      const bHasBody = b.body && b.body.length > 50 ? 1 : 0;
+      if (aHasBody !== bHasBody) return bHasBody - aHasBody;
+      const aFeat = a.featured ? 1 : 0;
+      const bFeat = b.featured ? 1 : 0;
+      if (aFeat !== bFeat) return bFeat - aFeat;
+      return a.title.localeCompare(b.title);
+    })
+    .slice(0, limit);
+}
+
 /* ── BentoGrid adapter ───────────────────────────────────── */
 
 const CATEGORY_TONE: Record<CategoryId, CardData['tone']> = {

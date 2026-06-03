@@ -13,12 +13,12 @@ import { CardDetailModal } from './components/CardDetailModal';
 import { CmdkPalette } from './components/CmdkPalette';
 import { Mascot } from './components/Mascot';
 import { Footer } from './components/Footer';
-import { FeaturedRecipes } from './components/sections/FeaturedRecipes';
-import { LatestGuides } from './components/sections/LatestGuides';
-import { BlueprintStrip } from './components/sections/BlueprintStrip';
+import { EditorialStrip } from './components/sections/EditorialStrip';
 import { Stats } from './components/sections/Stats';
 import { CategoryIndex } from './components/sections/CategoryIndex';
 import { Method } from './components/sections/Method';
+import { Filters, INITIAL_FILTERS } from './components/Filters';
+import type { FilterState } from './components/Filters';
 
 // Global styles import (Vite handles this)
 import './styles/tokens.css';
@@ -33,7 +33,7 @@ export const App: React.FC = () => {
   // ── States ──────────────────────────────────────────────
   const [selectedStack, setSelectedStack] = useLocalStorage<string[]>('devlib_stack', []);
   const [theme, setTheme] = useLocalStorage<'nebula' | 'cyberpunk' | 'slate'>('devlib_theme', 'nebula');
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS);
   const [searchQuery, setSearchQuery] = useState('');
   const totalLibraries = librariesData.reduce((sum, c) => sum + c.cards.length, 0);
   const [visibleCount, setVisibleCount] = useState(totalLibraries);
@@ -66,8 +66,8 @@ export const App: React.FC = () => {
   }, []);
 
   const handleFilterSelect = useCallback((filter: string) => {
-    setActiveFilter(filter);
-    
+    setFilters((prev) => ({ ...prev, category: filter }));
+
     // Smooth scroll to acervo section
     const target = document.getElementById('acervo');
     if (target) {
@@ -268,42 +268,10 @@ export const App: React.FC = () => {
         {/* Hero Section */}
         <Hero onOpenCmdk={() => setIsCmdkOpen(true)} />
 
-        {/* Receitas em destaque — v04 */}
-        <FeaturedRecipes />
-
-        {/* Guias recentes — v04 */}
-        <LatestGuides />
-
-        {/* Blueprint Examples */}
-        <BlueprintStrip />
-
-        {/* Stats strip */}
+        {/* Stats — small editorial signal */}
         <Stats />
 
-        {/* Marquee kinetic divider */}
-        <div className="marquee" aria-hidden="true" style={{ display: 'block' }}>
-          <div className="marquee-track">
-            <span>react</span><span aria-hidden="true">✦</span>
-            <span>typescript</span><span aria-hidden="true">✦</span>
-            <span>postgres</span><span aria-hidden="true">✦</span>
-            <span>mcp</span><span aria-hidden="true">✦</span>
-            <span>edge</span><span aria-hidden="true">✦</span>
-            <span>tailwind</span><span aria-hidden="true">✦</span>
-            <span>agentes</span><span aria-hidden="true">✦</span>
-            <span>rag</span><span aria-hidden="true">✦</span>
-            <span>open source</span><span aria-hidden="true">✦</span>
-            <span>2026</span><span aria-hidden="true">✦</span>
-            <span>react</span><span aria-hidden="true">✦</span>
-            <span>typescript</span><span aria-hidden="true">✦</span>
-            <span>postgres</span><span aria-hidden="true">✦</span>
-            <span>mcp</span><span aria-hidden="true">✦</span>
-          </div>
-        </div>
-
-        {/* Index / Table of Contents */}
-        <CategoryIndex />
-
-        {/* Main Acervo Catalog */}
+        {/* Main Acervo Catalog — moved UP so action is reachable in 1 scroll */}
         <section className="section shell" id="acervo">
           <span className="section-eyebrow">— Acervo aberto</span>
           <h2 className="section-title">Tudo, <em>organizado.</em></h2>
@@ -331,44 +299,26 @@ export const App: React.FC = () => {
             </span>
           </div>
 
-          <div className="filters" role="group" aria-label="Filtrar por categoria" style={{ marginBottom: '2rem' }}>
-            {[
-              { id: 'all',                 label: 'Todos',                 accent: false },
-              { id: 'recent',              label: '● Recentes',            accent: true  },
-              { id: 'ai-agents',           label: 'Agents',                accent: false },
-              { id: 'mcp',                 label: 'MCP',                   accent: false },
-              { id: 'frontend-ui',         label: 'Frontend UI',           accent: false },
-              { id: 'frontend-frameworks', label: 'Frontend Frameworks',   accent: false },
-              { id: 'backend-data',        label: 'Backend (Data)',        accent: false },
-              { id: 'backend-toolkit',     label: 'Backend (Toolkit)',     accent: false },
-              { id: 'mobile-ai',           label: 'Mobile & AI',           accent: false },
-              { id: 'security',            label: 'Segurança',             accent: false },
-              { id: 'devops',              label: 'DevOps',                accent: false },
-              { id: 'trade-quant',         label: 'Trade & Quant',         accent: false },
-            ].map(({ id: filter, label, accent }) => (
-              <button
-                key={filter}
-                className={`filter ${accent ? 'filter-accent' : ''} ${activeFilter === filter ? 'active' : ''}`}
-                onClick={() => setActiveFilter(filter)}
-                aria-pressed={activeFilter === filter}
-                aria-current={activeFilter === filter ? 'true' : undefined}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          {/* Multi-axis filters: category + difficulty + type */}
+          <Filters value={filters} onChange={setFilters} />
 
           {/* Render the Bento Grid of chapters & cards */}
           <BentoGrid
             data={librariesData}
             searchQuery={searchQuery}
-            activeFilter={activeFilter}
+            filters={filters}
             selectedStack={selectedStack}
             onToggleStack={toggleStackItem}
             onCardClick={handleCardClick}
             onVisibleCountChange={setVisibleCount}
           />
         </section>
+
+        {/* Editorial (Receitas + Guias consolidated, was 3 separate strips) */}
+        <EditorialStrip />
+
+        {/* Index — quick jump to categories */}
+        <CategoryIndex />
 
         {/* Method Section */}
         <Method />

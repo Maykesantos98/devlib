@@ -1,5 +1,11 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { findLibrary, loadLibraryBody, libraries } from '../lib/content';
+import {
+  findLibrary,
+  loadLibraryBody,
+  recipesUsingLibrary,
+  guidesMentioningLibrary,
+  alternativesFor,
+} from '../lib/content';
 import { categoryMeta } from '../lib/schema';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
@@ -14,9 +20,9 @@ export default function LibraryPage() {
   }
 
   const meta = categoryMeta(lib.category);
-  const related = libraries
-    .filter((l) => l.category === lib.category && l.slug !== lib.slug)
-    .slice(0, 6);
+  const inRecipes = recipesUsingLibrary(lib.slug);
+  const inGuides = guidesMentioningLibrary(lib.slug);
+  const alternatives = alternativesFor(lib);
 
   return (
     <PageShell>
@@ -56,30 +62,68 @@ export default function LibraryPage() {
 
         <MdxBody loader={loadLibraryBody(lib.slug)} />
 
-        {related.length > 0 && (
-          <section style={{ marginTop: '4rem' }}>
-            <span className="section-eyebrow">— Relacionados</span>
-            <h2 className="section-title" style={{ fontSize: 'var(--t-h4)' }}>
-              Mais em {meta.name}
+        {/* B · Cross-links — "Aparece em N receitas" */}
+        {inRecipes.length > 0 && (
+          <section className="cross-section">
+            <span className="section-eyebrow">— Em receitas</span>
+            <h2 className="cross-title">
+              Aparece em <em>{inRecipes.length}</em> receita{inRecipes.length > 1 ? 's' : ''}.
             </h2>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '0.75rem', marginTop: '1.5rem' }}>
-              {related.map((r) => (
+            <ul className="cross-list">
+              {inRecipes.map((r) => (
                 <li key={r.slug}>
-                  <Link
-                    to={`/biblioteca/${r.slug}`}
-                    style={{
-                      display: 'block',
-                      padding: '1rem',
-                      border: '1px solid var(--border)',
-                      borderRadius: '12px',
-                      color: 'var(--text)',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <strong>{r.title}</strong>
-                    <span style={{ display: 'block', color: 'var(--text-soft)', fontSize: '0.85rem', marginTop: '0.3rem' }}>
-                      {r.summary}
+                  <Link to={`/receita/${r.slug}`} className="cross-card">
+                    <span className="cross-emoji" aria-hidden="true">{r.emoji ?? '📘'}</span>
+                    <span className="cross-body">
+                      <strong>{r.title}</strong>
+                      <span>{r.goal} · {r.stack.length} peças no stack</span>
                     </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* B · Cross-links — "Mencionada em N guias" */}
+        {inGuides.length > 0 && (
+          <section className="cross-section">
+            <span className="section-eyebrow">— Em guias</span>
+            <h2 className="cross-title">
+              Mencionada em <em>{inGuides.length}</em> guia{inGuides.length > 1 ? 's' : ''}.
+            </h2>
+            <ul className="cross-list">
+              {inGuides.map((g) => (
+                <li key={g.slug}>
+                  <Link to={`/guia/${g.slug}`} className="cross-card">
+                    <span className="cross-emoji cross-emoji-pill" aria-hidden="true">
+                      {g.readingMinutes}min
+                    </span>
+                    <span className="cross-body">
+                      <strong>{g.title}</strong>
+                      <span>{g.summary}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* B · Cross-links — "Alternativas" */}
+        {alternatives.length > 0 && (
+          <section className="cross-section">
+            <span className="section-eyebrow">— Alternativas próximas</span>
+            <h2 className="cross-title">
+              Outras opções em <em>{meta.name}</em>.
+            </h2>
+            <ul className="cross-grid">
+              {alternatives.map((a) => (
+                <li key={a.slug}>
+                  <Link to={`/biblioteca/${a.slug}`} className="cross-card cross-card-grid">
+                    <span className="cross-card-meta">{a.badge ?? a.difficulty}</span>
+                    <strong>{a.title}</strong>
+                    <span>{a.summary}</span>
                   </Link>
                 </li>
               ))}
