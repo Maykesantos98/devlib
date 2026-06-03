@@ -9,3 +9,22 @@ difficulty: producao
 badge: MCP
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Roda no seu ambiente** — diferente de cloud agents, Goose executa local com acesso a teu filesystem e shell.
+- **Extensions via MCP** — qualquer servidor MCP vira tool. Marketplace cresce rápido.
+- **Multi-provider** — Anthropic, OpenAI, Ollama, Databricks. Custos sob controle.
+- **Plan/Act cycle** explícito — fácil revisar antes de cada execução.
+
+## Cuidados
+
+- **Sem sandbox por padrão** — agente tem teu shell. Use em projeto, não em system root.
+- Memory entre sessões é leve; para projetos longos, considere wrapper.
+- UI menos polida que Claude Code/Cursor; é terminal-first.
+
+## Alternativas
+
+- **Claude Code** se quer ecossistema Anthropic e skills.
+- **Cline** se quer extensão VS Code.
+- **OpenHands** se quer sandbox isolado.

@@ -9,3 +9,22 @@ difficulty: producao
 badge: Build
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Cache por hash de input** — só rebuilda pacotes que mudaram. Em monorepo grande, CI cai de 10min para 1min.
+- **Remote cache** — share cache entre devs e CI via Vercel ou self-host.
+- **Pipeline declarativa** em `turbo.json` — explicita dependências entre tasks.
+- **Rust core** (Turborepo 2.0+) — performance crítica em refactor pesado.
+
+## Cuidados
+
+- Para monorepo com < 5 packages, é overhead. pnpm workspaces basta.
+- Remote cache hosted é Vercel-tied; self-host via `turborepo-remote-cache` adds infra.
+- Pipeline mal pensada vira cache miss constante — invista tempo em `inputs`/`outputs` corretos.
+
+## Alternativas
+
+- **Nx** se quer features além (generators, code-gen, dependency graphs visuais).
+- **Bazel** se está em empresa Google-style polyglot.
+- **pnpm workspaces puro** se simplicidade > performance.

@@ -9,3 +9,21 @@ difficulty: producao
 badge: Go
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Server oficial GitHub** — escrito em Go, mantido pela equipe GitHub.
+- **Cobertura ampla** — repos, PRs, issues, code search, file ops, releases.
+- **Authentication via PAT ou OAuth** — granular por escopo de token.
+- **Stable API** — usa REST + GraphQL APIs públicas do GitHub.
+
+## Cuidados
+
+- Token PAT precisa de escopo correto — `repo` para escrever, `read:org` para info. Verifique antes.
+- Rate limit GitHub é real (5k req/h authenticated). Para automação intensa, considere cache local.
+- Server expõe muito — agente pode fazer commit destrutivo se prompt errar.
+
+## Alternativas
+
+- **gh CLI** + MCP wrapper se você quer só read-only.
+- **Linear MCP Server** se você usa Linear para issues em vez de GitHub Projects.

@@ -9,3 +9,22 @@ difficulty: producao
 badge: On-device
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Cross-platform real** — iOS, Android, Web (WebGPU), Linux, Mac, Windows. Mesmo modelo, mesma API.
+- **TVM-based compilation** — gera kernels otimizados por hardware. Apple Neural Engine, Vulkan, CUDA.
+- **Modelos quantizados** prontos para download. Llama 3, Phi-3, Gemma.
+- **Servidor compatível com OpenAI API** — local LLM acessível via SDK padrão.
+
+## Cuidados
+
+- Setup mais técnico que Ollama — você compila ou baixa pre-built models.
+- Comunidade menor que llama.cpp; Stack Overflow menos populado.
+- Performance varia bastante por device. Benchmark com seu modelo + hardware é obrigatório.
+
+## Alternativas
+
+- **ExecuTorch** se você está em React Native ou iOS/Android exclusivamente.
+- **Ollama** se quer setup simples desktop-focused.
+- **llama.cpp** se quer engine de baixo nível com mais formatos.

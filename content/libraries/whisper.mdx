@@ -9,3 +9,22 @@ difficulty: bleeding-edge
 badge: Novo
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Multilíngue real** — 100+ idiomas, incluindo PT-BR com qualidade alta.
+- **Open source completo** — modelos, código, paper.
+- **whisper.cpp** roda em CPU/mobile com quantização. Boa para apps offline.
+- **Variantes** — tiny, base, small, medium, large. Trade-off velocidade/qualidade explícito.
+
+## Cuidados
+
+- Modelo `large` exige GPU para tempo real. Em CPU, ~5× o tempo do áudio.
+- Para streaming de fala (live), use `whisper-streaming` ou Whisper.cpp com janelas.
+- Ruído de fundo derruba accuracy — pre-processing (RNNoise) ajuda muito.
+
+## Alternativas
+
+- **Deepgram** se quer streaming hosted production-grade.
+- **AssemblyAI** se quer features além de transcrição (sentiment, topics).
+- **AWS Transcribe / Google Speech-to-Text** se quer cloud enterprise.

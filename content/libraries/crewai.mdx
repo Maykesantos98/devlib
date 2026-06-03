@@ -9,3 +9,22 @@ difficulty: producao
 badge: Multi
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Role-based agents** — researcher, writer, reviewer. Cada um com prompt + tools próprios.
+- **Tasks + Crew abstrações** — workflow sequencial ou hierarchical claro.
+- **Manager agent** pode delegar dinamicamente. Útil em fluxos com decisão runtime.
+- **Comunidade Python ativa** — exemplos abundantes para casos comuns.
+
+## Cuidados
+
+- Multi-agent custa tokens — 3 agents conversando facilmente 5-10× mais que single agent.
+- Para tarefa simples (1 query → 1 resposta), é overkill.
+- Debugging de fluxo emergente é difícil — invista em traces (LangSmith, OpenTelemetry).
+
+## Alternativas
+
+- **LangGraph** se quer grafo explícito mais controlado.
+- **Agno** se quer multimodal forte.
+- **Autogen** se quer mais flexibilidade em conversational patterns.

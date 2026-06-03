@@ -9,3 +9,22 @@ difficulty: producao
 badge: 500+ apps
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **500+ integrações prontas** — Slack, Jira, Salesforce, Gmail, Notion, Linear. Você não escreve OAuth dance.
+- **MCP Gateway** — todas integrações expostas via MCP. Um SDK, qualquer agente.
+- **Authentication gerenciada** — Composio cuida de OAuth tokens, refresh, scopes.
+- **SDKs Python + TypeScript**.
+
+## Cuidados
+
+- SaaS — você passa OAuth tokens para Composio. Em apps sensíveis, faça self-host (OSS disponível).
+- Pricing escala por execução de tool — em apps high-volume, monitore.
+- Para uma única integração simples, escrever direto pode ser mais barato/simples.
+
+## Alternativas
+
+- **Pipedream Connect** — competidor direto, similar feature set.
+- **Zapier MCP** — para fluxos não-code style.
+- **MCP servers individuais** se você só precisa de 2-3 integrações específicas.

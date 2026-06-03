@@ -9,3 +9,22 @@ difficulty: producao
 badge: pnpm
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Hard links + content-addressable store** — instalações sem duplicação. 50% menos disco que npm.
+- **`pnpm install` 2-3× mais rápido** que npm. Em CI, ganho real.
+- **Workspaces nativos** com `pnpm -r` para rodar tasks em todos packages.
+- **Strict por padrão** — proíbe acesso a deps não declaradas. Pega bugs cedo.
+
+## Cuidados
+
+- **`shamefully-hoist`** existe para apps que dependem de phantom deps — herança ruim de npm.
+- Algumas ferramentas legadas brigam com a estrutura via symlinks. Verifique CI tools.
+- Em Windows, performance pode degradar se antivirus escanear `.pnpm/`.
+
+## Alternativas
+
+- **Bun** se quer runtime + package manager + bundler em um.
+- **npm 10+** se compatibilidade total e zero atrito é prioridade.
+- **yarn berry** se prefere PnP e config robusta.

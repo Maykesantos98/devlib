@@ -9,3 +9,22 @@ difficulty: producao
 badge: Rápido
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **2-3× mais rápido que Express** em benchmarks. Em apps com hot path, ganho real.
+- **Schema-driven validation** via JSON Schema — request/response validados sem código extra.
+- **Plugins encapsulados** — escopo controlado, evita o caos do middleware Express.
+- **TypeScript suporte oficial** — types corretos para handlers e schemas.
+
+## Cuidados
+
+- **Convention sobre configuração** — modo de fazer "fastify way" tem curva.
+- Ecossistema menor que Express para integrações exóticas.
+- Para serverless puro (Lambda single-handler), Hono é mais leve.
+
+## Alternativas
+
+- **Hono** se você quer edge-first + leve.
+- **Express** se equipe é grande e familiaridade > performance.
+- **NestJS** se você quer DI + decorators estilo Angular.

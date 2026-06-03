@@ -9,3 +9,22 @@ difficulty: producao
 badge: AI
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Reuse seu Postgres** — sem peça nova para manter. RAG vira mais uma tabela.
+- **HNSW + IVFFlat indexes** — performance competitiva com Pinecone/Qdrant em datasets até ~10M vectors.
+- **JOIN entre vector e relational** — busca semântica + filtro por user_id/tenant_id no mesmo query.
+- **Disponível em Neon, Supabase, RDS** — produção sem self-host.
+
+## Cuidados
+
+- **Performance > 50M vectors** começa a sofrer vs vector DB dedicados. Benchmark seu caso.
+- HNSW exige tuning de `m` e `ef_construction`. Defaults são OK até ~1M, depois ajustar.
+- Embeddings de 1536 dim (OpenAI ada-002) pesam — para apps de escala, considere reranking de top-K do pgvector + modelo mais barato.
+
+## Alternativas
+
+- **Qdrant** se você quer vector DB dedicado com features avançadas.
+- **Turbopuffer** se quer cheap + escala absurda.
+- **Pinecone** se quer SaaS gerenciado e dinheiro não importa.

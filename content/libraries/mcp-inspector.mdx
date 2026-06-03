@@ -9,3 +9,21 @@ difficulty: producao
 badge: Inspector
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Ferramenta oficial** Anthropic — referência para debugar qualquer MCP server.
+- **UI visual** mostra tools, resources, prompts disponíveis. Vê schema sem ler código.
+- **Trace de mensagens** request/response em real-time. Bug em tool fica visível.
+- **Multi-transport** — stdio, HTTP (SSE). Mesmo workflow para qualquer server.
+
+## Cuidados
+
+- É ferramenta de dev, não runtime — não usa em produção.
+- Performance OK para 10s de tools; UI fica lenta com 100+.
+- Para CI/CD, prefira testes unitários — Inspector é interativo.
+
+## Alternativas
+
+- **MCP Scan** para auditoria de segurança de servers.
+- Logs estruturados no server diretamente para debug headless.
