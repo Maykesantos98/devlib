@@ -4,8 +4,26 @@ summary: Toolchain rápido para formatar e lintar JavaScript, TypeScript, JSX, J
 url: 'https://github.com/biomejs/biome'
 repo: 'https://github.com/biomejs/biome'
 category: devops
-tags: [oss]
+tags: [2026, lang:javascript, lang:typescript, oss]
 difficulty: producao
 badge: Tool
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **30× mais rápido** que ESLint + Prettier juntos. Em monorepo grande, lint que demorava 30s vira 1s.
+- **Substitui ESLint + Prettier** em um binário Rust. Config única em `biome.json`.
+- **Zero deps** — não precisa de plugins para JSX/TypeScript/JSON. Tudo nativo.
+- **Em 2026:** Biome 2 já cobre 95% das regras do ESLint recommended + react-hooks.
+
+## Cuidados
+
+- **Compatibilidade Prettier não é 100%** — formatting tem pequenas diferenças. Para projetos com history Prettier longa, vai gerar diff inicial.
+- **Plugins community** ainda em maturação. Regras muito custom podem precisar esperar.
+- **Migration** exige cuidado em monorepos onde alguns workspaces dependem de ESLint legacy plugin.
+
+## Alternativas
+
+- **ESLint v9 flat config + Prettier** se você precisa de plugins muito específicos (a11y, security custom).
+- **Oxlint** (parte do projeto Oxc) — ainda mais rápido, escopo menor.

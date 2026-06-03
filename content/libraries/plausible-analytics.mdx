@@ -4,8 +4,27 @@ summary: Analytics web open source, leve e privacy-first, sem cookies e com opç
 url: 'https://github.com/plausible/analytics'
 repo: 'https://github.com/plausible/analytics'
 category: backend-toolkit
-tags: [2026, oss]
+tags: [oss, production-ready, saas, selfhost]
 difficulty: bleeding-edge
 badge: Novo
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Privacy-first** — sem cookies, sem PII, sem cross-site tracking. GDPR/LGPD compliant out-of-box.
+- **Script de ~1kb** — sem impacto visível em performance ou Core Web Vitals.
+- **Self-host trivial** ou cloud-managed barato (~R$ 50/mês para sites pequenos).
+- **Dashboard limpo** — sem 50 métricas confusas, foca nas 5 que importam.
+
+## Cuidados
+
+- Cobertura de bloqueadores de ads é alta — você perde uns 30-40% do tráfego real vs Google Analytics.
+- Não tem funil avançado, cohort analysis ou event scoring. Para product analytics sério, PostHog vence.
+- Self-host exige ClickHouse — peça extra para manter.
+
+## Alternativas
+
+- **Umami** se quer ainda mais minimalista e Postgres-friendly.
+- **PostHog** se quer analytics + session replay + feature flags + heatmap em um lugar.
+- **Vercel Analytics** se já está em Vercel e aceita lock-in leve.

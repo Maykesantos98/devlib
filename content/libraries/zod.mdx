@@ -4,8 +4,27 @@ summary: Validação de schemas TypeScript com inferência automática de tipos.
 url: 'https://github.com/colinhacks/zod'
 repo: 'https://github.com/colinhacks/zod'
 category: backend-toolkit
-tags: [oss]
+tags: [lang:typescript, oss, production-ready]
 difficulty: producao
 badge: Validation
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Define uma vez, infere o tipo** — `z.object({...})` + `z.infer<typeof X>` elimina duplicação de schema + interface.
+- **Substrato de quase tudo** — AI SDK, tRPC, Drizzle, React Hook Form aceitam Zod schema diretamente.
+- **Refinements custom** — `.refine(...)` adiciona regras de negócio sem sair do tipo.
+- **Zod 4 (2025)** trouxe ganhos de performance e `z.codec()` para parsing assimétrico (entrada/saída diferentes).
+
+## Cuidados
+
+- Schemas profundos com `.merge`, `.extend`, `.refine` podem ficar pesados em type-check. Modulariza schemas se TS lentidão aparecer.
+- `z.string().date()` vs `z.coerce.date()` confunde quando vem de JSON. Padronize entry/exit no boundary.
+- Em validação massiva (batch ETL), considere `valibot` para bundle menor.
+
+## Alternativas
+
+- **Valibot** se você quer bundle minúsculo (~10× menor que Zod).
+- **TypeBox** se você precisa de JSON Schema nativo para OpenAPI.
+- **arktype** se você prefere sintaxe declarativa estilo TS puro.

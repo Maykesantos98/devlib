@@ -4,8 +4,26 @@ summary: Testes e automação web com Chromium, Firefox, WebKit, CLI para agente
 url: 'https://github.com/microsoft/playwright'
 repo: 'https://github.com/microsoft/playwright'
 category: devops
-tags: [oss]
+tags: [ai:agent-framework, cli, oss, production-ready, runtime:cli]
 difficulty: producao
 badge: Teste
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **3 engines de browser** no mesmo SDK — Chromium, Firefox, WebKit. Não há outro com essa cobertura.
+- **`codegen`** grava interação manual e gera o teste — útil para criar fixture inicial e para devs novos.
+- **Trace viewer** mostra screenshot + DOM + network de cada step. Debug de teste flaky vira trivial.
+- **MCP server oficial** — agentes Claude/Cursor conseguem dirigir browser via Playwright MCP em 2026.
+
+## Cuidados
+
+- Não é uma boa primeira ferramenta de teste — se o app não tem cobertura unitária, comece por Vitest + Testing Library.
+- Em CI, browsers ocupam ~500MB cada. Cache no GitHub Actions é obrigatório.
+- Testes paralelos podem competir por porta em apps com dev server compartilhado. Use `playwright/test` workers + isolate state por usuário.
+
+## Alternativas
+
+- **Cypress** se você quer DX mais opinionada (UI runner forte) e só Chromium basta.
+- **WebdriverIO** se você está em apps que exigem Selenium grid corporativo.

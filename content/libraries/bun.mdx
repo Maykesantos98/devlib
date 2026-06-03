@@ -4,8 +4,26 @@ summary: Runtime JavaScript drop-in para Node, com bundler, test runner e packag
 url: 'https://github.com/oven-sh/bun'
 repo: 'https://github.com/oven-sh/bun'
 category: devops
-tags: [oss]
+tags: [2026, ai:eval, lang:javascript, lang:typescript, oss, runtime:node]
 difficulty: producao
 badge: Runtime
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **`bun install` 10-30× mais rápido** que `npm install`. Em monorepo, vira commit-padrão diferente.
+- **Runtime + bundler + test runner integrados** — `bun run`, `bun build`, `bun test`. Substitui esbuild + vitest + npm em um binário.
+- **APIs Web padrão** — `fetch`, `Request`, `Response`, `WebSocket` nativos. Pronto para edge runtimes.
+- **Compatibilidade Node** — funciona com pacotes npm; uns 95% dos casos não exigem mudança.
+
+## Cuidados
+
+- Pacotes que usam APIs Node muito específicas (`worker_threads`, alguns C++ bindings) podem falhar. Verifique seu lock antes de adotar em prod.
+- Ecossistema de tooling (linters, formatters) ainda assume Node em alguns lugares.
+- Em CI: `bun install` é rápido mas exige imagem com Bun instalado — adiciona ~5s no setup.
+
+## Alternativas
+
+- **pnpm** se você quer só o ganho de `install` rápido sem trocar runtime.
+- **Node 22 LTS** se compatibilidade é absoluta (Bun ainda jovem em produção crítica).

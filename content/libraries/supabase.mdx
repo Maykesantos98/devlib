@@ -4,8 +4,27 @@ summary: Plataforma Postgres completa para banco, autenticação, storage, APIs,
 url: 'https://github.com/supabase/supabase'
 repo: 'https://github.com/supabase/supabase'
 category: backend-data
-tags: [oss]
+tags: [db:postgres, oss, production-ready, runtime:edge, serverless]
 difficulty: producao
 featured: true
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Postgres real** com auth, storage, realtime, edge functions e vector embebidos. Stack completa numa só conta.
+- **RLS (Row Level Security)** força autorização no banco — segurança contra "esqueci de filtrar por user_id".
+- **Self-host viável** — imagem Docker oficial, Coolify deploy em 10min. Sem vendor lock real.
+- **`pgvector` nativo** para RAG sem peças extras.
+
+## Cuidados
+
+- Auth está atrás do Postgres — invalidação de session global precisa de pulses, não é instantâneo como Clerk.
+- Edge Functions usam Deno; ecossistema de libs é menor que Vercel Edge (Node-compatible).
+- Free tier pausa o DB após 7 dias inativo — para protótipos com tráfego intermitente, ative `pause prevention` ou migre.
+
+## Alternativas
+
+- **Neon + Better Auth + R2** se você quer arquitetura "low-lock" peça por peça.
+- **Appwrite** se quer experiência similar mas Mongo-style.
+- **Firebase** se você quer Google ecosystem e aceita NoSQL.

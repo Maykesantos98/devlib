@@ -4,8 +4,27 @@ summary: Inference de LLMs em C/C++ puro com quantização GGUF. Roda em CPU, GP
 url: 'https://github.com/ggerganov/llama.cpp'
 repo: 'https://github.com/ggerganov/llama.cpp'
 category: ai-agents
-tags: [oss]
+tags: [ai:agent-framework, ai:provider, cli, lang:python, oss]
 difficulty: producao
 badge: Engine
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Engine por trás do Ollama, LM Studio, Jan e quase todo runner local** — referência da indústria.
+- **GGUF format** — comunidade gigantesca de modelos pré-quantizados em Hugging Face.
+- **Roda em hardware modesto** — quantização 4-bit faz Llama 3.1 8B rodar em laptop sem GPU dedicada.
+- **Acelera em CUDA, Metal, ROCm, Vulkan** — escolhe o backend conforme hardware automaticamente.
+
+## Cuidados
+
+- Não tem UI — você precisa de wrapper (Ollama, LM Studio) ou interage via CLI.
+- Setup direto exige compilar (ou baixar pre-build). Para usuário final, prefira Ollama.
+- Performance específica varia muito por modelo + quantização + hardware. Benchmark é obrigatório.
+
+## Alternativas
+
+- **MLC LLM** se quer mobile + web + desktop com mesma engine.
+- **ExecuTorch** para mobile production-ready em RN/iOS/Android.
+- **vLLM** se você está em servidor GPU e quer throughput máximo.

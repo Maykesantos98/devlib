@@ -4,8 +4,27 @@ summary: Suite do Google AI Edge pra ML/LLM on-device em mobile — visão, áud
 url: 'https://github.com/google-ai-edge/mediapipe'
 repo: 'https://github.com/google-ai-edge/mediapipe'
 category: mobile-ai
-tags: [oss]
+tags: [ai:on-device, ai:provider, oss, runtime:edge]
 difficulty: producao
 badge: Edge
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Modelos prontos para visão** — pose detection, face landmarks, hand tracking, gesture recognition.
+- **LLM Inference API** — Gemma on-device em iOS/Android com 1 SDK.
+- **Real-time performance** otimizado para mobile — 30fps em hardware modesto.
+- **Cross-platform** — iOS, Android, Web, Python desktop. Mesma API.
+
+## Cuidados
+
+- Modelos pré-treinados são fixos — não dá pra fine-tunar fácil; exige LiteRT-LM workflow separado.
+- Bundle adicional em apps mobile (~20MB para vision tasks completos).
+- Suporte iOS menos polido que Android — alguns bugs corner-case ainda aparecem em devices antigos.
+
+## Alternativas
+
+- **ExecuTorch** se você quer modelos custom PyTorch on-device.
+- **MLC LLM** para LLM puro multi-plataforma.
+- **Apple Vision** se iOS-only e quer integração nativa máxima.

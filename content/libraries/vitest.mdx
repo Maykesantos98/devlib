@@ -4,8 +4,26 @@ summary: Test runner rápido, compatível com Jest, integrado ao ecossistema Vit
 url: 'https://github.com/vitest-dev/vitest'
 repo: 'https://github.com/vitest-dev/vitest'
 category: devops
-tags: [oss]
+tags: [oss, production-ready]
 difficulty: producao
 badge: Vitest
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Default em projetos Vite** — usa o mesmo transform pipeline, zero config para TypeScript/JSX/CSS.
+- **API Jest-compatible** — `describe/it/expect`, mocks com `vi`. Migração de Jest é quase find/replace.
+- **Watch mode rápido** — só re-executa testes afetados pelos arquivos alterados.
+- **`vitest --browser`** roda testes em browser real (não jsdom) com Playwright — pega bugs que mocking esconde.
+
+## Cuidados
+
+- Para projetos Webpack/Turbopack ainda em transição, Jest pode ser menos atrito.
+- `vi.mock` tem semântica de hoisting diferente do Jest — mocks importados precisam ficar no topo do arquivo.
+- Performance em monorepos com 1000+ tests exige `--shard` no CI.
+
+## Alternativas
+
+- **Jest** se você está em projeto legado, equipe grande já familiarizada.
+- **Bun test** se você está em Bun e precisa de extrema velocidade — API quase compatível.

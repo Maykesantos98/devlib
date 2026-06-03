@@ -4,8 +4,27 @@ summary: Plataforma self-hostable de workflow automation com 400+ integrações,
 url: 'https://github.com/n8n-io/n8n'
 repo: 'https://github.com/n8n-io/n8n'
 category: backend-toolkit
-tags: [2026, oss]
+tags: [ai:agent-framework, lang:go, oss, selfhost]
 difficulty: bleeding-edge
 badge: Novo
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Workflow visual** — drag-and-drop, conexões claras. Não-devs conseguem montar automações simples.
+- **400+ integrações nativas** — Slack, GitHub, Notion, Stripe, OpenAI, qualquer API REST.
+- **Code node** para escapatória quando integração não basta — JS/Python inline.
+- **Self-host trivial** via Docker — substitui Zapier por uma fração do custo em escala.
+
+## Cuidados
+
+- Self-host exige cuidado com segurança — webhook endpoint aberto + credenciais expostas em nodes.
+- Para fluxos complexos, manutenção visual fica difícil. Considere transformar em código quando passar de ~50 nodes.
+- Performance — não é runtime de alta throughput. Para fluxos críticos em produção, considere Inngest/Temporal.
+
+## Alternativas
+
+- **Inngest** se você quer step durable nativo + DX em código.
+- **Temporal** se workflow precisa de garantias enterprise-grade.
+- **Zapier** se equipe é zero-dev e custo não importa.

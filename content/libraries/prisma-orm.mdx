@@ -4,8 +4,26 @@ summary: Toolkit Node/TypeScript para modelagem, migrations, Prisma Client tipad
 url: 'https://github.com/prisma/prisma'
 repo: 'https://github.com/prisma/prisma'
 category: backend-toolkit
-tags: [oss]
+tags: [cli, lang:typescript, oss, production-ready, runtime:cli, runtime:node]
 difficulty: producao
 badge: ORM
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Schema-first** — `schema.prisma` é fonte de verdade. Migrations geradas, client tipado, tudo coerente.
+- **Prisma Studio** — GUI para inspecionar/editar registros. Substitui pgAdmin/DBeaver para a maioria.
+- **`prisma migrate dev`** confiável e idempotente. Em dev, vence Drizzle em ergonomia.
+- **Comunidade gigante** — Stack Overflow tem resposta para quase tudo.
+
+## Cuidados
+
+- **Bundle ~200kb** no client — em apps edge ou bundle-sensitive, é peso. Prisma Accelerate ajuda mas adiciona vendor.
+- **Performance em queries complexas** (CTE, window) é boa mas raw SQL às vezes é o caminho. Fallback existe.
+- **Acelerated Edge** é pago. Para uso edge gratuito, Drizzle vence.
+
+## Alternativas
+
+- **Drizzle** se você quer SQL-first, edge nativo, bundle minúsculo.
+- **Kysely** se você adora SQL e quer só type safety.

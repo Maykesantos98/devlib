@@ -4,8 +4,27 @@ summary: Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shader
 url: 'https://github.com/mrdoob/three.js'
 repo: 'https://github.com/mrdoob/three.js'
 category: frontend-frameworks
-tags: ['lang:javascript', oss]
+tags: [motion, oss, production-ready, runtime:browser]
 difficulty: producao
 badge: 3D
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Padrão de fato** para 3D na web. Por trás de Bruno Simon, Spline runtime, Awwwards winners.
+- **Ecossistema robusto** — loaders GLTF, post-processing, physics (cannon, rapier), examples oficiais.
+- **`@react-three/fiber`** abstrai em JSX — vira declarativo, fácil de versionar.
+- **Performance OK** em até ~100k triangles em mobile; > 1M precisa de GPU otimizations (instanced mesh, LOD).
+
+## Cuidados
+
+- Curva real — você precisa entender mesh, material, light, camera mesmo com R3F.
+- Bundle de Three.js puro é grande (~600kb). Use tree-shaking via `three/examples/jsm/...`.
+- Acessibilidade quase zero — texto 3D não é indexável por SEO nem por leitor de tela. Always have fallback.
+
+## Alternativas
+
+- **Babylon.js** para projetos game-like (engine completo, scene editor).
+- **PlayCanvas** se quer collaboration cloud.
+- **WebGPU + raw shaders** se você é dev gráfico sério.

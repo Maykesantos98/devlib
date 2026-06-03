@@ -4,8 +4,27 @@ summary: Gerenciamento de server state para buscar, cachear, sincronizar e atual
 url: 'https://github.com/TanStack/query'
 repo: 'https://github.com/TanStack/query'
 category: frontend-frameworks
-tags: [oss]
+tags: [oss, production-ready, runtime:browser, ui:headless]
 difficulty: producao
 badge: Estado
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Resolve "server state" definitivamente** — cache, refetch, stale time, mutations, optimistic updates. Substitui ~70% do Redux/Zustand para apps CRUD.
+- **`useQuery` + `useMutation`** com invalidation declarativa por `queryKey`. Predizível em escala.
+- **DevTools incrível** — vê cache em tempo real, manualmente refetcha, debuga staleness.
+- **Multi-framework** — React, Vue, Solid, Svelte, Angular.
+
+## Cuidados
+
+- Não é client state — para form state, modals, UI flags, use Zustand/Jotai/useState. TanStack Query mantém só dados remotos.
+- `queryKey` mal pensada vira cache fragmentado ou over-invalidation. Padronize naming desde dia 1.
+- Em Next App Router com Server Components, fetch direto no server é mais simples — use TanStack Query só para parts client-side interativas.
+
+## Alternativas
+
+- **SWR** se quer API mais simples e menor footprint.
+- **RTK Query** se já está em Redux Toolkit.
+- **Native Server Components fetch + use cache** em Next 16+ para casos sem interatividade.

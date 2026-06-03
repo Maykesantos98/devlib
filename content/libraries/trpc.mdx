@@ -4,8 +4,27 @@ summary: APIs end-to-end typesafe sem schema. Defina no servidor, ganhe autocomp
 url: 'https://github.com/trpc/trpc'
 repo: 'https://github.com/trpc/trpc'
 category: backend-toolkit
-tags: [oss]
+tags: [cli, lang:typescript, oss, production-ready, runtime:cli, runtime:node]
 difficulty: producao
 badge: Typed
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Sem schema duplicado** — define `query`/`mutation` no server, client tem autocomplete completo. Adeus OpenAPI manual.
+- **Adapters** para Next, Express, Fastify, AWS Lambda, Cloudflare Workers.
+- **TanStack Query integrado** — caching, refetch, mutations. UX dura sem React Query manual.
+- **Server Components compatíveis** desde Next 14 via `createTRPCContext`.
+
+## Cuidados
+
+- **TS-only** — não é REST nem GraphQL. Se você tem clients em Python/Go, precisa de gateway REST ou OpenAPI generator.
+- **Bundle do client** vai junto com schema do server. Em apps grandes, prefira lazy import por router.
+- **Não é GraphQL** — se você precisa de queries flexíveis com selection ad-hoc, é a ferramenta errada.
+
+## Alternativas
+
+- **Hono RPC** se você usa Hono e quer leve.
+- **tsoa + OpenAPI** se você precisa de REST clássico tipado.
+- **GraphQL** se queries flexíveis são o caso de uso real.

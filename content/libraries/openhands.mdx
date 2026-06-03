@@ -4,8 +4,27 @@ summary: Agente autônomo que entrega features ponta a ponta. Planning Mode escr
 url: 'https://github.com/All-Hands-AI/OpenHands'
 repo: 'https://github.com/All-Hands-AI/OpenHands'
 category: ai-agents
-tags: [oss]
+tags: [2026, ai:agent-framework, oss]
 difficulty: producao
 badge: ~72k ★
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Agente OSS mais estrelado** — comunidade ativa, releases frequentes.
+- **Planning Mode** — o agente escreve plano de tarefas antes de executar. Você aprova/edita.
+- **Sandbox isolation** — cada agente roda em container Docker isolado. Mais seguro que rodar agente como root.
+- **Multi-provider** — Anthropic, OpenAI, OpenRouter, Ollama, qualquer LLM via API.
+
+## Cuidados
+
+- Setup mais complexo que Cline/Cursor — Docker + Python + UI exige tempo.
+- Documentação evolui rápido; release X pode ter quirks na X+1.
+- Performance depende do modelo escolhido. Com Sonnet 4.6+, vence muita coisa; com Llama 3 local, qualidade cai notavelmente.
+
+## Alternativas
+
+- **Cline** se você quer extensão VS Code mais leve.
+- **Claude Code** se prefere terminal e ecossistema Anthropic.
+- **Aider** se quer workflow git-centric simples.

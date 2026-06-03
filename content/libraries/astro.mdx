@@ -4,8 +4,26 @@ summary: 'Framework #1 pra sites de conteúdo. Zero JS por default, islands arch
 url: 'https://github.com/withastro/astro'
 repo: 'https://github.com/withastro/astro'
 category: frontend-frameworks
-tags: [oss]
+tags: [lang:typescript, oss, production-ready, runtime:browser]
 difficulty: producao
 badge: SSG
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Zero JS por padrão** — bundle minúsculo, Lighthouse 100 saindo de fábrica em blog/docs.
+- **Islands architecture** — só hidrata componentes interativos (`client:idle`, `client:visible`).
+- **Multi-framework** — React, Vue, Svelte, Solid no mesmo projeto. Migração progressiva é trivial.
+- **Content collections** — frontmatter + Zod-validated MDX, perfeito para acervos editoriais (este site usa um padrão similar).
+
+## Cuidados
+
+- Não é SPA — navegação faz full reload por padrão. View Transitions API ajuda mas não vira Next App Router.
+- SSR existe mas é menos maduro que estático. Para dashboards e aplicações com auth, Next/Remix ainda vencem.
+- Components `.astro` têm sintaxe própria — curva de aprendizado pequena, mas não-trivial.
+
+## Alternativas
+
+- **Next.js** se você precisa de app + dashboard + auth, não só conteúdo.
+- **Eleventy** se você quer SSG ainda mais minimalista, sem JS framework opinião.

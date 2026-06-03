@@ -4,8 +4,26 @@ summary: Plataforma aberta para visualizar métricas, logs e traces com dashboar
 url: 'https://github.com/grafana/grafana'
 repo: 'https://github.com/grafana/grafana'
 category: devops
-tags: [oss]
+tags: [charts, dashboards, observability, oss, production-ready]
 difficulty: producao
 badge: Dashboards
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Conecta em quase tudo** — Prometheus, Loki (logs), Tempo (traces), Postgres, ClickHouse, S3. Um painel para tudo.
+- **Alerting maduro** — regras com `WHEN avg() OF query(A) IS ABOVE X`, integra com PagerDuty/Slack/OpsGenie.
+- **OSS forte** — self-host gratuito, cloud paga só pelo conveniência. Sem vendor lock real.
+- **LGTM stack (Loki + Grafana + Tempo + Mimir)** é a alternativa moderna ao ELK.
+
+## Cuidados
+
+- Curva de aprendizado real — PromQL/LogQL não são SQL. Investimento de 1-2 semanas para um time se sentir produtivo.
+- Self-host exige Prometheus/Loki rodando junto. Em escala pequena (< 100 services), Grafana Cloud free tier vence em ROI.
+- Dashboards bonitos viram trabalho infinito — defina **golden signals** primeiro, fancy depois.
+
+## Alternativas
+
+- **Datadog** se você quer setup zero e tem orçamento (~5×-10× mais caro em escala).
+- **OpenObserve** se quer LGTM-like com menos peças móveis para self-host.

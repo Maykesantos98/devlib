@@ -4,8 +4,21 @@ summary: Build tool moderno com dev server rápido, HMR, plugins, TypeScript e b
 url: 'https://github.com/vitejs/vite'
 repo: 'https://github.com/vitejs/vite'
 category: frontend-frameworks
-tags: [oss]
+tags: [lang:typescript, oss, production-ready, runtime:browser]
 difficulty: producao
 badge: Build
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Dev server instantâneo** — usa ES modules nativos no browser. HMR < 50ms em projetos médios.
+- **Sem config para 90% dos casos** — TypeScript, JSX, CSS Modules, PostCSS funcionam out-of-the-box.
+- **Plugins compatíveis com Rollup** — ecossistema enorme herdado.
+- **Em 2026:** Vite 8 com Rolldown (Rust) — builds ainda mais rápidos que Webpack/Esbuild.
+
+## Cuidados
+
+- Projetos com muita CSS-in-JS (styled-components, Emotion) podem ter SSR/hydration tricky — testar cedo.
+- HMR pode ficar inconsistente em monorepos com paths exóticos. Use [@`vite-pnp-resolver`] ou similar.
+- Não é "framework" — você ainda escolhe React/Vue/Svelte por cima.

@@ -4,8 +4,27 @@ summary: O agente de código no terminal da Anthropic — edita arquivos, roda c
 url: 'https://github.com/anthropics/claude-code'
 repo: 'https://github.com/anthropics/claude-code'
 category: ai-agents
-tags: [oss]
+tags: [2026, ai:agent-framework, ai:provider, cli, oss, runtime:cli]
 difficulty: producao
 badge: Oficial
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Agente de código oficial Anthropic** — Claude 4.6/4.7/4.8 com acesso ao codebase inteiro, MCP servers e ferramentas nativas.
+- **Skills** — biblioteca de comportamentos especializados (frontend-design, security-reviewer, e2e-runner) que ativam por contexto.
+- **Plan mode + extended thinking** — para tarefas complexas, o agente raciocina antes de agir.
+- **Hooks** — automatize Prettier/TSC/eslint depois de cada edição via `settings.json`.
+
+## Cuidados
+
+- **Não é gratuito** — exige plano Anthropic Pro/Max ou API key com créditos. Em uso intenso, ~R$ 100-300/mês.
+- Custom skills e MCP servers exigem entendimento mínimo dos formatos. Comece pelo `skills.sh`.
+- Excelente para refatoração focada e features novas; menos consistente em debugging de bugs muito sutis em código legacy.
+
+## Alternativas
+
+- **Cline** ou **Cursor** se você prefere IDE-integrated.
+- **OpenHands** se quer agentes open-source self-host.
+- **Aider** se prefere terminal-puro com workflow git-centric.

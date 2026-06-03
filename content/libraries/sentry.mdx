@@ -4,8 +4,26 @@ summary: Rastrear erros, performance, releases e falhas em apps web, backend e m
 url: 'https://github.com/getsentry/sentry'
 repo: 'https://github.com/getsentry/sentry'
 category: devops
-tags: [oss]
+tags: [observability, oss, production-ready]
 difficulty: producao
 badge: APM
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Default mundial para error tracking** — feed agrupa por fingerprint, breadcrumbs antes do erro, replay de sessão opcional.
+- **Source maps** funcionam em frameworks modernos (Next, Vite, Expo, Flutter). Stack trace sai legível em produção.
+- **Release tracking** vincula erro ao commit/PR/usuário. Bisseção fica visual.
+- **Performance + Web Vitals** no mesmo dashboard. Substitui parte de New Relic/Datadog para apps pequenas.
+
+## Cuidados
+
+- **PII redaction** é obrigatório — `beforeSend` deve remover cookies, emails, tokens antes do envio. Esqueceu = vazamento.
+- Session Replay é poderoso mas caro em volume. Habilite só `replaysOnErrorSampleRate: 1`.
+- Free tier (5k errors/mês) acaba rápido em produção com bug recém-lançado. Plano Team é o mínimo realista.
+
+## Alternativas
+
+- **GlitchTip** (OSS, self-host, Sentry-compatible API) se você quer custo zero.
+- **Highlight** se você prefere session replay no centro da experiência.

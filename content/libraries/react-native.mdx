@@ -4,8 +4,27 @@ summary: Base pra apps iOS/Android nativos a partir de um código JavaScript. Ne
 url: 'https://github.com/facebook/react-native'
 repo: 'https://github.com/facebook/react-native'
 category: mobile-ai
-tags: [oss]
+tags: [2026, lang:javascript, oss, production-ready, runtime:mobile]
 difficulty: producao
 badge: ~126k ★
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Mesmo código, iOS + Android** — economia real de 40-60% vs equipes nativas separadas.
+- **New Architecture (Fabric + TurboModules)** em 2026 elimina a ponte JS↔nativo; performance vira próxima de Swift/Kotlin para a maior parte dos casos.
+- **Ecossistema gigante** — biblioteca para quase tudo. Reanimated 3 + Skia + Gesture Handler cobrem UI complexa.
+- **Hot reload** mantém DX próxima do web em mobile.
+
+## Cuidados
+
+- **Sempre use Expo** — direct React Native exige config nativa que come dias do seu calendário.
+- **Module nativo custom** ainda exige Swift/Kotlin. New Architecture facilitou mas não eliminou.
+- **App tamanho** começa em ~30MB. Para apps de IA on-device + assets, pode estourar limites de App Store.
+
+## Alternativas
+
+- **Flutter** se você quer engine própria e identidade visual única.
+- **Native Swift/Kotlin** quando performance crítica ou hardware-specific (AR, sensors raros).
+- **PWA / Capacitor** se app pode ser web-based wrapped.

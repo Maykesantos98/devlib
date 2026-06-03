@@ -4,8 +4,27 @@ summary: Framework CSS utility-first para interfaces responsivas com design cons
 url: 'https://github.com/tailwindlabs/tailwindcss'
 repo: 'https://github.com/tailwindlabs/tailwindcss'
 category: frontend-frameworks
-tags: [oss]
+tags: [oss, production-ready, runtime:browser, ui:styled]
 difficulty: producao
 badge: CSS
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Utility-first** elimina o problema "nomeei o BEM e agora ninguém entende" — classes descrevem o que fazem.
+- **Tailwind v4 (2025)** rebuild em Rust — build instantâneo, config em CSS via `@theme`.
+- **Ecossistema dominante** — shadcn/ui, Magic UI, Aceternity, HeroUI, Tremor, Catalyst — tudo Tailwind.
+- **IntelliSense forte** — autocomplete + preview de cor + tipos via plugin oficial.
+
+## Cuidados
+
+- **Cognitive load inicial alto** — 50+ utilities por componente assusta. Aceitar é parte do contrato.
+- **`@apply` é tentação** — vira CSS clássico mascarado. Use só para components reusáveis no design system.
+- **Tema customizado** em v4 é via CSS variables; migração de v3 config exige cuidado.
+
+## Alternativas
+
+- **CSS Modules** se você prefere CSS clássico tipado.
+- **Panda CSS** se quer utility-first + atomic CSS gerado em build.
+- **CSS puro com tokens** (este site é exemplo) se acervo é pequeno e controle é prioridade.

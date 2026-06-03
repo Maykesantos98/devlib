@@ -4,8 +4,26 @@ summary: A forma rápida e pythônica de construir servidores e clientes MCP. Ro
 url: 'https://github.com/jlowin/fastmcp'
 repo: 'https://github.com/jlowin/fastmcp'
 category: mcp
-tags: ['lang:python', oss]
+tags: [2026, cli, lang:python, oss, runtime:cli, security]
 difficulty: producao
 featured: true
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Decorators pythônicos** — `@mcp.tool()`, `@mcp.resource()`. Define MCP server em menos de 20 linhas.
+- **Roda 70% dos MCP servers reais** — referência da comunidade Python.
+- **stdio + HTTP transport** — server local ou remoto sem mudar código.
+- **Auth + middleware integrado** — produção-ready, não só protótipo.
+
+## Cuidados
+
+- Python — se seu time é TypeScript puro, considere `@modelcontextprotocol/sdk` em TS para coerência.
+- Cliente MCP (consumir tools de outros servers) é menos explorado que o server-side.
+- Performance é Python — para tools que processam muito dado, considere Rust/Go alternativos.
+
+## Alternativas
+
+- **`@modelcontextprotocol/sdk`** (TypeScript) — oficial Anthropic, mais verbose mas TypeScript-puro.
+- **MCP Inspector** para debugar qualquer MCP server visualmente.

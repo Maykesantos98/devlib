@@ -4,8 +4,27 @@ summary: Infra backend open source com auth, databases, storage, functions, mess
 url: 'https://github.com/appwrite/appwrite'
 repo: 'https://github.com/appwrite/appwrite'
 category: backend-data
-tags: [oss]
+tags: [oss, production-ready, security]
 difficulty: producao
 badge: Open
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **BaaS open source** — Auth, DB, Storage, Functions, Realtime, Messaging em um stack próprio.
+- **Self-host real** via Docker Compose, mantido ativo, comunidade grande.
+- **SDKs em todas as linguagens populares** — Flutter, Swift, Kotlin, Python, Node, Web. Bom para apps mobile.
+- **Functions** rodam em Deno, Node, Python, PHP, Ruby — flexibilidade alta.
+
+## Cuidados
+
+- Storage interno é MariaDB — não é Postgres. Migrações e features avançadas são menos ricas.
+- Realtime via WebSocket, mas escala horizontal exige Redis + tuning.
+- Cloud hosted é mais novo que Supabase; tier free menos generoso em uso intenso.
+
+## Alternativas
+
+- **Supabase** se você prefere Postgres real e cloud-first.
+- **Firebase** se você quer Google ecosystem maduro.
+- **PocketBase** se você quer single-binary (ainda mais simples para self-host).

@@ -4,8 +4,27 @@ summary: Orquestração em grafos para agentes stateful, workflows longos e exec
 url: 'https://github.com/langchain-ai/langgraph'
 repo: 'https://github.com/langchain-ai/langgraph'
 category: ai-agents
-tags: [oss]
+tags: [ai:agent-framework, lang:python, oss]
 difficulty: producao
 badge: Stateful
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Grafos para agentes stateful** — explicita transição entre nodes, conditional edges, loops controlados.
+- **Persistência built-in** — checkpoints em Postgres/Redis. Workflow durável entre sessões/restarts.
+- **Streaming de tokens + steps** — UI mostra agente "pensando" em tempo real.
+- **TypeScript + Python** — workflows portáveis entre stacks.
+
+## Cuidados
+
+- Curva de aprendizado real — pensar em grafos é shift mental vs sequências.
+- Para chat simples, é overkill. Use só quando workflow tem branching/loops genuínos.
+- Ecossistema LangChain tem reputação mista; LangGraph é a parte mais sólida em 2026.
+
+## Alternativas
+
+- **Mastra** se você quer TS + workflows + RAG num framework só.
+- **Inngest** ou **Vercel Workflow** se durabilidade > grafo de decisão.
+- **AI SDK + steps manuais** se workflow é simples.

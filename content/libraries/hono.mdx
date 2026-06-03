@@ -4,8 +4,27 @@ summary: Framework TypeScript ultraleve para Node, Bun, Deno, Workers e edge.
 url: 'https://github.com/honojs/hono'
 repo: 'https://github.com/honojs/hono'
 category: backend-data
-tags: [oss]
+tags: [lang:typescript, oss, production-ready, runtime:edge, runtime:node, serverless]
 difficulty: producao
 badge: TS
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Edge-first** — roda em Cloudflare Workers, Deno Deploy, Vercel Edge, Bun, Node. Mesmo código, qualquer runtime.
+- **Type-safe RPC** — define rotas no server, client com autocomplete. Alternativa leve ao tRPC.
+- **Middleware compositional** — auth, CORS, compression, cache em chains declarativas.
+- **Bundle minúsculo** (~14kb) — perfeito para serverless cold starts.
+
+## Cuidados
+
+- API menor que Express/Fastify — alguns middlewares específicos exigem implementação custom.
+- Comunidade crescendo mas não é Express. Stack Overflow tem menos respostas.
+- Em apps Node-only de produção, Fastify ainda é mais maduro.
+
+## Alternativas
+
+- **Fastify** se você está em Node-only com escala alta.
+- **Express** se está em projeto legado.
+- **Elysia** se prefere Bun-first com TypeBox.

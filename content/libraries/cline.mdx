@@ -4,8 +4,26 @@ summary: 'Agente autônomo model-agnostic no VS Code: planeja, edita arquivos, r
 url: 'https://github.com/cline/cline'
 repo: 'https://github.com/cline/cline'
 category: ai-agents
-tags: [oss]
+tags: [2026, ai:agent-framework, cli, oss, runtime:browser, runtime:cli]
 difficulty: producao
 badge: IDE
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Extensão VS Code** — sem mudar editor. Tela split mostra plano + diff + terminal.
+- **Provider-agnostic** — Anthropic, OpenAI, Gemini, Ollama, OpenRouter. Você paga o que escolher.
+- **Approve cada step** por padrão — UX confortável para quem está cético sobre agentes autônomos.
+- **MCP support** desde 2024 — conecta servers locais e remotos.
+
+## Cuidados
+
+- Approve manual é seguro mas lento — para tarefas longas, ative auto-approve com escopo restrito.
+- Logs de tools/commands consomem contexto rápido. Para sessões longas, plan mode + smaller models para steps mecânicos.
+- Memory entre sessões é limitada vs Claude Code — para projetos longos, considere `claude-mem` ou similar.
+
+## Alternativas
+
+- **Claude Code** se você prefere terminal e Anthropic.
+- **Roo Code** se quer fork mais agressivo do Cline com features extras.

@@ -4,8 +4,26 @@ summary: Construir, documentar e testar componentes isolados, com testes de inte
 url: 'https://github.com/storybookjs/storybook'
 repo: 'https://github.com/storybookjs/storybook'
 category: frontend-frameworks
-tags: [oss]
+tags: [oss, production-ready, runtime:browser]
 difficulty: producao
 badge: Workshop
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Stories como fonte de verdade** — cada componente vira documentação executável.
+- **Visual regression** com Chromatic ou Argos — pega quebra de design antes do PR mergear.
+- **Interaction tests** com `@storybook/test` (Vitest under the hood). Substitui parte do RTL.
+- **Addons fortes** — a11y, design-tokens, dark mode, viewports, mobile mode.
+
+## Cuidados
+
+- Setup inicial tem mais peças do que parece (preview, manager, vite/webpack). Use o starter oficial.
+- Performance em monorepos > 500 stories degrada — paginação e lazy preview ajudam.
+- Manutenção de stories em refactor frequente é trabalho real. Se não usa visual regression, talvez não vale.
+
+## Alternativas
+
+- **Ladle** se você quer só showcase + HMR rápido, sem o peso do Storybook.
+- **Pages directory do Next.js** se você só precisa de "playground" sem visual diffing.

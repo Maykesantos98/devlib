@@ -4,8 +4,26 @@ summary: Rode modelos como Llama, Mistral e Gemma localmente com uma CLI simples
 url: 'https://github.com/ollama/ollama'
 repo: 'https://github.com/ollama/ollama'
 category: ai-agents
-tags: [oss]
+tags: [ai:agent-framework, ai:provider, cli, oss, runtime:cli]
 difficulty: producao
 badge: Local
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **`ollama run llama3.2`** — modelo baixado e rodando em < 1 min. UX que torna LLM local viável.
+- **API OpenAI-compatible** em `localhost:11434/v1` — código existente roda sem mudar.
+- **Lib catalog** com Llama, Qwen, Mistral, Gemma, DeepSeek, Phi quantizados prontos. Update via `ollama pull`.
+- **Privacy by default** — útil para dados sensíveis, validar protótipos sem custo de API.
+
+## Cuidados
+
+- Performance depende da GPU. Em laptop sem dGPU (M1/M2/M3 Apple Silicon vence) é OK para 7B; piora muito > 13B.
+- Modelo na RAM enquanto roda — 70B em 4-bit precisa ~40GB. Planeje hardware antes.
+- Não substitui Claude/GPT em raciocínio complexo. Use para chat simples, transcript, autocompletar.
+
+## Alternativas
+
+- **llama.cpp** se você quer controle de baixo nível e binding em C++.
+- **LM Studio** se prefere GUI. **MLX** se está em Apple Silicon e quer máxima performance.

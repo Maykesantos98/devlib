@@ -4,8 +4,26 @@ summary: 'Backend-as-a-service num único binário Go: SQLite, auth, realtime, s
 url: 'https://github.com/pocketbase/pocketbase'
 repo: 'https://github.com/pocketbase/pocketbase'
 category: backend-data
-tags: [oss]
+tags: [db:sqlite, lang:go, oss, production-ready, saas, security, selfhost]
 difficulty: producao
 badge: Open
 addedAt: '2026-06-03'
 ---
+
+## Por que escolher
+
+- **Binário único Go** com SQLite, auth, realtime, storage, admin UI. Sobe em VPS em 2 minutos.
+- **Zero config razoável** — admin dashboard sai pronto, schema editor visual, role-based access.
+- **Cost de host quase zero** — SQLite + Go binário roda em VPS de $5/mês com folga.
+- **Excelente para protótipos e MVPs** — usuário interage diretamente, sem servidor extra.
+
+## Cuidados
+
+- **SQLite** — escala vertical (até ~100k writes/dia ok). Para alto write throughput, Postgres vence.
+- **Comunidade menor** que Supabase. Menos exemplos, libs, integrations prontas.
+- **Não escala horizontalmente** facilmente — é single-node. Para multi-region, repensar.
+
+## Alternativas
+
+- **Supabase** se você quer Postgres real e prefere cloud-managed.
+- **Firebase** se quer SDK mobile maduro e pode aceitar vendor lock Google.
