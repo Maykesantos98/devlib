@@ -1,0 +1,62 @@
+name: Sugerir biblioteca
+description: Sugira uma nova biblioteca para entrar no acervo
+title: 'sugestão: <NomeDaLib>'
+labels: [biblioteca, sugestão]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Nome da biblioteca
+      placeholder: ex. Drizzle ORM
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL principal
+      placeholder: https://exemplo.com
+    validations:
+      required: true
+
+  - type: input
+    id: repo
+    attributes:
+      label: Repositório (se aberto)
+      placeholder: https://github.com/org/repo
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria proposta
+      options:
+        - ai-agents
+        - mcp
+        - frontend-ui
+        - frontend-frameworks
+        - backend-data
+        - backend-toolkit
+        - mobile-ai
+        - security
+        - devops
+        - trade-quant
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Por que entra no acervo?
+      description: 1-2 parágrafos sobre o diferencial. Trade-offs explícitos ajudam.
+      placeholder: |
+        - Vantagem 1
+        - Vantagem 2
+        - Cuidado a ter
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas próximas
+      placeholder: Quais libs concorrentes? Por que esta venceu?
