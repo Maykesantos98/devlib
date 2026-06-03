@@ -130,7 +130,7 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
         <React.Fragment key={chapter.id}>
           <div className="chapter-bar" data-chapter={chapter.chapter} id={chapter.id}>
             <span className="chapter-num">{chapter.num}</span>
-            <h3 dangerouslySetInnerHTML={{ __html: chapter.title || getChapterTitle(chapter.chapter) }}></h3>
+            <h3>{chapter.title || getChapterTitle(chapter.chapter)}</h3>
             <span className="count-pill">{chapter.cards.length} itens</span>
           </div>
 

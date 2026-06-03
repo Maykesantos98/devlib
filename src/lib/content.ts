@@ -135,6 +135,7 @@ function libraryToCard(lib: Library): CardData {
   const classes = ['card'];
   if (lib.featured) classes.push('feature');
   return {
+    slug: lib.slug,
     title: lib.title,
     classes: classes.join(' '),
     kind: lib.category,

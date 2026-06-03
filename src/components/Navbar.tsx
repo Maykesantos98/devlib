@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Palette } from 'lucide-react';
+import { Palette, Search, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   theme: 'nebula' | 'cyberpunk' | 'slate';
@@ -8,86 +8,115 @@ interface NavbarProps {
   onOpenCmdk: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ theme, onChangeTheme, onOpenCmdk }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface NavLink {
+  label: string;
+  to: string;
+  external?: boolean;
+}
 
-  const themes = [
-    { id: 'nebula', label: 'Nebula Dark', color: '#A855F7' },
-    { id: 'cyberpunk', label: 'Cyberpunk', color: '#FACC15' },
-    { id: 'slate', label: 'Slate Minimal', color: '#38BDF8' },
-  ] as const;
+const NAV_LINKS: NavLink[] = [
+  { label: 'Acervo',   to: '/#acervo' },
+  { label: 'Receitas', to: '/receitas' },
+  { label: 'Guias',    to: '/guias' },
+  { label: 'Método',   to: '/#metodo' },
+];
+
+const THEMES = [
+  { id: 'nebula',    label: 'Nebula',    color: '#A855F7' },
+  { id: 'cyberpunk', label: 'Cyberpunk', color: '#FACC15' },
+  { id: 'slate',     label: 'Slate',     color: '#38BDF8' },
+] as const;
+
+/**
+ * Animated nav link with slide-up hover.
+ * Adapted from 21st.dev's Mini Navbar pattern to CSS variables.
+ */
+function AnimatedNavLink({ label, to }: NavLink) {
+  return (
+    <Link to={to} className="nav-link" aria-label={label}>
+      <span className="nav-link-inner">
+        <span className="nav-link-text">{label}</span>
+        <span className="nav-link-text nav-link-text-hover" aria-hidden="true">{label}</span>
+      </span>
+    </Link>
+  );
+}
+
+export function Navbar({ theme, onChangeTheme, onOpenCmdk }: NavbarProps) {
+  const [open, setOpen] = useState(false);
+  const [themeOpen, setThemeOpen] = useState(false);
+  const [shapeClass, setShapeClass] = useState<'navbar-pill' | 'navbar-rounded'>('navbar-pill');
+  const shapeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Animate border-radius when mobile menu opens/closes.
+  useEffect(() => {
+    if (shapeTimer.current) clearTimeout(shapeTimer.current);
+    if (open) {
+      setShapeClass('navbar-rounded');
+    } else {
+      shapeTimer.current = setTimeout(() => setShapeClass('navbar-pill'), 300);
+    }
+    return () => {
+      if (shapeTimer.current) clearTimeout(shapeTimer.current);
+    };
+  }, [open]);
 
   return (
-    <header className="nav">
-      <div className="nav-inner">
-        <a href="#top" className="logo">
-          <img className="logo-mark-img" src="/favicon.png" alt="" width="30" height="30" />
+    <header className={`navbar-floating ${shapeClass}`}>
+      <div className="navbar-row">
+        {/* Logo */}
+        <Link to="/" className="navbar-logo" aria-label="DEVLIB · home">
+          <span className="navbar-logo-mark" aria-hidden="true">
+            <span /><span /><span /><span />
+          </span>
           <b>DEVLIB</b>
-          <span>·&nbsp;v03</span>
-        </a>
-        <nav className="nav-links nav-menu" aria-label="Navegação principal">
-          <div className="nav-group">
-            <span>Explore</span>
-            <a href="#interface-components">Componentes</a>
-            <a href="#agentes">Agentes</a>
-            <a href="#mcp">MCP</a>
-          </div>
-          <div className="nav-group">
-            <span>Build</span>
-            <a href="#interface-components">UI kits</a>
-            <a href="#server-db">Backend</a>
-            <a href="#metodo">Método</a>
-          </div>
-          <div className="nav-group">
-            <span>Editorial</span>
-            <Link to="/receitas">Receitas</Link>
-            <Link to="/guias">Guias</Link>
-            <a href="#metodo">Método</a>
-          </div>
+          <span className="navbar-logo-version">v04</span>
+        </Link>
+
+        {/* Desktop links */}
+        <nav className="navbar-links" aria-label="Navegação principal">
+          {NAV_LINKS.map((l) => (
+            <AnimatedNavLink key={l.to} {...l} />
+          ))}
         </nav>
 
-        <div className="nav-actions">
-          <div className="theme-selector">
+        {/* Right actions */}
+        <div className="navbar-actions">
+          {/* Theme switcher */}
+          <div className="navbar-theme">
             <button
-              className="btn-theme"
               type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Selecionar tema"
-              title="Trocar tema visual"
+              className="navbar-icon-btn"
+              onClick={() => setThemeOpen((v) => !v)}
+              aria-label="Trocar tema"
+              aria-expanded={themeOpen}
             >
-              <Palette size={16} />
+              <Palette size={15} aria-hidden="true" />
             </button>
-
-            {isOpen && (
+            {themeOpen && (
               <>
-                <div
-                  className="theme-dropdown-backdrop"
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    position: 'fixed',
-                    inset: 0,
-                    zIndex: 99,
-                  }}
+                <button
+                  type="button"
+                  className="navbar-backdrop"
+                  aria-label="Fechar menu de temas"
+                  onClick={() => setThemeOpen(false)}
                 />
-                <div className="theme-dropdown">
-                  {themes.map((t) => (
+                <div className="navbar-theme-menu" role="menu">
+                  {THEMES.map((t) => (
                     <button
                       key={t.id}
+                      type="button"
+                      role="menuitem"
                       onClick={() => {
                         onChangeTheme(t.id);
-                        setIsOpen(false);
+                        setThemeOpen(false);
                       }}
-                      className={`theme-btn-item ${theme === t.id ? 'active' : ''}`}
+                      className={`navbar-theme-item ${theme === t.id ? 'is-active' : ''}`}
                     >
                       <span
-                        style={{
-                          width: '8px',
-                          height: '8px',
-                          borderRadius: '50%',
-                          background: t.color,
-                          boxShadow: `0 0 8px ${t.color}`,
-                          flexShrink: 0,
-                        }}
+                        className="navbar-theme-dot"
+                        style={{ background: t.color, boxShadow: `0 0 8px ${t.color}` }}
+                        aria-hidden="true"
                       />
                       {t.label}
                     </button>
@@ -97,12 +126,47 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onChangeTheme, onOpenCmdk
             )}
           </div>
 
-          <button className="nav-cta nav-search" type="button" onClick={onOpenCmdk} data-magnetic>
-            <span>Search</span>
+          {/* Search trigger */}
+          <button
+            type="button"
+            className="navbar-search"
+            onClick={onOpenCmdk}
+            data-magnetic
+            aria-label="Abrir busca"
+          >
+            <Search size={14} aria-hidden="true" />
+            <span>Buscar</span>
             <kbd>⌘K</kbd>
+          </button>
+
+          {/* Mobile toggle */}
+          <button
+            type="button"
+            className="navbar-mobile-toggle"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={open}
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      <div className={`navbar-mobile-menu ${open ? 'is-open' : ''}`}>
+        <nav aria-label="Navegação mobile">
+          {NAV_LINKS.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="navbar-mobile-link"
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
     </header>
   );
-};
+}

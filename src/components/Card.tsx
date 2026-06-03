@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import type { CardData } from '../types';
 
 interface CardProps {
@@ -40,10 +41,24 @@ const itemVariants = {
 
 export const Card: React.FC<CardProps> = ({ data, isInStack, onToggleStack, onClick }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const handleCardActivate = () => {
+    if (data.slug) {
+      // v05: card click navigates to permalink detail page.
+      navigate(`/biblioteca/${data.slug}`);
+    } else {
+      // Fallback for items without an MDX slug — open legacy modal.
+      onClick();
+    }
+  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
+
+    // Respect reduced-motion: skip the 3D tilt entirely.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const rect = card.getBoundingClientRect();
     const lx = e.clientX - rect.left;
@@ -91,7 +106,15 @@ export const Card: React.FC<CardProps> = ({ data, isInStack, onToggleStack, onCl
       variants={itemVariants}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={onClick}
+      onClick={handleCardActivate}
+      role="link"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleCardActivate();
+        }
+      }}
     >
       <button
         className={`card-stack-add-btn ${isInStack ? 'in-stack' : ''}`}

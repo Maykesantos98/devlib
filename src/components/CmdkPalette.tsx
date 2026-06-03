@@ -1,369 +1,232 @@
-import React, { useEffect, useRef, useState } from 'react';
-import type { ChapterData, CardData } from '../types';
-import { getInstallCommand } from './Dock';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Search, ArrowRight } from 'lucide-react';
+import { libraries, recipes, guides } from '../lib/content';
+import { CATEGORIES, categoryMeta } from '../lib/schema';
 
 interface CmdkPaletteProps {
-  data: ChapterData[];
   isOpen: boolean;
   onClose: () => void;
-  onSelectCard: (card: CardData) => void;
-  onSelectFilter: (filter: string) => void;
-  onTriggerMatrix: () => void;
 }
 
-interface CommandEntry {
-  type: 'cmd' | 'repo';
-  label: string;
+interface Hit {
+  kind: 'library' | 'recipe' | 'guide' | 'category' | 'action';
+  title: string;
   sub: string;
-  desc?: string;
-  keywords: string;
-  run: () => void;
+  to: string;
+  emoji?: string;
 }
 
-export const CmdkPalette: React.FC<CmdkPaletteProps> = ({
-  data,
-  isOpen,
-  onClose,
-  onSelectCard,
-  onSelectFilter,
-  onTriggerMatrix,
-}) => {
+function normalize(s: string): string {
+  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+
+/**
+ * Global command palette — searches libraries, recipes, guides and categories.
+ * v05 replaces the v03 palette that only knew the legacy JSON catalog.
+ */
+export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [active, setActive] = useState(0);
+  const navigate = useNavigate();
 
-  // Toggle dialog display
+  // Toggle native dialog
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
+    const d = dialogRef.current;
+    if (!d) return;
     if (isOpen) {
-      if (!dialog.open) {
-        dialog.showModal();
+      if (!d.open) {
+        d.showModal();
         setQuery('');
-        setActiveIndex(0);
+        setActive(0);
         setTimeout(() => inputRef.current?.focus(), 50);
       }
-    } else {
-      if (dialog.open) {
-        dialog.close();
-      }
+    } else if (d.open) {
+      d.close();
     }
   }, [isOpen]);
 
+  // Forward native close (esc, backdrop) to parent
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    const handleClose = () => {
-      onClose();
-    };
-
-    dialog.addEventListener('close', handleClose);
-    return () => {
-      dialog.removeEventListener('close', handleClose);
-    };
+    const d = dialogRef.current;
+    if (!d) return;
+    const onCloseNative = () => onClose();
+    d.addEventListener('close', onCloseNative);
+    return () => d.removeEventListener('close', onCloseNative);
   }, [onClose]);
 
-  // Command palette entries
-  const commandEntries: CommandEntry[] = [
-    { 
-      type: 'cmd', 
-      label: 'Ir para o Índice', 
-      sub: 'navegação', 
-      desc: 'Navega diretamente até o índice/tabela de conteúdos com as 9 categorias principais do acervo.',
-      keywords: 'indice toc', 
-      run: () => { document.getElementById('indice')?.scrollIntoView({ behavior: 'smooth' }); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Ir para o Acervo', 
-      sub: 'navegação', 
-      desc: 'Foca a visualização na grade Bento de cartões do acervo aberto de ferramentas.',
-      keywords: 'acervo cards', 
-      run: () => { document.getElementById('acervo')?.scrollIntoView({ behavior: 'smooth' }); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Ir para o Método', 
-      sub: 'navegação', 
-      desc: 'Mostra os quatro princípios de engenharia e boas práticas sugeridas do DEVLIB.',
-      keywords: 'metodo principios', 
-      run: () => { document.getElementById('metodo')?.scrollIntoView({ behavior: 'smooth' }); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Voltar ao topo', 
-      sub: 'navegação', 
-      desc: 'Realiza scroll suave de volta para a primeira linha da página e hero area.',
-      keywords: 'topo top home', 
-      run: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Filtrar: Todos', 
-      sub: 'filtro', 
-      desc: 'Limpa todos os filtros ativos e exibe todas as 133 ferramentas cadastradas.',
-      keywords: 'todos all reset', 
-      run: () => { onSelectFilter('all'); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Filtrar: Top estrelas', 
-      sub: 'filtro', 
-      desc: 'Filtra os cartões bento exibindo apenas as bibliotecas mais famosas/estreladas do GitHub.',
-      keywords: 'top estrelas stars github populares', 
-      run: () => { onSelectFilter('top'); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Filtrar: Recentes', 
-      sub: 'filtro', 
-      desc: 'Filtra e foca nos pacotes e servidores adicionados recentemente no catálogo.',
-      keywords: 'recente recent novo new', 
-      run: () => { onSelectFilter('recent'); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Filtrar: Front-end', 
-      sub: 'filtro', 
-      desc: 'Exibe ferramentas, bibliotecas e assets focados em UI/UX e Frontend.',
-      keywords: 'frontend front ui interface', 
-      run: () => { onSelectFilter('frontend'); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Filtrar: Back-end', 
-      sub: 'filtro', 
-      desc: 'Exibe APIs, bancos de dados, ORMs e frameworks para servidores.',
-      keywords: 'backend back server api', 
-      run: () => { onSelectFilter('backend'); onClose(); } 
-    },
-    { 
-      type: 'cmd', 
-      label: 'Ativar Matrix mode', 
-      sub: 'easter egg', 
-      desc: 'Ativa o tema verde hackerman estilo console Matrix em toda a aplicação.',
-      keywords: 'matrix verde konami', 
-      run: () => { onTriggerMatrix(); onClose(); } 
-    },
-  ];
-
-  const repoEntries: CommandEntry[] = data.flatMap(chapter =>
-    chapter.cards.map(card => ({
-      type: 'repo',
-      label: card.title,
-      sub: card.meta.split('·')[0]?.trim() || 'lib',
-      keywords: `${card.title} ${card.meta} ${card.kind}`,
-      run: () => {
-        onSelectCard(card);
-        onClose();
-      }
-    }))
-  );
-
-  const allEntries = [...commandEntries, ...repoEntries];
-
-  // Filtering list
-  const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-
-  const filteredEntries = React.useMemo(() => {
+  // Build searchable hit list — memoized per query.
+  const hits = useMemo<Hit[]>(() => {
     const q = normalize(query.trim());
+    const out: Hit[] = [];
+
+    const matchLib = libraries.filter((l) =>
+      !q || normalize(`${l.title} ${l.summary} ${l.tags.join(' ')}`).includes(q),
+    );
+    const matchRec = recipes.filter((r) =>
+      !q || normalize(`${r.title} ${r.goal} ${r.summary}`).includes(q),
+    );
+    const matchGuide = guides.filter((g) =>
+      !q || normalize(`${g.title} ${g.summary}`).includes(q),
+    );
+    const matchCat = CATEGORIES.filter((c) =>
+      !q || normalize(`${c.name} ${c.description}`).includes(q),
+    );
+
+    // No query → show curated entry points (categories + recent recipes/guides)
     if (!q) {
-      return [...commandEntries.slice(0, 4), ...repoEntries.slice(0, 8)];
+      for (const c of CATEGORIES.slice(0, 6)) {
+        out.push({
+          kind: 'category',
+          title: c.name,
+          sub: c.description,
+          to: `/categoria/${c.id}`,
+          emoji: c.emoji,
+        });
+      }
+      for (const r of matchRec.slice(0, 3)) {
+        out.push({
+          kind: 'recipe',
+          title: r.title,
+          sub: r.goal,
+          to: `/receita/${r.slug}`,
+          emoji: r.emoji,
+        });
+      }
+      for (const g of matchGuide.slice(0, 3)) {
+        out.push({
+          kind: 'guide',
+          title: g.title,
+          sub: g.summary,
+          to: `/guia/${g.slug}`,
+        });
+      }
+      return out;
     }
-    return allEntries
-      .filter((it) => normalize(`${it.label} ${it.sub} ${it.keywords}`).includes(q))
-      .slice(0, 40);
-  }, [query, data]);
 
-  // Find active card for dual pane preview
-  const activeEntry = filteredEntries[activeIndex];
-  const activeCard: CardData | null = React.useMemo(() => {
-    if (!activeEntry || activeEntry.type !== 'repo') return null;
-    for (const chapter of data) {
-      const found = chapter.cards.find(c => c.title === activeEntry.label);
-      if (found) return found;
+    // With query: libraries first (up to 8), then recipes, guides, categories.
+    for (const l of matchLib.slice(0, 8)) {
+      const meta = categoryMeta(l.category);
+      out.push({
+        kind: 'library',
+        title: l.title,
+        sub: `${meta.emoji} ${meta.name} · ${l.summary.slice(0, 100)}`,
+        to: `/biblioteca/${l.slug}`,
+      });
     }
-    return null;
-  }, [activeEntry, data]);
+    for (const r of matchRec.slice(0, 3)) {
+      out.push({
+        kind: 'recipe',
+        title: r.title,
+        sub: `Receita · ${r.goal}`,
+        to: `/receita/${r.slug}`,
+        emoji: r.emoji,
+      });
+    }
+    for (const g of matchGuide.slice(0, 3)) {
+      out.push({
+        kind: 'guide',
+        title: g.title,
+        sub: `Guia · ${g.summary.slice(0, 100)}`,
+        to: `/guia/${g.slug}`,
+      });
+    }
+    for (const c of matchCat.slice(0, 2)) {
+      out.push({
+        kind: 'category',
+        title: c.name,
+        sub: `Categoria · ${c.description}`,
+        to: `/categoria/${c.id}`,
+        emoji: c.emoji,
+      });
+    }
+    return out;
+  }, [query]);
 
-  // Manage keyboard
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  // Reset cursor when results change
+  useEffect(() => {
+    setActive(0);
+  }, [hits.length]);
+
+  const select = (hit: Hit) => {
+    onClose();
+    navigate(hit.to);
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setActiveIndex((prev) => (prev + 1) % filteredEntries.length);
+      setActive((i) => Math.min(i + 1, Math.max(hits.length - 1, 0)));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setActiveIndex((prev) => (prev - 1 + filteredEntries.length) % filteredEntries.length);
+      setActive((i) => Math.max(i - 1, 0));
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      if (filteredEntries[activeIndex]) {
-        filteredEntries[activeIndex].run();
-      }
+      const hit = hits[active];
+      if (hit) select(hit);
     }
   };
 
-  useEffect(() => {
-    // Scroll active item into view
-    const activeEl = document.querySelector('.cmdk-item.active');
-    activeEl?.scrollIntoView({ block: 'nearest' });
-  }, [activeIndex]);
-
   return (
-    <dialog
-      ref={dialogRef}
-      className="cmdk"
-      id="cmdk"
-      onClick={(e) => {
-        if (e.target === dialogRef.current) onClose();
-      }}
-    >
-      <div className="cmdk-box">
-        {/* Left Pane: Search Input & Results (Main) */}
-        <div className="cmdk-main-pane">
-          <div className="cmdk-input-row" onKeyDown={handleKeyDown}>
-            <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m21 21-4.3-4.3" />
-            </svg>
-            <input
-              ref={inputRef}
-              id="cmdkInput"
-              type="text"
-              placeholder="Buscar biblioteca ou comando…"
-              autoComplete="off"
-              spellCheck="false"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setActiveIndex(0);
-              }}
-            />
-            <kbd>esc</kbd>
-          </div>
+    <dialog ref={dialogRef} className="cmdk-dialog" aria-label="Busca global">
+      <div className="cmdk-shell" onKeyDown={onKeyDown}>
+        <header className="cmdk-head">
+          <Search size={16} aria-hidden="true" />
+          <input
+            ref={inputRef}
+            type="search"
+            className="cmdk-input"
+            placeholder="Buscar bibliotecas, receitas, guias…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            autoComplete="off"
+            aria-label="Buscar"
+          />
+          <kbd className="cmdk-esc">esc</kbd>
+        </header>
 
-          <ul className="cmdk-list" id="cmdkList" role="listbox">
-            {filteredEntries.map((it, i) => (
-              <li
-                key={`${it.type}-${it.label}-${i}`}
-                className={`cmdk-item${i === activeIndex ? ' active' : ''}`}
-                role="option"
-                aria-selected={i === activeIndex}
-                onClick={() => it.run()}
-                onMouseMove={() => setActiveIndex(i)}
-              >
-                <span className="cmdk-kind">{it.type === 'repo' ? 'lib' : 'cmd'}</span>
-                <span className="cmdk-label">{it.label}</span>
-                <span className="cmdk-sub">{it.sub}</span>
-              </li>
-            ))}
-            {filteredEntries.length === 0 && (
-              <li className="cmdk-empty">Nada encontrado · tente outro termo</li>
-            )}
-          </ul>
-
-          <div className="cmdk-foot">
-            <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
-            <span><kbd>↵</kbd> abrir</span>
-            <span><kbd>esc</kbd> fechar</span>
-            <span className="cmdk-count" id="cmdkCount">
-              {filteredEntries.length} itens
-            </span>
-          </div>
-        </div>
-
-        {/* Right Pane: Live Preview Panel */}
-        <div className="cmdk-preview-pane">
-          {activeEntry ? (
-            activeEntry.type === 'repo' && activeCard ? (
-              // Library Info Preview
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem' }}>
-                  <span style={{ fontSize: '0.62rem', fontFamily: 'var(--font-mono)', color: 'var(--violet-400)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                    {activeCard.meta}
-                  </span>
-                  <h3 className="cmdk-preview-title">{activeCard.title}</h3>
-                </div>
-
-                <p className="cmdk-preview-desc">{activeCard.body}</p>
-
-                <div className="cmdk-preview-section">
-                  <h4>Comando de instalação</h4>
-                  <div className="cmdk-preview-cmd">
-                    {getInstallCommand(activeCard.title)}
-                  </div>
-                </div>
-
-                <div className="cmdk-preview-section">
-                  <h4>Tipo / Seção</h4>
-                  <span style={{ fontSize: '0.72rem', color: 'var(--text-soft)', textTransform: 'capitalize' }}>
-                    {activeCard.kind}
-                  </span>
-                </div>
-
-                {activeCard.tags && activeCard.tags.length > 0 && (
-                  <div className="cmdk-preview-section">
-                    <h4>Tags associadas</h4>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
-                      {activeCard.tags.map((tag, idx) => (
-                        <span 
-                          key={idx} 
-                          style={{ 
-                            fontSize: '0.62rem', 
-                            fontFamily: 'var(--font-mono)', 
-                            background: 'rgba(255,255,255,0.04)', 
-                            border: '1px solid var(--border)',
-                            borderRadius: '4px',
-                            padding: '0.1rem 0.35rem',
-                            color: 'var(--text-soft)'
-                          }}
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ) : (
-              // Command Info Preview
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem' }}>
-                  <span style={{ fontSize: '0.62rem', fontFamily: 'var(--font-mono)', color: 'var(--violet-400)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                    AÇÃO DO SISTEMA
-                  </span>
-                  <h3 className="cmdk-preview-title">{activeEntry.label}</h3>
-                </div>
-
-                <p className="cmdk-preview-desc">
-                  {activeEntry.desc || 'Executa um comando local ou altera filtros da aplicação instantaneamente.'}
-                </p>
-
-                <div className="cmdk-preview-section">
-                  <h4>Categoria</h4>
-                  <span style={{ fontSize: '0.72rem', color: 'var(--text-soft)', textTransform: 'capitalize' }}>
-                    {activeEntry.sub}
-                  </span>
-                </div>
-
-                <div className="cmdk-preview-section">
-                  <h4>Atalho rápido</h4>
-                  <div className="cmdk-preview-cmd" style={{ color: 'var(--text-soft)' }}>
-                    Pressione <kbd style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid var(--border)', borderRadius: '4px', padding: '0.05rem 0.3rem' }}>Enter ↵</kbd> para executar
-                  </div>
-                </div>
-              </div>
-            )
+        <ol className="cmdk-list" role="listbox">
+          {hits.length === 0 ? (
+            <li className="cmdk-empty">Nada encontrado para "{query}".</li>
           ) : (
-            // Fallback empty preview
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--text-dim)', fontSize: '0.78rem' }}>
-              Selecione um item para ver detalhes
-            </div>
+            hits.map((hit, idx) => (
+              <li
+                key={`${hit.kind}-${hit.to}`}
+                role="option"
+                aria-selected={idx === active}
+                className={`cmdk-item ${idx === active ? 'is-active' : ''}`}
+                onMouseEnter={() => setActive(idx)}
+                onClick={() => select(hit)}
+              >
+                <span className="cmdk-kind">{hit.emoji ?? kindBadge(hit.kind)}</span>
+                <span className="cmdk-meta">
+                  <strong>{hit.title}</strong>
+                  <span>{hit.sub}</span>
+                </span>
+                <ArrowRight size={14} className="cmdk-arrow" aria-hidden="true" />
+              </li>
+            ))
           )}
-        </div>
+        </ol>
+
+        <footer className="cmdk-foot">
+          <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+          <span><kbd>enter</kbd> abrir</span>
+          <span><kbd>esc</kbd> fechar</span>
+        </footer>
       </div>
     </dialog>
   );
-};
+}
+
+function kindBadge(kind: Hit['kind']): string {
+  switch (kind) {
+    case 'library':  return '📦';
+    case 'recipe':   return '🧪';
+    case 'guide':    return '📘';
+    case 'category': return '📂';
+    case 'action':   return '⚡';
+  }
+}

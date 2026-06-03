@@ -9,6 +9,8 @@ export interface CardData {
   tags: string[];
   link_text: string;
   link_url: string;
+  /** v05: slug of the underlying Library MDX, used to route to /biblioteca/:slug */
+  slug?: string;
 }
 
 export interface ChapterData {

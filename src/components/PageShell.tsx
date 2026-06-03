@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+
+import { Navbar } from './Navbar';
 
 import '../styles/tokens.css';
 import '../styles/base.css';
@@ -14,6 +16,18 @@ interface PageShellProps {
 }
 
 export function PageShell({ children }: PageShellProps) {
+  const [theme, setTheme] = useLocalStorage<'nebula' | 'cyberpunk' | 'slate'>('devlib_theme', 'nebula');
+
+  // Sync theme attribute on root element so detail pages also pick it up.
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+
+  // Detail pages don't host the CmdkPalette yet — Sprint 12 makes ⌘K global.
+  const handleCmdk = () => {
+    window.location.assign('/?cmdk=open');
+  };
+
   return (
     <div id="top">
       <div className="aurora" aria-hidden="true" style={{ display: 'block' }}>
@@ -23,30 +37,15 @@ export function PageShell({ children }: PageShellProps) {
       </div>
       <div className="grid-bg" aria-hidden="true" />
 
-      <header className="nav">
-        <div className="nav-inner">
-          <Link to="/" className="logo">
-            <img className="logo-mark-img" src="/favicon.png" alt="" width="30" height="30" />
-            <b>DEVLIB</b>
-            <span>·&nbsp;v04</span>
-          </Link>
-          <nav className="nav-links nav-menu" aria-label="Navegação principal">
-            <div className="nav-group">
-              <span>Explorar</span>
-              <Link to="/">Acervo</Link>
-              <Link to="/receitas">Receitas</Link>
-              <Link to="/guias">Guias</Link>
-            </div>
-          </nav>
-          <div className="nav-actions">
-            <Link to="/" className="nav-cta">Voltar ao acervo</Link>
-          </div>
-        </div>
-      </header>
+      <Navbar
+        theme={theme}
+        onChangeTheme={setTheme}
+        onOpenCmdk={handleCmdk}
+      />
 
       <main>{children}</main>
 
-      <footer className="footer shell" style={{ marginTop: '5rem' }}>
+      <footer className="footer shell" style={{ marginTop: '5rem', paddingBottom: '3rem' }}>
         <p style={{ color: 'var(--text-soft)', fontSize: '0.85rem' }}>
           DEVLIB v04 · Acervo curado para devs que constroem com agentes.
         </p>
