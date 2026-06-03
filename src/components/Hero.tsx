@@ -35,7 +35,7 @@ const mascot = new Agent({
 
 await mascot.run("Recomende um ORM");
 `,
-    output: `🤖 Droid log: Pesquisando por "ORM" no libraries.json...
+    output: `🤖 Droid log: Pesquisando por "ORM" no acervo MDX...
 🤖 Droid log: Encontrado "Supabase" (Ch. 05) e "Prisma" (Ch. 05).
 Recomendação: Prisma ORM possui melhor integração com TypeScript.`
   },

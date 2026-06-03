@@ -47,6 +47,11 @@ async function loadDir(subdir) {
     const source = await readFile(path, 'utf8');
     const { data, content } = parseFrontmatter(source);
     const slug = basename(file, '.mdx');
+    // YAML can parse bare numbers like 2026 — coerce tags to strings
+    // to match what the Vite plugin does at runtime.
+    if (Array.isArray(data.tags)) {
+      data.tags = data.tags.map((t) => String(t));
+    }
     items.push({ slug, data: { ...data, slug, body: content.trim() }, file: `content/${subdir}/${file}` });
   }
   return items;

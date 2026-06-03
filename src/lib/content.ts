@@ -15,10 +15,13 @@ import {
   LibrarySchema,
   RecipeSchema,
   GuideSchema,
+  CATEGORIES,
+  type CategoryId,
   type Library,
   type Recipe,
   type Guide,
 } from './schema';
+import type { CardData, ChapterData } from '../types';
 
 /* ── Lazy body loaders (React components) ────────────────── */
 
@@ -86,3 +89,77 @@ export function loadRecipeBody(slug: string) {
 export function loadGuideBody(slug: string) {
   return guideBody[`/content/guides/${slug}.mdx`];
 }
+
+/* ── BentoGrid adapter ───────────────────────────────────── */
+
+const CATEGORY_TONE: Record<CategoryId, CardData['tone']> = {
+  'ai-agents':           'violet',
+  'mcp':                 'cyan',
+  'frontend-ui':         'pink',
+  'frontend-frameworks': 'amber',
+  'backend-data':        'emerald',
+  'backend-toolkit':     'cyan',
+  'mobile-ai':           'violet',
+  'security':            'amber',
+  'devops':              'emerald',
+  'trade-quant':         'pink',
+};
+
+const CATEGORY_NUM: Record<CategoryId, string> = {
+  'ai-agents':           '§01 · Agents',
+  'mcp':                 '§02 · MCP',
+  'frontend-ui':         '§03 · Frontend UI',
+  'frontend-frameworks': '§04 · Frontend Frameworks',
+  'backend-data':        '§05 · Backend (Data)',
+  'backend-toolkit':     '§06 · Backend (Toolkit)',
+  'mobile-ai':           '§07 · Mobile & AI',
+  'security':            '§08 · Security',
+  'devops':              '§09 · DevOps',
+  'trade-quant':         '§10 · Trade & Quant',
+};
+
+const CATEGORY_TITLE: Record<CategoryId, string> = {
+  'ai-agents':           'Frameworks & SDKs — escolha seu runtime.',
+  'mcp':                 'Model Context Protocol — a fiação.',
+  'frontend-ui':         'Interface — componentes & blocos.',
+  'frontend-frameworks': 'Interface — frameworks & gráficos.',
+  'backend-data':        'Servidor — bancos de dados & APIs.',
+  'backend-toolkit':     'Servidor — ORMs, auth & validação.',
+  'mobile-ai':           'Apps — mobile & IA on-device.',
+  'security':            'Segurança — auth & appsec.',
+  'devops':              'Build — build, testes & obs.',
+  'trade-quant':         'Trade — agentes & quant.',
+};
+
+function libraryToCard(lib: Library): CardData {
+  const classes = ['card'];
+  if (lib.featured) classes.push('feature');
+  return {
+    title: lib.title,
+    classes: classes.join(' '),
+    kind: lib.category,
+    tone: CATEGORY_TONE[lib.category],
+    meta: '',
+    badge: lib.badge ?? '',
+    body: lib.summary,
+    tags: lib.tags,
+    link_text: '',
+    link_url: lib.url,
+  };
+}
+
+/**
+ * Groups libraries by category into the ChapterData[] shape that the
+ * existing BentoGrid + CmdkPalette consume. Empty categories are dropped.
+ */
+export const chapters: ChapterData[] = CATEGORIES.map((cat) => {
+  const items = libraries.filter((l) => l.category === cat.id);
+  return {
+    id: cat.id,
+    chapter: cat.id,
+    num: CATEGORY_NUM[cat.id],
+    title: CATEGORY_TITLE[cat.id],
+    count: `${items.length} itens`,
+    cards: items.map(libraryToCard),
+  };
+}).filter((c) => c.cards.length > 0);

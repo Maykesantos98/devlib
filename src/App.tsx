@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import type { ChapterData, CardData } from './types';
+import type { CardData } from './types';
 import type { DevlibConsoleApi } from './devlib';
-import librariesDataRaw from './data/libraries.json';
+import { chapters as librariesData } from './lib/content';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
 // Components
@@ -25,15 +25,14 @@ import './styles/motion.css';
 import './styles/responsive.css';
 import './styles/editorial.css';
 
-const librariesData = librariesDataRaw as ChapterData[];
-
 export const App: React.FC = () => {
   // ── States ──────────────────────────────────────────────
   const [selectedStack, setSelectedStack] = useLocalStorage<string[]>('devlib_stack', []);
   const [theme, setTheme] = useLocalStorage<'nebula' | 'cyberpunk' | 'slate'>('devlib_theme', 'nebula');
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [visibleCount, setVisibleCount] = useState(133);
+  const totalLibraries = librariesData.reduce((sum, c) => sum + c.cards.length, 0);
+  const [visibleCount, setVisibleCount] = useState(totalLibraries);
   
   // Modals & Panels
   const [isCmdkOpen, setIsCmdkOpen] = useState(false);
@@ -211,7 +210,7 @@ export const App: React.FC = () => {
         return isMatrixMode ? '○ Matrix desativado.' : '◉ Matrix ativado.';
       },
       count() {
-        return `${visibleCount} de 133 bibliotecas visíveis.`;
+        return `${visibleCount} de ${totalLibraries} bibliotecas visíveis.`;
       },
       filter(category: string) {
         handleFilterSelect(category);
@@ -289,7 +288,7 @@ export const App: React.FC = () => {
         <section className="stats-strip" aria-label="Resumo do acervo">
           <div className="shell stats-inner">
             <div className="stat-item">
-              <span className="stat-num gradient">133</span>
+              <span className="stat-num gradient">{totalLibraries}</span>
               <span className="stat-tag">bibliotecas</span>
             </div>
             <span className="stat-divider" aria-hidden="true"></span>
@@ -493,7 +492,7 @@ export const App: React.FC = () => {
         <section className="section shell" id="acervo">
           <span className="section-eyebrow">— Acervo aberto</span>
           <h2 className="section-title">Tudo, <em>organizado.</em></h2>
-          <p className="section-desc">Pressione <kbd>⌘K</kbd> para buscar entre as 133 entradas. Filtre por categoria para refinar.</p>
+          <p className="section-desc">Pressione <kbd>⌘K</kbd> para buscar entre as {totalLibraries} entradas. Filtre por categoria para refinar.</p>
 
           <div className="toolbar" role="search">
             <label className="search">
