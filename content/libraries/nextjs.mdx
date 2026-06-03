@@ -1,0 +1,27 @@
+---
+title: Next.js
+summary: Framework React full-stack com App Router, Server Components, PPR e cache. Default para SaaS sério em 2026.
+url: https://nextjs.org/
+repo: https://github.com/vercel/next.js
+category: frontend-frameworks
+tags: [lang:typescript, runtime:node, runtime:edge, oss, license:mit, 2026, production-ready]
+difficulty: producao
+badge: Default
+featured: true
+recipes: [launch-saas-2026, portfolio-landing, dashboard-analytics]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Server Components por padrão** — fetch de dados no servidor, zero waterfall.
+- **App Router** maduro: layouts aninhados, streaming, error boundaries por rota.
+- **PPR (Partial Prerendering)** — combina estático + dinâmico no mesmo response.
+- **`"use cache"` directive** (Next 16) substitui `unstable_cache` com semântica explícita.
+- Ecossistema dominante: shadcn, Drizzle, Better Auth, Stripe — todos têm guia oficial.
+
+## Cuidados
+
+- Vendor lock parcial com Vercel se você usar Edge Functions + Image Optimization + ISR ao mesmo tempo.
+- `"use client"` é fácil de espalhar demais; revise antes de cada PR.
+- Build pode ser lento em monorepos > 50 rotas — Turbopack ajuda mas ainda amadurecendo.

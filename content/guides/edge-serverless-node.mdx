@@ -1,0 +1,134 @@
+---
+title: 'Edge vs Serverless vs Node: quando usar cada'
+summary: Explicação prática das três arquiteturas de runtime web em 2026. Decisão por workload, latência e custo.
+category: devops
+publishedAt: '2026-06-02'
+readingMinutes: 6
+---
+
+"Eu coloco Edge ou Serverless?" é a pergunta que aparece em todo projeto Next.js sério. Spoiler: a resposta depende menos de moda e mais de **onde estão seus dados**.
+
+## As 3 arquiteturas
+
+### Node tradicional (long-running)
+
+Container ou VM rodando seu app 24/7. Conexões persistentes, memória persistente entre requests.
+
+**Onde:** Railway, Render, Fly, ECS, K8s
+
+### Serverless (functions)
+
+Função spawn por request, dies depois. Sem estado entre requests. Cold start medível.
+
+**Onde:** Vercel Functions, AWS Lambda, Cloudflare Workers (sim, Workers é tecnicamente "edge serverless")
+
+### Edge (functions geograficamente distribuídas)
+
+Subset de serverless rodando em PoPs perto do usuário. Limites de runtime (sem Node API completa, sem `fs`).
+
+**Onde:** Vercel Edge, Cloudflare Workers, AWS Lambda@Edge
+
+## A decisão real: onde está seu DB?
+
+Esta é a pergunta que determina arquitetura. Não é "qual é mais legal".
+
+### Se seu DB está em **uma região fixa**
+
+(Postgres em US-East, MongoDB Atlas em São Paulo, etc.)
+
+→ **Serverless ou Node na mesma região**
+
+Edge não ajuda. Cada request edge vai ter que dar round-trip até a região do DB. Você apenas adicionou latência.
+
+### Se seu DB está em **múltiplas regiões / replicado globalmente**
+
+(Neon com replicas, Turso global, CockroachDB multi-region, Cloudflare D1)
+
+→ **Edge brilha aqui**
+
+Request em Tóquio chega na função em Tóquio que lê da replica de Tóquio. Latência baixa real.
+
+### Se você **não tem DB** (proxy, API gateway, transformação)
+
+→ **Edge é vitória clara**
+
+Static rewrite, A/B test, autenticação por cookie, geolocation — tudo em < 50ms global.
+
+### Se você tem **websockets, jobs longos, streaming complexo**
+
+→ **Node tradicional**
+
+Serverless tem timeout (geralmente 60-900s). Edge tem timeouts ainda mais agressivos. Workloads contínuas pedem Node.
+
+## Comparação direta
+
+| | Node tradicional | Serverless | Edge |
+|---|---|---|---|
+| Latência cold start | 0 (sempre quente) | 200-2000ms | 5-50ms |
+| Limite de execução | Ilimitado | 60-900s | 30s típico |
+| Estado entre reqs | Sim (mem, conn pool) | Não | Não |
+| Filesystem | Sim | Limitado | Não |
+| Node APIs | 100% | 100% | Subset (Web APIs) |
+| Custo idle | $$$ (servidor sempre on) | $0 | $0 |
+| Custo escala | Linear (servidores) | Por req | Por req |
+| Geo distribuído | Não (1 região) | Não (1 região) | Sim |
+
+## Padrões que funcionam bem em 2026
+
+### Padrão 1: **Edge no entry, Node atrás**
+
+Edge function autentica, faz redirect, A/B test, rewrites. Forwarding para Node API regional para queries de DB.
+
+Exemplo: Next.js middleware (edge) → Vercel Functions (serverless) → Neon (mesma região).
+
+### Padrão 2: **Edge full-stack com DB edge**
+
+Tudo em edge: Workers + D1 ou Vercel Edge + Turso. Funciona para apps relativamente simples (CRUD, blogs, dashboards).
+
+### Padrão 3: **Node monolito + CDN**
+
+App tradicional em Render/Fly + Cloudflare CDN na frente. Funciona para 90% dos SaaS. Sub-estimado por dev moderno mas é robusto.
+
+## Quando NÃO usar edge
+
+Edge é o hype-darling, mas sofre em:
+
+- **Connection pooling para DB tradicional** — cada cold edge invoca cria nova conexão. Use HTTP-based driver (Neon serverless, PlanetScale HTTP).
+- **Heavy compute** (image processing, ML inference) — CPU limit baixo, timeout duro.
+- **Libs que dependem de Node** — qualquer pacote que faz `require('fs')` ou usa native bindings.
+
+## Quando NÃO usar serverless
+
+- **Cold start sensível** (login, primeira página) — usuário sente 1-2s a mais.
+- **Conexões persistentes** (websockets, SSE longo) — abusivo em pricing.
+- **Workloads contínuas** (cron pesado, processamento batch) — barato em VM, caro em function.
+
+## Quando NÃO usar Node tradicional
+
+- **Tráfego com picos extremos** — escalar Node em 30s é mentira. Serverless escala em 200ms.
+- **Múltiplas regiões** — replicar Node em 5 regiões é trabalhoso. Edge faz default.
+- **Custo idle importante** — VM cobra mesmo sem tráfego. Function cobra zero.
+
+## Recomendação 2026 para SaaS típico
+
+```
+Vercel (Edge middleware + Functions) → Neon Postgres (mesma região)
+```
+
+- Middleware edge: auth, rewrites, A/B test
+- Functions: API routes, mutations, queries
+- Neon serverless driver via Vercel Functions (HTTP, sem pool)
+
+Stack robusta, custo previsível, escala automática, sem servidor pra babysitting.
+
+Se você está em B2B enterprise com latência muito crítica e dados em região específica, **considere voltar para Node monolito em VM da mesma região**. Boring é poderoso.
+
+## Conclusão
+
+Edge não é melhor que serverless. Serverless não é melhor que Node. **Cada um resolve um problema diferente**:
+
+- **Edge** resolve geo-distribuição
+- **Serverless** resolve elasticidade e custo idle zero
+- **Node** resolve workloads contínuas e estado
+
+Pergunta certa: "onde está meu gargalo?" — não "qual é o futuro?".

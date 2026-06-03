@@ -1,0 +1,133 @@
+---
+title: Landing / Portfólio com acabamento
+goal: Portfólio / Landing
+emoji: 🎨
+summary: Stack para uma landing/portfólio com visual diferenciado em 1 fim de semana. Foco em hero impactante, motion sutil e mobile perfeito.
+stack:
+  - { library: nextjs,         role: Framework,             note: 'Static export funciona, mas use App Router para futuro.' }
+  - { library: shadcn,         role: Componentes base,      note: 'Botões, cards, dialog. Edite à vontade.' }
+  - { library: magic-ui,       role: Componentes motion,    note: 'Beam, marquee, particles. Para o "wow".' }
+  - { library: framer-motion,  role: Animação custom,       note: 'Hero entrance, scroll reveal.' }
+publishedAt: '2026-06-02'
+---
+
+## Estrutura mínima
+
+```
+app/
+  layout.tsx       # font, theme provider
+  page.tsx         # hero + sections
+  globals.css      # tokens
+components/
+  hero.tsx
+  features.tsx
+  testimonials.tsx
+  pricing.tsx
+  footer.tsx
+```
+
+## Setup em 6 passos
+
+### 1. Bootstrap
+
+```bash
+npx create-next-app@latest portfolio --typescript --tailwind --app
+cd portfolio
+npx shadcn@latest init
+npx shadcn@latest add button card
+npm install framer-motion
+```
+
+### 2. Magic UI (componentes wow)
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/marquee.json"
+npx shadcn@latest add "https://magicui.design/r/animated-beam.json"
+npx shadcn@latest add "https://magicui.design/r/particles.json"
+```
+
+### 3. Tipografia editorial
+
+No `layout.tsx`:
+
+```tsx
+import { Inter, Bricolage_Grotesque } from 'next/font/google';
+
+const sans = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display' });
+```
+
+Use `display` em h1/h2, `sans` em corpo. Faz 30% da percepção de qualidade.
+
+### 4. Hero com entrada
+
+```tsx
+'use client';
+import { motion } from 'framer-motion';
+
+export function Hero() {
+  return (
+    <section className="min-h-screen flex items-center">
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="text-5xl md:text-7xl font-display"
+      >
+        Sou o {name}. <br />
+        Construo <em>coisas</em>.
+      </motion.h1>
+    </section>
+  );
+}
+```
+
+### 5. Scroll reveal nas sections
+
+```tsx
+import { motion } from 'framer-motion';
+
+const reveal = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+<motion.section
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true, margin: '-100px' }}
+  variants={reveal}
+>
+  ...
+</motion.section>
+```
+
+### 6. Deploy
+
+```bash
+git push origin main
+```
+
+Importe no Vercel — preview a cada PR, custom domain free.
+
+---
+
+## Alternativas
+
+- **Astro** se você quer puramente estático + ilhas de interação — bundle 70% menor.
+- **Aceternity UI** alternativa ao Magic UI, foco em hero/marketing.
+- **HeroUI** (ex-NextUI) — design system com identidade visual completa.
+
+## Gotchas
+
+- **Web fonts pesadas** — sempre `display: swap` + preload das 2 mais críticas.
+- **Mobile-first não é opcional** — 60%+ vai abrir no celular. Hero precisa funcionar em 375px.
+- **Tema dark/light** — implemente desde o dia 1, não retrofit.
+- **Lighthouse** abaixo de 90 em mobile é bandeira vermelha para um portfólio.
+- **Cuidado com excesso de motion** — 2-3 momentos por página, não 15. Respeite `prefers-reduced-motion`.
+
+## Próximos passos
+
+- **OG image dinâmica** — `@vercel/og` para cada projeto.
+- **Blog em MDX** — `contentlayer` ou nativo App Router.
+- **Form de contato** com Resend ou Formspark.

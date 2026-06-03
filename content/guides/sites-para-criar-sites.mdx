@@ -1,0 +1,188 @@
+---
+title: Sites e plataformas para criar sites em 2026
+summary: Onde construir, onde hospedar, onde inspirar. Curadoria de serviços por tipo de site, com custos reais e quando usar cada.
+category: frontend-frameworks
+publishedAt: '2026-06-02'
+readingMinutes: 6
+---
+
+A questão "onde eu crio meu site?" tem várias respostas em 2026 — depende do tipo, do orçamento, do quanto você quer cuidar de manutenção. Este guia mapeia o terreno.
+
+## 4 caminhos, 4 perfis
+
+| Você é… | Caminho |
+|---|---|
+| Não-dev que quer site agora | **No-code builder** (Framer, Webflow, Carrd) |
+| Dev que quer rápido e profissional | **Framework + Vercel/Netlify** (Next, Astro, SvelteKit) |
+| Dev que quer custo zero / controle | **Static + GitHub Pages** ou **Cloudflare Pages** |
+| Empresa com loja / CMS | **Headless CMS + framework** ou **Shopify/WooCommerce** |
+
+## No-code builders
+
+### [Framer](https://framer.com)
+Ex-design tool virou builder. Animações nativas excelentes, CMS embutido, export para HTML. **Default 2026 para landing/portfólio sem dev.**
+- Custo: free para 1 site, R$ 50-150/mês para pro
+- Limite: difícil customizar lógica complexa
+
+### [Webflow](https://webflow.com)
+Builder maduro, controle CSS completo, ecossistema enorme.
+- Custo: R$ 70-150/mês plans pagos (free não permite custom domain)
+- Curva: significativa para domínio total
+
+### [Carrd](https://carrd.co)
+Sites de 1 página, simples, baratíssimo.
+- Custo: $19/ano (sim, ano)
+- Limite: realmente 1 página
+
+### [Wix](https://wix.com) / [Squarespace](https://squarespace.com)
+Mainstream, foco em template + arrastar. Funcional, sem grandes diferenciais.
+- Custo: R$ 50-300/mês
+- Quando: cliente final que vai mexer sozinho depois
+
+### [Notion Sites](https://notion.so/product/sites) (lançou 2025)
+Publicar Notion direto como site. Imbatível em velocidade de setup.
+- Custo: incluso no Notion plus ($10/mês)
+- Limite: layout limitado, sem custom CSS
+
+## Frameworks (para dev)
+
+### [Next.js](https://nextjs.org)
+**Default 2026** para apps e sites complexos. React Server Components, App Router maduro.
+- Hosting: Vercel é a casa, funciona em qualquer Node host
+- Curva: razoável para iniciante React
+
+### [Astro](https://astro.build)
+**Default 2026** para sites de conteúdo. Static-first, "ilhas" de interatividade, MDX nativo, bundle minúsculo.
+- Hosting: Vercel, Netlify, Cloudflare Pages
+- Quando: blog, docs, portfólio, marketing site
+
+### [SvelteKit](https://kit.svelte.dev)
+Framework Svelte. Bundle minúsculo, DX excelente.
+- Hosting: Vercel, Netlify, Cloudflare
+- Quando: você prefere Svelte ou bundle minimal crítico
+
+### [Remix / TanStack Start](https://tanstack.com)
+Tanstack Start herdou Remix. Foco em loaders/actions, Web Standards, sem mágica.
+- Hosting: qualquer Node
+- Quando: você ama Web Standards e quer alternativa Next
+
+### [Nuxt](https://nuxt.com)
+Vue full-stack maduro.
+- Hosting: Vercel, Netlify, qualquer Node
+- Quando: você prefere Vue
+
+## Hosts (onde publicar)
+
+### [Vercel](https://vercel.com)
+Default para Next, ótimo para qualquer framework. Preview URLs por PR, edge functions, analytics integrado.
+- Custo: free generoso, Pro $20/mês
+- Limite: bandwidth pode ficar caro em viral
+
+### [Netlify](https://netlify.com)
+Concorrente Vercel maduro. Forms, identity, build minutes generosos.
+- Custo: free generoso, Pro $19/mês
+
+### [Cloudflare Pages](https://pages.cloudflare.com)
+Build + hosting + edge functions + R2 + D1. Stack completa Cloudflare.
+- Custo: free **bandwidth ilimitado** (irreal mas verdade), Pro $20/mês
+- Quando: bandwidth pesado ou edge crítico
+
+### [GitHub Pages](https://pages.github.com)
+Static apenas, simples como sempre.
+- Custo: free
+- Limite: sem build customizado, repo público (privado em GH Pro)
+
+### [Coolify / Dokploy](https://coolify.io)
+Self-host alternativas Heroku. Você roda em VPS.
+- Custo: R$ 30-100/mês em VPS
+- Quando: vários projetos pequenos, controle total
+
+## Headless CMS
+
+### [Sanity](https://sanity.io)
+Maduro, modelagem flexível, real-time, Studio customizável.
+- Custo: free generoso, escala $$
+
+### [Payload CMS](https://payloadcms.com)
+TS-first, self-host opcional. Cresceu muito em 2024-2025.
+- Custo: self-host = free, cloud $$
+
+### [Contentful](https://contentful.com)
+Enterprise default, API estável, ecossistema enorme.
+- Custo: free limitado, planos pagos pesados
+
+### [TinaCMS](https://tina.io)
+Edit in place sobre Git. Bom para sites pequenos.
+- Custo: free, planos pagos para multi-user
+
+### [Strapi](https://strapi.io)
+Self-host headless OSS. Customização total.
+- Custo: free OSS, Strapi Cloud pago
+
+## E-commerce
+
+### [Shopify](https://shopify.com)
+Default sério para vender físico/digital. App ecosystem enorme.
+- Custo: $39+/mês
+- Quando: você quer vender, não construir
+
+### [Medusa](https://medusajs.com)
+Headless e-commerce OSS, alternativa Shopify para devs.
+- Custo: self-host = free
+
+### [WooCommerce](https://woocommerce.com)
+WordPress + commerce. Domina mercado SMB BR.
+- Custo: WP host + plugins
+
+### [Polar](https://polar.sh)
+Merchant of Record moderno para produto digital/subscription. Alternativa ao Stripe + Paddle.
+- Custo: % por transação
+
+## Galerias de inspiração
+
+Antes de criar, **olhe muito**:
+
+- [Awwwards](https://awwwards.com) — premiações, design de alto nível
+- [Land-book](https://land-book.com) — landings reais, filtros por tipo
+- [Mobbin](https://mobbin.com) — UI mobile real (free + paid)
+- [Page Flows](https://pageflows.com) — fluxos completos gravados
+- [Refero](https://refero.design) — design references organizado
+- [SaaSPages](https://saaspages.xyz) — landings de SaaS
+- [Codrops](https://codrops.com) — patterns de motion / WebGL
+
+## Componentes prontos
+
+- [shadcn/ui](https://ui.shadcn.com) — primitives copy-paste
+- [Magic UI](https://magicui.design) — componentes wow
+- [Aceternity](https://ui.aceternity.com) — hero + marketing
+- [HeroUI](https://heroui.com) — design system completo
+- [Tremor](https://tremor.so) — dashboards
+
+## Recomendações concretas
+
+### Portfólio simples
+**Framer** (sem dev) ou **Astro + Vercel** (com dev)
+
+### Landing de produto SaaS
+**Next + shadcn + Magic UI + Vercel**. Eventualmente vira o produto inteiro.
+
+### Blog técnico
+**Astro + MDX + Vercel**. Bundle minúsculo, build rápido, SEO impecável.
+
+### Loja online
+**Shopify** se você só quer vender. **Medusa** se você é dev e quer custom.
+
+### Site institucional com CMS
+**Astro + Sanity** ou **Next + Payload**.
+
+### Documentação
+**Astro Starlight** ou **Nextra**.
+
+## Anti-padrões
+
+- **WordPress para landing** — overkill, manutenção, segurança
+- **Webflow para SaaS** — tudo vira hack quando precisar de auth/data
+- **Cloudflare Workers como host de app SSR Next** — funciona mas dor
+- **GitHub Pages para algo com forms** — não tem backend
+
+A maior decisão errada é **gastar 3 meses construindo seu site** em vez de validar mercado. Se você não é dev, use Framer e foque no produto. Se você é dev, use Astro/Next e foque no produto. **O site não é o produto.**

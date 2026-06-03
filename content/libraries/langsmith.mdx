@@ -1,0 +1,22 @@
+---
+title: LangSmith
+summary: Plataforma de observabilidade para LLMs — traces, evals, datasets. Essencial para debugar agentes em produção.
+url: https://smith.langchain.com/
+category: ai-agents
+tags: [saas, freemium, production-ready, observability, ai:eval]
+difficulty: producao
+recipes: [build-ai-agent]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Traces hierárquicos** mostram cada step, tool call e mudança de estado.
+- **Eval framework** com datasets e scoring (LLM-as-judge, regex, custom).
+- **Annotation queue** para feedback humano.
+- **Integra com qualquer SDK** via OpenTelemetry, não exige LangChain.
+
+## Cuidados
+
+- Custo escala com volume de traces — sample 1-10% em hot paths de produção.
+- Self-host pago caro; use cloud para a maioria dos casos.

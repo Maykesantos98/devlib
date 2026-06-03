@@ -1,0 +1,31 @@
+---
+title: Drizzle ORM
+summary: ORM TypeScript SQL-first. Type safety total, sem runtime, migrations declarativas. Default sobre Prisma em projetos performance-críticos.
+url: https://orm.drizzle.team/
+repo: https://github.com/drizzle-team/drizzle-orm
+category: backend-toolkit
+tags: [lang:typescript, runtime:node, runtime:edge, oss, license:apache-2.0, 2026, production-ready, db:postgres, db:sqlite]
+difficulty: producao
+badge: SQL-first
+featured: true
+recipes: [launch-saas-2026, dashboard-analytics]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Sintaxe próxima de SQL** — você entende exatamente a query gerada.
+- **Sem runtime overhead** — gera SQL no build, dispatcher minúsculo em runtime.
+- **Edge-compatible** — funciona em Cloudflare Workers, Vercel Edge, Bun.
+- **Migrations gerenciadas** — `drizzle-kit generate` + `migrate`, sem mágica.
+
+## Drizzle vs Prisma
+
+| | Drizzle | Prisma |
+|---|---|---|
+| Sintaxe | Próxima do SQL | DSL própria |
+| Edge | ✅ nativo | ⚠️ via Accelerate |
+| Type safety | Inferida | Gerada |
+| Bundle | < 10kb | ~200kb |
+
+Use Drizzle quando edge importa, SQL importa, ou bundle importa.

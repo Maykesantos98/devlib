@@ -1,0 +1,22 @@
+---
+title: Vercel AI Gateway
+summary: Roteador unificado para LLMs com failover automático, observabilidade e billing centralizado. Uma chave para todos os providers.
+url: https://vercel.com/docs/ai-gateway
+category: ai-agents
+tags: [saas, freemium, 2026, production-ready, ai:provider, observability]
+difficulty: producao
+recipes: [build-ai-agent]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Failover** entre providers (Anthropic primário, OpenAI fallback) — degrada silenciosamente.
+- **Cache por hash de prompt** — economiza tokens em prompts repetidos.
+- **Observability** out-of-the-box: latência, tokens, custo por route.
+- **Sem migração de SDK** — funciona com AI SDK passando `model: 'anthropic/...'`.
+
+## Cuidados
+
+- Latência extra ~30-80ms vs chamada direta. Aceitável para a maioria, considere skip em hot path.
+- Vendor lock leve com Vercel. Migração de volta para provider direto é só trocar string.

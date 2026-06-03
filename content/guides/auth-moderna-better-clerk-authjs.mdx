@@ -1,0 +1,146 @@
+---
+title: 'Auth moderna: Better Auth, Clerk e Auth.js — qual usar'
+summary: Comparativo das 3 opções dominantes de auth em apps TS. Decisão por custo, controle e velocidade de implementação.
+category: security
+relatedRecipes: [launch-saas-2026, security-stack]
+relatedLibraries: [better-auth]
+publishedAt: '2026-06-02'
+readingMinutes: 6
+---
+
+Auth é o componente que **mais frequentemente** decide se você terá um sábado em paz. Em 2026, três opções dominam TypeScript — vamos comparar pelos critérios que importam.
+
+## TL;DR
+
+| Cenário | Escolha |
+|---|---|
+| Quero rápido, tenho orçamento, B2B com SSO | **Clerk** |
+| Quero controle, custo previsível, sem vendor | **Better Auth** |
+| Já tenho Next + ecossistema, B2C simples | **Auth.js (NextAuth)** |
+| App enterprise com IDP corporativo | **Clerk** ou **WorkOS** |
+| Mobile first com sessions longas | **Better Auth** |
+
+## Os 3 candidatos
+
+### Better Auth
+
+Framework TS-first, self-host, plugins compostos. Sessions em DB.
+
+- **Custo**: zero recorrente
+- **Setup**: 30-60 min
+- **Vendor lock**: nenhum (você é dono do código e dados)
+- **Comunidade**: crescendo rápido
+
+### Clerk
+
+SaaS hosted, UI components prontos, ecossistema completo (orgs, billing, RBAC).
+
+- **Custo**: free até 10k MAU, depois $$$
+- **Setup**: 15 min até "funciona"
+- **Vendor lock**: alto (dados em Clerk, hard migration)
+- **Comunidade**: enorme, docs de primeira
+
+### Auth.js (ex-NextAuth)
+
+Open source, OAuth-first, adapter-based, integra bem com Next.
+
+- **Custo**: zero recorrente
+- **Setup**: 30-60 min
+- **Vendor lock**: nenhum
+- **Comunidade**: enorme, mas evolução desigual
+
+## Comparação dimensional
+
+### Velocidade até "funciona"
+
+1. **Clerk** — 15 min com `<SignIn />` component
+2. **Better Auth** — 45 min com config + UI custom
+3. **Auth.js** — 60 min, sessions/JWT/adapter pode confundir
+
+### Custo em 10k MAU
+
+- Clerk: ~R$ 1.250/mês
+- Better Auth: ~R$ 0 (você paga DB, mas já paga)
+- Auth.js: ~R$ 0
+
+### Controle / customização
+
+- Better Auth ≥ Auth.js > Clerk
+
+Clerk te dá UI bonita, mas se você quer mudar comportamento profundo (ex: signup multi-step com aprovação), brigaria contra a lib.
+
+### Sessions
+
+- **Clerk**: gerenciadas pelo Clerk (JWT + refresh).
+- **Better Auth**: em DB do seu lado (invalidação imediata).
+- **Auth.js**: JWT ou database, sua escolha.
+
+Sessions em DB ganham em segurança (invalidação imediata, lista de sessions ativas). Sessions em JWT ganham em performance (zero round-trip pra validar). Para SaaS típico, **DB** é melhor escolha.
+
+### 2FA / Passkey
+
+- **Clerk**: 2FA via UI, passkey suportado.
+- **Better Auth**: plugins (`twoFactor`, `passkey`) — adiciona em 3 linhas.
+- **Auth.js**: precisa rolar manual ou usar provider OAuth com 2FA embutido.
+
+### Organizações / B2B
+
+- **Clerk**: feature nativa, robusta.
+- **Better Auth**: plugin `organization` cobre 80%, customizável.
+- **Auth.js**: você implementa do zero.
+
+Se sua app é B2B com convites, roles por org, e SSO — **Clerk economiza 2 semanas de trabalho**.
+
+### Email transacional
+
+- **Clerk**: envia magic link, verify, reset por padrão.
+- **Better Auth**: você plug seu provider (Resend, Postmark).
+- **Auth.js**: você plug seu provider.
+
+## Os 3 cenários mais comuns
+
+### Cenário A: "Fundador solo, validando mercado"
+
+→ **Clerk** se você tem orçamento (~R$ 60/mês para 1k MAU)
+→ **Better Auth** se você prefere zero custo
+
+Auth.js é viável mas você gastará 1-2 dias a mais que o necessário.
+
+### Cenário B: "SaaS B2B, contratos enterprise vindo"
+
+→ **Clerk** ou **WorkOS**
+
+SSO/SAML é trabalhoso de fazer certo. Clerk e WorkOS são as únicas que fazem direito sem dor.
+
+### Cenário C: "Marketplace ou rede social, > 50k MAU previsto"
+
+→ **Better Auth**
+
+Em 50k MAU, Clerk fica caro (~R$ 12k/mês). Better Auth te dá controle e custo previsível.
+
+## Auth.js: ainda vale?
+
+Auth.js teve momento de domínio quando NextAuth era a única opção. Em 2026, **perde para Better Auth na maioria dos casos**:
+
+- Pior DX (mais boilerplate)
+- Documentação atrás
+- Evolução lenta entre v4 → v5
+
+**Quando ainda vale**: você já está em Auth.js v5 e funciona — não migre por moda.
+
+## Os gotchas universais
+
+Independente da escolha:
+
+- **Sempre verifique email antes** de criar conteúdo ou alterar billing
+- **2FA com recovery codes** — sem isso, suporte vira manual
+- **Rate limit em login/signup/reset** — sem exceção
+- **Cookies httpOnly + Secure + SameSite=Strict** — não negociável
+- **Sessions em DB > JWT em localStorage** — sempre que possível
+- **Audit log de mudanças críticas** (email, senha, role)
+
+## Conclusão
+
+Para 2026, **Better Auth é o default razoável** em projetos novos onde custo importa. Clerk continua imbatível em time-to-market e B2B com SSO. Auth.js perdeu o trono mas ainda é viável em projetos legados.
+
+A decisão errada não te quebra — todas as três funcionam. Mas a decisão certa te economiza dezenas de horas e milhares de reais ao longo do projeto.

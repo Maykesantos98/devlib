@@ -1,0 +1,218 @@
+---
+title: 'Observability básica: Sentry + PostHog + Vercel Analytics'
+summary: Stack mínimo para enxergar errors, performance e comportamento de usuário em produção. Setup em 1 hora, custo controlado.
+category: devops
+publishedAt: '2026-06-02'
+readingMinutes: 6
+---
+
+"Mas funcionou no meu local" é a frase mais cara de produção. Observability básica resolve em **uma tarde** — depois disso, você sabe imediatamente quando algo quebra, e antes de o cliente reclamar.
+
+## O modelo de 3 camadas
+
+Você precisa enxergar 3 coisas, e a stack divide:
+
+| O quê | Ferramenta default | Alternativas |
+|---|---|---|
+| **Errors / exceptions** | Sentry | Highlight, Bugsnag, Datadog APM |
+| **Product analytics** | PostHog | Mixpanel, Amplitude |
+| **Web vitals / RUM** | Vercel Analytics | Speed Insights, Datadog RUM |
+
+Custo total para SaaS típico: **R$ 0 a R$ 200/mês**.
+
+## Camada 1 · Sentry (Errors)
+
+### Setup Next.js (5 minutos)
+
+```bash
+npx @sentry/wizard@latest -i nextjs
+```
+
+Wizard configura `instrumentation.ts`, `next.config.ts`, e source maps upload.
+
+### O que você quer ver
+
+- **Issue feed** — agrupa exceções similares por fingerprint
+- **Breadcrumbs** — últimos N eventos antes do erro (router navigation, fetch, console)
+- **Release tracking** — vincula erro ao commit/PR
+- **Performance** — slow transactions, slow queries
+
+### Configuração essencial
+
+```ts
+// sentry.client.config.ts
+import * as Sentry from '@sentry/nextjs';
+
+Sentry.init({
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  tracesSampleRate: 0.1,        // 10% de transactions
+  replaysSessionSampleRate: 0,  // session replay desligado por padrão (caro)
+  replaysOnErrorSampleRate: 1,  // só replay quando der erro
+  beforeSend(event, hint) {
+    // PII redaction
+    if (event.request?.cookies) delete event.request.cookies;
+    if (event.user?.email) event.user.email = redact(event.user.email);
+    return event;
+  },
+});
+```
+
+### Gotchas
+
+- **Source maps** — sem isso, stack trace fica inútil. O wizard configura mas confirme em produção
+- **PII redaction** — cookies, emails, payment info NÃO devem ir para Sentry
+- **Sampling agressivo** — 100% em transactions explode quota rápido. Default 10%
+- **Performance vs errors** — separar planos é tentador, mas Sentry one-plan-for-all é mais simples no início
+
+### Custo
+
+- Free: 5k errors, 10k transactions/mês — suficiente até ~1k MAU
+- Team: $26/mês — suficiente até ~50k MAU
+
+## Camada 2 · PostHog (Product Analytics)
+
+PostHog une analytics + session replay + feature flags + heatmaps. Substitui 3-4 ferramentas separadas.
+
+### Setup (10 minutos)
+
+```bash
+npm install posthog-js posthog-node
+```
+
+```tsx
+// app/providers.tsx
+'use client';
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
+
+if (typeof window !== 'undefined') {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    api_host: 'https://us.i.posthog.com',
+    capture_pageview: true,
+    capture_pageleave: true,
+  });
+}
+
+export function PHProvider({ children }) {
+  return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
+}
+```
+
+### O que você quer trackar (não tudo)
+
+Só esses **eventos críticos**, no início:
+
+- `signup_completed`
+- `subscription_started` / `subscription_cancelled`
+- `feature_used` (com prop `feature_name`)
+- `key_action_completed` (a ação que define valor do produto)
+
+Mais que isso polui o dashboard e ninguém olha.
+
+### Funnel essencial
+
+```
+Landing → Signup → Email verificado → Primeira ação
+```
+
+Funil é o relatório que mais te ensina sobre o produto. Configure dia 1.
+
+### Session replay (cuidado)
+
+PostHog grava sessões DOM. Útil para debugar UX, **caro** em volume.
+
+- Free: 5k replays/mês
+- Habilite só em **session com error** (`autocapture_session_recording: only_on_error`)
+- Mask todo input por padrão (`session_recording.maskAllInputs: true`)
+
+### Custo
+
+- Free: 1M eventos/mês, 5k replays — suficiente até ~10k MAU
+- Crescimento: $0.00031 por evento — controla bem em escala
+
+## Camada 3 · Vercel Analytics (Web Vitals)
+
+Mostra **LCP, INP, CLS** reais dos seus usuários — não só o que Lighthouse vê.
+
+### Setup (1 minuto)
+
+```bash
+npm install @vercel/analytics @vercel/speed-insights
+```
+
+```tsx
+// app/layout.tsx
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+export default function Layout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
+  );
+}
+```
+
+### O que você quer ver
+
+- **LCP > 2.5s?** → otimize hero image, fonts
+- **INP > 200ms?** → reduza JS, evite long tasks
+- **CLS > 0.1?** → reserve espaço para imagens, evite layout shift
+
+### Custo
+
+- Vercel Analytics Free: 2.5k eventos/mês
+- Vercel Analytics Pro: incluso no Vercel Pro
+
+Alternativas gratuitas: **Plausible** (privacy-friendly), **Umami** (self-host).
+
+## Stack alternativa "DIY"
+
+Se quer mais controle / menos vendor:
+
+| Função | Open source |
+|---|---|
+| Errors | GlitchTip (Sentry compatible API) |
+| Analytics | Umami ou Plausible self-host |
+| Logs | Loki + Grafana |
+| Metrics | Prometheus + Grafana |
+| Tracing | OpenTelemetry + Tempo |
+
+Custo: R$ 30-100/mês em VPS + tempo de manutenção (não-trivial).
+
+## Padrão de uso saudável
+
+### Diário
+
+- 5 min de manhã: olhar issue feed do Sentry, triagem rápida
+- Spike inesperado? Investigar imediatamente
+
+### Semanal
+
+- Funnel da semana no PostHog — onde estamos perdendo usuário?
+- Vercel Analytics — alguma página com vitals piorando?
+- Top errors do Sentry — o que ainda não foi resolvido?
+
+### Mensal
+
+- Limpeza de alerts obsoletos
+- Revisão de quotas — está perto do limite?
+- Postmortem de incidentes do mês
+
+## O que NÃO fazer
+
+- **Logar tudo** — barulho mata sinal. Log estruturado, com nível, em pontos críticos
+- **Alert para cada erro** — Slack/email vira ruído ignorado. Alerte só CRITICAL
+- **Track todos os clicks** — 99% você nunca vai analisar
+- **Session replay 100%** — explode custo, viola privacidade
+
+## Conclusão
+
+**Sentry + PostHog + Vercel Analytics** cobrem 90% da observability que um SaaS típico precisa, custam ~R$ 0-200/mês até 10k MAU, e configuram em 1 hora.
+
+Adicionar antes do primeiro usuário pagante é o investimento de menor custo e maior retorno em todo o lifecycle do produto.

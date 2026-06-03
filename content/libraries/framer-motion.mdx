@@ -1,0 +1,24 @@
+---
+title: Framer Motion
+summary: Biblioteca de animação declarativa para React. Spring, layout animations, gestures, scroll. Default em apps web modernos.
+url: https://www.framer.com/motion/
+repo: https://github.com/framer/motion
+category: frontend-ui
+tags: [lang:typescript, runtime:browser, oss, license:mit, production-ready, motion]
+difficulty: producao
+recipes: [portfolio-landing]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **`<motion.div animate={...}>`** — animação como prop.
+- **Layout animations** — `layout` prop faz FLIP automaticamente.
+- **Spring physics** — feel natural, sem decorar curvas cubic-bezier.
+- **`useScroll`, `useTransform`** para parallax sem lib extra.
+
+## Cuidados
+
+- Bundle ~50kb — não é trivial. Para uso minimal, use CSS animations.
+- Animar `width`/`height`/`top`/`left` é o caminho fácil para 5fps. Sempre `transform` + `opacity`.
+- Respeite `prefers-reduced-motion` com `MotionConfig`.

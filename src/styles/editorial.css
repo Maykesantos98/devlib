@@ -1,0 +1,245 @@
+/* ─────────────────────────────────────────────────────────────
+ * editorial.css — typography & layout for MDX content
+ * (guides + recipes + library long body)
+ * ───────────────────────────────────────────────────────────── */
+
+.mdx-content {
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.04rem;
+  line-height: 1.75;
+  max-width: 720px;
+}
+
+.mdx-content > * + * {
+  margin-top: 1.2em;
+}
+
+.mdx-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.1rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.mdx-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1rem + 0.6vw, 1.45rem);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-top: 2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mdx-content h2 + h3 {
+  margin-top: 1.5rem;
+}
+
+.mdx-content p {
+  color: var(--text-faint);
+}
+
+.mdx-content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.mdx-content em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.mdx-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--accent-rgb) / 0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.mdx-content a:hover {
+  text-decoration-color: var(--accent);
+}
+
+.mdx-content ul,
+.mdx-content ol {
+  padding-left: 1.5rem;
+  color: var(--text-faint);
+}
+
+.mdx-content ul li::marker {
+  color: var(--text-dim);
+}
+
+.mdx-content ol li::marker {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.mdx-content li + li {
+  margin-top: 0.4rem;
+}
+
+.mdx-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 0.4rem 0 0.4rem 1.25rem;
+  color: var(--text-soft);
+  font-style: italic;
+}
+
+.mdx-content code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.15em 0.4em;
+  background: var(--bg-card-hi);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+.mdx-content pre {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  color: var(--text-faint);
+}
+
+.mdx-content pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.mdx-content hr {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 3rem 0;
+}
+
+.mdx-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 1.5rem 0;
+}
+
+.mdx-content th,
+.mdx-content td {
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.mdx-content th {
+  color: var(--text);
+  font-weight: 600;
+  background: var(--bg-card);
+  border-bottom-color: var(--border-bright);
+}
+
+.mdx-content td {
+  color: var(--text-faint);
+}
+
+.mdx-content tbody tr:hover {
+  background: rgb(255 255 255 / 0.02);
+}
+
+/* ── Page-level helpers ─────────────────────────────────── */
+
+.editorial-hero {
+  max-width: 780px;
+  padding-top: 4rem;
+}
+
+.editorial-meta {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.editorial-divider {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+/* ── Featured recipes strip (home) ──────────────────────── */
+
+.recipes-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.recipe-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid var(--border-bright);
+  border-radius: 16px;
+  background: linear-gradient(180deg,
+    rgba(var(--accent-rgb), 0.04) 0%,
+    var(--bg-card) 100%);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+
+.recipe-card:hover {
+  transform: translateY(-2px);
+  border-color: rgb(var(--accent-rgb) / 0.5);
+}
+
+.recipe-card-emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-card p {
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.recipe-card-meta {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+
+/* ── Reduced motion ─────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .recipe-card {
+    transition: none;
+  }
+  .recipe-card:hover {
+    transform: none;
+  }
+}

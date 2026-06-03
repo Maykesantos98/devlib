@@ -1,0 +1,116 @@
+---
+title: App mobile com IA on-device
+goal: App mobile com IA on-device
+emoji: 📱
+summary: Stack para LLM offline em iOS/Android — sem servidor, privacidade nativa, latência local. Inclui app skeleton e quantização.
+stack:
+  - { library: expo,        role: Framework RN,          note: 'Router v4 + EAS Build + Updates OTA.' }
+  - { library: executorch,  role: Runtime de inference,  note: 'PyTorch otimizado para mobile, backends acelerados.' }
+publishedAt: '2026-06-02'
+---
+
+## Quando faz sentido on-device
+
+✅ Privacidade requerida (dados médicos, jurídicos, pessoais)
+✅ Offline-first (campo, agricultura, viagem)
+✅ Latência crítica (< 50ms)
+✅ Sem custo recorrente de API
+
+❌ Modelo precisa atualizar diariamente → use API
+❌ Você precisa de modelos > 7B params → usuário não terá storage
+❌ Multi-modal pesado (vision + audio) → API ainda melhor
+
+## Setup em 5 passos
+
+### 1. Bootstrap Expo
+
+```bash
+npx create-expo-app@latest meu-app --template
+cd meu-app
+npx expo install react-native-executorch
+```
+
+### 2. Escolher modelo
+
+Para 2026, recomendo:
+
+- **Llama 3.2 1B Instruct** quantizado 4-bit → ~700MB
+- **Phi-3.5 Mini Instruct** quantizado 4-bit → ~1.5GB
+- **Gemma 2 2B** quantizado 4-bit → ~1.2GB
+
+Tamanho do app vai inflar — comunique no onboarding.
+
+### 3. Download progressivo (NÃO bundled)
+
+```ts
+import * as FileSystem from 'expo-file-system';
+
+const MODEL_URL = 'https://huggingface.co/.../model.pte';
+const LOCAL_PATH = `${FileSystem.documentDirectory}model.pte`;
+
+async function ensureModel(onProgress: (p: number) => void) {
+  const info = await FileSystem.getInfoAsync(LOCAL_PATH);
+  if (info.exists) return LOCAL_PATH;
+
+  const downloader = FileSystem.createDownloadResumable(
+    MODEL_URL, LOCAL_PATH, {}, ({ totalBytesWritten, totalBytesExpectedToWrite }) => {
+      onProgress(totalBytesWritten / totalBytesExpectedToWrite);
+    });
+  const result = await downloader.downloadAsync();
+  return result?.uri;
+}
+```
+
+Mostre progresso no UI — download de 1GB demora.
+
+### 4. Inferência
+
+```tsx
+import { useLLM, LLAMA3_2_1B_QLORA_4BIT } from 'react-native-executorch';
+
+export function ChatScreen() {
+  const llm = useLLM({ modelSource: LLAMA3_2_1B_QLORA_4BIT });
+  const [reply, setReply] = useState('');
+
+  const send = async (msg: string) => {
+    setReply('');
+    await llm.generate(msg, {
+      onToken: (token) => setReply((r) => r + token),
+    });
+  };
+
+  // render
+}
+```
+
+### 5. Distribuição
+
+```bash
+eas build --profile production --platform all
+eas submit
+```
+
+App > 200MB precisa wifi para download na App Store. Avise o usuário.
+
+---
+
+## Alternativas
+
+- **MLC LLM** — alternativa C++ multi-plataforma, mais maduro mas integração RN menos direta.
+- **llama.rn** — wrapper RN de llama.cpp, GGUF format, mais modelos disponíveis.
+- **Apple Foundation Models** (iOS 19+) — usa modelo do sistema, sem download. Limitado a Apple, mas grátis.
+- **Cactus** — startup focada em on-device com SDK pronto e modelo bundled.
+
+## Gotchas
+
+- **Memória** — 1B param model usa ~1.5GB RAM. iPhones com 4GB total vão thrashing.
+- **iOS background** — inferência pausa quando app vai pra background. Salve estado.
+- **Geração lenta no Android antigo** — < 5 tokens/s em hardware fraco. Mostre indicador "Pensando…".
+- **Atualizar modelo** — versionar URL, marcar "atualização disponível" no settings.
+- **Bateria** — inferência intensa drena 5-10% em 5 min. Não faça streaming infinito.
+
+## Próximos passos
+
+- **Embedding model local** para RAG offline (notas, docs próprios).
+- **Speech-to-text on-device** — Apple Speech Framework + Whisper.cpp.
+- **Híbrido**: query simples local, query complexa via API com fallback.

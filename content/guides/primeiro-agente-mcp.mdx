@@ -1,0 +1,227 @@
+---
+title: Construindo o primeiro agente com MCP — fim a fim
+summary: Do zero a um agente Claude com tool calling via MCP. Stack mínima, código completo, gotchas explicados.
+category: ai-agents
+relatedRecipes: [build-ai-agent]
+relatedLibraries: [ai-sdk]
+publishedAt: '2026-06-02'
+readingMinutes: 9
+---
+
+Você quer um agente que **faz coisas**, não só responde texto. MCP (Model Context Protocol) padroniza como agentes descobrem e usam ferramentas. Este guia constrói um — fim a fim — em ~150 linhas.
+
+## O que vamos construir
+
+Um agente que:
+1. Recebe mensagens via interface React
+2. Tem acesso a 3 tools via MCP server (consultar BD, criar tarefa, listar tarefas)
+3. Streama resposta token a token
+4. Persiste conversa
+
+Stack:
+- **AI SDK v6** (cliente)
+- **MCP server custom** (em TypeScript, executável local)
+- **Claude Sonnet 4.6** via AI Gateway
+
+## Passo 1 · O MCP server
+
+MCP server é um processo que expõe **ferramentas** via stdio ou HTTP. Vamos fazer stdio (mais simples).
+
+```typescript
+// mcp-server/index.ts
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+} from '@modelcontextprotocol/sdk/types.js';
+import { db } from './db.js';
+
+const server = new Server(
+  { name: 'tasks-mcp', version: '1.0.0' },
+  { capabilities: { tools: {} } }
+);
+
+server.setRequestHandler(ListToolsRequestSchema, async () => ({
+  tools: [
+    {
+      name: 'list_tasks',
+      description: 'List all tasks for the current user',
+      inputSchema: { type: 'object', properties: {} },
+    },
+    {
+      name: 'create_task',
+      description: 'Create a new task',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          title: { type: 'string', description: 'Task title' },
+          dueDate: { type: 'string', description: 'ISO 8601 date' },
+        },
+        required: ['title'],
+      },
+    },
+    {
+      name: 'complete_task',
+      description: 'Mark a task as completed',
+      inputSchema: {
+        type: 'object',
+        properties: { id: { type: 'string' } },
+        required: ['id'],
+      },
+    },
+  ],
+}));
+
+server.setRequestHandler(CallToolRequestSchema, async (req) => {
+  const { name, arguments: args } = req.params;
+  switch (name) {
+    case 'list_tasks':
+      return { content: [{ type: 'text', text: JSON.stringify(await db.tasks.list()) }] };
+    case 'create_task':
+      return { content: [{ type: 'text', text: JSON.stringify(await db.tasks.create(args)) }] };
+    case 'complete_task':
+      return { content: [{ type: 'text', text: JSON.stringify(await db.tasks.complete(args.id)) }] };
+    default:
+      throw new Error(`Unknown tool: ${name}`);
+  }
+});
+
+const transport = new StdioServerTransport();
+await server.connect(transport);
+```
+
+## Passo 2 · Cliente MCP no app
+
+```typescript
+// lib/mcp-client.ts
+import { experimental_createMCPClient as createMCPClient } from 'ai';
+import { Experimental_StdioMCPTransport as Stdio } from 'ai/mcp-stdio';
+
+let cached: Awaited<ReturnType<typeof createMCPClient>> | null = null;
+
+export async function getMcpClient() {
+  if (cached) return cached;
+  cached = await createMCPClient({
+    transport: new Stdio({
+      command: 'node',
+      args: ['./mcp-server/dist/index.js'],
+    }),
+  });
+  return cached;
+}
+```
+
+## Passo 3 · API route do agente
+
+```typescript
+// app/api/chat/route.ts
+import { streamText, convertToModelMessages } from 'ai';
+import { getMcpClient } from '@/lib/mcp-client';
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+  const mcp = await getMcpClient();
+  const tools = await mcp.tools();
+
+  const result = streamText({
+    model: 'anthropic/claude-sonnet-4-6', // via AI Gateway
+    system: `You are a helpful task management assistant.
+You can list, create and complete tasks via tools.
+Always confirm before destructive actions.`,
+    messages: convertToModelMessages(messages),
+    tools,
+    stopWhen: ({ steps }) => steps.length >= 10,
+  });
+
+  return result.toUIMessageStreamResponse();
+}
+```
+
+## Passo 4 · UI
+
+```tsx
+// app/chat/page.tsx
+'use client';
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, sendMessage, status } = useChat();
+
+  return (
+    <div className="max-w-2xl mx-auto p-4 space-y-4">
+      {messages.map((m) => (
+        <div key={m.id} className="space-y-2">
+          <div className="font-bold">{m.role === 'user' ? 'Você' : 'Assistente'}</div>
+          {m.parts.map((part, i) => {
+            if (part.type === 'text') return <p key={i}>{part.text}</p>;
+            if (part.type === 'tool-call') {
+              return (
+                <pre key={i} className="text-xs bg-slate-900 p-2 rounded">
+                  🛠 {part.toolName}({JSON.stringify(part.args)})
+                </pre>
+              );
+            }
+            return null;
+          })}
+        </div>
+      ))}
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        const input = e.currentTarget.elements.namedItem('msg') as HTMLInputElement;
+        sendMessage({ text: input.value });
+        input.value = '';
+      }}>
+        <input name="msg" disabled={status !== 'ready'} className="w-full border p-2" />
+      </form>
+    </div>
+  );
+}
+```
+
+## Por que MCP (e não tools direto no código)?
+
+Você poderia definir as tools direto no `streamText({ tools: ... })`. Por que MCP?
+
+- **Reusabilidade entre apps** — Claude Desktop, Cursor, seu app web podem todos consumir o mesmo MCP server.
+- **Isolamento** — MCP server é processo separado. Se cair, o app continua.
+- **Linguagem-agnostic** — MCP server pode ser Python, Go, Rust. Cliente pode ser TS.
+- **Auth e permissões** isoladas no server.
+
+Trade-off: latência ~30ms extra por tool call (vale a pena na maioria dos casos).
+
+## Gotchas que vão te morder
+
+### Tool descriptions são prompt
+
+```
+❌ description: 'Lists tasks'
+✅ description: 'Lists all tasks for the current user. Use when user asks to see what tasks they have, what is pending, or what is on their list.'
+```
+
+Descrição vaga = modelo não sabe quando usar. Descrição cirúrgica = uso confiável.
+
+### stopWhen é obrigatório
+
+Sem `stopWhen`, agente em loop infinito ao errar tool. `stopWhen: ({ steps }) => steps.length >= 10` é o piso.
+
+### Streaming + tool calls
+
+UI precisa lidar com 4 tipos de parts: `text`, `tool-call`, `tool-result`, `step-start`. Não pule estados ou a UI fica em estado inconsistente.
+
+### Persistência
+
+Salve cada mensagem **completa** (com todos os parts) ao fim do stream, não chunk a chunk. Use `onFinish` do `streamText`.
+
+### Erros em tool execution
+
+Tool que joga exception **mata o stream**. Sempre `try/catch` dentro do handler do MCP server e retorne `{ content: [{ type: 'text', text: 'Error: ...' }] }`.
+
+## Próximos passos
+
+- **Eval** — defina 20 conversações esperadas, rode semanalmente, mensure regressão
+- **Memória de longo prazo** — RAG sobre conversas passadas com pgvector
+- **Aprovação humana** — para ações destrutivas, pause e pergunte antes
+- **MCP server público** — publicar o seu para outros agentes consumirem
+
+MCP ainda é jovem (2024+). Vale ler o spec direto na fonte: [modelcontextprotocol.io](https://modelcontextprotocol.io).

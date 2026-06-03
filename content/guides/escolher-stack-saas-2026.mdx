@@ -1,0 +1,105 @@
+---
+title: Como escolher stack para um SaaS em 2026
+summary: Critérios práticos para escolher framework, banco, auth e pagamentos sem cair em hype. Decisão por trade-off, não por moda.
+category: backend-toolkit
+relatedRecipes: [launch-saas-2026]
+relatedLibraries: [nextjs, drizzle, neon, better-auth, stripe]
+publishedAt: '2026-06-02'
+readingMinutes: 7
+---
+
+A pergunta "qual stack uso?" tem uma resposta verdadeira e desconfortável: **depende**. Mas a maioria dos depende cai em três critérios objetivos.
+
+## Os 3 critérios
+
+### 1. Velocidade de iteração (você sozinho ou time pequeno)
+
+Se você é fundador-dev ou tem time < 5, **tudo que você não escreve é vantagem**. Significa preferir:
+
+- **Frameworks opinionados** (Next.js, Rails, Laravel) sobre montar a stack peça por peça
+- **BaaS** (Supabase, Convex, Firebase) sobre rolar backend custom
+- **Componentes copy-paste** (shadcn) sobre construir design system
+- **Auth como serviço ou plug-and-play** (Clerk, Better Auth) sobre OAuth manual
+
+Custo? Você terá vendor exposure. Você terá decisões pré-tomadas que talvez não combinem 100%. Aceite — você não tem time para melhor.
+
+### 2. Custo operacional (de R$ 0 a R$ 1000/mês)
+
+Para SaaS cedo, a conta importa. Em 2026, stacks "modernas" às vezes custam mais que o esperado:
+
+| Stack | Custo estimado (1k MAU) |
+|---|---|
+| Next + Vercel Pro + Neon + Better Auth + Stripe | ~R$ 200 |
+| Next + Vercel Pro + Supabase + Clerk + Stripe | ~R$ 600 |
+| Rails + Render + Postgres managed + Devise + Stripe | ~R$ 150 |
+| SvelteKit + Cloudflare + D1 + Lucia + LemonSqueezy | ~R$ 50 |
+
+Não é só preço. Cada linha tem trade-off de DX, comunidade e ergonomia. Mas **saiba o custo antes de escolher**, não depois.
+
+### 3. Mercado de talento (você vai contratar?)
+
+Se sim — **escolha o que tem mais devs disponíveis**, mesmo que seja menos elegante:
+
+- Next.js > Remix > SvelteKit > Solid > Qwik
+- TypeScript > qualquer outra linguagem
+- Postgres > MySQL > anything else
+
+Stack exótica = funil de contratação 5× menor. Para projeto pessoal, ótimo. Para escalar empresa, custo escondido alto.
+
+## A regra do "default + 2 desvios"
+
+Em 2026, **default razoável** = Next + TS + Postgres + Tailwind. Você pode desviar em até 2 dimensões importantes (ex: Drizzle em vez de Prisma, Bun em vez de Node, shadcn em vez de Material). Mais que isso vira frankenstack e você gasta tempo integrando em vez de construindo.
+
+## Decisão por componente
+
+### Framework
+
+| Cenário | Escolha | Por quê |
+|---|---|---|
+| Default geral | Next.js 16 | Ecossistema dominante, App Router maduro |
+| Performance crítica (edge) | SvelteKit ou Astro | Bundle menor, hidratação mais rápida |
+| App muito complexo, time grande | Remix (agora Tanstack) | Conventions sólidas, menos magic |
+| Híbrido com mobile | Expo Router + Next | Mesma mental model |
+
+### Banco
+
+Sempre Postgres em 2026, salvo razão muito específica. Onde rodar:
+
+- **Neon** se você quer branching por PR e scale-to-zero
+- **Supabase** se quer Auth + Storage + Realtime do mesmo lugar
+- **Turso** (SQLite) se latência global crítica e dataset cabe
+- **Railway / Render Postgres** se prefere VM-style com persistência sempre quente
+
+### ORM
+
+- **Drizzle** se você lê SQL com naturalidade e quer edge
+- **Prisma** se você quer ferramentas (Studio) e schema declarativo
+- **Kysely** se quer query builder typesafe sem o overhead de full ORM
+- **Raw SQL + Zod** se você é minimalista e o app é simples
+
+### Auth
+
+- **Better Auth** se quer self-host e zero custo recorrente
+- **Clerk** se quer redirecionar zero atenção pra auth e tem orçamento
+- **Auth.js (NextAuth)** se já tem infra montada e quer batteries-included
+
+### Pagamentos
+
+- **Stripe** global por padrão
+- **Polar** se quer Merchant of Record para vender global sem dor fiscal
+- **LemonSqueezy** alternativa MoR mais barata
+- **Asaas / Pagar.me** se BR-only e Pix dominante
+
+## Anti-padrões comuns
+
+- **Microserviços antes de PMF** — você não tem escala para justificar, só para sofrer
+- **GraphQL antes de N clientes** — tRPC ou REST resolvem 100% do problema do começo
+- **Kubernetes em projeto solo** — Vercel/Railway resolvem. K8s = full-time job
+- **Rolar próprio Auth "porque é simples"** — sempre custa 10x mais e tem CVE oculto
+
+## Como decidir hoje
+
+1. Liste seus 3 critérios em ordem (velocidade, custo, talento — você vai ter ordem própria)
+2. Para cada componente, escolha o **default sensato** que não viole seus critérios
+3. **Anote por que escolheu** — quando bater dúvida em 6 meses, você revisa o trade-off
+4. **Não otimize antes de medir** — sua próxima decisão é validar mercado, não otimizar stack

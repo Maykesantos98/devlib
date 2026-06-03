@@ -1,0 +1,167 @@
+---
+title: 'ORM em 2026: Drizzle vs Prisma vs Kysely'
+summary: Comparativo prático dos três ORMs/QueryBuilders dominantes em TS. Quando escolher cada — e quando ficar com SQL puro.
+category: backend-toolkit
+relatedRecipes: [launch-saas-2026]
+relatedLibraries: [drizzle]
+publishedAt: '2026-06-02'
+readingMinutes: 7
+---
+
+A escolha do ORM define a ergonomia do seu backend pelos próximos anos. Em 2026, três opções dominam TypeScript — cada uma com filosofia diferente. Vamos comparar **objetivamente**.
+
+## TL;DR
+
+| Cenário | Escolha |
+|---|---|
+| Default geral, time mid-level | **Drizzle** |
+| Tooling rico (Studio, migrations declarativas) | **Prisma** |
+| Você ama SQL e quer só type safety | **Kysely** |
+| App tipo CRUD simples, < 10 tabelas | **Raw SQL + Zod** |
+| Já está em Postgres + RLS pesado | **Drizzle** + `db.execute(sql)` para casos complexos |
+
+## Filosofia
+
+- **Prisma** — schema é fonte de verdade, ORM gera client + migrations. Abstrai SQL.
+- **Drizzle** — schema em TypeScript, queries lembram SQL. Type-safe sem mágica.
+- **Kysely** — query builder puro. Você escreve SQL, ele dá types.
+
+## Comparação direta
+
+### Definição de schema
+
+**Prisma**: `schema.prisma` (DSL própria)
+```prisma
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  posts     Post[]
+  createdAt DateTime @default(now())
+}
+```
+
+**Drizzle**: TypeScript puro
+```ts
+export const users = pgTable('users', {
+  id: text().primaryKey().$defaultFn(() => createId()),
+  email: text().notNull().unique(),
+  createdAt: timestamp().defaultNow().notNull(),
+});
+```
+
+**Kysely**: você define types ou usa `kysely-codegen`
+```ts
+interface UserTable {
+  id: Generated<string>;
+  email: string;
+  createdAt: Generated<Date>;
+}
+interface Database { users: UserTable; }
+```
+
+### Query
+
+**Prisma**:
+```ts
+const users = await db.user.findMany({
+  where: { email: { contains: 'gmail' } },
+  include: { posts: { take: 5 } },
+});
+```
+
+**Drizzle**:
+```ts
+const users = await db.query.users.findMany({
+  where: like(users.email, '%gmail%'),
+  with: { posts: { limit: 5 } },
+});
+```
+
+**Kysely**:
+```ts
+const users = await db
+  .selectFrom('users')
+  .where('email', 'like', '%gmail%')
+  .selectAll()
+  .execute();
+```
+
+### Migrations
+
+- **Prisma**: `prisma migrate dev` — schema-first, gera SQL automaticamente.
+- **Drizzle**: `drizzle-kit generate` — compara schema TS atual com snapshot, gera SQL.
+- **Kysely**: você escreve migrations TS manualmente (`up`/`down`).
+
+## Trade-offs reais
+
+### Performance
+
+| | Drizzle | Prisma | Kysely |
+|---|---|---|---|
+| Bundle | ~10kb | ~200kb | ~30kb |
+| Runtime overhead | mínimo | moderado | mínimo |
+| Edge compat | ✅ nativo | ⚠️ Accelerate | ✅ |
+| Query speed | igual SQL puro | +5-15% overhead | igual SQL puro |
+
+Em edge functions ou bundle-sensitive, **Drizzle ou Kysely** vencem.
+
+### DX em queries complexas
+
+- **Prisma**: ótimo para CRUD, perde força em joins/CTE/window functions
+- **Drizzle**: API SQL-like cobre quase tudo, fallback para `sql` raw
+- **Kysely**: você está escrevendo SQL com tipos — domina o complexo
+
+### Migrations
+
+- **Prisma**: as melhores do mercado. `prisma migrate` é confiável e o Studio ajuda no dia a dia.
+- **Drizzle**: bom mas exige cuidado. Snapshots podem dessincronizar em mono-repo. Use `drizzle-kit push` apenas em dev.
+- **Kysely**: 100% manual. Liberdade máxima, esforço máximo.
+
+### Comunidade e maturidade
+
+- **Prisma**: maior comunidade, mais Stack Overflow.
+- **Drizzle**: crescendo rápido. Discord ativo, docs decentes.
+- **Kysely**: nicho mas estável. Comunidade técnica.
+
+## Quando escolher cada
+
+### Escolha **Drizzle** se…
+
+- Você lê SQL com naturalidade
+- Você quer edge runtime
+- Você quer bundle minimal
+- Você prefere TypeScript como fonte de verdade
+
+### Escolha **Prisma** se…
+
+- Você tem time júnior — Prisma esconde SQL bem
+- Você gosta do Studio (DB GUI)
+- Suas queries são predominantemente CRUD
+- Você não roda em edge
+
+### Escolha **Kysely** se…
+
+- Você escreve SQL com prazer
+- Você quer controle total sobre queries
+- Você está construindo algo data-heavy (analytics, ETL)
+
+### Escolha **SQL raw + Zod** se…
+
+- App pequeno (< 10 tabelas)
+- Você é experiente em SQL e migrations
+- Você quer minimizar dependências
+
+## Migração entre ORMs
+
+Migrar é sempre doloroso. Estime ~2 semanas para um app de 30-40 modelos. **Razões válidas** para migrar:
+
+- Performance crítica em edge → Prisma para Drizzle
+- Time pequeno e DX → Kysely para Drizzle ou Prisma
+
+**Razões inválidas** ("ouvi dizer que X é melhor") — não migre. Custo > benefício.
+
+## Conclusão honesta
+
+Em 2026, **Drizzle é o default razoável** para a maioria dos projetos novos em TypeScript. Cobre 90% dos casos, tem boa DX, é edge-friendly, e quando precisa de SQL bruto não tira do caminho.
+
+Prisma continua ótimo — apenas perdeu o status de única opção sensata. Kysely é especialista; saiba quando puxar a faca.

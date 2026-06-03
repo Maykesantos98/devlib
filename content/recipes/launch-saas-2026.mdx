@@ -1,0 +1,84 @@
+---
+title: SaaS Production-Ready 2026
+goal: Lançar um SaaS em 2026
+emoji: 🚀
+summary: Stack para sair do zero a usuários pagantes em 2-4 semanas. Foco em low-lock, custo previsível e DX boa.
+stack:
+  - { library: nextjs,       role: Framework full-stack,  note: 'App Router + PPR. Default por ecossistema.' }
+  - { library: drizzle,      role: ORM,                   note: 'SQL-first, edge-compatible. Performa em projetos sérios.' }
+  - { library: neon,         role: Banco Postgres,        note: 'Branching por PR, scale-to-zero.' }
+  - { library: better-auth,  role: Autenticação,          note: 'Self-host, plugins compostos. Sem vendor lock como Clerk.' }
+  - { library: stripe,       role: Pagamentos,            note: 'Billing + Tax + Customer Portal. Padrão global.' }
+  - { library: resend,       role: Email transacional,    note: 'React Email integrado. DX impecável.' }
+  - { library: shadcn,       role: Design system,         note: 'Componentes copy-paste. Você é dono do código.' }
+publishedAt: '2026-06-02'
+---
+
+## Setup em 6 passos
+
+### 1. Bootstrap
+
+```bash
+npx create-next-app@latest meu-saas --typescript --tailwind --app
+cd meu-saas
+npx shadcn@latest init
+```
+
+### 2. Banco e ORM
+
+```bash
+npm install drizzle-orm @neondatabase/serverless
+npm install -D drizzle-kit
+```
+
+Crie `drizzle.config.ts` e `db/schema.ts`. Conecte ao Neon via `DATABASE_URL`. Rode `npx drizzle-kit push` para sincronizar.
+
+### 3. Auth
+
+```bash
+npm install better-auth
+```
+
+Configure plugins: `emailAndPassword`, `magicLink`, `organization` se for B2B. Use o adapter Drizzle. Schema de auth fica gerado automaticamente.
+
+### 4. Pagamentos
+
+```bash
+npm install stripe
+```
+
+Crie 1 Product no Stripe (com 2-3 Prices: mensal, anual, trial). Webhook em `/api/webhooks/stripe` validando `Stripe-Signature`. Persist `customerId` na sua tabela `users`.
+
+### 5. Email
+
+```bash
+npm install resend react-email
+```
+
+Templates em `emails/welcome.tsx`. Dispare via `resend.emails.send({ from, to, react: <Welcome /> })`.
+
+### 6. Deploy
+
+Push para GitHub, importe no Vercel. Adicione env vars: `DATABASE_URL`, `BETTER_AUTH_SECRET`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `RESEND_API_KEY`. Done.
+
+---
+
+## Alternativas
+
+- **Convex** no lugar de Drizzle + Neon — se você quer realtime nativo e schema TypeScript-only.
+- **Supabase** se quer Auth + DB + Storage no mesmo provedor — mais opinionado, menos low-lock.
+- **Polar** no lugar de Stripe — Open Source merchant of record, melhor para vender global a partir do Brasil sem dor fiscal.
+- **Loops** no lugar de Resend — se você quer marketing emails além de transacional.
+
+## Gotchas
+
+- **CORS de webhook Stripe** — produção precisa de `STRIPE_WEBHOOK_SECRET` específico (não o de teste).
+- **Drizzle migrations vs push** — use `push` em dev, `generate + migrate` em produção. Misturar é fonte de erro.
+- **Better Auth + Edge** — sessions em DB funcionam em edge, mas double-check seu adapter suporta.
+- **Pix no Brasil**: Stripe ainda limitado. Para SaaS BR-only, considere Asaas ou Pagar.me como secundário.
+
+## Próximos passos
+
+- Observability: adicione **Sentry** (errors) + **PostHog** (product analytics) na semana 2.
+- Segurança: rode a **Receita Security Stack** depois de ter usuários reais.
+- Customer support: **Crisp** ou **Plain** integram em < 1 hora.

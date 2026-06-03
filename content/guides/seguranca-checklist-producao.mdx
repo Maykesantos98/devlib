@@ -1,0 +1,171 @@
+---
+title: Setup mínimo de segurança em produção
+summary: Checklist objetivo de auth, headers, rate limit, scanning e secrets. Cobertura suficiente para abrir um SaaS ao público sem teatro de segurança.
+category: security
+relatedRecipes: [security-stack]
+relatedLibraries: [better-auth, arcjet, snyk]
+publishedAt: '2026-06-02'
+readingMinutes: 8
+---
+
+Segurança "perfeita" não existe. O que existe é **segurança proporcional ao risco**. Este checklist é o piso para um SaaS típico — abaixo dele, você está negligente; acima, fica caro rápido.
+
+## O modelo mental: 4 camadas
+
+1. **Identidade** — quem é o usuário, como você prova
+2. **Acesso** — o que ele pode fazer
+3. **Borda** — o que entra na sua infra
+4. **Cadeia** — o que está rodando no seu código
+
+Cada incidente em produção encaixa em uma dessas. Se sua segurança cobre as quatro, você está em boa forma.
+
+## Camada 1 · Identidade
+
+### Auth com sessions em DB, não JWT em localStorage
+
+```
+❌ const token = localStorage.getItem('jwt')  // XSS rouba isso
+✅ cookie httpOnly + Secure + SameSite=Strict
+```
+
+**Por quê:** JWT em localStorage é o convite #1 para account takeover via XSS. Cookie httpOnly não é acessível por JS — XSS não consegue ler.
+
+### Senhas: bcrypt/argon2 com cost adequado
+
+- **argon2id** preferido em 2026 (memory-hard, resistente a ASIC)
+- **bcrypt** aceitável, custo mínimo 12
+- **NUNCA** SHA-256 puro, MD5, ou "criptografia caseira"
+
+### 2FA opcional, recovery codes obrigatórios
+
+Implemente TOTP (Better Auth tem plugin). Quando ativar 2FA, gere **10 recovery codes**, mostre uma vez, salve hash. Sem isso, suporte vira manual de "perdi meu celular".
+
+### Email verificado antes de qualquer ação sensível
+
+Signup → email com link de verificação → só então liberar criação de conteúdo, mudança de email, billing.
+
+## Camada 2 · Acesso
+
+### Authorization em **todo** endpoint
+
+```
+❌ if (req.method === 'GET') return data
+✅ if (!canRead(user, resource)) throw new ForbiddenError()
+```
+
+Padrão: **deny by default**. Toda nova rota começa fechada, você abre explicitamente.
+
+### Multi-tenant: filtre por `organizationId` SEM exceção
+
+Cada query tem `where organizationId = ?`. Se um único query esquecer, é vazamento entre clientes. Isso já derrubou empresas.
+
+Dica: encapsule o `db` em um wrapper que **exige** organização como contexto. Não dê acesso direto.
+
+### Rate limit em endpoints sensíveis
+
+| Endpoint | Limit razoável |
+|---|---|
+| Login | 5/min por IP, 10/min por email |
+| Signup | 3/hora por IP |
+| Reset password | 3/hora por email |
+| API call autenticada | 100/min por user |
+| Webhook público | 1000/min, com queue |
+
+Use Arcjet, Upstash Ratelimit, ou Vercel Firewall.
+
+## Camada 3 · Borda
+
+### Headers obrigatórios
+
+```
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Content-Security-Policy: ...
+```
+
+CSP é o mais delicado. Comece com `Content-Security-Policy-Report-Only` e itere antes de enforcer.
+
+### Bot detection no signup
+
+Sem bot detection, sua tabela de users vira spam de account-takeover-rehearsal. Arcjet, Cloudflare Turnstile, ou hCaptcha resolvem.
+
+### Webhook signature validation
+
+```typescript
+// SEMPRE valide assinatura antes de processar
+const isValid = stripe.webhooks.constructEvent(
+  rawBody, signature, process.env.STRIPE_WEBHOOK_SECRET!
+);
+```
+
+Sem isso, qualquer um pode enviar webhook fake e bagunçar seu DB.
+
+### Validação de input com Zod **no servidor**
+
+```typescript
+const Schema = z.object({
+  email: z.string().email().max(254).trim().toLowerCase(),
+  name: z.string().min(1).max(100).trim(),
+});
+const data = Schema.parse(req.body); // ZodError se inválido
+```
+
+Validação no client é UX. Validação no server é segurança. Faça as duas.
+
+## Camada 4 · Cadeia
+
+### Scanning de dependências
+
+Configure **um** dos seguintes no CI:
+
+- **Snyk** — UI excelente, free para repos públicos
+- **Dependabot** — GitHub nativo, gratuito
+- **Aikido** — mais barato em escala
+- **Trivy** — open source, self-hosted
+
+Sem isso, você vai shipar a próxima xz-utils sem perceber.
+
+### Secrets fora do código
+
+```
+❌ const KEY = 'sk-proj-xxxxx'
+✅ const KEY = process.env.OPENAI_API_KEY  // + validação no startup
+```
+
+Use **Vercel envs**, **Doppler**, ou **1Password CLI**. NUNCA `.env` commitado, mesmo "só em dev".
+
+### Audit log de ações críticas
+
+Registre em tabela separada:
+- mudança de email
+- mudança de senha
+- ativação/desativação de 2FA
+- mudança de role
+- billing change
+- export de dados
+
+Quando der ruim, esse log é a única fonte de verdade.
+
+### Backup automático **e teste de restore**
+
+Backup que nunca foi restaurado não é backup. Faça **restore real** uma vez por mês — quebrou? você tem 30 dias para arrumar antes de precisar de verdade.
+
+## O que você NÃO precisa (ainda)
+
+- **SOC 2** — só se vai vender enterprise
+- **Penetration test** — útil, mas espere ter usuários reais (pré-PMF é gasto)
+- **Bug bounty** — depois de SOC2, e maduro
+- **WAF dedicado** — Vercel Firewall ou Cloudflare bastam
+- **HSM** — overkill para 99% dos SaaS
+
+## Resposta a incidente: tenha o playbook
+
+1. **Detect** — Sentry + uptime + log de auth com alerta
+2. **Contain** — invalidar sessions afetadas, rotacionar secrets
+3. **Communicate** — email aos usuários afetados em < 72h
+4. **Postmortem** — escrito, público (ou interno), focado em sistema
+
+O playbook não precisa ser perfeito. Precisa **existir** antes do incidente.

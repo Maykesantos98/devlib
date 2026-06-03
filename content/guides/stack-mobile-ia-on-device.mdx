@@ -1,0 +1,196 @@
+---
+title: Stack mobile com IA on-device em 2026
+summary: Decisões práticas para LLMs rodando em iOS e Android. Modelos, runtimes, distribuição e custos reais.
+category: mobile-ai
+relatedRecipes: [mobile-on-device-ai]
+relatedLibraries: [expo, executorch]
+publishedAt: '2026-06-02'
+readingMinutes: 8
+---
+
+LLM rodando no celular do usuário virou viável em 2025-2026 com modelos sub-3B e quantização agressiva. Este guia cobre as decisões reais para colocar IA on-device em produção, sem virar projeto científico.
+
+## Quando faz sentido (mesmo)
+
+✅ **Privacidade** — dados médicos, jurídicos, financeiros pessoais
+✅ **Offline-first** — usuários em campo, sem rede confiável
+✅ **Latência sub-100ms** — feedback imediato em UI conversacional
+✅ **Custo recorrente zero** — sem API bills crescendo com MAU
+✅ **Compliance** — LGPD/GDPR mais simples quando dado nunca sai do device
+
+❌ **Modelos > 7B params** — usuário não terá storage
+❌ **Atualização diária do modelo** — overhead de distribuição mata UX
+❌ **Multi-modal pesado** (vision + audio + text) — ainda não viável em mobile
+❌ **App que precisa rodar em Android low-end** (< 4GB RAM) — vai engasgar
+
+## A escolha do modelo
+
+Em 2026, os modelos viáveis para mobile:
+
+| Modelo | Tamanho 4-bit | Latência iPhone 15 | Qualidade |
+|---|---|---|---|
+| Llama 3.2 1B Instruct | ~700MB | ~30 tok/s | Boa para chat simples |
+| Phi-3.5 Mini Instruct (3.8B) | ~1.5GB | ~15 tok/s | Muito boa, raciocínio leve |
+| Gemma 2 2B | ~1.2GB | ~20 tok/s | Boa, balanceada |
+| Qwen 2.5 1.5B | ~900MB | ~25 tok/s | Boa para multilingual |
+| Apple Foundation Models | bundled (iOS 19+) | nativo | Boa, limitado a Apple |
+
+**Regra prática 2026**: comece com **Llama 3.2 1B** ou **Gemma 2 2B**. Suficiente para 80% dos casos, distribuição factível.
+
+## Os 4 runtimes que importam
+
+### 1. ExecuTorch (PyTorch oficial)
+
+- **Suporte**: iOS, Android, embedded
+- **Backends**: Core ML, MPS, Vulkan, XNNPACK
+- **Integração RN**: `react-native-executorch`
+- **Maturidade**: estável em 2026, API ainda quebra entre versões
+
+**Use quando**: você quer suporte oficial PyTorch e modelos custom.
+
+### 2. MLC LLM
+
+- **Suporte**: iOS, Android, web, desktop
+- **Backends**: TVM, Apple Neural Engine, Vulkan
+- **Maturidade**: muito maduro, mais flexível em modelos
+- **Cons**: integração RN menos direta, mais boilerplate
+
+**Use quando**: você precisa do mesmo modelo rodando em iOS, Android e web.
+
+### 3. llama.cpp + wrappers (`llama.rn`)
+
+- **Suporte**: iOS, Android via wrappers
+- **Formato**: GGUF — comunidade gigante de modelos quantizados
+- **Maturidade**: rock solid
+- **Cons**: features mais novas atrasam vs ExecuTorch
+
+**Use quando**: você quer flexibilidade de modelos GGUF e estabilidade.
+
+### 4. Apple Foundation Models (iOS 19+)
+
+- **Suporte**: iOS only
+- **Tamanho**: bundled no sistema (zero download)
+- **Maturidade**: novo (2025), evolução rápida
+- **Cons**: lock-in Apple, controle limitado
+
+**Use quando**: iOS-only e você aceita as limitações em troca de zero overhead.
+
+## A real do bundle size
+
+```
+Seu app: 30 MB
++ Modelo 1B 4-bit: 700 MB
+= App total: 730 MB
+```
+
+Implicações:
+
+- **App Store**: > 200 MB exige wifi para download. Avise o usuário no onboarding.
+- **Google Play**: até 200 MB no AAB, depois exige asset packs (complicado).
+- **Solução padrão**: download progressivo do modelo **após primeira execução**, NÃO bundled.
+
+```ts
+import * as FileSystem from 'expo-file-system';
+
+async function ensureModel(onProgress: (p: number) => void) {
+  const LOCAL = `${FileSystem.documentDirectory}model.pte`;
+  const info = await FileSystem.getInfoAsync(LOCAL);
+  if (info.exists) return LOCAL;
+
+  const dl = FileSystem.createDownloadResumable(
+    MODEL_URL, LOCAL, {},
+    ({ totalBytesWritten, totalBytesExpectedToWrite }) =>
+      onProgress(totalBytesWritten / totalBytesExpectedToWrite),
+  );
+  return (await dl.downloadAsync())?.uri;
+}
+```
+
+## Hosting do modelo
+
+Onde guardar o arquivo do modelo (~1GB):
+
+- **Hugging Face Hub** — gratuito, CDN global, perfil estável
+- **Cloudflare R2** — controle total, custo previsível
+- **GitHub LFS** — não recomendado para arquivo grande de produção
+- **Seu próprio S3 + CloudFront** — caro, prefira R2
+
+**Recomendação**: HF Hub para protótipos, R2 para produção.
+
+## Padrões de uso
+
+### Padrão 1: 100% on-device
+
+Toda inferência local. Sem fallback.
+
+✅ Privacidade máxima
+✅ Custo zero
+❌ Você está limitado à qualidade do modelo 1B-3B
+
+### Padrão 2: Hybrid (local-first, cloud fallback)
+
+Query simples local, query complexa → API (Claude/GPT).
+
+Critério: se prompt > N tokens, ou tarefa específica → cloud.
+
+✅ UX consistente
+✅ Custo controlado (cloud só quando necessário)
+❌ Complexidade dobrada
+
+### Padrão 3: Local-only mode opcional
+
+Modo "Privado" no settings → on-device. Default → cloud.
+
+✅ Usuário decide
+❌ Maioria nunca ativa
+
+## Bateria e calor
+
+Inferência intensa drena bateria visivelmente:
+
+- **5 min de chat contínuo** = ~5-10% de bateria no iPhone moderno
+- **Aquece notavelmente** após 2-3 min
+
+Soluções:
+
+- **Throttle de geração** — pause entre tokens em sessions longas
+- **Limite de contexto** — não mantenha 50 mensagens no contexto
+- **Background pause** — pare quando app vai para background
+
+## Atualização do modelo
+
+Você publicou versão 1, agora quer atualizar:
+
+1. **Version o URL do modelo** (`/model-v2.pte`)
+2. **Compare versão local vs remota** no app start
+3. **Mostre prompt opcional** — "Atualizar para v2 (melhor qualidade, 1.2GB)?"
+4. **NUNCA atualize sem permissão** — dados móveis caros, usuário fica irritado
+
+## Distribuição: TestFlight / Play Beta
+
+Apps com modelo on-device demoram mais para review:
+
+- **Apple**: review pode levar 2-3 dias (tamanho grande chama atenção)
+- **Google**: AAB > 150MB precisa de asset packs (complica build)
+
+Planeje **2 dias de buffer** em cada release.
+
+## Custos reais (estimativa 2026)
+
+Para app com 100k MAU usando LLM cloud (Claude Haiku):
+
+- ~R$ 60-200/mês em API calls (médio uso)
+- escala linear com MAU
+
+Para mesmo app on-device:
+
+- ~R$ 50/mês em CDN de modelo (R2)
+- escala logarítmica (CDN cacheia)
+
+**Break-even**: ~10k MAU. Abaixo, cloud é mais barato. Acima, on-device ganha.
+
+## Conclusão
+
+On-device em 2026 é **viável para tarefas focadas** com modelos 1B-3B. Não substitui Claude/GPT em raciocínio complexo. Substitui muito bem chat assistente, autocompletar inteligente, geração local de conteúdo.
+
+Comece **híbrido** (local + cloud fallback) — você ganha o melhor dos dois mundos e aprende em produção qual peso usar.

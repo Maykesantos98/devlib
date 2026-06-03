@@ -1,0 +1,165 @@
+---
+title: Dashboard de Analytics
+goal: Dashboard / Analytics
+emoji: 📊
+summary: Stack para um painel admin com KPIs, charts, tabelas filtráveis. Pronto para dados reais em uma semana.
+stack:
+  - { library: nextjs,         role: Framework,             note: 'App Router + Server Components para data fetching direto.' }
+  - { library: drizzle,        role: ORM,                   note: 'Type-safe queries, agregações SQL nativas.' }
+  - { library: neon,           role: Banco,                 note: 'Read replica para queries pesadas de dashboard.' }
+  - { library: shadcn,         role: Componentes base,      note: 'Card, Tabs, Select, DropdownMenu.' }
+  - { library: tanstack-table, role: Tabela,                note: 'Sort, filter, pagination, virtualização.' }
+  - { library: recharts,       role: Charts,                note: 'Line, area, bar, donut. Padrão shadcn-compatible.' }
+  - { library: tremor,         role: KPI components,        note: 'Métricas, badge delta, sparkline rápidos.' }
+publishedAt: '2026-06-02'
+---
+
+## Estrutura
+
+```
+app/
+  (dashboard)/
+    layout.tsx           # sidebar + topbar
+    overview/page.tsx    # KPIs + charts
+    customers/page.tsx   # tabela
+    reports/[id]/page.tsx
+components/
+  kpi-card.tsx
+  charts/revenue-chart.tsx
+  charts/funnel-chart.tsx
+  tables/customers-table.tsx
+db/
+  queries/dashboard.ts   # all read queries here
+```
+
+## Setup em 7 passos
+
+### 1. Bootstrap
+
+```bash
+npx create-next-app@latest meu-dash --typescript --tailwind --app
+npx shadcn@latest init
+npx shadcn@latest add card tabs select dropdown-menu skeleton
+npm install drizzle-orm @neondatabase/serverless @tanstack/react-table recharts @tremor/react
+```
+
+### 2. Queries com Drizzle
+
+```ts
+// db/queries/dashboard.ts
+import 'server-only';
+import { sql } from 'drizzle-orm';
+import { db } from '../client';
+import { orders } from '../schema';
+
+export async function revenueByDay(days = 30) {
+  return db
+    .select({
+      date: sql<string>`date_trunc('day', ${orders.createdAt})`.as('date'),
+      total: sql<number>`sum(${orders.amount})`.as('total'),
+    })
+    .from(orders)
+    .where(sql`${orders.createdAt} > now() - interval '${days} days'`)
+    .groupBy(sql`date_trunc('day', ${orders.createdAt})`);
+}
+```
+
+### 3. KPI Cards (Server Component)
+
+```tsx
+// components/kpi-card.tsx
+export async function KpiCard({ title, query }: Props) {
+  const value = await query();
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-sm text-muted-foreground">{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-3xl font-bold">{value}</p>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### 4. Chart (Client wrapper)
+
+```tsx
+'use client';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+
+export function RevenueChart({ data }: { data: { date: string; total: number }[] }) {
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={data}>
+        <XAxis dataKey="date" />
+        <YAxis />
+        <Tooltip />
+        <Line type="monotone" dataKey="total" stroke="var(--accent)" strokeWidth={2} />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+}
+```
+
+### 5. Tabela com TanStack
+
+```tsx
+'use client';
+import { useReactTable, getCoreRowModel, getFilteredRowModel, getSortedRowModel } from '@tanstack/react-table';
+
+const table = useReactTable({
+  data,
+  columns,
+  getCoreRowModel: getCoreRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+});
+```
+
+### 6. Caching
+
+```ts
+// db/queries/dashboard.ts
+import { unstable_cache } from 'next/cache'; // ou "use cache" no Next 16
+
+export const revenueByDay = unstable_cache(
+  async (days: number) => { /* ... */ },
+  ['revenue-by-day'],
+  { revalidate: 60, tags: ['orders'] },
+);
+```
+
+### 7. Streaming + Suspense
+
+```tsx
+<Suspense fallback={<Skeleton className="h-64" />}>
+  <KpiCard title="Receita" query={getRevenue} />
+</Suspense>
+```
+
+Cada KPI carrega independente — TTFB rápido, hidração progressiva.
+
+---
+
+## Alternativas
+
+- **Tableau / Metabase** se a equipe não tem dev disponível. UI menos polida, ROI rápido.
+- **ECharts** se dataset > 100k pontos.
+- **ClickHouse** no lugar de Postgres para analytics puro — 100x mais rápido em queries OLAP.
+- **PostHog Dashboards** se você só precisa de product analytics.
+
+## Gotchas
+
+- **N+1 em dashboard** = morte. Sempre `JOIN` ou `WITH cte`. Use `EXPLAIN ANALYZE`.
+- **Index em colunas de timestamp** — `created_at` sem índice = full table scan.
+- **Tooltip do Recharts em mobile** — touch não emite hover. Use click handler.
+- **Cache invalidation** — define tags e invalida em writes (`revalidateTag('orders')`).
+- **Authorization** — todo query precisa filtrar por `organizationId`. Esquece um, vaza.
+
+## Próximos passos
+
+- **Export CSV/Excel** com `papaparse` + `xlsx`.
+- **Filtros persistidos** na URL via `nuqs` — link compartilhável reproduz o estado.
+- **Realtime** via Neon WebSocket ou Convex se update < 5s for crítico.

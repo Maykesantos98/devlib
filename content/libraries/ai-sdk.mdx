@@ -1,0 +1,30 @@
+---
+title: AI SDK
+summary: SDK unificado para LLMs (Anthropic, OpenAI, Google, xAI) com streaming, tool calling, structured outputs e agents. Default em apps Next.js.
+url: https://ai-sdk.dev/
+repo: https://github.com/vercel/ai
+category: ai-agents
+tags: [lang:typescript, runtime:node, runtime:edge, oss, license:apache-2.0, 2026, production-ready, ai:agent-framework, ai:provider]
+difficulty: producao
+badge: SDK
+featured: true
+recipes: [build-ai-agent]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Provider-agnostic** via strings `"anthropic/claude-sonnet-4-5"` (com AI Gateway).
+- **`generateText`, `streamText`, `generateObject`, `streamObject`** — APIs simétricas.
+- **Tool calling** com Zod schema validado.
+- **`experimental_telemetry`** para LangSmith / Vercel Observability.
+
+## Padrão para agentes
+
+```ts
+const { object } = await generateObject({
+  model: 'anthropic/claude-sonnet-4-5',
+  schema: ProductSchema,
+  prompt: 'Gere um produto...',
+});
+```

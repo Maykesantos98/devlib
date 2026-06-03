@@ -1,0 +1,24 @@
+---
+title: Neon
+summary: Postgres serverless com branching estilo Git. Cada PR ganha database isolada — fim do "funciona no meu local".
+url: https://neon.tech/
+category: backend-data
+tags: [lang:any, saas, freemium, 2026, production-ready, db:postgres, serverless]
+difficulty: producao
+badge: Serverless
+featured: true
+recipes: [launch-saas-2026, dashboard-analytics]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Postgres real** — sem dialeto novo, todas as libs (Drizzle, Prisma, raw SQL) funcionam.
+- **Branching** — `git branch` para o banco. PRs ganham preview DB automaticamente.
+- **Scale to zero** — paga só pelo uso, ideal para projetos cedo.
+- **Serverless driver** com WebSockets — funciona em edge runtimes.
+
+## Cuidados
+
+- Cold start de ~500ms quando idle. Use connection pooling (`@neondatabase/serverless`) e mantenha um warm-up cron se latência crítica.
+- Plano gratuito tem 0.5GB storage — suficiente para protótipo, planeje migração se crescer.

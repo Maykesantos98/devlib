@@ -1,0 +1,108 @@
+---
+title: Agente de IA em produção
+goal: Construir um agente com IA
+emoji: 🤖
+summary: Stack para sair do "ChatGPT wrapper" e construir agente real com tools, memória, observability e failover entre providers.
+stack:
+  - { library: ai-sdk,      role: SDK,                  note: 'streamText + tools com Zod schema.' }
+  - { library: ai-gateway,  role: Roteador de modelos,  note: 'Failover Anthropic → OpenAI, cache, billing unificado.' }
+  - { library: langsmith,   role: Observabilidade,      note: 'Traces, evals, datasets.' }
+  - { library: drizzle,     role: Persistência de estado, note: 'Conversas, threads, tool calls em Postgres.' }
+publishedAt: '2026-06-02'
+---
+
+## Setup em 5 passos
+
+### 1. Cliente AI SDK + Gateway
+
+```bash
+npm install ai
+```
+
+```ts
+// lib/agent.ts
+import { streamText, tool } from 'ai';
+import { z } from 'zod';
+
+export async function chat(messages: Message[]) {
+  return streamText({
+    model: 'anthropic/claude-sonnet-4-6', // via AI Gateway
+    messages,
+    tools: {
+      getWeather: tool({
+        description: 'Get current weather for a city',
+        inputSchema: z.object({ city: z.string() }),
+        execute: async ({ city }) => fetchWeather(city),
+      }),
+    },
+    maxSteps: 10,
+    experimental_telemetry: { isEnabled: true },
+  });
+}
+```
+
+### 2. Configurar Gateway
+
+No Vercel project, ative AI Gateway. Defina:
+- **Primary**: `anthropic/claude-sonnet-4-6`
+- **Fallback**: `openai/gpt-4o`
+- **Cache**: 1 hora por hash de prompt
+
+### 3. Persistir conversas
+
+```ts
+// db/schema.ts
+export const threads = pgTable('threads', { ... });
+export const messages = pgTable('messages', {
+  id: uuid().primaryKey(),
+  threadId: uuid().references(() => threads.id),
+  role: text().$type<'user' | 'assistant' | 'tool'>(),
+  content: jsonb(),
+  toolCallId: text(),
+  createdAt: timestamp().defaultNow(),
+});
+```
+
+### 4. Streaming no client
+
+```tsx
+'use client';
+import { useChat } from '@ai-sdk/react';
+
+export function Chat() {
+  const { messages, sendMessage } = useChat();
+  // render
+}
+```
+
+### 5. Telemetria com LangSmith
+
+```ts
+process.env.LANGCHAIN_TRACING_V2 = 'true';
+process.env.LANGCHAIN_API_KEY = process.env.LANGSMITH_KEY!;
+process.env.LANGCHAIN_PROJECT = 'meu-agente-prod';
+```
+
+AI SDK telemetry é compatível via OpenTelemetry — LangSmith ingere automaticamente.
+
+---
+
+## Alternativas
+
+- **Mastra** — framework completo com workflows, eval, RAG. Use se agente cresce em complexidade.
+- **LangGraph.js** — graph-based, melhor para fluxos multi-step com loops e branches.
+- **Inngest** ou **Vercel Workflow** — para steps duráveis, retries automáticos, cron.
+
+## Gotchas
+
+- **Tool descriptions são prompt** — descreva quando usar, não só o que faz. "Use when user asks about weather" > "Get weather".
+- **maxSteps** essencial — sem isso, agente em loop infinito.
+- **API keys no client** — NUNCA. Sempre via API route server-side.
+- **Histórico ilimitado** — limite a 50 msgs e ~10K chars. Resuma o resto via `generateText`.
+- **Streaming + tools** — UI precisa lidar com 4 estados: text chunks, tool call, tool result, finish. Não pule estados.
+
+## Próximos passos
+
+- **Guardrails**: adicione Llama Guard ou NeMo Guardrails antes de produção real.
+- **Eval**: rode 100 perguntas comuns no LangSmith semanalmente, monitore regressão.
+- **Cost cap**: defina hard limit por usuário/dia no Gateway.

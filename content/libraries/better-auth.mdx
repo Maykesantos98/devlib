@@ -1,0 +1,27 @@
+---
+title: Better Auth
+summary: Framework de autenticação TypeScript-first com plugins (2FA, magic link, organizações, passkey). Self-host, sem vendor lock.
+url: https://better-auth.com/
+repo: https://github.com/better-auth/better-auth
+category: security
+tags: [lang:typescript, runtime:node, runtime:edge, oss, license:mit, 2026, production-ready, auth:oauth, auth:passwordless, selfhost]
+difficulty: producao
+badge: Self-host
+featured: true
+recipes: [launch-saas-2026, security-stack]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Plugins compostos** — habilita só o que usa (email/senha, OAuth, magic link, 2FA, passkey, organizações).
+- **Adapter-agnostic** — funciona com Drizzle, Prisma, Kysely, Mongo.
+- **Sessions em DB**, não JWT — invalidação imediata, rotação simples.
+- **CSRF e PKCE** prontos por padrão.
+
+## Better Auth vs Clerk
+
+- Clerk: hosted, mais rápido para começar, custo cresce com MAU.
+- Better Auth: self-host, controle total, sem custo recorrente, mais código seu.
+
+Use Better Auth quando custo importa, compliance importa, ou você quer evitar redirect para domínio terceiro.

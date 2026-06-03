@@ -1,0 +1,121 @@
+---
+title: Stack de Segurança em Produção
+goal: Stack de segurança em produção
+emoji: 🔒
+summary: Camadas mínimas para abrir um SaaS ao público — auth sólida, rate limit, WAF leve, scanning de dependência. Sem teatro.
+stack:
+  - { library: better-auth, role: Autenticação,         note: 'Sessions em DB, 2FA, passkey. Sem JWT em localStorage.' }
+  - { library: arcjet,      role: Rate limit + WAF,      note: 'Edge-native. Bot detection, shield, email validation.' }
+  - { library: snyk,        role: SCA + SAST,            note: 'CVE em dependências e código, PR check.' }
+publishedAt: '2026-06-02'
+---
+
+## Checklist mínimo
+
+Antes de abrir ao público:
+
+- [ ] **Auth com sessions em DB** (Better Auth) — sem JWT em localStorage
+- [ ] **Cookies httpOnly + Secure + SameSite=Strict**
+- [ ] **Rate limit** em login, signup, reset password, qualquer endpoint público
+- [ ] **CSRF** ativo (Better Auth já inclui)
+- [ ] **Headers de segurança** — CSP, HSTS, X-Frame-Options, X-Content-Type-Options
+- [ ] **Validação Zod** em todo input de usuário, no servidor
+- [ ] **Bot detection** no signup (Arcjet)
+- [ ] **Disposable email block** (Arcjet email rule)
+- [ ] **Dependency scan no CI** (Snyk ou Dependabot)
+- [ ] **Secrets** em env, nunca commit. Use Vercel envs ou Doppler
+- [ ] **Webhook signatures** verificadas (Stripe, GitHub, etc)
+- [ ] **2FA opcional** disponível no perfil
+- [ ] **Audit log** de ações críticas (mudança de email, role, billing)
+- [ ] **Backup automático** do banco — teste restore mensalmente
+- [ ] **Sentry** para errors com PII redaction
+
+## Setup em 4 passos
+
+### 1. Auth
+
+Already covered — siga a **Receita SaaS 2026**. Adicione 2FA plugin:
+
+```ts
+betterAuth({
+  plugins: [twoFactor({ issuer: 'MeuSaaS' })],
+});
+```
+
+### 2. Rate limit + bot (Arcjet)
+
+```bash
+npm install @arcjet/next
+```
+
+```ts
+// middleware.ts
+import arcjet, { detectBot, fixedWindow, shield } from '@arcjet/next';
+
+const aj = arcjet({
+  key: process.env.ARCJET_KEY!,
+  rules: [
+    shield({ mode: 'LIVE' }),
+    detectBot({ mode: 'LIVE', allow: ['CATEGORY:SEARCH_ENGINE'] }),
+    fixedWindow({ mode: 'LIVE', window: '60s', max: 30 }),
+  ],
+});
+
+export default async function middleware(req: Request) {
+  const decision = await aj.protect(req);
+  if (decision.isDenied()) return new Response('Forbidden', { status: 403 });
+}
+```
+
+### 3. Headers de segurança
+
+```ts
+// next.config.ts
+const securityHeaders = [
+  { key: 'X-Frame-Options', value: 'DENY' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+];
+```
+
+CSP é mais delicado — comece com `Content-Security-Policy-Report-Only` e ajuste 1 semana antes de enforcer.
+
+### 4. CI scanning
+
+```yaml
+# .github/workflows/security.yml
+on: [push, pull_request]
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+```
+
+---
+
+## Alternativas
+
+- **Upstash Rate Limit** no lugar de Arcjet — open API, mais flexível, sem bot detection embutido.
+- **Cloudflare WAF** se você está atrás do CF — gratuito, regras robustas.
+- **Aikido** ou **Trivy** no lugar de Snyk — Aikido = mais barato, Trivy = open source.
+- **Helmet** para headers se não usar Next — middleware Express clássico.
+
+## Gotchas
+
+- **CSP `unsafe-inline`** mata XSS protection. Use nonces ou hashes em scripts inline.
+- **Rate limit por IP** falha em proxies/VPN — combine com user ID quando autenticado.
+- **Snyk PR comments ruidoso** — configure só HIGH+ severity, ou faz dev ignorar.
+- **2FA recovery codes** — gere 10, mostre uma vez, hash no banco. Sem isso, support manual.
+- **Webhook secret rotation** — planeje, é fácil esquecer e quebrar produção 6 meses depois.
+
+## Próximos passos
+
+- **Penetration test** com pentester real antes de série A.
+- **Bug bounty** privado via HackerOne quando estiver maduro.
+- **SOC 2** se for vender enterprise — Vanta ou Drata automatizam a maior parte.

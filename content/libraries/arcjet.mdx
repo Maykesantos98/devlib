@@ -1,0 +1,22 @@
+---
+title: Arcjet
+summary: Segurança como código para Next.js / Bun / SvelteKit — rate limit, bot detection, email validation, shield (WAF). API única, edge-native.
+url: https://arcjet.com/
+category: security
+tags: [lang:typescript, runtime:node, runtime:edge, saas, freemium, 2026, production-ready, rate-limit, waf]
+difficulty: producao
+recipes: [security-stack]
+addedAt: '2026-06-02'
+---
+
+## Por que escolher
+
+- **Tudo em uma chamada** — `arcjet.protect(req)` aplica rate limit + bot + shield.
+- **Rules locais primeiro** — decisão acontece no edge sem round-trip extra.
+- **Email validation** rejeita disposables (mailinator etc) no signup.
+- **DX no Next** — middleware nativo, exemplos prontos.
+
+## Cuidados
+
+- Vendor SaaS; em downtime degrada para `allow` por padrão (verifique config).
+- Free tier suficiente para começar (1k req/s rate-limited).
