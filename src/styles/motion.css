@@ -393,7 +393,7 @@
   position: fixed;
   inset: 0;
   z-index: 320;
-  width: min(580px, calc(100vw - 2rem));
+  width: min(760px, calc(100vw - 2rem));
   margin: 12vh auto auto;
   padding: 0;
   background: transparent;
@@ -413,6 +413,7 @@
 }
 
 .cmdk-box {
+  display: flex;
   background: var(--bg-card);
   border: 1px solid var(--border-bright);
   border-radius: 16px;
@@ -421,6 +422,66 @@
     0 30px 70px -15px rgba(0, 0, 0, 0.8),
     0 0 0 1px rgb(var(--accent-rgb) / 0.18);
   overflow: hidden;
+  min-height: 450px;
+}
+
+.cmdk-main-pane {
+  flex: 1.4;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.cmdk-preview-pane {
+  flex: 1;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow-y: auto;
+}
+
+.cmdk-preview-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.cmdk-preview-desc {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+.cmdk-preview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.cmdk-preview-section h4 {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.cmdk-preview-cmd {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  padding: 0.55rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--cyan-400);
+  word-break: break-all;
 }
 
 .cmdk-input-row {

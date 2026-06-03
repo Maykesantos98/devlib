@@ -1,57 +1,73 @@
-# DEVLIB
+# React + TypeScript + Vite
 
-Acervo curado com 133 bibliotecas, frameworks e ferramentas para desenvolvedores que constroem produtos com agentes de IA.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha dependencias obrigatorias, build step ou framework.
+Currently, two official plugins are available:
 
-## Conteudo
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- Curadoria organizada por categorias: Kit, Agentes, MCP, Interface, Servidor, Seguranca, Build, Apps e Trade.
-- Busca e filtros no front-end.
-- Command palette com `Ctrl+K` / `Cmd+K`.
-- Atalhos de teclado e comandos no console via `devlib.help()`.
-- Blueprints visuais com exemplos de uso de shadcn, ReUI, Magic UI, Aceternity UI e Motion.
+## React Compiler
 
-## Estrutura
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-```text
-.
-|-- index.html          # Pagina principal
-|-- Dev2.html           # Variante/backup da pagina
-|-- css/                # CSS modular
-|-- js/                 # JavaScript principal
-`-- public/             # Logo e favicon
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## Como rodar localmente
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-Como e um site estatico, voce pode abrir `index.html` diretamente no navegador.
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-Opcionalmente, rode um servidor local:
-
-```bash
-npx serve .
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-ou, com Python:
-
-```bash
-python -m http.server 8080
-```
-
-Depois acesse `http://localhost:8080`.
-
-## Como editar
-
-1. Edite os cards em `index.html`.
-2. Mantenha `Dev2.html` sincronizado se ele continuar sendo usado como variante.
-3. Atualize os contadores das secoes quando adicionar ou remover itens.
-4. Se alterar estilos ou scripts de origem em `css/*.css` ou `js/script.js`, confira a pagina principal e a variante antes de publicar.
-
-## Deploy
-
-O repositorio pode ser publicado diretamente pelo GitHub Pages ou qualquer hospedagem estatica, usando `index.html` como entrada.
-
-## Repositorio
-
-GitHub: <https://github.com/Maykesantos98/devlib>

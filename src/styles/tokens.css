@@ -1,0 +1,194 @@
+/* ─────────────────────────────────────────────────────────────
+ * tokens.css — Design tokens
+ * Single source of truth for colors, typography, spacing,
+ * radius, motion. Change values here, the rest follows.
+ * ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Typography stack ─────────────────────────────── */
+  --font-display: 'Outfit', 'Bricolage Grotesque', 'Geist', system-ui, -apple-system, sans-serif;
+  --font-sans:    'Geist', system-ui, sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, monospace;
+
+  /* Default Nebula Theme Variables */
+  --bg-base:    #030307;
+  --bg-deep:    #08070F;
+  --bg-elev:    #110F22;
+  --bg-card:    #0E0D1B;
+  --bg-card-hi: #17152C;
+
+  /* ── Foreground ───────────────────────────────────── */
+  --text:       #F5F5F7;
+  --text-soft:  #A1A1AA;
+  --text-faint: #B3B8C2;
+  --text-dim:   #8F96A3;
+
+  /* ── Borders ──────────────────────────────────────── */
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-bright: rgba(255, 255, 255, 0.16);
+  --border-glow:   rgb(var(--accent-rgb) / 0.45);
+
+  /* ── Accents ──────────────────────────────────────── */
+  --accent:       #A855F7;
+  --accent-solid: #7C3AED;
+  --accent-alt:   #2DD4BF;
+  --accent-rgb:       168 85 247;
+  --accent-solid-rgb: 124 58 237;
+  --accent-alt-rgb:   45 212 191;
+
+  /* Legacy tone aliases keep existing components token-driven. */
+  --violet-300: #C084FC;
+  --violet-400: var(--accent);
+  --violet-500: var(--accent-solid);
+  --violet-600: var(--accent-solid);
+  --violet-700: #5B21B6;
+  --cyan-300:   #7FEADC;
+  --cyan-400:   var(--accent-alt);
+  --cyan-500:   #0F766E;
+  --pink-400:   var(--accent);
+  --amber-400:  #F59E0B;
+  --emerald-400: var(--accent-alt);
+}
+
+:root[data-theme="nebula"] {
+  --bg-base:    #030307;
+  --bg-deep:    #08070F;
+  --bg-elev:    #110F22;
+  --bg-card:    #0E0D1B;
+  --bg-card-hi: #17152C;
+  --text:       #F5F5F7;
+  --text-soft:  #A1A1AA;
+  --text-faint: #B3B8C2;
+  --text-dim:   #8F96A3;
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-bright: rgba(255, 255, 255, 0.16);
+  --border-glow:   rgb(var(--accent-rgb) / 0.45);
+  --accent:       #A855F7;
+  --accent-solid: #7C3AED;
+  --accent-alt:   #2DD4BF;
+  --accent-rgb:       168 85 247;
+  --accent-solid-rgb: 124 58 237;
+  --accent-alt-rgb:   45 212 191;
+  --violet-300: #C084FC;
+  --violet-400: var(--accent);
+  --violet-500: var(--accent-solid);
+  --violet-600: var(--accent-solid);
+  --violet-700: #5B21B6;
+  --cyan-300:   #7FEADC;
+  --cyan-400:   var(--accent-alt);
+  --cyan-500:   #0F766E;
+  --pink-400:   var(--accent);
+  --amber-400:  #F59E0B;
+  --emerald-400: var(--accent-alt);
+  --font-display: 'Outfit', 'Bricolage Grotesque', 'Geist', system-ui, sans-serif;
+  --font-sans:    'Geist', system-ui, sans-serif;
+}
+
+:root[data-theme="cyberpunk"] {
+  --bg-base:    #050508;
+  --bg-deep:    #0A0910;
+  --bg-elev:    #161324;
+  --bg-card:    #12101E;
+  --bg-card-hi: #1A172B;
+  --text:       #FCFCFD;
+  --text-soft:  #C0A2FF;
+  --text-faint: #FFA3D5;
+  --text-dim:   #987BB2;
+  --border:        rgba(250, 204, 21, 0.15);
+  --border-bright: rgba(244, 63, 94, 0.35);
+  --border-glow:   rgba(250, 204, 21, 0.65);
+  --accent:       #FACC15; /* neon yellow */
+  --accent-solid: #CA8A04;
+  --accent-alt:   #F43F5E; /* neon pink */
+  --accent-rgb:       250 204 21;
+  --accent-solid-rgb: 202 138 4;
+  --accent-alt-rgb:   244 63 94;
+  --violet-300: #FDE047;
+  --violet-400: var(--accent);
+  --violet-500: var(--accent-solid);
+  --violet-600: var(--accent-solid);
+  --violet-700: #854D0E;
+  --cyan-300:   #FDA4AF;
+  --cyan-400:   var(--accent-alt);
+  --cyan-500:   #BE123C;
+  --pink-400:   var(--accent-alt);
+  --amber-400:  var(--accent);
+  --emerald-400: var(--accent-alt);
+  --font-display: 'Space Mono', 'Geist Mono', monospace;
+  --font-sans:    'Space Mono', 'Geist Mono', monospace;
+}
+
+:root[data-theme="slate"] {
+  --bg-base:    #090D16;
+  --bg-deep:    #06090F;
+  --bg-elev:    #121B2D;
+  --bg-card:    #0E1523;
+  --bg-card-hi: #162237;
+  --text:       #F8FAFC;
+  --text-soft:  #94A3B8;
+  --text-faint: #CBD5E1;
+  --text-dim:   #64748B;
+  --border:        rgba(255, 255, 255, 0.05);
+  --border-bright: rgba(255, 255, 255, 0.12);
+  --border-glow:   rgba(255, 255, 255, 0.25);
+  --accent:       #38BDF8; /* sky blue */
+  --accent-solid: #0284C7;
+  --accent-alt:   #94A3B8;
+  --accent-rgb:       56 189 248;
+  --accent-solid-rgb: 2 132 199;
+  --accent-alt-rgb:   148 163 184;
+  --violet-300: #7DD3FC;
+  --violet-400: var(--accent);
+  --violet-500: var(--accent-solid);
+  --violet-600: var(--accent-solid);
+  --violet-700: #0369A1;
+  --cyan-300:   #E2E8F0;
+  --cyan-400:   var(--accent-alt);
+  --cyan-500:   #475569;
+  --pink-400:   var(--accent);
+  --amber-400:  #E2E8F0;
+  --emerald-400: var(--accent);
+  --font-display: 'Outfit', 'Geist', system-ui, sans-serif;
+  --font-sans:    'Geist', system-ui, sans-serif;
+}
+
+:root {
+
+  /* ── Fluid type scale (clamp: min, fluid, max) ────── */
+  --t-xs:   clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --t-sm:   clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);
+  --t-base: clamp(0.94rem, 0.88rem + 0.3vw, 1.05rem);
+  --t-lead: clamp(1.08rem, 0.98rem + 0.5vw, 1.32rem);
+  --t-h4:   clamp(1.25rem, 1rem + 1vw, 1.6rem);
+  --t-h2:   clamp(1.8rem, 1.4rem + 2vw, 3rem);
+  --t-h1:   clamp(2.4rem, 1.8rem + 3.5vw, 4.6rem);
+  --t-chapter: clamp(0.92rem, 0.84rem + 0.35vw, 1.08rem);
+  --t-chapter-mark: clamp(3.2rem, 5.6vw, 4.8rem);
+
+  /* ── Layout ───────────────────────────────────────── */
+  --max:    1320px;
+  --gutter: clamp(1.25rem, 3vw, 3rem);
+  --chapter-stamp-min: min(100%, clamp(7.2rem, 10vw, 9rem));
+  --chapter-stamp-pad: 0.72rem 1rem 0.68rem 2.2rem;
+  --chapter-mark-left: 0.08rem;
+  --chapter-mark-bottom: -0.58rem;
+  --chapter-rule-width: 2rem;
+  --chapter-hover-shift: 0.25rem;
+  --chapter-bar-gap: clamp(0.9rem, 2vw, 1.5rem);
+  --chapter-bar-pad: clamp(1rem, 2vw, 1.35rem);
+  --chapter-bar-inset: clamp(1rem, 2vw, 1.35rem);
+  --chapter-bar-margin: clamp(2.4rem, 5vw, 3.6rem) 0 1.35rem;
+
+  /* ── Radius ───────────────────────────────────────── */
+  --radius-lg: 22px;
+  --radius-stamp: 8px;
+  --radius-chapter: 18px;
+
+  /* ── Motion ───────────────────────────────────────── */
+  --dur-fast: 220ms;
+  --dur:      380ms;
+  --ease:     cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Color scheme hint ────────────────────────────── */
+  color-scheme: dark;
+}
