@@ -15,6 +15,10 @@ import { Mascot } from './components/Mascot';
 import { Footer } from './components/Footer';
 import { FeaturedRecipes } from './components/sections/FeaturedRecipes';
 import { LatestGuides } from './components/sections/LatestGuides';
+import { BlueprintStrip } from './components/sections/BlueprintStrip';
+import { Stats } from './components/sections/Stats';
+import { CategoryIndex } from './components/sections/CategoryIndex';
+import { Method } from './components/sections/Method';
 
 // Global styles import (Vite handles this)
 import './styles/tokens.css';
@@ -109,7 +113,7 @@ export const App: React.FC = () => {
 
   // Shortcuts and Konami keyboard hook
   useEffect(() => {
-    const filterByKey = ['all', 'kit', 'agents', 'mcp', 'interface-components', 'interface-frameworks', 'server-db', 'server-utils', 'guard', 'run', 'ship', 'trade'];
+    const filterByKey = ['all', 'ai-agents', 'mcp', 'frontend-ui', 'frontend-frameworks', 'backend-data', 'backend-toolkit', 'mobile-ai', 'security', 'devops', 'trade-quant'];
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement;
@@ -241,6 +245,11 @@ export const App: React.FC = () => {
 
   return (
     <div id="top">
+      {/* Skip link for keyboard / screen-reader users */}
+      <a href="#acervo" className="skip-link">
+        Pular para o acervo
+      </a>
+
       {/* Scroll progress bar */}
       <div className="scroll-progress" aria-hidden="true"></div>
 
@@ -266,48 +275,10 @@ export const App: React.FC = () => {
         <LatestGuides />
 
         {/* Blueprint Examples */}
-        <section className="blueprint-strip shell" aria-label="Exemplos reais de stack visual">
-          <a className="blueprint-card" href="#interface-components">
-            <span className="blueprint-kicker">Components</span>
-            <h2>shadcn + ReUI</h2>
-            <p>Base editável, padrões complexos e blocos prontos para montar interfaces reais.</p>
-          </a>
-          <a className="blueprint-card" href="#interface-components">
-            <span className="blueprint-kicker">Motion</span>
-            <h2>Magic + Aceternity</h2>
-            <p>Hero sections, backgrounds, microinterações e CTAs com acabamento visual.</p>
-          </a>
-          <a className="blueprint-card" href="#agentes">
-            <span className="blueprint-kicker">Agents</span>
-            <h2>SDK + browser tools</h2>
-            <p>Combine frameworks de agentes com automação de navegador e MCP.</p>
-          </a>
-        </section>
+        <BlueprintStrip />
 
         {/* Stats strip */}
-        <section className="stats-strip" aria-label="Resumo do acervo">
-          <div className="shell stats-inner">
-            <div className="stat-item">
-              <span className="stat-num gradient">{totalLibraries}</span>
-              <span className="stat-tag">bibliotecas</span>
-            </div>
-            <span className="stat-divider" aria-hidden="true"></span>
-            <div className="stat-item">
-              <span className="stat-num">9</span>
-              <span className="stat-tag">categorias</span>
-            </div>
-            <span className="stat-divider" aria-hidden="true"></span>
-            <div className="stat-item">
-              <span className="stat-num live"><span className="status-dot" aria-hidden="true"></span>Ativo</span>
-              <span className="stat-tag">status</span>
-            </div>
-            <span className="stat-divider" aria-hidden="true"></span>
-            <div className="stat-item">
-              <span className="stat-num small">2026</span>
-              <span className="stat-tag">atualizado</span>
-            </div>
-          </div>
-        </section>
+        <Stats />
 
         {/* Marquee kinetic divider */}
         <div className="marquee" aria-hidden="true" style={{ display: 'block' }}>
@@ -326,167 +297,11 @@ export const App: React.FC = () => {
             <span>typescript</span><span aria-hidden="true">✦</span>
             <span>postgres</span><span aria-hidden="true">✦</span>
             <span>mcp</span><span aria-hidden="true">✦</span>
-            <span>edge</span><span aria-hidden="true">✦</span>
-            <span>tailwind</span><span aria-hidden="true">✦</span>
-            <span>agentes</span><span aria-hidden="true">✦</span>
-            <span>rag</span><span aria-hidden="true">✦</span>
-            <span>open source</span><span aria-hidden="true">✦</span>
-            <span>2026</span><span aria-hidden="true">✦</span>
           </div>
         </div>
 
         {/* Index / Table of Contents */}
-        <section className="index shell" id="indice" aria-labelledby="indice-title">
-          <span className="section-eyebrow">— Índice</span>
-          <h2 className="section-title" id="indice-title">11 <em>categorias.</em></h2>
-          <p className="section-desc">Navegue direto para a área que interessa. Cada categoria abre na seção correspondente do acervo.</p>
-
-          <ol className="toc">
-            <li>
-              <a href="#kit">
-                <span className="toc-num">§01</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Kit</span>
-                  <span className="toc-desc">Fundações &amp; skills</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">12</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#agentes">
-                <span className="toc-num">§02</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Agentes</span>
-                  <span className="toc-desc">Frameworks &amp; SDKs</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">13</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#mcp">
-                <span className="toc-num">§03</span>
-                <span className="toc-meta">
-                  <span className="toc-name">MCP</span>
-                  <span className="toc-desc">Protocolos &amp; servidores</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">10</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#interface-components">
-                <span className="toc-num">§04</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Interface (UI Kits)</span>
-                  <span className="toc-desc">Componentes &amp; blocos</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">18</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#interface-frameworks">
-                <span className="toc-num">§05</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Interface (Frameworks)</span>
-                  <span className="toc-desc">Engines, 3D &amp; Motion</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">16</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#server-db">
-                <span className="toc-num">§06</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Servidor (Bancos &amp; APIs)</span>
-                  <span className="toc-desc">BaaS, redis &amp; runtimes</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">9</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#server-utils">
-                <span className="toc-num">§07</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Servidor (ORMs &amp; Utils)</span>
-                  <span className="toc-desc">Prisma, Drizzle &amp; Zod</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">8</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#seguranca">
-                <span className="toc-num">§08</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Segurança</span>
-                  <span className="toc-desc">Auth &amp; appsec</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">12</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#build">
-                <span className="toc-num">§09</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Build</span>
-                  <span className="toc-desc">Build, testes &amp; obs.</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">10</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#apps">
-                <span className="toc-num">§10</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Apps</span>
-                  <span className="toc-desc">Mobile &amp; IA on-device</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">15</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#trade">
-                <span className="toc-num">§11</span>
-                <span className="toc-meta">
-                  <span className="toc-name">Trade</span>
-                  <span className="toc-desc">Agentes &amp; quant</span>
-                </span>
-                <span className="toc-right">
-                  <span className="toc-count">10</span>
-                  <svg className="toc-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            </li>
-          </ol>
-        </section>
+        <CategoryIndex />
 
         {/* Main Acervo Catalog */}
         <section className="section shell" id="acervo">
@@ -511,44 +326,36 @@ export const App: React.FC = () => {
               />
               <kbd>⌘ K</kbd>
             </label>
-            <span className="count">
+            <span className="count" aria-live="polite" aria-atomic="true">
               <b id="visibleCount">{visibleCount}</b>bibliotecas
             </span>
           </div>
 
           <div className="filters" role="group" aria-label="Filtrar por categoria" style={{ marginBottom: '2rem' }}>
-            {['all', 'top', 'recent', 'frontend', 'backend', 'kit', 'agents', 'mcp', 'interface-components', 'interface-frameworks', 'server-db', 'server-utils', 'guard', 'run', 'ship', 'trade'].map((filter) => {
-              const labelMap: Record<string, string> = {
-                all: 'Todos',
-                top: '★ Top estrelas',
-                recent: '● Recentes',
-                frontend: 'Front-end',
-                backend: 'Back-end',
-                kit: 'Kit',
-                agents: 'Agentes',
-                mcp: 'MCP',
-                'interface-components': 'Interface (UI)',
-                'interface-frameworks': 'Interface (Dev)',
-                'server-db': 'Servidor (Bancos)',
-                'server-utils': 'Servidor (Utils)',
-                guard: 'Segurança',
-                run: 'Build',
-                ship: 'Apps',
-                trade: 'Trade'
-              };
-              const isAccent = filter === 'top' || filter === 'recent';
-              return (
-                <button
-                  key={filter}
-                  className={`filter ${isAccent ? 'filter-accent' : ''} ${activeFilter === filter ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(filter)}
-                  aria-pressed={activeFilter === filter}
-                  aria-current={activeFilter === filter ? 'true' : undefined}
-                >
-                  {labelMap[filter] || filter}
-                </button>
-              );
-            })}
+            {[
+              { id: 'all',                 label: 'Todos',                 accent: false },
+              { id: 'recent',              label: '● Recentes',            accent: true  },
+              { id: 'ai-agents',           label: 'Agents',                accent: false },
+              { id: 'mcp',                 label: 'MCP',                   accent: false },
+              { id: 'frontend-ui',         label: 'Frontend UI',           accent: false },
+              { id: 'frontend-frameworks', label: 'Frontend Frameworks',   accent: false },
+              { id: 'backend-data',        label: 'Backend (Data)',        accent: false },
+              { id: 'backend-toolkit',     label: 'Backend (Toolkit)',     accent: false },
+              { id: 'mobile-ai',           label: 'Mobile & AI',           accent: false },
+              { id: 'security',            label: 'Segurança',             accent: false },
+              { id: 'devops',              label: 'DevOps',                accent: false },
+              { id: 'trade-quant',         label: 'Trade & Quant',         accent: false },
+            ].map(({ id: filter, label, accent }) => (
+              <button
+                key={filter}
+                className={`filter ${accent ? 'filter-accent' : ''} ${activeFilter === filter ? 'active' : ''}`}
+                onClick={() => setActiveFilter(filter)}
+                aria-pressed={activeFilter === filter}
+                aria-current={activeFilter === filter ? 'true' : undefined}
+              >
+                {label}
+              </button>
+            ))}
           </div>
 
           {/* Render the Bento Grid of chapters & cards */}
@@ -564,34 +371,7 @@ export const App: React.FC = () => {
         </section>
 
         {/* Method Section */}
-        <section className="method shell" id="metodo" aria-labelledby="metodo-title">
-          <span className="section-eyebrow">— Método</span>
-          <h2 className="section-title" id="metodo-title">Como <em>usamos.</em></h2>
-          <p className="section-desc">Quatro princípios que organizam o uso deste acervo no dia a dia. Pequenos hábitos, grande diferença na qualidade do que entregamos.</p>
-
-          <ol className="principles">
-            <li className="principle">
-              <span className="principle-num">01</span>
-              <h3>Pesquise antes de codar.</h3>
-              <p>Use Context7 ou docs oficiais para confirmar APIs, versões e exemplos atuais antes de qualquer implementação.</p>
-            </li>
-            <li className="principle">
-              <span className="principle-num">02</span>
-              <h3>Verifique com docs ao vivo.</h3>
-              <p>Treine ceticismo: bibliotecas evoluem, e código baseado em versões antigas é fonte comum de bugs sutis.</p>
-            </li>
-            <li className="principle">
-              <span className="principle-num">03</span>
-              <h3>Teste como o usuário.</h3>
-              <p>Use webapp-testing ou Playwright para validar o fluxo real no navegador antes de declarar pronto.</p>
-            </li>
-            <li className="principle">
-              <span className="principle-num">04</span>
-              <h3>Entregue em passos pequenos.</h3>
-              <p>Commits atômicos, deploys focados, rollback fácil. A coreografia invisível que mantém o produto vivo.</p>
-            </li>
-          </ol>
-        </section>
+        <Method />
       </main>
 
       {/* Footer */}
@@ -616,14 +396,10 @@ export const App: React.FC = () => {
       {/* macOS Dock panel */}
       <Dock selectedStack={selectedStack} onRemoveItem={toggleStackItem} onClearStack={() => setSelectedStack([])} />
 
-      {/* Command Palette Modal */}
+      {/* Global Command Palette */}
       <CmdkPalette
-        data={librariesData}
         isOpen={isCmdkOpen}
         onClose={() => setIsCmdkOpen(false)}
-        onSelectCard={handleCardClick}
-        onSelectFilter={handleFilterSelect}
-        onTriggerMatrix={handleTriggerMatrix}
       />
 
       {/* Card Detail Modal */}
