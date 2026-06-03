@@ -27,8 +27,59 @@
 
   let activeFilter = 'all';
 
+  /* ─── Dynamic count initialization ──────────────────────── */
+  const totalCards = cards.length;
+  
+  // Update all hardcoded count references to actual card count
+  document.querySelectorAll('[data-count]').forEach(el => {
+    if (el.dataset.count === '124' || el.dataset.count === '133') {
+      el.dataset.count = totalCards;
+      el.textContent = totalCards;
+    }
+  });
+  
+  // Update specific count elements
+  const searchCountEl = document.getElementById('searchCount');
+  const footerCountEl = document.getElementById('footerCount');
+  if (searchCountEl) searchCountEl.textContent = totalCards;
+  if (footerCountEl) footerCountEl.textContent = totalCards;
+  
+  // Update visible count initial value
+  if (visibleEl) visibleEl.textContent = totalCards;
+
   /* ─── Year ─────────────────────────────────────────────── */
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ─── Mobile hamburger menu ───────────────────────────────── */
+  const navHamburger = document.getElementById('navHamburger');
+  const navMenu = document.getElementById('navMenu');
+  
+  if (navHamburger && navMenu) {
+    navHamburger.addEventListener('click', () => {
+      const isOpen = navHamburger.getAttribute('aria-expanded') === 'true';
+      navHamburger.setAttribute('aria-expanded', !isOpen);
+      navMenu.classList.toggle('is-open', !isOpen);
+      document.body.style.overflow = !isOpen ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navHamburger.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('is-open');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    // Close menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024) {
+        navHamburger.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 
   /* ─── Nav scrolled + back-to-top (single passive listener) */
   let lastY = -1;
@@ -245,7 +296,7 @@
     { type: 'cmd', label: 'Filtrar: Segurança', sub: 'filtro', keywords: 'seguranca security auth', run: () => clickFilter('guard') },
     { type: 'cmd', label: 'Filtrar: Build',     sub: 'filtro', keywords: 'build test ci', run: () => clickFilter('run') },
     { type: 'cmd', label: 'Filtrar: Apps',      sub: 'filtro', keywords: 'apps mobile desktop', run: () => clickFilter('ship') },
-    { type: 'cmd', label: 'Filtrar: Trade',     sub: 'filtro', keywords: 'trade trading agentes quant bot cripto bybit', run: () => clickFilter('trade') },
+    { type: 'cmd', label: 'Filtrar: Labs',     sub: 'filtro', keywords: 'labs trade trading agentes quant bot cripto bybit', run: () => clickFilter('labs') },
     { type: 'cmd', label: 'Mostrar atalhos',    sub: 'ajuda', keywords: 'atalhos shortcuts help', run: () => document.getElementById('shortcutsDialog')?.showModal() },
     { type: 'cmd', label: 'Ativar Matrix mode', sub: 'easter egg', keywords: 'matrix verde konami', run: () => toggleMatrixMode() },
   ];
@@ -340,7 +391,7 @@
   if (typeof console !== 'undefined') {
     const banner = `
    █████╗   ███████╗████████╗ █████╗  ██████╗██╗  ██╗
-  ██╔══██╗  ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
+  ██╔══██╗  ██╔════╝╚══██╔══╝██╔══���█╗██╔════╝██║ ██╔╝
   ███████║  ███████╗   ██║   ███████║██║     █████╔╝
   ██╔══██║  ╚════██║   ██║   ██╔══██║██║     ██╔═██╗
   ██║  ██║██╗███████║   ██║   ██║  ██║╚██████╗██║  ██╗
@@ -351,7 +402,7 @@
       'color:#F59E0B;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1;'
     );
     console.log(
-      '%cBem-vindo, dev. 133 bibliotecas · 9 categorias · 0 dependências.',
+      `%cBem-vindo, dev. ${totalCards} bibliotecas · 9 categorias · 0 dependências.`,
       'color:#2DD4BF;font-size:13px;font-weight:600;'
     );
     console.log(
@@ -568,7 +619,7 @@
   // ↑↑↓↓←→←→ba → matrix mode (konami)
   const dialog       = document.getElementById('shortcutsDialog');
   const dialogClose  = dialog?.querySelector('[data-close]');
-  const filterByKey  = ['all', 'kit', 'agents', 'mcp', 'interface', 'server', 'guard', 'run', 'ship', 'trade'];
+  const filterByKey  = ['all', 'kit', 'agents', 'mcp', 'interface', 'server', 'guard', 'run', 'ship', 'labs'];
 
   let lastKey = '';
   const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];

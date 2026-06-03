@@ -10,7 +10,7 @@
   <title>DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes</title>
 
   <meta property="og:title" content="DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes" />
-  <meta property="og:description" content="Acervo curado de 133 bibliotecas, protocolos e skills para quem constrói com agentes." />
+  <meta property="og:description" content="Acervo curado de 124 bibliotecas, protocolos e skills para quem constrói com agentes." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,28 +65,38 @@
         <b>DEVLIB</b>
         <span>·&nbsp;v02</span>
       </a>
-      <nav class="nav-links nav-menu" aria-label="Navegação principal">
+      <nav class="nav-links nav-menu" id="navMenu" aria-label="Navegação principal">
         <div class="nav-group">
-          <span>Explore</span>
-          <a href="#acervo">Componentes</a>
+          <span>Acervo</span>
+          <a href="#kit">Kit</a>
           <a href="#agentes">Agentes</a>
           <a href="#mcp">MCP</a>
+          <a href="#interface">Interface</a>
         </div>
         <div class="nav-group">
-          <span>Build</span>
-          <a href="#interface">UI kits</a>
-          <a href="#servidor">Backend</a>
-          <a href="#metodo">Método</a>
+          <span>Stack</span>
+          <a href="#servidor">Servidor</a>
+          <a href="#seguranca">Seguranca</a>
+          <a href="#build">Build</a>
+          <a href="#apps">Apps</a>
         </div>
         <div class="nav-group">
-          <span>Arcade</span>
-          <a href="jogos.html">Jogos</a>
+          <span>Extra</span>
+          <a href="#labs">Labs</a>
+          <a href="jogos.html">Arcade</a>
         </div>
       </nav>
-      <button class="nav-cta nav-search" type="button" data-open-command data-magnetic>
-        <span>Search</span>
-        <kbd>⌘K</kbd>
-      </button>
+      <div class="nav-actions">
+        <button class="nav-cta nav-search" type="button" data-open-command data-magnetic>
+          <span>Search</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <button class="nav-hamburger" type="button" id="navHamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -105,7 +115,7 @@
       <div class="home-main">
         <a href="#acervo" class="hero-pill">
           <span class="badge">Curado</span>
-          <b>133 bibliotecas</b>
+          <b><span data-count="124">124</span> bibliotecas</b>
           <span>·&nbsp;menu inspirado em catálogo</span>
           <svg class="hero-pill-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
         </a>
@@ -181,7 +191,7 @@
     <section class="stats-strip" aria-label="Resumo do acervo">
       <div class="shell stats-inner">
         <div class="stat-item">
-          <span class="stat-num gradient" data-count="133">133</span>
+          <span class="stat-num gradient" data-count="124">124</span>
           <span class="stat-tag">bibliotecas</span>
         </div>
         <span class="stat-divider" aria-hidden="true"></span>
@@ -342,11 +352,11 @@
           </a>
         </li>
         <li>
-          <a href="#trade">
+          <a href="#labs">
             <span class="toc-num">§09</span>
             <span class="toc-meta">
-              <span class="toc-name">Trade</span>
-              <span class="toc-desc">Agentes &amp; quant</span>
+              <span class="toc-name">Labs</span>
+              <span class="toc-desc">Experimental &amp; trade</span>
             </span>
             <span class="toc-right">
               <span class="toc-count">10</span>
@@ -364,7 +374,7 @@
 
       <span class="section-eyebrow">— Acervo aberto</span>
       <h2 class="section-title">Tudo, <em>organizado.</em></h2>
-      <p class="section-desc">Pressione <kbd>⌘K</kbd> para buscar entre as 133 entradas. Filtre por categoria para refinar.</p>
+      <p class="section-desc">Pressione <kbd>⌘K</kbd> para buscar entre as <span id="searchCount">124</span> entradas. Filtre por categoria para refinar.</p>
 
       <div class="toolbar" role="search">
         <label class="search">
@@ -389,7 +399,7 @@
         <button class="filter" data-filter="guard" aria-pressed="false">Segurança</button>
         <button class="filter" data-filter="run" aria-pressed="false">Build</button>
         <button class="filter" data-filter="ship" aria-pressed="false">Apps</button>
-        <button class="filter" data-filter="trade" aria-pressed="false">Trade</button>
+        <button class="filter" data-filter="labs" aria-pressed="false">Labs</button>
       </div>
 
       <!-- §01 KIT -->
@@ -1378,16 +1388,16 @@
         </article>
       </div>
 
-      <!-- §09 TRADE -->
-      <div class="chapter-bar" data-chapter="trade" id="trade">
-        <span class="chapter-num">§09 · Trade</span>
-        <h3>Agentes &amp; quant <em>— mercados, bots, backtest.</em></h3>
+      <!-- §09 LABS (experimental / trade) -->
+      <div class="chapter-bar" data-chapter="labs" id="labs">
+        <span class="chapter-num">§09 · Labs</span>
+        <h3>Experimental <em>— agentes de trade, quant, bots.</em></h3>
         <span class="count-pill">10 itens</span>
       </div>
 
       <div class="bento">
 
-        <article class="card feature" data-kind="trade agents" data-tone="emerald">
+        <article class="card feature" data-kind="labs agents" data-tone="emerald">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Multi-agente LLM · Tauric</span><span class="card-badge">Destaque</span></div>
           <h3 class="card-title">TradingAgents</h3>
           <p class="card-body">Framework de trading com múltiplos agentes LLM que imita uma mesa real: analistas fundamentalista, de sentimento e técnico colaboram para decidir. v0.2 (2026) com GPT-5.x, Gemini 3, Claude 4, Grok, DeepSeek, Qwen e Ollama local.</p>
@@ -1396,7 +1406,7 @@
           <a class="card-link" href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener">Abrir repositório<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x3" data-kind="trade agents" data-tone="cyan">
+        <article class="card x3" data-kind="labs agents" data-tone="cyan">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Agent-native · HKUDS</span><span class="card-badge">Auto</span></div>
           <h3 class="card-title">AI-Trader</h3>
           <p class="card-body">Trading 100% automatizado agent-native, modular e fácil de operar por agentes. Inclui paper trading no Polymarket com dados reais e auto-settlement.</p>
@@ -1404,7 +1414,7 @@
           <a class="card-link" href="https://github.com/HKUDS/AI-Trader" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x3" data-kind="trade agents" data-tone="violet">
+        <article class="card x3" data-kind="labs agents" data-tone="violet">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>LLM + memória · Open Finance Lab</span><span class="card-badge">Memory</span></div>
           <h3 class="card-title">AgenticTrading</h3>
           <p class="card-body">Agentes LLM com memória Neo4j para contexto longo, memória vetorial semântica, comunicação A2A entre agentes e execução em DAG dinâmico.</p>
@@ -1412,7 +1422,7 @@
           <a class="card-link" href="https://github.com/Open-Finance-Lab/AgenticTrading" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x3" data-kind="trade" data-tone="emerald">
+        <article class="card x3" data-kind="labs" data-tone="emerald">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Bot crypto · Open source</span><span class="card-badge">~50k ★</span></div>
           <h3 class="card-title">Freqtrade</h3>
           <p class="card-body">Bot de trading de cripto livre e open source. Suporta os principais exchanges, controle via Telegram, backtest, otimização de hiperparâmetros e ML.</p>
@@ -1420,7 +1430,7 @@
           <a class="card-link" href="https://github.com/freqtrade/freqtrade" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x3" data-kind="trade" data-tone="amber">
+        <article class="card x3" data-kind="labs" data-tone="amber">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>HFT &amp; market making</span><span class="card-badge">~18k ★</span></div>
           <h3 class="card-title">Hummingbot</h3>
           <p class="card-body">Software open source para criar e rodar estratégias de high-frequency trading e market making em exchanges centralizados e DEXs.</p>
@@ -1428,7 +1438,7 @@
           <a class="card-link" href="https://github.com/hummingbot/hummingbot" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x2" data-kind="trade" data-tone="pink">
+        <article class="card x2" data-kind="labs" data-tone="pink">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Backtesting · Python</span><span class="card-badge">~21k ★</span></div>
           <h3 class="card-title">Backtrader</h3>
           <p class="card-body">Biblioteca Python event-driven, madura, para backtest de estratégias com indicadores, brokers e live trading.</p>
@@ -1436,7 +1446,7 @@
           <a class="card-link" href="https://github.com/mementum/backtrader" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x2" data-kind="trade" data-tone="cyan">
+        <article class="card x2" data-kind="labs" data-tone="cyan">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Algo trading lib</span><span class="card-badge">~20k ★</span></div>
           <h3 class="card-title">Zipline</h3>
           <p class="card-body">Biblioteca Pythonic event-driven para backtest de estratégias algorítmicas, usada pela Quantopian.</p>
@@ -1444,7 +1454,7 @@
           <a class="card-link" href="https://github.com/quantopian/zipline" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x2" data-kind="trade" data-tone="violet">
+        <article class="card x2" data-kind="labs" data-tone="violet">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Engine · QuantConnect</span><span class="card-badge">~19k ★</span></div>
           <h3 class="card-title">Lean</h3>
           <p class="card-body">Engine de trading algorítmico da QuantConnect, suporta Python e C#, backtest e live em múltiplos ativos e mercados.</p>
@@ -1452,7 +1462,7 @@
           <a class="card-link" href="https://github.com/QuantConnect/Lean" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x3" data-kind="trade agents kit" data-tone="amber">
+        <article class="card x3" data-kind="labs agents kit" data-tone="amber">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Skills oficiais · Bybit</span><span class="card-badge">Exchange</span></div>
           <h3 class="card-title">bybit-exchange/skills</h3>
           <p class="card-body">Skills oficiais da Bybit para agentes de IA — ferramentas prontas pra consultar mercado, executar ordens e gerenciar conta na exchange via agentes.</p>
@@ -1460,7 +1470,7 @@
           <a class="card-link" href="https://github.com/bybit-exchange/skills" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
         </article>
 
-        <article class="card x3" data-kind="trade agents kit" data-tone="amber">
+        <article class="card x3" data-kind="labs agents kit" data-tone="amber">
           <div class="card-head"><span class="card-meta"><span class="dot"></span>Lista curada · LLM in finance</span><span class="card-badge">Awesome</span></div>
           <h3 class="card-title">awesome-ai-in-finance</h3>
           <p class="card-body">Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading.</p>
@@ -1516,34 +1526,34 @@
       <div class="footer-grid footer-menu">
         <div class="footer-brand">
           <img class="footer-logo" src="public/logo.png" alt="DEVLIB — Bibliotecas para desenvolvedores" width="118" height="64" decoding="async" loading="lazy" />
-          <p>Acervo curado de 133 bibliotecas, protocolos e skills para quem constrói com agentes. Três arquivos estáticos, zero dependências.</p>
+          <p>Acervo curado de <span id="footerCount">124</span> bibliotecas, protocolos e skills para quem constrói com agentes. Três arquivos estáticos, zero dependências.</p>
           <button class="footer-command" type="button" data-open-command>Search <kbd>⌘K</kbd></button>
         </div>
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4>Acervo</h4>
           <ul>
-            <li><a href="#acervo">Todos os componentes</a></li>
-            <li><a href="#interface">Interface &amp; UI kits</a></li>
+            <li><a href="#kit">Kit</a></li>
             <li><a href="#agentes">Agentes</a></li>
             <li><a href="#mcp">MCP</a></li>
+            <li><a href="#interface">Interface</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Build</h4>
+          <h4>Stack</h4>
           <ul>
-            <li><a href="#servidor">Backend stack</a></li>
-            <li><a href="#seguranca">Segurança</a></li>
-            <li><a href="#build">Build &amp; observability</a></li>
-            <li><a href="#apps">Apps &amp; produtos</a></li>
+            <li><a href="#servidor">Servidor</a></li>
+            <li><a href="#seguranca">Seguranca</a></li>
+            <li><a href="#build">Build</a></li>
+            <li><a href="#apps">Apps</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Reference</h4>
           <ul>
-            <li><a href="#indice">Índice</a></li>
-            <li><a href="#metodo">Método</a></li>
-            <li><a href="#trade">Trade</a></li>
-            <li><a href="jogos.html">Arcade · Jogos</a></li>
+            <li><a href="#indice">Indice</a></li>
+            <li><a href="#metodo">Metodo</a></li>
+            <li><a href="#labs">Labs</a></li>
+            <li><a href="jogos.html">Arcade</a></li>
             <li><a href="#top">Voltar ao topo</a></li>
           </ul>
         </div>

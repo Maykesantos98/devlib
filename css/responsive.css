@@ -29,15 +29,57 @@
   .toc                { grid-template-columns: repeat(2, 1fr); }
   .principles         { grid-template-columns: 1fr; }
 
-  /* Hide center nav links — keep logo + CTA.
-     Grid was `auto 1fr auto` (logo · links · cta); with the
-     links removed the cta auto-placed into the 1fr track and
-     stretched full-width (the "broken menu"). Collapse to a
-     clean 2-col bar and pin the cta to the right at content
-     width so it never stretches. */
+  /* Show hamburger, hide nav links by default */
   .nav-inner          { grid-template-columns: 1fr auto; gap: 1rem; }
-  .nav-links          { display: none; }
-  .nav-cta            { justify-self: end; width: auto; flex: 0 0 auto; }
+  .nav-hamburger      { display: flex; }
+  
+  /* Mobile menu — hidden by default, slides in when open */
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 60px;
+    z-index: 99;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.5rem var(--gutter);
+    background: rgba(8, 9, 18, 0.98);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    overflow-y: auto;
+    animation: menuSlideIn 0.3s var(--ease) both;
+  }
+  
+  .nav-links.is-open {
+    display: flex;
+  }
+  
+  @keyframes menuSlideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  .nav-links .nav-group {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .nav-links .nav-group > span {
+    padding: 0.5rem 0;
+    font-size: 0.72rem;
+  }
+  
+  .nav-links .nav-group a {
+    padding: 0.75rem 0.65rem;
+    font-size: var(--t-base);
+  }
+
+  .nav-actions         { flex: 0 0 auto; }
+  .nav-cta            { padding: 0.5rem 0.95rem; font-size: var(--t-sm); }
 
   /* The fixed nav was transparent by default (only got a bg via
      the JS `.scrolled` class). On a phone that meant ALL page
