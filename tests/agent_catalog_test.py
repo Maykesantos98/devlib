@@ -3,12 +3,14 @@
 import json
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from agent.catalog_core import explain_concept, get_library, list_categories, recommend_stack, search_catalog
+from agent.nvidia_intent import classify_intent
 
 
 class AgentCatalogTest(unittest.TestCase):
@@ -54,6 +56,13 @@ class AgentCatalogTest(unittest.TestCase):
         names = [row["name"] for row in search_catalog("backend API PostgreSQL", limit=5)]
         self.assertIn("Supabase", names[:3])
         self.assertNotIn("MediaPipe", names)
+
+    def test_nvidia_intent_is_optional_validated_and_has_local_fallback(self):
+        self.assertEqual([], classify_intent("um SaaS", api_key=""))
+        with patch("agent.nvidia_intent._request", return_value='{"layers":["frontend","database","invalid"]}'):
+            self.assertEqual(["frontend", "database"], classify_intent("um SaaS", api_key="test"))
+        with patch("agent.nvidia_intent._request", side_effect=TimeoutError):
+            self.assertEqual([], classify_intent("um SaaS", api_key="test"))
 
     def test_categories_and_openapi_contract(self):
         self.assertEqual(133, sum(row["count"] for row in list_categories()))
