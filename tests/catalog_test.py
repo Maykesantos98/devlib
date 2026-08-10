@@ -15,7 +15,7 @@ class CatalogData(unittest.TestCase):
 
     def test_catalog_has_expected_schema_and_total(self):
         self.assertEqual(self.catalog["schemaVersion"], 1)
-        self.assertEqual(len(self.catalog["items"]), 165)
+        self.assertEqual(len(self.catalog["items"]), 172)
         required = {"name", "url", "description", "category", "kinds", "tone", "tags"}
         for item in self.catalog["items"]:
             self.assertTrue(required.issubset(item), item.get("name", "item sem nome"))
@@ -87,6 +87,20 @@ class CatalogData(unittest.TestCase):
         found = {item["name"]: item["url"] for item in self.catalog["items"] if item["name"] in expected}
         self.assertEqual(found, expected)
 
+    def test_media_and_agent_batch_is_curated_without_duplicates(self):
+        expected = {
+            "Obscura": "https://github.com/h4ckf0r0day/obscura",
+            "Voicebox": "https://voicebox.sh/",
+            "OpenWA": "https://github.com/rmyndharis/OpenWA",
+            "Browser Use": "https://github.com/browser-use/browser-use",
+            "LTX Desktop": "https://github.com/Lightricks/LTX-Desktop",
+            "Ideogram 4": "https://github.com/ideogram-oss/ideogram4",
+            "Claude Video": "https://github.com/bradautomates/claude-video",
+            "Agency Agents": "https://github.com/msitarzewski/agency-agents",
+        }
+        found = {item["name"]: item["url"] for item in self.catalog["items"] if item["name"] in expected}
+        self.assertEqual(found, expected)
+
     def test_declared_category_counts_match_items(self):
         actual = Counter(item["category"] for item in self.catalog["items"])
         self.assertEqual(actual, Counter(self.catalog["categoryCounts"]))
@@ -95,7 +109,7 @@ class CatalogData(unittest.TestCase):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("<!-- CATALOG:GENERATED:START -->", html)
         self.assertIn("<!-- CATALOG:GENERATED:END -->", html)
-        self.assertEqual(html.count('class="card-title"'), 165)
+        self.assertEqual(html.count('class="card-title"'), 172)
         for item in self.catalog["items"]:
             self.assertIn(f'>{item["name"]}</h3>', html)
             self.assertIn(f'href="{item["url"]}"', html)
