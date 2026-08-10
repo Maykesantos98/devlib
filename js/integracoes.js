@@ -33,6 +33,42 @@ function advisorSection(className, title, items) {
   return section;
 }
 
+function advisorBlueprint(data) {
+  if (!Array.isArray(data.architecture) || !data.architecture.length) return null;
+  const section = document.createElement("section");
+  section.className = "advisor-blueprint";
+  const title = document.createElement("h4");
+  title.textContent = "Blueprint por camada";
+  const grid = document.createElement("div");
+  data.architecture.forEach((item) => {
+    const card = document.createElement("article");
+    const layer = document.createElement("span"); layer.textContent = item.layer;
+    const decision = document.createElement("b"); decision.textContent = item.decision;
+    const responsibility = document.createElement("small"); responsibility.textContent = item.responsibility;
+    card.append(layer, decision, responsibility); grid.append(card);
+  });
+  section.append(title, grid);
+  return section;
+}
+
+function advisorAlternatives(alternatives) {
+  if (!alternatives || typeof alternatives !== "object" || !Object.keys(alternatives).length) return null;
+  const section = document.createElement("section");
+  section.className = "advisor-alternatives";
+  const title = document.createElement("h4"); title.textContent = "Alternativas verificadas";
+  const list = document.createElement("div");
+  Object.entries(alternatives).forEach(([layerName, items]) => {
+    items.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = item.url; link.target = "_blank"; link.rel = "noopener noreferrer";
+      link.textContent = `${layerName}: ${item.name} ↗`;
+      list.append(link);
+    });
+  });
+  section.append(title, list);
+  return section;
+}
+
 advisorForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const project = new FormData(advisorForm).get("project")?.toString().trim();
@@ -78,12 +114,27 @@ advisorForm?.addEventListener("submit", async (event) => {
       card.href = item.url;
       card.target = "_blank";
       card.rel = "noopener noreferrer";
-      const layer = document.createElement("span"); layer.textContent = item.layer;
+      const layer = document.createElement("span"); layer.textContent = `${item.layer} · ${item.adoption || "principal"}`;
       const name = document.createElement("b"); name.textContent = item.name;
+      const role = document.createElement("em"); role.textContent = item.role || "Recurso recomendado";
       const reason = document.createElement("small"); reason.textContent = item.reason;
-      card.append(layer, name, reason); grid.append(card);
+      const repository = document.createElement("strong"); repository.textContent = "Abrir repositório ↗";
+      card.append(layer, name, role, reason, repository); grid.append(card);
     });
     advisorResult.append(grid);
+
+    const blueprint = advisorBlueprint(data);
+    if (blueprint) advisorResult.append(blueprint);
+
+    const steps = advisorSection(
+      "advisor-steps",
+      "Ordem de implementação",
+      Array.isArray(data.implementation_steps) ? data.implementation_steps.map((item) => `${item.order}. ${item.layer}: ${item.action}`) : [],
+    );
+    if (steps) advisorResult.append(steps);
+
+    const alternatives = advisorAlternatives(data.alternatives);
+    if (alternatives) advisorResult.append(alternatives);
 
     const insights = document.createElement("div");
     insights.className = "advisor-insights";

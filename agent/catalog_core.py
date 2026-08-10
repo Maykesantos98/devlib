@@ -12,11 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "data" / "catalog.json"
 STOPWORDS = {"a", "as", "com", "da", "das", "de", "do", "dos", "e", "em", "o", "os", "para", "por", "que", "um", "uma"}
 LAYER_RULES = {
-    "frontend": ({"frontend", "front-end", "ui", "interface", "dashboard", "landing page", "site", "next.js", "react"}, ["Next.js", "frontend-design", "Square UI"]),
+    "frontend": ({"frontend", "front-end", "ui", "interface", "dashboard", "landing page", "site", "next.js", "react"}, ["Next.js", "Tailwind CSS", "shadcn/ui"]),
     "backend": ({"backend", "back-end", "api", "server", "servidor"}, ["Hono", "Fastify", "Supabase"]),
     "database": ({"database", "banco", "postgres", "postgresql", "sql", "dados"}, ["Supabase", "Drizzle ORM", "Prisma"]),
     "testing": ({"test", "tests", "teste", "testes", "e2e", "qualidade", "avaliacao", "avaliacoes"}, ["Playwright", "Vitest", "Sentry"]),
-    "security": ({"security", "seguranca", "auth", "autenticacao", "autorizacao", "rbac", "secrets", "appsec"}, ["Gitleaks", "OWASP Cheat Sheet Series", "Better Auth"]),
+    "security": ({"security", "seguranca", "auth", "autenticacao", "autorizacao", "rbac", "secrets", "appsec"}, ["Better Auth", "Gitleaks", "OWASP Cheat Sheet Series"]),
     "agents": ({"agent", "agents", "agente", "agentes", "ia", "ai", "llm"}, ["OpenAI Agents SDK", "Claude Code", "Continue.dev"]),
     "mcp": ({"mcp", "model context protocol"}, ["MCP Specification", "MCP Inspector", "Playwright MCP"]),
     "skills": ({"skill", "skills"}, ["skills.sh", "Superpowers", "everything-claude-code"]),
@@ -64,6 +64,32 @@ PRODUCT_PROFILES = (
     ({"saas", "plataforma", "marketplace"}, ("frontend", "backend", "database", "testing", "security")),
     ({"cli", "linha de comando"}, ("backend", "testing", "devops")),
 )
+
+LAYER_ROLES = {
+    "frontend": ("framework da aplicação e renderização", "estilização responsiva e design system"),
+    "backend": ("API, validação e regras de negócio", "alternativa de servidor para serviços especializados"),
+    "database": ("PostgreSQL gerenciado e serviços de dados", "schema tipado, consultas e migrations"),
+    "testing": ("testes E2E dos fluxos críticos", "testes unitários e de integração"),
+    "security": ("autenticação, sessões e controle de acesso", "detecção de segredos no repositório e CI"),
+    "agents": ("orquestração do agente e tool calling", "assistência no fluxo de desenvolvimento"),
+    "mcp": ("contrato de integração MCP", "validação e depuração do servidor MCP"),
+    "skills": ("descoberta de capacidades reutilizáveis", "workflow complementar para agentes"),
+    "mobile": ("aplicação iOS e Android", "camada e componentes nativos compartilhados"),
+    "devops": ("automação de dependências e entrega", "observabilidade de produção"),
+}
+
+IMPLEMENTATION_ORDER = {
+    "database": "Modele entidades, constraints, índices, migrations e políticas de acesso.",
+    "backend": "Defina contratos da API, validação, erros, autenticação e regras de negócio.",
+    "frontend": "Implemente os fluxos prioritários, estados de loading/erro/vazio e acessibilidade.",
+    "mobile": "Implemente navegação, armazenamento seguro e sincronização com a API.",
+    "agents": "Defina tools, limites, saída estruturada, avaliações e fallback determinístico.",
+    "mcp": "Exponha tools pequenas, validadas, autenticadas e observáveis.",
+    "skills": "Versione instruções, exemplos e critérios de aceitação.",
+    "security": "Execute threat model, secret scanning e testes de autorização antes de publicar.",
+    "testing": "Cubra regras com testes unitários e os caminhos críticos com E2E.",
+    "devops": "Automatize build, migrações, health checks, observabilidade e rollback.",
+}
 
 
 def _catalog() -> dict:
@@ -154,12 +180,19 @@ def recommend_stack(project: str, limit: int = 10, use_ai: bool = True) -> dict:
         requested = ["frontend", "backend", "testing", "security"]
     catalog = {item["name"].lower(): item for item in _catalog()["items"]}
     selected, used = [], set()
+    layer_candidates = {}
     for layer in requested:
         signals, preferred = LAYER_RULES[layer]
         candidates = [catalog[name.lower()] for name in preferred if name.lower() in catalog]
         candidates += [item for item in search_catalog(" ".join(signals), limit=30) if item["name"] not in {x["name"] for x in candidates}]
-        choice = next((item for item in candidates if item["name"] not in used), None)
-        if choice and len(selected) < limit:
+        layer_candidates[layer] = [item for item in candidates if item["url"].startswith("https://github.com/")]
+    for index in range(2):
+        for layer in requested:
+            if len(selected) >= limit:
+                break
+            choice = next((item for item in layer_candidates[layer][index:] if item["name"] not in used), None)
+            if not choice:
+                continue
             used.add(choice["name"])
             related = [row["label"] for row in requirements if layer in row["layers"]]
             fallback = {
@@ -175,7 +208,16 @@ def recommend_stack(project: str, limit: int = 10, use_ai: bool = True) -> dict:
                 "skills": "fluxos reutilizáveis para agentes",
             }
             purpose = ", ".join(related[:2]) or fallback.get(layer, f"necessidades de {layer}")
-            selected.append({**_public(choice), "layer": layer, "reason": f"{choice['name']} foi priorizado para {purpose}."})
+            roles = LAYER_ROLES.get(layer, (f"base da camada {layer}", f"suporte da camada {layer}"))
+            role = roles[min(index, len(roles) - 1)]
+            adoption = "principal" if index == 0 else "complementar"
+            selected.append({
+                **_public(choice),
+                "layer": layer,
+                "role": role,
+                "adoption": adoption,
+                "reason": f"Use {choice['name']} como escolha {adoption} para {role}; atende {purpose}.",
+            })
     missing = [layer for layer in requested if layer not in {row["layer"] for row in selected}]
     selected_layers = {row["layer"] for row in selected}
     for requirement in requirements:
@@ -205,17 +247,40 @@ def recommend_stack(project: str, limit: int = 10, use_ai: bool = True) -> dict:
         questions.append("Quais países, moedas, impostos e eventos de cobrança precisam ser suportados?")
     if not questions:
         questions.append("Qual é a escala esperada, o prazo e a experiência da equipe com esta stack?")
+    alternatives = {}
+    for layer in requested:
+        _, preferred = LAYER_RULES[layer]
+        rows = [_public(catalog[name.lower()]) for name in preferred if name.lower() in catalog and name not in used]
+        if rows:
+            alternatives[layer] = rows[:2]
+    architecture = [
+        {
+            "layer": layer,
+            "decision": next((row["name"] for row in selected if row["layer"] == layer and row["adoption"] == "principal"), "Decisão pendente"),
+            "responsibility": LAYER_ROLES.get(layer, (f"Responsabilidades de {layer}",))[0],
+        }
+        for layer in requested
+    ]
+    implementation_steps = [
+        {"order": index + 1, "layer": layer, "action": IMPLEMENTATION_ORDER[layer]}
+        for index, layer in enumerate(IMPLEMENTATION_ORDER)
+        if layer in requested
+    ]
+    explicit = f"{len(requirements)} requisitos explícitos" if requirements else "as premissas técnicas iniciais; detalhe funcionalidades para uma análise ainda mais precisa"
     return {
         "schema_version": "2",
         "project": project,
         "intent": "project_stack",
-        "summary": f"Arquitetura inicial com {len(selected)} escolhas em {len(selected_layers)} camadas, cobrindo {len(requirements)} requisitos explícitos.",
+        "summary": f"Blueprint com {len(selected)} repositórios verificados em {len(selected_layers)} camadas, cobrindo {explicit}.",
         "requested_layers": requested,
         "missing_layers": missing,
         "requirements": requirements,
         "tradeoffs": tradeoffs,
         "risks": risks,
         "next_questions": questions,
+        "architecture": architecture,
+        "implementation_steps": implementation_steps,
+        "alternatives": alternatives,
         "policy": "Somente itens existentes no catálogo DEVLIB; lacunas arquiteturais são declaradas, não inventadas.",
         "recommendations": selected,
     }

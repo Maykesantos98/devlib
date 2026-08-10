@@ -258,6 +258,17 @@ body {
 .advisor-grid a:hover { border-color: var(--accent); transform: translateY(-2px); }
 .advisor-grid span { color: var(--accent); font: .68rem var(--font-mono); text-transform: uppercase; }
 .advisor-grid small { color: var(--text-soft); line-height: 1.5; }
+.advisor-grid em { color: var(--text); font-size: .82rem; font-style: normal; font-weight: 650; line-height: 1.4; }
+.advisor-grid strong { align-self: end; color: var(--accent); font-size: .72rem; font-weight: 650; }
+.advisor-blueprint,.advisor-steps,.advisor-alternatives { margin-top: 1.25rem; padding: 1rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(7,8,11,.55); }
+.advisor-blueprint > div { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .65rem; }
+.advisor-blueprint article { display: grid; gap: .35rem; padding: .8rem; border-left: 2px solid var(--accent); background: rgba(var(--accent-rgb),.04); }
+.advisor-blueprint article span { color: var(--accent); font: .68rem var(--font-mono); text-transform: uppercase; }
+.advisor-blueprint article small { color: var(--text-soft); line-height: 1.45; }
+.advisor-steps ul { display: grid; gap: .55rem; margin: 0; padding-left: 1.1rem; color: var(--text-soft); font-size: .86rem; line-height: 1.5; }
+.advisor-alternatives > div { display: flex; flex-wrap: wrap; gap: .5rem; }
+.advisor-alternatives a { padding: .45rem .65rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text-soft); font-size: .76rem; }
+.advisor-alternatives a:hover { border-color: var(--accent); color: var(--accent); }
 .advisor-insights { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; margin-top: 1.25rem; }
 .advisor-insights section,.advisor-questions { padding: 1rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(7,8,11,.55); }
 .advisor-insights ul,.advisor-questions ul { display: grid; gap: .55rem; margin: 0; padding-left: 1.1rem; color: var(--text-soft); font-size: .86rem; line-height: 1.5; }
@@ -267,5 +278,5 @@ body {
 
 @media (max-width: 720px) {
   .home-main .hero-title { max-width: 12ch; font-size: clamp(3rem, 14vw, 4rem); }
-  .advisor-grid,.advisor-insights { grid-template-columns: 1fr; }
+  .advisor-grid,.advisor-insights,.advisor-blueprint > div { grid-template-columns: 1fr; }
 }

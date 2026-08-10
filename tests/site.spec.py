@@ -29,7 +29,10 @@ class DevlibJourneys(unittest.TestCase):
                  '"requirements":[{"id":"payments","label":"pagamentos e cobrança","coverage":"architecture_decision","layers":["backend"]}],'
                  '"tradeoffs":["Controle versus velocidade de entrega."],"risks":["Webhooks exigem idempotência."],'
                  '"next_questions":["Quais moedas serão aceitas?"],'
-                 '"recommendations":[{"name":"Next.js","url":"https://nextjs.org/","layer":"frontend","reason":"Next.js foi priorizado para a interface."}]}'
+                 '"architecture":[{"layer":"frontend","decision":"Next.js","responsibility":"framework da aplicação"}],'
+                 '"implementation_steps":[{"order":1,"layer":"frontend","action":"Implemente os fluxos prioritários."}],'
+                 '"alternatives":{"frontend":[{"name":"Square UI","url":"https://square.lndev.me/"}]},'
+                 '"recommendations":[{"name":"Next.js","url":"https://github.com/vercel/next.js","layer":"frontend","role":"framework da aplicação","adoption":"principal","reason":"Next.js foi priorizado para a interface."}]}'
         ))
         try:
             page.goto(f"{BASE_URL}/integracoes.html", wait_until="networkidle")
@@ -41,6 +44,9 @@ class DevlibJourneys(unittest.TestCase):
             self.assertIn("pagamentos e cobrança", page.locator(".advisor-requirements").inner_text())
             self.assertIn("Controle versus velocidade", page.locator(".advisor-insights").inner_text())
             self.assertIn("Quais moedas", page.locator(".advisor-questions").inner_text())
+            self.assertIn("Next.js", page.locator(".advisor-blueprint").inner_text())
+            self.assertIn("Implemente os fluxos", page.locator(".advisor-steps").inner_text())
+            self.assertIn("Square UI", page.locator(".advisor-alternatives").inner_text())
         finally:
             context.close()
 
