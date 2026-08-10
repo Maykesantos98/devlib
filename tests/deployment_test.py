@@ -38,6 +38,10 @@ class VpsDeploymentContract(unittest.TestCase):
         for expected in ("read_only: true", "no-new-privileges:true", "cap_drop:", "healthcheck:"):
             self.assertIn(expected, compose)
 
+    def test_tmpfs_entries_are_not_unquoted_flow_sequences(self):
+        compose = (ROOT / "compose.yml").read_text(encoding="utf-8")
+        self.assertNotRegex(compose, r"tmpfs:\s*\[[^\"']*?,")
+
     def test_production_overlay_has_automatic_tls_proxy(self):
         overlay = (ROOT / "compose.prod.yml").read_text(encoding="utf-8")
         caddy = (ROOT / "deploy" / "Caddyfile").read_text(encoding="utf-8")
