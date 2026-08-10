@@ -65,6 +65,8 @@ Gere a senha com `docker run --rm caddy:2.10.2-alpine caddy hash-password --plai
 
 A configuração segura dos sete conectores MCP da Hostinger está em `deploy/hostinger-mcp.json.example`; veja `deploy/HOSTINGER.md`. O token da Hostinger permanece exclusivamente no ambiente local.
 
+Opcionalmente, defina `NVIDIA_API_KEY` apenas no `.env` privado da VPS. A NVIDIA melhora a classificação semântica; timeout, erro ou ausência da chave acionam automaticamente o motor local.
+
 O GitHub Actions repete essas jornadas em todo push e pull request.
 
 Para também consultar os 133 destinos externos e atualizar o relatório:

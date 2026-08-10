@@ -6,6 +6,7 @@ import json
 import re
 import unicodedata
 from pathlib import Path
+from agent.nvidia_intent import classify_intent
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "data" / "catalog.json"
@@ -76,6 +77,9 @@ def recommend_stack(project: str, limit: int = 10) -> dict:
     """Compose a project stack by requested architectural layers."""
     normalized = _plain(project)
     requested = [layer for layer, (signals, _) in LAYER_RULES.items() if any(signal in normalized for signal in signals)]
+    for layer in classify_intent(project):
+        if layer not in requested:
+            requested.append(layer)
     if "database" in requested and "backend" not in requested:
         requested.insert(requested.index("database"), "backend")
     if not requested:
