@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
   "categoryCounts": {
-    "kit": 19,
-    "agents": 18,
+    "kit": 20,
+    "agents": 20,
     "mcp": 12,
-    "interface": 43,
-    "server": 21,
+    "interface": 44,
+    "server": 23,
     "guard": 14,
     "run": 11,
-    "ship": 16,
+    "ship": 18,
     "trade": 11
   },
   "chapters": [
     {
       "id": "kit",
-      "headerMarkup": "<!-- §01 KIT -->\n      <div class=\"chapter-bar\" data-chapter=\"kit\" id=\"kit\">\n        <span class=\"chapter-num\">§01 · Kit</span>\n        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>\n        <span class=\"count-pill\">19 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §01 KIT -->\n      <div class=\"chapter-bar\" data-chapter=\"kit\" id=\"kit\">\n        <span class=\"chapter-num\">§01 · Kit</span>\n        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>\n        <span class=\"count-pill\">20 itens</span>\n      </div>"
     },
     {
       "id": "agents",
-      "headerMarkup": "<!-- §02 AGENTES -->\n      <div class=\"chapter-bar\" data-chapter=\"agents\" id=\"agentes\">\n        <span class=\"chapter-num\">§02 · Agentes</span>\n        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>\n        <span class=\"count-pill\">18 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §02 AGENTES -->\n      <div class=\"chapter-bar\" data-chapter=\"agents\" id=\"agentes\">\n        <span class=\"chapter-num\">§02 · Agentes</span>\n        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>\n        <span class=\"count-pill\">20 itens</span>\n      </div>"
     },
     {
       "id": "mcp",
@@ -26,11 +26,11 @@
     },
     {
       "id": "interface",
-      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">43 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">44 itens</span>\n      </div>"
     },
     {
       "id": "server",
-      "headerMarkup": "<!-- §05 SERVIDOR -->\n      <div class=\"chapter-bar\" data-chapter=\"server\" id=\"servidor\">\n        <span class=\"chapter-num\">§05 · Servidor</span>\n        <h3>Infra &amp; APIs <em>— serviços, dados e automação.</em></h3>\n        <span class=\"count-pill\">21 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §05 SERVIDOR -->\n      <div class=\"chapter-bar\" data-chapter=\"server\" id=\"servidor\">\n        <span class=\"chapter-num\">§05 · Servidor</span>\n        <h3>Infra &amp; APIs <em>— serviços, dados e automação.</em></h3>\n        <span class=\"count-pill\">23 itens</span>\n      </div>"
     },
     {
       "id": "guard",
@@ -42,7 +42,7 @@
     },
     {
       "id": "ship",
-      "headerMarkup": "<!-- §08 APPS -->\n      <div class=\"chapter-bar\" data-chapter=\"ship\" id=\"apps\">\n        <span class=\"chapter-num\">§08 · Apps</span>\n        <h3>Produtos <em>— apps, IA e mobile.</em></h3>\n        <span class=\"count-pill\">16 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §08 APPS -->\n      <div class=\"chapter-bar\" data-chapter=\"ship\" id=\"apps\">\n        <span class=\"chapter-num\">§08 · Apps</span>\n        <h3>Produtos <em>— apps, IA e mobile.</em></h3>\n        <span class=\"count-pill\">18 itens</span>\n      </div>"
     },
     {
       "id": "trade",
@@ -2945,7 +2945,7 @@
     {
       "name": "Browser Use",
       "url": "https://github.com/browser-use/browser-use",
-      "description": "Framework que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes e ciclos de recuperação para automatizar tarefas na web.",
+      "description": "Framework open source que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes, recuperação de falhas e opções locais ou em nuvem.",
       "category": "agents",
       "kinds": [
         "agents",
@@ -2954,13 +2954,13 @@
       "tone": "blue",
       "tags": [
         "browser",
-        "automação",
+        "automation",
         "Python"
       ],
       "layout": [
         "x3"
       ],
-      "markup": "<article class=\"card x3\" data-kind=\"agents run\" data-tone=\"blue\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Browser agents · open source</span><span class=\"card-badge\">automation</span></div>\n          <h3 class=\"card-title\">Browser Use</h3>\n          <p class=\"card-body\">Framework que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes e ciclos de recuperação para automatizar tarefas na web.</p>\n          <div class=\"card-tags\"><span>browser</span><span>automação</span><span>Python</span></div>\n          <a class=\"card-link\" href=\"https://github.com/browser-use/browser-use\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+      "markup": "<article class=\"card x3\" data-kind=\"agents run\" data-tone=\"blue\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Browser agents · open source</span><span class=\"card-badge\">automation</span></div>\n          <h3 class=\"card-title\">Browser Use</h3>\n          <p class=\"card-body\">Framework open source que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes, recuperação de falhas e opções locais ou em nuvem.</p>\n          <div class=\"card-tags\"><span>browser</span><span>automation</span><span>Python</span></div>\n          <a class=\"card-link\" href=\"https://github.com/browser-use/browser-use\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     },
     {
       "name": "Langflow",
@@ -3282,6 +3282,168 @@
         "x3"
       ],
       "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Coding agent guidelines · MIT</span><span class=\"card-badge\">4 principles</span></div>\n          <h3 class=\"card-title\">Karpathy Guidelines</h3>\n          <p class=\"card-body\">Diretrizes para agentes de código baseadas em observações de Andrej Karpathy: pensar antes de editar, priorizar simplicidade, mudanças cirúrgicas e metas verificáveis.</p>\n          <div class=\"card-tags\"><span>guidelines</span><span>simplicidade</span><span>TDD</span></div>\n          <a class=\"card-link\" href=\"https://github.com/multica-ai/andrej-karpathy-skills\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Obscura",
+      "url": "https://github.com/h4ckf0r0day/obscura",
+      "description": "Navegador headless open source em Rust para agentes e scraping, com V8, Chrome DevTools Protocol, anti-detecção e compatibilidade com Puppeteer e Playwright.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "server",
+        "run"
+      ],
+      "tone": "slate",
+      "tags": [
+        "headless browser",
+        "Rust",
+        "scraping"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents server run\" data-tone=\"slate\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agent browser · Apache-2.0</span><span class=\"card-badge\">lightweight</span></div>\n          <h3 class=\"card-title\">Obscura</h3>\n          <p class=\"card-body\">Navegador headless open source em Rust para agentes e scraping, com V8, Chrome DevTools Protocol, anti-detecção e compatibilidade com Puppeteer e Playwright.</p>\n          <div class=\"card-tags\"><span>headless browser</span><span>Rust</span><span>scraping</span></div>\n          <a class=\"card-link\" href=\"https://github.com/h4ckf0r0day/obscura\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Voicebox",
+      "url": "https://voicebox.sh/",
+      "description": "Estúdio de voz open source e local-first para clonagem, TTS, ditado, projetos multivoz e integração MCP, mantendo modelos, áudio e transcrições no dispositivo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "mcp"
+      ],
+      "tone": "violet",
+      "tags": [
+        "TTS",
+        "voice cloning",
+        "local-first"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents mcp\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Local AI voice studio</span><span class=\"card-badge\">7 engines</span></div>\n          <h3 class=\"card-title\">Voicebox</h3>\n          <p class=\"card-body\">Estúdio de voz open source e local-first para clonagem, TTS, ditado, projetos multivoz e integração MCP, mantendo modelos, áudio e transcrições no dispositivo.</p>\n          <div class=\"card-tags\"><span>TTS</span><span>voice cloning</span><span>local-first</span></div>\n          <a class=\"card-link\" href=\"https://voicebox.sh/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OpenWA",
+      "url": "https://github.com/rmyndharis/OpenWA",
+      "description": "Gateway de API para WhatsApp gratuito e self-hosted com múltiplas sessões, webhooks, dashboard, autenticação, adaptadores de banco e armazenamento e deploy Docker.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "WhatsApp",
+        "API gateway",
+        "self-hosted"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server run\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>WhatsApp API gateway · MIT</span><span class=\"card-badge\">multi-session</span></div>\n          <h3 class=\"card-title\">OpenWA</h3>\n          <p class=\"card-body\">Gateway de API para WhatsApp gratuito e self-hosted com múltiplas sessões, webhooks, dashboard, autenticação, adaptadores de banco e armazenamento e deploy Docker.</p>\n          <div class=\"card-tags\"><span>WhatsApp</span><span>API gateway</span><span>self-hosted</span></div>\n          <a class=\"card-link\" href=\"https://github.com/rmyndharis/OpenWA\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "LTX Desktop",
+      "url": "https://github.com/Lightricks/LTX-Desktop",
+      "description": "Aplicativo desktop open source para gerar e editar vídeos e imagens com modelos LTX localmente ou via API, incluindo LoRAs, extensão de vídeo e gerenciamento de modelos.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "video AI",
+        "desktop",
+        "local generation"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship interface\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>AI video desktop · Apache-2.0</span><span class=\"card-badge\">local + API</span></div>\n          <h3 class=\"card-title\">LTX Desktop</h3>\n          <p class=\"card-body\">Aplicativo desktop open source para gerar e editar vídeos e imagens com modelos LTX localmente ou via API, incluindo LoRAs, extensão de vídeo e gerenciamento de modelos.</p>\n          <div class=\"card-tags\"><span>video AI</span><span>desktop</span><span>local generation</span></div>\n          <a class=\"card-link\" href=\"https://github.com/Lightricks/LTX-Desktop\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Ideogram 4",
+      "url": "https://github.com/ideogram-oss/ideogram4",
+      "description": "Modelo open-weight de texto para imagem com renderização multilíngue, prompts JSON estruturados, layout por bounding boxes, controle de paleta e resolução nativa até 2K.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "text-to-image",
+        "typography",
+        "open weights"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface agents\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Image foundation model · 9.3B</span><span class=\"card-badge\">2K native</span></div>\n          <h3 class=\"card-title\">Ideogram 4</h3>\n          <p class=\"card-body\">Modelo open-weight de texto para imagem com renderização multilíngue, prompts JSON estruturados, layout por bounding boxes, controle de paleta e resolução nativa até 2K.</p>\n          <div class=\"card-tags\"><span>text-to-image</span><span>typography</span><span>open weights</span></div>\n          <a class=\"card-link\" href=\"https://github.com/ideogram-oss/ideogram4\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Claude Video",
+      "url": "https://github.com/bradautomates/claude-video",
+      "description": "Skill que permite a agentes assistir vídeos de URLs ou arquivos locais combinando frames selecionados e transcrição temporal com yt-dlp, FFmpeg e Whisper.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "red",
+      "tags": [
+        "video analysis",
+        "Claude",
+        "skill"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"red\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Video understanding skill · MIT</span><span class=\"card-badge\">/watch</span></div>\n          <h3 class=\"card-title\">Claude Video</h3>\n          <p class=\"card-body\">Skill que permite a agentes assistir vídeos de URLs ou arquivos locais combinando frames selecionados e transcrição temporal com yt-dlp, FFmpeg e Whisper.</p>\n          <div class=\"card-tags\"><span>video analysis</span><span>Claude</span><span>skill</span></div>\n          <a class=\"card-link\" href=\"https://github.com/bradautomates/claude-video\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Agency Agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "description": "Coleção de agentes especialistas com personalidades, processos e entregáveis definidos, organizada por divisões e instalável em Claude Code, Codex, Cursor e outros clientes.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "agent personas",
+        "specialists",
+        "workflows"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents kit\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Specialist agent library · MIT</span><span class=\"card-badge\">230+ agents</span></div>\n          <h3 class=\"card-title\">Agency Agents</h3>\n          <p class=\"card-body\">Coleção de agentes especialistas com personalidades, processos e entregáveis definidos, organizada por divisões e instalável em Claude Code, Codex, Cursor e outros clientes.</p>\n          <div class=\"card-tags\"><span>agent personas</span><span>specialists</span><span>workflows</span></div>\n          <a class=\"card-link\" href=\"https://github.com/msitarzewski/agency-agents\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Public APIs",
+      "url": "https://github.com/public-apis/public-apis",
+      "description": "Lista comunitária e organizada de APIs públicas gratuitas em dezenas de áreas, com informações sobre autenticação, HTTPS e suporte a CORS.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "kit"
+      ],
+      "tone": "blue",
+      "tags": [
+        "APIs",
+        "open data",
+        "curated list"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server kit\" data-tone=\"blue\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Community API directory · MIT</span><span class=\"card-badge\">450k+ stars</span></div>\n          <h3 class=\"card-title\">Public APIs</h3>\n          <p class=\"card-body\">Lista comunitária e organizada de APIs públicas gratuitas em dezenas de áreas, com informações sobre autenticação, HTTPS e suporte a CORS.</p>\n          <div class=\"card-tags\"><span>APIs</span><span>open data</span><span>curated list</span></div>\n          <a class=\"card-link\" href=\"https://github.com/public-apis/public-apis\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     }
   ]
 }

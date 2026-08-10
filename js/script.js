@@ -355,7 +355,7 @@
       'color:#F59E0B;font-family:ui-monospace,monospace;font-size:11px;line-height:1.1;'
     );
     console.log(
-      '%cBem-vindo, dev. 165 bibliotecas · 9 categorias · 0 dependências.',
+      '%cBem-vindo, dev. 173 bibliotecas · 9 categorias · 0 dependências.',
       'color:#2DD4BF;font-size:13px;font-weight:600;'
     );
     console.log(
@@ -430,7 +430,7 @@
         '%cDEVLIB — Edição 01 · 2026',
         'color:#F59E0B;font-weight:600;font-size:14px;'
       );
-      console.log('Acervo curado de 165 bibliotecas para devs que constroem com agentes.');
+      console.log('Acervo curado de 173 bibliotecas para devs que constroem com agentes.');
       console.log('Stack: HTML · CSS · JavaScript vanilla. Zero CDN, zero dependências.');
       console.log('CSS scroll-driven animations (animation-timeline).');
       return '🛠️';
@@ -476,9 +476,8 @@
   // RECENT — only the latest curated intake batch. Replace this set whenever
   // a new batch is promoted so the filter remains genuinely chronological.
   const RECENT = new Set([
-    'System Design 101', 'Haikei', 'Claude Code Templates', 'OpenManus',
-    'Sequential Thinking', 'Sentry MCP', 'UI Ball Loaders', 'OmniRoute',
-    'Ponytail', 'Claude Code Spec Workflow', 'Karpathy Guidelines',
+    'Obscura', 'Voicebox', 'OpenWA', 'Browser Use', 'LTX Desktop',
+    'Ideogram 4', 'Claude Video', 'Agency Agents', 'Public APIs',
   ]);
   // TOP — highest GitHub-star / iconic repos across the archive.
   const TOP = new Set([
@@ -490,6 +489,7 @@
     'Zod', 'tRPC', 'Claude Code', 'MediaPipe', 'Expo', 'GitHub Spec Kit',
     'Open WebUI', 'Browser Use', 'Stirling PDF', 'Crawl4AI', 'Dify',
     'System Design 101', 'OpenManus', 'Ponytail', 'Karpathy Guidelines',
+    'Browser Use', 'Agency Agents', 'Public APIs',
   ]);
   // Precompute each card's title once (avoids 70 DOM reads per filter pass)
   const cardTitle = new Map(

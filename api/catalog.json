@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "total": 165,
+  "total": 173,
   "categoryCounts": {
-    "kit": 19,
-    "agents": 18,
+    "kit": 20,
+    "agents": 20,
     "mcp": 12,
-    "interface": 43,
-    "server": 21,
+    "interface": 44,
+    "server": 23,
     "guard": 14,
     "run": 11,
-    "ship": 16,
+    "ship": 18,
     "trade": 11
   },
   "items": [
@@ -2760,7 +2760,7 @@
     {
       "name": "Browser Use",
       "url": "https://github.com/browser-use/browser-use",
-      "description": "Framework que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes e ciclos de recuperação para automatizar tarefas na web.",
+      "description": "Framework open source que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes, recuperação de falhas e opções locais ou em nuvem.",
       "category": "agents",
       "kinds": [
         "agents",
@@ -2769,7 +2769,7 @@
       "tone": "blue",
       "tags": [
         "browser",
-        "automação",
+        "automation",
         "Python"
       ],
       "layout": [
@@ -3076,6 +3076,160 @@
         "guidelines",
         "simplicidade",
         "TDD"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Obscura",
+      "url": "https://github.com/h4ckf0r0day/obscura",
+      "description": "Navegador headless open source em Rust para agentes e scraping, com V8, Chrome DevTools Protocol, anti-detecção e compatibilidade com Puppeteer e Playwright.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "server",
+        "run"
+      ],
+      "tone": "slate",
+      "tags": [
+        "headless browser",
+        "Rust",
+        "scraping"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Voicebox",
+      "url": "https://voicebox.sh/",
+      "description": "Estúdio de voz open source e local-first para clonagem, TTS, ditado, projetos multivoz e integração MCP, mantendo modelos, áudio e transcrições no dispositivo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "mcp"
+      ],
+      "tone": "violet",
+      "tags": [
+        "TTS",
+        "voice cloning",
+        "local-first"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "OpenWA",
+      "url": "https://github.com/rmyndharis/OpenWA",
+      "description": "Gateway de API para WhatsApp gratuito e self-hosted com múltiplas sessões, webhooks, dashboard, autenticação, adaptadores de banco e armazenamento e deploy Docker.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "WhatsApp",
+        "API gateway",
+        "self-hosted"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "LTX Desktop",
+      "url": "https://github.com/Lightricks/LTX-Desktop",
+      "description": "Aplicativo desktop open source para gerar e editar vídeos e imagens com modelos LTX localmente ou via API, incluindo LoRAs, extensão de vídeo e gerenciamento de modelos.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "video AI",
+        "desktop",
+        "local generation"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Ideogram 4",
+      "url": "https://github.com/ideogram-oss/ideogram4",
+      "description": "Modelo open-weight de texto para imagem com renderização multilíngue, prompts JSON estruturados, layout por bounding boxes, controle de paleta e resolução nativa até 2K.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "text-to-image",
+        "typography",
+        "open weights"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Claude Video",
+      "url": "https://github.com/bradautomates/claude-video",
+      "description": "Skill que permite a agentes assistir vídeos de URLs ou arquivos locais combinando frames selecionados e transcrição temporal com yt-dlp, FFmpeg e Whisper.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "red",
+      "tags": [
+        "video analysis",
+        "Claude",
+        "skill"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Agency Agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "description": "Coleção de agentes especialistas com personalidades, processos e entregáveis definidos, organizada por divisões e instalável em Claude Code, Codex, Cursor e outros clientes.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "agent personas",
+        "specialists",
+        "workflows"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Public APIs",
+      "url": "https://github.com/public-apis/public-apis",
+      "description": "Lista comunitária e organizada de APIs públicas gratuitas em dezenas de áreas, com informações sobre autenticação, HTTPS e suporte a CORS.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "kit"
+      ],
+      "tone": "blue",
+      "tags": [
+        "APIs",
+        "open data",
+        "curated list"
       ],
       "layout": [
         "x3"

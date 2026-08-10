@@ -101,11 +101,12 @@ class DevlibJourneys(unittest.TestCase):
             expected = {
                 "Obscura", "Voicebox", "OpenWA", "Browser Use", "LTX Desktop",
                 "Ideogram 4", "Claude Video", "Agency Agents",
+                "Public APIs",
             }
             page.locator('.filter[data-filter="recent"]').click()
             visible = set(page.locator('.card:not(.hidden) .card-title').all_inner_texts())
             self.assertEqual(visible, expected)
-            self.assertEqual(page.locator("#visibleCount").inner_text(), "8")
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "9")
             self.assertEqual(errors, [])
         finally:
             context.close()
@@ -122,7 +123,7 @@ class DevlibJourneys(unittest.TestCase):
             self.assertTrue(empty.is_visible())
             empty.get_by_role("button", name="Mostrar todas as bibliotecas").click()
             self.assertEqual(search.input_value(), "")
-            self.assertEqual(page.locator("#visibleCount").inner_text(), "172")
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "173")
             self.assertEqual(errors, [])
         finally:
             context.close()

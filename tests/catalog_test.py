@@ -15,7 +15,7 @@ class CatalogData(unittest.TestCase):
 
     def test_catalog_has_expected_schema_and_total(self):
         self.assertEqual(self.catalog["schemaVersion"], 1)
-        self.assertEqual(len(self.catalog["items"]), 172)
+        self.assertEqual(len(self.catalog["items"]), 173)
         required = {"name", "url", "description", "category", "kinds", "tone", "tags"}
         for item in self.catalog["items"]:
             self.assertTrue(required.issubset(item), item.get("name", "item sem nome"))
@@ -97,6 +97,7 @@ class CatalogData(unittest.TestCase):
             "Ideogram 4": "https://github.com/ideogram-oss/ideogram4",
             "Claude Video": "https://github.com/bradautomates/claude-video",
             "Agency Agents": "https://github.com/msitarzewski/agency-agents",
+            "Public APIs": "https://github.com/public-apis/public-apis",
         }
         found = {item["name"]: item["url"] for item in self.catalog["items"] if item["name"] in expected}
         self.assertEqual(found, expected)
@@ -109,7 +110,7 @@ class CatalogData(unittest.TestCase):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("<!-- CATALOG:GENERATED:START -->", html)
         self.assertIn("<!-- CATALOG:GENERATED:END -->", html)
-        self.assertEqual(html.count('class="card-title"'), 172)
+        self.assertEqual(html.count('class="card-title"'), 173)
         for item in self.catalog["items"]:
             self.assertIn(f'>{item["name"]}</h3>', html)
             self.assertIn(f'href="{item["url"]}"', html)

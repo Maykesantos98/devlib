@@ -3,11 +3,11 @@
   "categories": [
     {
       "id": "kit",
-      "count": 19
+      "count": 20
     },
     {
       "id": "agents",
-      "count": 18
+      "count": 20
     },
     {
       "id": "mcp",
@@ -15,11 +15,11 @@
     },
     {
       "id": "interface",
-      "count": 43
+      "count": 44
     },
     {
       "id": "server",
-      "count": 21
+      "count": 23
     },
     {
       "id": "guard",
@@ -31,7 +31,7 @@
     },
     {
       "id": "ship",
-      "count": 16
+      "count": 18
     },
     {
       "id": "trade",
