@@ -63,6 +63,8 @@ O catálogo completo está em `/api/catalog.json`, com descoberta em `/llms.txt`
 
 Gere a senha com `docker run --rm caddy:2.10.2-alpine caddy hash-password --plaintext SUA_SENHA` e grave somente o hash no `.env`.
 
+A configuração segura dos sete conectores MCP da Hostinger está em `deploy/hostinger-mcp.json.example`; veja `deploy/HOSTINGER.md`. O token da Hostinger permanece exclusivamente no ambiente local.
+
 O GitHub Actions repete essas jornadas em todo push e pull request.
 
 Para também consultar os 133 destinos externos e atualizar o relatório:

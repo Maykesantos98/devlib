@@ -9,3 +9,5 @@ node_modules/
 
 # Claude Code local config
 .claude/
+__pycache__/
+*.py[cod]
