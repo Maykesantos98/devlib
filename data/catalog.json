@@ -1,0 +1,2642 @@
+{
+  "schemaVersion": 1,
+  "categoryCounts": {
+    "kit": 12,
+    "agents": 13,
+    "mcp": 10,
+    "interface": 34,
+    "server": 17,
+    "guard": 12,
+    "run": 10,
+    "ship": 15,
+    "trade": 10
+  },
+  "chapters": [
+    {
+      "id": "kit",
+      "headerMarkup": "<!-- §01 KIT -->\n      <div class=\"chapter-bar\" data-chapter=\"kit\" id=\"kit\">\n        <span class=\"chapter-num\">§01 · Kit</span>\n        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>\n        <span class=\"count-pill\">12 itens</span>\n      </div>"
+    },
+    {
+      "id": "agents",
+      "headerMarkup": "<!-- §02 AGENTES -->\n      <div class=\"chapter-bar\" data-chapter=\"agents\" id=\"agentes\">\n        <span class=\"chapter-num\">§02 · Agentes</span>\n        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>\n        <span class=\"count-pill\">13 itens</span>\n      </div>"
+    },
+    {
+      "id": "mcp",
+      "headerMarkup": "<!-- §03 MCP -->\n      <div class=\"chapter-bar\" data-chapter=\"mcp\" id=\"mcp\">\n        <span class=\"chapter-num\">§03 · MCP</span>\n        <h3>Model Context Protocol <em>— a fiação.</em></h3>\n        <span class=\"count-pill\">10 itens</span>\n      </div>"
+    },
+    {
+      "id": "interface",
+      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">34 itens</span>\n      </div>"
+    },
+    {
+      "id": "server",
+      "headerMarkup": "<!-- §05 SERVIDOR -->\n      <div class=\"chapter-bar\" data-chapter=\"server\" id=\"servidor\">\n        <span class=\"chapter-num\">§05 · Servidor</span>\n        <h3>Infra &amp; APIs <em>— serviços, dados e automação.</em></h3>\n        <span class=\"count-pill\">17 itens</span>\n      </div>"
+    },
+    {
+      "id": "guard",
+      "headerMarkup": "<!-- §06 SEGURANÇA -->\n      <div class=\"chapter-bar\" data-chapter=\"guard\" id=\"seguranca\">\n        <span class=\"chapter-num\">§06 · Segurança</span>\n        <h3>Auth &amp; appsec <em>— chato até deixar de ser.</em></h3>\n        <span class=\"count-pill\">12 itens</span>\n      </div>"
+    },
+    {
+      "id": "run",
+      "headerMarkup": "<!-- §07 BUILD -->\n      <div class=\"chapter-bar\" data-chapter=\"run\" id=\"build\">\n        <span class=\"chapter-num\">§07 · Build</span>\n        <h3>Build, test, observar <em>— a coreografia invisível.</em></h3>\n        <span class=\"count-pill\">10 itens</span>\n      </div>"
+    },
+    {
+      "id": "ship",
+      "headerMarkup": "<!-- §08 APPS -->\n      <div class=\"chapter-bar\" data-chapter=\"ship\" id=\"apps\">\n        <span class=\"chapter-num\">§08 · Apps</span>\n        <h3>Produtos <em>— apps, IA e mobile.</em></h3>\n        <span class=\"count-pill\">15 itens</span>\n      </div>"
+    },
+    {
+      "id": "trade",
+      "headerMarkup": "<!-- §09 TRADE -->\n      <div class=\"chapter-bar\" data-chapter=\"trade\" id=\"trade\">\n        <span class=\"chapter-num\">§09 · Trade</span>\n        <h3>Agentes &amp; quant <em>— mercados, bots, backtest.</em></h3>\n        <span class=\"count-pill\">10 itens</span>\n      </div>"
+    }
+  ],
+  "items": [
+    {
+      "name": "Context7",
+      "url": "https://context7.com/",
+      "description": "Documentação e exemplos atualizados sob demanda. Antes de implementar qualquer biblioteca, verifique aqui — reduz drasticamente alucinação de API em agentes e elimina código baseado em versões obsoletas.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "docs"
+      ],
+      "tone": "violet",
+      "tags": [
+        "npx ctx7",
+        "docs",
+        "contexto"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"kit docs\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Referência · Docs ao vivo</span><span class=\"card-badge\">Destaque</span></div>\n          <h3 class=\"card-title\">Context7</h3>\n          <p class=\"card-body\">Documentação e exemplos atualizados sob demanda. Antes de implementar qualquer biblioteca, verifique aqui — reduz drasticamente alucinação de API em agentes e elimina código baseado em versões obsoletas.</p>\n          <div class=\"card-tags\"><span>npx ctx7</span><span>docs</span><span>contexto</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://context7.com/\" target=\"_blank\" rel=\"noopener\">Abrir context7.com<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "skills.sh",
+      "url": "https://skills.sh/",
+      "description": "Catálogo de skills prontas para acelerar a configuração de agentes especializados. Padrões reutilizáveis para evitar reinventar a roda.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "skills",
+        "templates",
+        "agentes"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit skills\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Catálogo · Agentes</span><span class=\"card-badge\">Skill</span></div>\n          <h3 class=\"card-title\">skills.sh</h3>\n          <p class=\"card-body\">Catálogo de skills prontas para acelerar a configuração de agentes especializados. Padrões reutilizáveis para evitar reinventar a roda.</p>\n          <div class=\"card-tags\"><span>skills</span><span>templates</span><span>agentes</span></div>\n          <a class=\"card-link\" href=\"https://skills.sh/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "description": "Sistema de memória que captura sessões, comprime o histórico com IA e injeta contexto relevante em sessões futuras de Claude Code, Codex, Gemini e outros agentes.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "memória",
+        "contexto",
+        "codex"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents recent\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Memória persistente · Agentes</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">claude-mem</h3>\n          <p class=\"card-body\">Sistema de memória que captura sessões, comprime o histórico com IA e injeta contexto relevante em sessões futuras de Claude Code, Codex, Gemini e outros agentes.</p>\n          <div class=\"card-tags\"><span>memória</span><span>contexto</span><span>codex</span></div>\n          <a class=\"card-link\" href=\"https://github.com/thedotmack/claude-mem\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "Framework de skills e metodologia para agentes de código, com workflows de brainstorming, plano, TDD, subagentes, revisão e finalização de branches.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "skills",
+        "tdd",
+        "codex"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents recent\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Skills · Metodologia</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Superpowers</h3>\n          <p class=\"card-body\">Framework de skills e metodologia para agentes de código, com workflows de brainstorming, plano, TDD, subagentes, revisão e finalização de branches.</p>\n          <div class=\"card-tags\"><span>skills</span><span>tdd</span><span>codex</span></div>\n          <a class=\"card-link\" href=\"https://github.com/obra/superpowers\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "frontend-design",
+      "url": "https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md",
+      "description": "Skill focada em criar interfaces bem desenhadas, organizadas e com acabamento profissional.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "ui",
+        "frontend"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"kit skills interface\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Skill · Anthropic</span><span class=\"card-badge\">UI</span></div>\n          <h3 class=\"card-title\">frontend-design</h3>\n          <p class=\"card-body\">Skill focada em criar interfaces bem desenhadas, organizadas e com acabamento profissional.</p>\n          <div class=\"card-tags\"><span>ui</span><span>frontend</span></div>\n          <a class=\"card-link\" href=\"https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "webapp-testing",
+      "url": "https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md",
+      "description": "Teste o sistema como usuário — abrir páginas, clicar, preencher fluxos e capturar evidências.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "playwright",
+        "navegador"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"kit skills run\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Skill · Anthropic</span><span class=\"card-badge\">QA</span></div>\n          <h3 class=\"card-title\">webapp-testing</h3>\n          <p class=\"card-body\">Teste o sistema como usuário — abrir páginas, clicar, preencher fluxos e capturar evidências.</p>\n          <div class=\"card-tags\"><span>playwright</span><span>navegador</span></div>\n          <a class=\"card-link\" href=\"https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "everything-claude-code",
+      "url": "https://github.com/affaan-m/everything-claude-code",
+      "description": "Sistema de otimização de performance para agentes — skills, instintos, memória e segurança para Claude Code, Cursor, Codex e outros.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "agentes",
+        "skills",
+        "performance"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Sistema · Open source</span><span class=\"card-badge\">Otimização</span></div>\n          <h3 class=\"card-title\">everything-claude-code</h3>\n          <p class=\"card-body\">Sistema de otimização de performance para agentes — skills, instintos, memória e segurança para Claude Code, Cursor, Codex e outros.</p>\n          <div class=\"card-tags\"><span>agentes</span><span>skills</span><span>performance</span></div>\n          <a class=\"card-link\" href=\"https://github.com/affaan-m/everything-claude-code\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "free-for-dev",
+      "url": "https://github.com/jixserver/free-for-dev",
+      "description": "Serviços com planos gratuitos para desenvolvimento, protótipos, testes, deploy, banco, observabilidade e infra.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "plano grátis",
+        "infra",
+        "ferramentas"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit run\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Lista curada · Plano grátis</span><span class=\"card-badge\">Lista</span></div>\n          <h3 class=\"card-title\">free-for-dev</h3>\n          <p class=\"card-body\">Serviços com planos gratuitos para desenvolvimento, protótipos, testes, deploy, banco, observabilidade e infra.</p>\n          <div class=\"card-tags\"><span>plano grátis</span><span>infra</span><span>ferramentas</span></div>\n          <a class=\"card-link\" href=\"https://github.com/jixserver/free-for-dev\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Claude Code",
+      "url": "https://github.com/anthropics/claude-code",
+      "description": "O agente de código no terminal da Anthropic — edita arquivos, roda comandos, usa MCP e trabalha o codebase inteiro. Base de boa parte do dev com agentes hoje.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "cli",
+        "agente",
+        "mcp"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agente CLI · Anthropic</span><span class=\"card-badge\">Oficial</span></div>\n          <h3 class=\"card-title\">Claude Code</h3>\n          <p class=\"card-body\">O agente de código no terminal da Anthropic — edita arquivos, roda comandos, usa MCP e trabalha o codebase inteiro. Base de boa parte do dev com agentes hoje.</p>\n          <div class=\"card-tags\"><span>cli</span><span>agente</span><span>mcp</span></div>\n          <a class=\"card-link\" href=\"https://github.com/anthropics/claude-code\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OpenHands",
+      "url": "https://github.com/All-Hands-AI/OpenHands",
+      "description": "Agente autônomo que entrega features ponta a ponta. Planning Mode escreve um plano pra você revisar antes de executar. O coding agent open source mais estrelado.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "autônomo",
+        "features",
+        "planning"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agente autônomo · MIT</span><span class=\"card-badge\">~72k ★</span></div>\n          <h3 class=\"card-title\">OpenHands</h3>\n          <p class=\"card-body\">Agente autônomo que entrega features ponta a ponta. Planning Mode escreve um plano pra você revisar antes de executar. O coding agent open source mais estrelado.</p>\n          <div class=\"card-tags\"><span>autônomo</span><span>features</span><span>planning</span></div>\n          <a class=\"card-link\" href=\"https://github.com/All-Hands-AI/OpenHands\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Cline",
+      "url": "https://github.com/cline/cline",
+      "description": "Agente autônomo model-agnostic no VS Code: planeja, edita arquivos, roda comandos e usa o browser, com aprovação humana em cada passo.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "vs code",
+        "autônomo",
+        "browser"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agente VS Code · ~61k ★</span><span class=\"card-badge\">IDE</span></div>\n          <h3 class=\"card-title\">Cline</h3>\n          <p class=\"card-body\">Agente autônomo model-agnostic no VS Code: planeja, edita arquivos, roda comandos e usa o browser, com aprovação humana em cada passo.</p>\n          <div class=\"card-tags\"><span>vs code</span><span>autônomo</span><span>browser</span></div>\n          <a class=\"card-link\" href=\"https://github.com/cline/cline\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Goose",
+      "url": "https://github.com/block/goose",
+      "description": "Agente extensível que roda localmente, on-device, e se integra a qualquer servidor MCP — automatiza tarefas de engenharia no seu ambiente.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents",
+        "mcp"
+      ],
+      "tone": "amber",
+      "tags": [
+        "local",
+        "mcp",
+        "extensível"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents mcp\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agente local · Block</span><span class=\"card-badge\">MCP</span></div>\n          <h3 class=\"card-title\">Goose</h3>\n          <p class=\"card-body\">Agente extensível que roda localmente, on-device, e se integra a qualquer servidor MCP — automatiza tarefas de engenharia no seu ambiente.</p>\n          <div class=\"card-tags\"><span>local</span><span>mcp</span><span>extensível</span></div>\n          <a class=\"card-link\" href=\"https://github.com/block/goose\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OpenAI Agents SDK · JS",
+      "url": "https://github.com/openai/openai-agents-js",
+      "description": "Framework TypeScript para agentes com ferramentas, handoffs, guardrails, sessões, tracing e integração nativa com MCP. Stack oficial para construir agentes em produção.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "typescript",
+        "tools",
+        "handoffs",
+        "mcp"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>TypeScript · OpenAI</span><span class=\"card-badge\">Oficial</span></div>\n          <h3 class=\"card-title\">OpenAI Agents SDK · JS</h3>\n          <p class=\"card-body\">Framework TypeScript para agentes com ferramentas, handoffs, guardrails, sessões, tracing e integração nativa com MCP. Stack oficial para construir agentes em produção.</p>\n          <div class=\"card-tags\"><span>typescript</span><span>tools</span><span>handoffs</span><span>mcp</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://github.com/openai/openai-agents-js\" target=\"_blank\" rel=\"noopener\">Abrir repositório<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OpenAI Agents SDK · Python",
+      "url": "https://github.com/openai/openai-agents-python",
+      "description": "SDK Python leve para workflows multiagente, ferramentas, guardrails, tracing e orquestração com handoffs.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "python",
+        "multi-agente",
+        "tracing"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Python · OpenAI</span><span class=\"card-badge\">SDK</span></div>\n          <h3 class=\"card-title\">OpenAI Agents SDK · Python</h3>\n          <p class=\"card-body\">SDK Python leve para workflows multiagente, ferramentas, guardrails, tracing e orquestração com handoffs.</p>\n          <div class=\"card-tags\"><span>python</span><span>multi-agente</span><span>tracing</span></div>\n          <a class=\"card-link\" href=\"https://github.com/openai/openai-agents-python\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "LangGraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "description": "Orquestração em grafos para agentes stateful, workflows longos e execução durável.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "grafos",
+        "memória"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"agents\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>LangChain</span><span class=\"card-badge\">Stateful</span></div>\n          <h3 class=\"card-title\">LangGraph</h3>\n          <p class=\"card-body\">Orquestração em grafos para agentes stateful, workflows longos e execução durável.</p>\n          <div class=\"card-tags\"><span>grafos</span><span>memória</span></div>\n          <a class=\"card-link\" href=\"https://github.com/langchain-ai/langgraph\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "CrewAI",
+      "url": "https://github.com/crewAIInc/crewAI",
+      "description": "Framework para montar equipes de agentes com papéis, tarefas e workflows estruturados.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "papéis",
+        "times"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"agents\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Python · Times</span><span class=\"card-badge\">Multi</span></div>\n          <h3 class=\"card-title\">CrewAI</h3>\n          <p class=\"card-body\">Framework para montar equipes de agentes com papéis, tarefas e workflows estruturados.</p>\n          <div class=\"card-tags\"><span>papéis</span><span>times</span></div>\n          <a class=\"card-link\" href=\"https://github.com/crewAIInc/crewAI\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "PydanticAI",
+      "url": "https://github.com/pydantic/pydantic-ai",
+      "description": "Framework Python para agentes com tipagem forte, validação, ferramentas e outputs estruturados.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "guard"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "tipado",
+        "validação",
+        "estruturado"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"agents guard\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Tipado · Pydantic</span><span class=\"card-badge\">Typed</span></div>\n          <h3 class=\"card-title\">PydanticAI</h3>\n          <p class=\"card-body\">Framework Python para agentes com tipagem forte, validação, ferramentas e outputs estruturados.</p>\n          <div class=\"card-tags\"><span>tipado</span><span>validação</span><span>estruturado</span></div>\n          <a class=\"card-link\" href=\"https://github.com/pydantic/pydantic-ai\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "LlamaIndex",
+      "url": "https://github.com/run-llama/llama_index",
+      "description": "Framework para agentes sobre dados, RAG, documentos, integrações, memória e pipelines de conhecimento.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "rag",
+        "documentos",
+        "dados"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>RAG · Dados</span><span class=\"card-badge\">RAG</span></div>\n          <h3 class=\"card-title\">LlamaIndex</h3>\n          <p class=\"card-body\">Framework para agentes sobre dados, RAG, documentos, integrações, memória e pipelines de conhecimento.</p>\n          <div class=\"card-tags\"><span>rag</span><span>documentos</span><span>dados</span></div>\n          <a class=\"card-link\" href=\"https://github.com/run-llama/llama_index\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Agno",
+      "url": "https://github.com/agno-agi/agno",
+      "description": "Stack Python para construir, rodar e gerenciar agentes multimodais e sistemas multiagente.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "multimodal",
+        "memória"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Runtime multimodal</span><span class=\"card-badge\">Plataforma</span></div>\n          <h3 class=\"card-title\">Agno</h3>\n          <p class=\"card-body\">Stack Python para construir, rodar e gerenciar agentes multimodais e sistemas multiagente.</p>\n          <div class=\"card-tags\"><span>multimodal</span><span>memória</span></div>\n          <a class=\"card-link\" href=\"https://github.com/agno-agi/agno\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Microsoft Agent Framework",
+      "url": "https://github.com/microsoft/agent-framework",
+      "description": "Framework Python/.NET para agentes e workflows multiagente com MCP, A2A, checkpointing, telemetry e DevUI.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "mcp"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "python",
+        ".net",
+        "workflows"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents mcp\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Microsoft · Enterprise</span><span class=\"card-badge\">.NET / Py</span></div>\n          <h3 class=\"card-title\">Microsoft Agent Framework</h3>\n          <p class=\"card-body\">Framework Python/.NET para agentes e workflows multiagente com MCP, A2A, checkpointing, telemetry e DevUI.</p>\n          <div class=\"card-tags\"><span>python</span><span>.net</span><span>workflows</span></div>\n          <a class=\"card-link\" href=\"https://github.com/microsoft/agent-framework\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Ollama",
+      "url": "https://github.com/ollama/ollama",
+      "description": "Rode modelos como Llama, Mistral e Gemma localmente com uma CLI simples. Padrão de fato para LLMs no seu próprio hardware.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "llms",
+        "local",
+        "cli"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>LLMs locais · Open source</span><span class=\"card-badge\">Local</span></div>\n          <h3 class=\"card-title\">Ollama</h3>\n          <p class=\"card-body\">Rode modelos como Llama, Mistral e Gemma localmente com uma CLI simples. Padrão de fato para LLMs no seu próprio hardware.</p>\n          <div class=\"card-tags\"><span>llms</span><span>local</span><span>cli</span></div>\n          <a class=\"card-link\" href=\"https://github.com/ollama/ollama\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "llama.cpp",
+      "url": "https://github.com/ggerganov/llama.cpp",
+      "description": "Inference de LLMs em C/C++ puro com quantização GGUF. Roda em CPU, GPU, Apple Silicon — engine por trás do Ollama.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "c++",
+        "ggml",
+        "quantização"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Inference engine · C/C++</span><span class=\"card-badge\">Engine</span></div>\n          <h3 class=\"card-title\">llama.cpp</h3>\n          <p class=\"card-body\">Inference de LLMs em C/C++ puro com quantização GGUF. Roda em CPU, GPU, Apple Silicon — engine por trás do Ollama.</p>\n          <div class=\"card-tags\"><span>c++</span><span>ggml</span><span>quantização</span></div>\n          <a class=\"card-link\" href=\"https://github.com/ggerganov/llama.cpp\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Continue.dev",
+      "url": "https://github.com/continuedev/continue",
+      "description": "Assistente de IA open source — alternativa ao Cursor/Copilot. Roda com qualquer modelo, inclusive local via Ollama, em VS Code e JetBrains.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "ide",
+        "autocomplete",
+        "chat"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents kit\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>AI code editor · Open source</span><span class=\"card-badge\">IDE</span></div>\n          <h3 class=\"card-title\">Continue.dev</h3>\n          <p class=\"card-body\">Assistente de IA open source — alternativa ao Cursor/Copilot. Roda com qualquer modelo, inclusive local via Ollama, em VS Code e JetBrains.</p>\n          <div class=\"card-tags\"><span>ide</span><span>autocomplete</span><span>chat</span></div>\n          <a class=\"card-link\" href=\"https://github.com/continuedev/continue\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Aider",
+      "url": "https://github.com/Aider-AI/aider",
+      "description": "Edita código no seu terminal usando LLMs. Funciona via git, faz commits semânticos, trabalha em qualquer linguagem com qualquer modelo.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "cli",
+        "git",
+        "pair programming"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents kit\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Pair programming · CLI</span><span class=\"card-badge\">CLI</span></div>\n          <h3 class=\"card-title\">Aider</h3>\n          <p class=\"card-body\">Edita código no seu terminal usando LLMs. Funciona via git, faz commits semânticos, trabalha em qualquer linguagem com qualquer modelo.</p>\n          <div class=\"card-tags\"><span>cli</span><span>git</span><span>pair programming</span></div>\n          <a class=\"card-link\" href=\"https://github.com/Aider-AI/aider\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Agent Browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "CLI nativa em Rust para automação de navegador por agentes de IA. Abre páginas, captura snapshots de acessibilidade, clica, preenche campos, tira screenshots e gera PDFs.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "browser",
+        "automation",
+        "rust cli"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents kit\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Browser automation · Vercel Labs</span><span class=\"card-badge\">CLI</span></div>\n          <h3 class=\"card-title\">Agent Browser</h3>\n          <p class=\"card-body\">CLI nativa em Rust para automação de navegador por agentes de IA. Abre páginas, captura snapshots de acessibilidade, clica, preenche campos, tira screenshots e gera PDFs.</p>\n          <div class=\"card-tags\"><span>browser</span><span>automation</span><span>rust cli</span></div>\n          <a class=\"card-link\" href=\"https://github.com/vercel-labs/agent-browser\" target=\"_blank\" rel=\"noopener\">Abrir repositório<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "MCP Specification",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+      "description": "Documentação e especificação oficial do Model Context Protocol para conectar agentes a dados, ferramentas e serviços.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "violet",
+      "tags": [
+        "mcp",
+        "spec",
+        "agentes"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Protocolo oficial</span><span class=\"card-badge\">Spec</span></div>\n          <h3 class=\"card-title\">MCP Specification</h3>\n          <p class=\"card-body\">Documentação e especificação oficial do Model Context Protocol para conectar agentes a dados, ferramentas e serviços.</p>\n          <div class=\"card-tags\"><span>mcp</span><span>spec</span><span>agentes</span></div>\n          <a class=\"card-link\" href=\"https://github.com/modelcontextprotocol/modelcontextprotocol\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "description": "Referências de servidores MCP como filesystem, git, memory, fetch e exemplos para criar integrações próprias.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "filesystem",
+        "git",
+        "memory"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Servidores referência</span><span class=\"card-badge\">Servers</span></div>\n          <h3 class=\"card-title\">modelcontextprotocol/servers</h3>\n          <p class=\"card-body\">Referências de servidores MCP como filesystem, git, memory, fetch e exemplos para criar integrações próprias.</p>\n          <div class=\"card-tags\"><span>filesystem</span><span>git</span><span>memory</span></div>\n          <a class=\"card-link\" href=\"https://github.com/modelcontextprotocol/servers\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "MCP Registry",
+      "url": "https://github.com/modelcontextprotocol/registry",
+      "description": "Registro comunitário de servidores MCP para descoberta, publicação e organização de integrações.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "registro",
+        "discovery"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"mcp\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Comunidade</span><span class=\"card-badge\">Registro</span></div>\n          <h3 class=\"card-title\">MCP Registry</h3>\n          <p class=\"card-body\">Registro comunitário de servidores MCP para descoberta, publicação e organização de integrações.</p>\n          <div class=\"card-tags\"><span>registro</span><span>discovery</span></div>\n          <a class=\"card-link\" href=\"https://github.com/modelcontextprotocol/registry\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "awesome-mcp-servers",
+      "url": "https://github.com/appcypher/awesome-mcp-servers",
+      "description": "Lista curada de servidores MCP para descobrir integrações úteis antes de instalar algo no ambiente.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "amber",
+      "tags": [
+        "curado",
+        "servers"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"mcp\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Lista curada</span><span class=\"card-badge\">Curado</span></div>\n          <h3 class=\"card-title\">awesome-mcp-servers</h3>\n          <p class=\"card-body\">Lista curada de servidores MCP para descobrir integrações úteis antes de instalar algo no ambiente.</p>\n          <div class=\"card-tags\"><span>curado</span><span>servers</span></div>\n          <a class=\"card-link\" href=\"https://github.com/appcypher/awesome-mcp-servers\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "mcp-scan",
+      "url": "https://github.com/invariantlabs-ai/mcp-scan",
+      "description": "Descobrir, registrar, restringir e escanear conexões MCP locais ou remotas contra riscos de segurança.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "guard"
+      ],
+      "tone": "pink",
+      "tags": [
+        "prompt injection",
+        "scan"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"mcp guard\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Invariant Labs</span><span class=\"card-badge\">Segurança</span></div>\n          <h3 class=\"card-title\">mcp-scan</h3>\n          <p class=\"card-body\">Descobrir, registrar, restringir e escanear conexões MCP locais ou remotas contra riscos de segurança.</p>\n          <div class=\"card-tags\"><span>prompt injection</span><span>scan</span></div>\n          <a class=\"card-link\" href=\"https://github.com/invariantlabs-ai/mcp-scan\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "FastMCP",
+      "url": "https://github.com/jlowin/fastmcp",
+      "description": "A forma rápida e pythônica de construir servidores e clientes MCP. Roda ~70% de todos os servidores MCP do ecossistema — decorators, auth, deploy e tooling completo.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "python",
+        "server",
+        "client",
+        "auth"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"mcp agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Framework · Python</span><span class=\"card-badge\">Destaque</span></div>\n          <h3 class=\"card-title\">FastMCP</h3>\n          <p class=\"card-body\">A forma rápida e pythônica de construir servidores e clientes MCP. Roda ~70% de todos os servidores MCP do ecossistema — decorators, auth, deploy e tooling completo.</p>\n          <div class=\"card-tags\"><span>python</span><span>server</span><span>client</span><span>auth</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://github.com/jlowin/fastmcp\" target=\"_blank\" rel=\"noopener\">Abrir repositório<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "MCP Inspector",
+      "url": "https://github.com/modelcontextprotocol/inspector",
+      "description": "Ferramenta oficial pra inspecionar e debugar servidores MCP — logs em tempo real, validação de protocolo e suporte a múltiplos transports.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "debug",
+        "inspector",
+        "oficial"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Debug oficial · Anthropic</span><span class=\"card-badge\">Inspector</span></div>\n          <h3 class=\"card-title\">MCP Inspector</h3>\n          <p class=\"card-body\">Ferramenta oficial pra inspecionar e debugar servidores MCP — logs em tempo real, validação de protocolo e suporte a múltiplos transports.</p>\n          <div class=\"card-tags\"><span>debug</span><span>inspector</span><span>oficial</span></div>\n          <a class=\"card-link\" href=\"https://github.com/modelcontextprotocol/inspector\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "GitHub MCP Server",
+      "url": "https://github.com/github/github-mcp-server",
+      "description": "Servidor MCP oficial do GitHub: repos, pull requests, issues, code search e operações de arquivo — dá ao agente acesso completo à API do GitHub.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "github",
+        "pr",
+        "issues"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Server oficial · GitHub</span><span class=\"card-badge\">Go</span></div>\n          <h3 class=\"card-title\">GitHub MCP Server</h3>\n          <p class=\"card-body\">Servidor MCP oficial do GitHub: repos, pull requests, issues, code search e operações de arquivo — dá ao agente acesso completo à API do GitHub.</p>\n          <div class=\"card-tags\"><span>github</span><span>pr</span><span>issues</span></div>\n          <a class=\"card-link\" href=\"https://github.com/github/github-mcp-server\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Playwright MCP",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "description": "Servidor MCP que deixa o agente navegar a web via árvore de acessibilidade (não screenshots) — mais rápido, menos tokens e mais preciso.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "browser",
+        "automation",
+        "a11y"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp agents\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Browser · Microsoft</span><span class=\"card-badge\">a11y tree</span></div>\n          <h3 class=\"card-title\">Playwright MCP</h3>\n          <p class=\"card-body\">Servidor MCP que deixa o agente navegar a web via árvore de acessibilidade (não screenshots) — mais rápido, menos tokens e mais preciso.</p>\n          <div class=\"card-tags\"><span>browser</span><span>automation</span><span>a11y</span></div>\n          <a class=\"card-link\" href=\"https://github.com/microsoft/playwright-mcp\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Composio",
+      "url": "https://github.com/ComposioHQ/composio",
+      "description": "Plataforma de integração agêntica com MCP Gateway: 500+ integrações gerenciadas (Slack, GitHub, Jira, Salesforce…) prontas pra dar ferramentas ao agente.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "integrações",
+        "gateway",
+        "tools"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp agents\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Integrações · Gateway</span><span class=\"card-badge\">500+ apps</span></div>\n          <h3 class=\"card-title\">Composio</h3>\n          <p class=\"card-body\">Plataforma de integração agêntica com MCP Gateway: 500+ integrações gerenciadas (Slack, GitHub, Jira, Salesforce…) prontas pra dar ferramentas ao agente.</p>\n          <div class=\"card-tags\"><span>integrações</span><span>gateway</span><span>tools</span></div>\n          <a class=\"card-link\" href=\"https://github.com/ComposioHQ/composio\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "React Bits",
+      "url": "https://reactbits.dev/",
+      "description": "Coleção open source de componentes React interativos, animados e customizáveis para interfaces memoráveis.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "animações"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>React · Animado</span><span class=\"card-badge\">UI</span></div>\n          <h3 class=\"card-title\">React Bits</h3>\n          <p class=\"card-body\">Coleção open source de componentes React interativos, animados e customizáveis para interfaces memoráveis.</p>\n          <div class=\"card-tags\"><span>react</span><span>animações</span></div>\n          <a class=\"card-link\" href=\"https://reactbits.dev/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "shadcn/ui",
+      "url": "https://github.com/shadcn-ui/ui",
+      "description": "Componentes acessíveis e editáveis para criar sua própria biblioteca UI em React, Next.js, Tailwind e Radix.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Copy-paste UI</span><span class=\"card-badge\">Componentes</span></div>\n          <h3 class=\"card-title\">shadcn/ui</h3>\n          <p class=\"card-body\">Componentes acessíveis e editáveis para criar sua própria biblioteca UI em React, Next.js, Tailwind e Radix.</p>\n          <div class=\"card-tags\"><span>react</span><span>tailwind</span><span>radix</span></div>\n          <a class=\"card-link\" href=\"https://github.com/shadcn-ui/ui\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "ReUI",
+      "url": "https://reui.io/",
+      "description": "Catálogo amplo de componentes e blocks para shadcn/ui, com versões Base UI e Radix. Bom ponto de partida para fluxos reais como data grid, filtros, uploads e kanban.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "shadcn",
+        "base ui",
+        "radix",
+        "blocks"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"interface kit\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>shadcn registry · Open source</span><span class=\"card-badge\">1000+</span></div>\n          <h3 class=\"card-title\">ReUI</h3>\n          <p class=\"card-body\">Catálogo amplo de componentes e blocks para shadcn/ui, com versões Base UI e Radix. Bom ponto de partida para fluxos reais como data grid, filtros, uploads e kanban.</p>\n          <div class=\"card-tags\"><span>shadcn</span><span>base ui</span><span>radix</span><span>blocks</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://reui.io/\" target=\"_blank\" rel=\"noopener\">Abrir reui.io<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Magic UI",
+      "url": "https://magicui.design/",
+      "description": "Componentes animados, backgrounds e efeitos para React, Tailwind e Motion. Excelente para dar acabamento visual a landing pages sem criar tudo do zero.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "pink",
+      "tags": [
+        "motion",
+        "tailwind",
+        "landing"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Motion UI · shadcn companion</span><span class=\"card-badge\">Free</span></div>\n          <h3 class=\"card-title\">Magic UI</h3>\n          <p class=\"card-body\">Componentes animados, backgrounds e efeitos para React, Tailwind e Motion. Excelente para dar acabamento visual a landing pages sem criar tudo do zero.</p>\n          <div class=\"card-tags\"><span>motion</span><span>tailwind</span><span>landing</span></div>\n          <a class=\"card-link\" href=\"https://magicui.design/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Aceternity UI",
+      "url": "https://ui.aceternity.com/",
+      "description": "Componentes e blocks com Tailwind e Motion para landing pages, pricing, hero sections, backgrounds e interações de alto impacto.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "tailwind",
+        "motion",
+        "blocks"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Tailwind + Motion</span><span class=\"card-badge\">Free + Pro</span></div>\n          <h3 class=\"card-title\">Aceternity UI</h3>\n          <p class=\"card-body\">Componentes e blocks com Tailwind e Motion para landing pages, pricing, hero sections, backgrounds e interações de alto impacto.</p>\n          <div class=\"card-tags\"><span>tailwind</span><span>motion</span><span>blocks</span></div>\n          <a class=\"card-link\" href=\"https://ui.aceternity.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Refero Styles",
+      "url": "https://styles.refero.design/",
+      "description": "Galeria de estilos de interface para acelerar direção visual, referências de composição e decisões de linguagem antes de codar a tela.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend",
+        "recent"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "inspiração",
+        "ui",
+        "styles"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface frontend recent\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Referências visuais</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Refero Styles</h3>\n          <p class=\"card-body\">Galeria de estilos de interface para acelerar direção visual, referências de composição e decisões de linguagem antes de codar a tela.</p>\n          <div class=\"card-tags\"><span>inspiração</span><span>ui</span><span>styles</span></div>\n          <a class=\"card-link\" href=\"https://styles.refero.design/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Componetry",
+      "url": "https://componetry.fun/",
+      "description": "Hub curado para inspiração de UI e componentes, útil para comparar padrões visuais antes de montar dashboards, landing pages e tool surfaces.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend",
+        "recent"
+      ],
+      "tone": "amber",
+      "tags": [
+        "components",
+        "inspiration",
+        "ui"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface frontend recent\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Componentes · Inspiração</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Componetry</h3>\n          <p class=\"card-body\">Hub curado para inspiração de UI e componentes, útil para comparar padrões visuais antes de montar dashboards, landing pages e tool surfaces.</p>\n          <div class=\"card-tags\"><span>components</span><span>inspiration</span><span>ui</span></div>\n          <a class=\"card-link\" href=\"https://componetry.fun/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Penpot",
+      "url": "https://github.com/penpot/penpot",
+      "description": "Plataforma open source de design e prototipagem com colaboração em tempo real, tokens, inspect mode, API, plugins e MCP para fluxo design-code.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend",
+        "ship",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "design system",
+        "mcp",
+        "open source"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface frontend ship recent\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Design system · Open source</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Penpot</h3>\n          <p class=\"card-body\">Plataforma open source de design e prototipagem com colaboração em tempo real, tokens, inspect mode, API, plugins e MCP para fluxo design-code.</p>\n          <div class=\"card-tags\"><span>design system</span><span>mcp</span><span>open source</span></div>\n          <a class=\"card-link\" href=\"https://github.com/penpot/penpot\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "HeroUI",
+      "url": "https://www.heroui.com/",
+      "description": "Sistema de design React completo, sucessor do NextUI, com acessibilidade via React Aria, Tailwind, temas e componentes prontos para apps.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react aria",
+        "design system",
+        "tailwind"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Design system · React Aria</span><span class=\"card-badge\">Open</span></div>\n          <h3 class=\"card-title\">HeroUI</h3>\n          <p class=\"card-body\">Sistema de design React completo, sucessor do NextUI, com acessibilidade via React Aria, Tailwind, temas e componentes prontos para apps.</p>\n          <div class=\"card-tags\"><span>react aria</span><span>design system</span><span>tailwind</span></div>\n          <a class=\"card-link\" href=\"https://www.heroui.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Shadcn Blocks",
+      "url": "https://www.shadcnblocks.com/",
+      "description": "Biblioteca grande de blocos, componentes e templates para shadcn/ui e Tailwind. Útil para montar páginas inteiras a partir de padrões prontos.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "blocks",
+        "templates",
+        "tailwind"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Blocks · shadcn/Tailwind</span><span class=\"card-badge\">Free + Pro</span></div>\n          <h3 class=\"card-title\">Shadcn Blocks</h3>\n          <p class=\"card-body\">Biblioteca grande de blocos, componentes e templates para shadcn/ui e Tailwind. Útil para montar páginas inteiras a partir de padrões prontos.</p>\n          <div class=\"card-tags\"><span>blocks</span><span>templates</span><span>tailwind</span></div>\n          <a class=\"card-link\" href=\"https://www.shadcnblocks.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Eldora UI",
+      "url": "https://www.eldoraui.site/",
+      "description": "Coleção open source de componentes, blocks e efeitos animados com React, TypeScript, Tailwind e Motion, instaláveis pelo shadcn CLI.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "animated",
+        "motion",
+        "shadcn"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animated shadcn · Open source</span><span class=\"card-badge\">150+</span></div>\n          <h3 class=\"card-title\">Eldora UI</h3>\n          <p class=\"card-body\">Coleção open source de componentes, blocks e efeitos animados com React, TypeScript, Tailwind e Motion, instaláveis pelo shadcn CLI.</p>\n          <div class=\"card-tags\"><span>animated</span><span>motion</span><span>shadcn</span></div>\n          <a class=\"card-link\" href=\"https://www.eldoraui.site/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Cult UI",
+      "url": "https://www.cult-ui.com/",
+      "description": "Componentes animados, blocks e templates compatíveis com shadcn. Bom para marketing pages, SaaS e interfaces com microinterações mais refinadas.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "shadcn",
+        "templates",
+        "motion"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animated components · Cult</span><span class=\"card-badge\">Free + Pro</span></div>\n          <h3 class=\"card-title\">Cult UI</h3>\n          <p class=\"card-body\">Componentes animados, blocks e templates compatíveis com shadcn. Bom para marketing pages, SaaS e interfaces com microinterações mais refinadas.</p>\n          <div class=\"card-tags\"><span>shadcn</span><span>templates</span><span>motion</span></div>\n          <a class=\"card-link\" href=\"https://www.cult-ui.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Skiper UI",
+      "url": "https://skiper-ui.com/",
+      "description": "Coleções de componentes shadcn com animações e padrões menos comuns. Bom para detalhes visuais quando a base padrão já está pronta.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "pink",
+      "tags": [
+        "shadcn",
+        "premium",
+        "animations"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Componentes incomuns · shadcn</span><span class=\"card-badge\">Free + Pago</span></div>\n          <h3 class=\"card-title\">Skiper UI</h3>\n          <p class=\"card-body\">Coleções de componentes shadcn com animações e padrões menos comuns. Bom para detalhes visuais quando a base padrão já está pronta.</p>\n          <div class=\"card-tags\"><span>shadcn</span><span>premium</span><span>animations</span></div>\n          <a class=\"card-link\" href=\"https://skiper-ui.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Square UI",
+      "url": "https://square.lndev.me/",
+      "description": "Layouts completos construídos com shadcn/ui, úteis para dashboards, trackers e páginas que precisam sair do wireframe rapidamente.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "layouts",
+        "dashboard",
+        "shadcn"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Layouts · shadcn</span><span class=\"card-badge\">Open + Pro</span></div>\n          <h3 class=\"card-title\">Square UI</h3>\n          <p class=\"card-body\">Layouts completos construídos com shadcn/ui, úteis para dashboards, trackers e páginas que precisam sair do wireframe rapidamente.</p>\n          <div class=\"card-tags\"><span>layouts</span><span>dashboard</span><span>shadcn</span></div>\n          <a class=\"card-link\" href=\"https://square.lndev.me/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Ali Imam Components",
+      "url": "https://aliimam.in/components",
+      "description": "Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "components",
+        "effects",
+        "registry"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Coleção pessoal · Components</span><span class=\"card-badge\">Free</span></div>\n          <h3 class=\"card-title\">Ali Imam Components</h3>\n          <p class=\"card-body\">Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações.</p>\n          <div class=\"card-tags\"><span>components</span><span>effects</span><span>registry</span></div>\n          <a class=\"card-link\" href=\"https://aliimam.in/components\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "21st.dev",
+      "url": "https://21st.dev/",
+      "description": "Biblioteca e inspiração para componentes React modernos.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "componentes",
+        "react"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Marketplace</span><span class=\"card-badge\">Kits</span></div>\n          <h3 class=\"card-title\">21st.dev</h3>\n          <p class=\"card-body\">Biblioteca e inspiração para componentes React modernos.</p>\n          <div class=\"card-tags\"><span>componentes</span><span>react</span></div>\n          <a class=\"card-link\" href=\"https://21st.dev/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Storybook",
+      "url": "https://github.com/storybookjs/storybook",
+      "description": "Construir, documentar e testar componentes isolados, com testes de interação e visual review.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "docs",
+        "componentes"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface run\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Component IDE</span><span class=\"card-badge\">Workshop</span></div>\n          <h3 class=\"card-title\">Storybook</h3>\n          <p class=\"card-body\">Construir, documentar e testar componentes isolados, com testes de interação e visual review.</p>\n          <div class=\"card-tags\"><span>docs</span><span>componentes</span></div>\n          <a class=\"card-link\" href=\"https://github.com/storybookjs/storybook\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Vite",
+      "url": "https://github.com/vitejs/vite",
+      "description": "Build tool moderno com dev server rápido, HMR, plugins, TypeScript e builds otimizados.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "build",
+        "hmr"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface run\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Build frontend</span><span class=\"card-badge\">Build</span></div>\n          <h3 class=\"card-title\">Vite</h3>\n          <p class=\"card-body\">Build tool moderno com dev server rápido, HMR, plugins, TypeScript e builds otimizados.</p>\n          <div class=\"card-tags\"><span>build</span><span>hmr</span></div>\n          <a class=\"card-link\" href=\"https://github.com/vitejs/vite\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Tailwind CSS",
+      "url": "https://github.com/tailwindlabs/tailwindcss",
+      "description": "Framework CSS utility-first para interfaces responsivas com design consistente.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "css",
+        "utility"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Utility-first</span><span class=\"card-badge\">CSS</span></div>\n          <h3 class=\"card-title\">Tailwind CSS</h3>\n          <p class=\"card-body\">Framework CSS utility-first para interfaces responsivas com design consistente.</p>\n          <div class=\"card-tags\"><span>css</span><span>utility</span></div>\n          <a class=\"card-link\" href=\"https://github.com/tailwindlabs/tailwindcss\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Radix Primitives",
+      "url": "https://github.com/radix-ui/primitives",
+      "description": "Primitivas React acessíveis para dialogs, menus, selects, tooltips e design systems customizados.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "a11y",
+        "primitives"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Acessível</span><span class=\"card-badge\">Radix</span></div>\n          <h3 class=\"card-title\">Radix Primitives</h3>\n          <p class=\"card-body\">Primitivas React acessíveis para dialogs, menus, selects, tooltips e design systems customizados.</p>\n          <div class=\"card-tags\"><span>a11y</span><span>primitives</span></div>\n          <a class=\"card-link\" href=\"https://github.com/radix-ui/primitives\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "TanStack Query",
+      "url": "https://github.com/TanStack/query",
+      "description": "Gerenciamento de server state para buscar, cachear, sincronizar e atualizar dados.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "server"
+      ],
+      "tone": "pink",
+      "tags": [
+        "cache",
+        "fetching"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface server\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Server state</span><span class=\"card-badge\">Estado</span></div>\n          <h3 class=\"card-title\">TanStack Query</h3>\n          <p class=\"card-body\">Gerenciamento de server state para buscar, cachear, sincronizar e atualizar dados.</p>\n          <div class=\"card-tags\"><span>cache</span><span>fetching</span></div>\n          <a class=\"card-link\" href=\"https://github.com/TanStack/query\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Spline",
+      "url": "https://spline.design/",
+      "description": "Ferramenta para criar cenas 3D interativas e experiências visuais para web.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "3d",
+        "interativo"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Cenas 3D</span><span class=\"card-badge\">3D</span></div>\n          <h3 class=\"card-title\">Spline</h3>\n          <p class=\"card-body\">Ferramenta para criar cenas 3D interativas e experiências visuais para web.</p>\n          <div class=\"card-tags\"><span>3d</span><span>interativo</span></div>\n          <a class=\"card-link\" href=\"https://spline.design/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Framer",
+      "url": "https://www.framer.com/",
+      "description": "Plataforma para criar, prototipar e publicar sites com foco em design visual e animações.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "protótipo",
+        "motion"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Design &amp; publicar</span><span class=\"card-badge\">Tool</span></div>\n          <h3 class=\"card-title\">Framer</h3>\n          <p class=\"card-body\">Plataforma para criar, prototipar e publicar sites com foco em design visual e animações.</p>\n          <div class=\"card-tags\"><span>protótipo</span><span>motion</span></div>\n          <a class=\"card-link\" href=\"https://www.framer.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "awesome-design-md",
+      "url": "https://github.com/voltagent/awesome-design-md",
+      "description": "Modelos DESIGN.md para orientar estética, componentes e consistência visual.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "design.md",
+        "inspiração"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"interface kit\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>DESIGN.md</span><span class=\"card-badge\">Referência</span></div>\n          <h3 class=\"card-title\">awesome-design-md</h3>\n          <p class=\"card-body\">Modelos DESIGN.md para orientar estética, componentes e consistência visual.</p>\n          <div class=\"card-tags\"><span>design.md</span><span>inspiração</span></div>\n          <a class=\"card-link\" href=\"https://github.com/voltagent/awesome-design-md\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Next.js",
+      "url": "https://github.com/vercel/next.js",
+      "description": "O framework React mais usado em produção. App Router, Server Components, file-based routing, otimizações automáticas, suporte nativo a streaming e ISR. Padrão da indústria.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "ssr",
+        "app router",
+        "server components"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"interface\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>React framework · Vercel</span><span class=\"card-badge\">Framework</span></div>\n          <h3 class=\"card-title\">Next.js</h3>\n          <p class=\"card-body\">O framework React mais usado em produção. App Router, Server Components, file-based routing, otimizações automáticas, suporte nativo a streaming e ISR. Padrão da indústria.</p>\n          <div class=\"card-tags\"><span>react</span><span>ssr</span><span>app router</span><span>server components</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://github.com/vercel/next.js\" target=\"_blank\" rel=\"noopener\">Abrir repositório<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Astro",
+      "url": "https://github.com/withastro/astro",
+      "description": "Framework #1 pra sites de conteúdo. Zero JS por default, islands architecture, suporte a React/Vue/Svelte no mesmo projeto.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "ssg",
+        "islands",
+        "content"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Content framework · Multi</span><span class=\"card-badge\">SSG</span></div>\n          <h3 class=\"card-title\">Astro</h3>\n          <p class=\"card-body\">Framework #1 pra sites de conteúdo. Zero JS por default, islands architecture, suporte a React/Vue/Svelte no mesmo projeto.</p>\n          <div class=\"card-tags\"><span>ssg</span><span>islands</span><span>content</span></div>\n          <a class=\"card-link\" href=\"https://github.com/withastro/astro\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Three.js",
+      "url": "https://github.com/mrdoob/three.js",
+      "description": "Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shaders, animações. Por trás de quase toda experiência 3D moderna.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "webgl",
+        "3d",
+        "shaders"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>3D na web · WebGL</span><span class=\"card-badge\">3D</span></div>\n          <h3 class=\"card-title\">Three.js</h3>\n          <p class=\"card-body\">Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shaders, animações. Por trás de quase toda experiência 3D moderna.</p>\n          <div class=\"card-tags\"><span>webgl</span><span>3d</span><span>shaders</span></div>\n          <a class=\"card-link\" href=\"https://github.com/mrdoob/three.js\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Framer Motion",
+      "url": "https://github.com/motiondivision/motion",
+      "description": "Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "react",
+        "motion",
+        "gestures"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animações React · Motion</span><span class=\"card-badge\">Motion</span></div>\n          <h3 class=\"card-title\">Framer Motion</h3>\n          <p class=\"card-body\">Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.</p>\n          <div class=\"card-tags\"><span>react</span><span>motion</span><span>gestures</span></div>\n          <a class=\"card-link\" href=\"https://github.com/motiondivision/motion\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Liquid Metal",
+      "url": "https://metal.jakubantalik.com/",
+      "description": "Efeito WebGL de metal líquido para botões, chips e controles. Use como tempero visual pontual, não como base de design system.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "webgl",
+        "buttons",
+        "effect"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>WebGL effect · Buttons</span><span class=\"card-badge\">OSS</span></div>\n          <h3 class=\"card-title\">Liquid Metal</h3>\n          <p class=\"card-body\">Efeito WebGL de metal líquido para botões, chips e controles. Use como tempero visual pontual, não como base de design system.</p>\n          <div class=\"card-tags\"><span>webgl</span><span>buttons</span><span>effect</span></div>\n          <a class=\"card-link\" href=\"https://metal.jakubantalik.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Dot Matrix",
+      "url": "https://dotmatrix.zzzzshawn.cloud/",
+      "description": "Loaders em estilo dot matrix feitos com React, TypeScript, Tailwind e shadcn. Nichado, mas ótimo para estados de carregamento com personalidade.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "loaders",
+        "react",
+        "shadcn"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Loaders · Dot matrix</span><span class=\"card-badge\">55+</span></div>\n          <h3 class=\"card-title\">Dot Matrix</h3>\n          <p class=\"card-body\">Loaders em estilo dot matrix feitos com React, TypeScript, Tailwind e shadcn. Nichado, mas ótimo para estados de carregamento com personalidade.</p>\n          <div class=\"card-tags\"><span>loaders</span><span>react</span><span>shadcn</span></div>\n          <a class=\"card-link\" href=\"https://dotmatrix.zzzzshawn.cloud/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Balloons.js",
+      "url": "https://arturbien.github.io/balloons-js/",
+      "description": "Biblioteca pequena para animações de balões em tela cheia. Útil para celebrações, sucesso de onboarding e momentos de recompensa.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "celebration",
+        "animation",
+        "vanilla"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Celebração · Zero dependency</span><span class=\"card-badge\">JS</span></div>\n          <h3 class=\"card-title\">Balloons.js</h3>\n          <p class=\"card-body\">Biblioteca pequena para animações de balões em tela cheia. Útil para celebrações, sucesso de onboarding e momentos de recompensa.</p>\n          <div class=\"card-tags\"><span>celebration</span><span>animation</span><span>vanilla</span></div>\n          <a class=\"card-link\" href=\"https://arturbien.github.io/balloons-js/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "cmdk",
+      "url": "https://github.com/pacocoursey/cmdk",
+      "description": "Componente React para command palettes estilo Raycast. Headless, acessível, com fuzzy search. Por trás do Command do shadcn/ui.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "⌘k",
+        "palette"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Command palette · React</span><span class=\"card-badge\">⌘K</span></div>\n          <h3 class=\"card-title\">cmdk</h3>\n          <p class=\"card-body\">Componente React para command palettes estilo Raycast. Headless, acessível, com fuzzy search. Por trás do Command do shadcn/ui.</p>\n          <div class=\"card-tags\"><span>react</span><span>⌘k</span><span>palette</span></div>\n          <a class=\"card-link\" href=\"https://github.com/pacocoursey/cmdk\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "UIverse",
+      "url": "https://uiverse.io/",
+      "description": "Biblioteca enorme de elementos UI open source — botões, checkboxes, cards, loaders — prontos pra copiar e colar (CSS/Tailwind) no projeto.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "ui",
+        "css",
+        "copy-paste"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Componentes UI · Copy-paste</span><span class=\"card-badge\">Site</span></div>\n          <h3 class=\"card-title\">UIverse</h3>\n          <p class=\"card-body\">Biblioteca enorme de elementos UI open source — botões, checkboxes, cards, loaders — prontos pra copiar e colar (CSS/Tailwind) no projeto.</p>\n          <div class=\"card-tags\"><span>ui</span><span>css</span><span>copy-paste</span></div>\n          <a class=\"card-link\" href=\"https://uiverse.io/\" target=\"_blank\" rel=\"noopener\">Abrir uiverse.io<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Mobbin",
+      "url": "https://mobbin.com/",
+      "description": "Maior biblioteca de design mobile e web — 300k+ telas de apps reais bem desenhados pra estudar padrões de UX e buscar inspiração.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "design",
+        "ux",
+        "inspiração"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Referência de design · Mobbin</span><span class=\"card-badge\">Patterns</span></div>\n          <h3 class=\"card-title\">Mobbin</h3>\n          <p class=\"card-body\">Maior biblioteca de design mobile e web — 300k+ telas de apps reais bem desenhados pra estudar padrões de UX e buscar inspiração.</p>\n          <div class=\"card-tags\"><span>design</span><span>ux</span><span>inspiração</span></div>\n          <a class=\"card-link\" href=\"https://mobbin.com/\" target=\"_blank\" rel=\"noopener\">Abrir mobbin.com<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Supabase",
+      "url": "https://github.com/supabase/supabase",
+      "description": "Plataforma Postgres completa para banco, autenticação, storage, APIs, realtime, edge functions e recursos para apps com AI. A backend-as-a-service mais popular para projetos modernos.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "postgres",
+        "auth",
+        "realtime",
+        "edge"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"server\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Postgres BaaS</span><span class=\"card-badge\">Destaque</span></div>\n          <h3 class=\"card-title\">Supabase</h3>\n          <p class=\"card-body\">Plataforma Postgres completa para banco, autenticação, storage, APIs, realtime, edge functions e recursos para apps com AI. A backend-as-a-service mais popular para projetos modernos.</p>\n          <div class=\"card-tags\"><span>postgres</span><span>auth</span><span>realtime</span><span>edge</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://github.com/supabase/supabase\" target=\"_blank\" rel=\"noopener\">Abrir repositório<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Appwrite",
+      "url": "https://github.com/appwrite/appwrite",
+      "description": "Infra backend open source com auth, databases, storage, functions, messaging, realtime e hosting integrado.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "pink",
+      "tags": [
+        "baas",
+        "self-host",
+        "functions"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Self-host BaaS</span><span class=\"card-badge\">Open</span></div>\n          <h3 class=\"card-title\">Appwrite</h3>\n          <p class=\"card-body\">Infra backend open source com auth, databases, storage, functions, messaging, realtime e hosting integrado.</p>\n          <div class=\"card-tags\"><span>baas</span><span>self-host</span><span>functions</span></div>\n          <a class=\"card-link\" href=\"https://github.com/appwrite/appwrite\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Hono",
+      "url": "https://github.com/honojs/hono",
+      "description": "Framework TypeScript ultraleve para Node, Bun, Deno, Workers e edge.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "violet",
+      "tags": [
+        "typescript",
+        "edge"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"server\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>API edge</span><span class=\"card-badge\">TS</span></div>\n          <h3 class=\"card-title\">Hono</h3>\n          <p class=\"card-body\">Framework TypeScript ultraleve para Node, Bun, Deno, Workers e edge.</p>\n          <div class=\"card-tags\"><span>typescript</span><span>edge</span></div>\n          <a class=\"card-link\" href=\"https://github.com/honojs/hono\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Fastify",
+      "url": "https://github.com/fastify/fastify",
+      "description": "Framework Node.js de baixa sobrecarga para APIs com plugins, validação e performance.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "node.js",
+        "plugins"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"server\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>API Node</span><span class=\"card-badge\">Rápido</span></div>\n          <h3 class=\"card-title\">Fastify</h3>\n          <p class=\"card-body\">Framework Node.js de baixa sobrecarga para APIs com plugins, validação e performance.</p>\n          <div class=\"card-tags\"><span>node.js</span><span>plugins</span></div>\n          <a class=\"card-link\" href=\"https://github.com/fastify/fastify\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Drizzle ORM",
+      "url": "https://github.com/drizzle-team/drizzle-orm",
+      "description": "ORM TypeScript leve e SQL-first para PostgreSQL, MySQL, SQLite e ambientes serverless/edge.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "amber",
+      "tags": [
+        "sql",
+        "migrations",
+        "tipos"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"server\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>SQL tipado</span><span class=\"card-badge\">ORM</span></div>\n          <h3 class=\"card-title\">Drizzle ORM</h3>\n          <p class=\"card-body\">ORM TypeScript leve e SQL-first para PostgreSQL, MySQL, SQLite e ambientes serverless/edge.</p>\n          <div class=\"card-tags\"><span>sql</span><span>migrations</span><span>tipos</span></div>\n          <a class=\"card-link\" href=\"https://github.com/drizzle-team/drizzle-orm\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Prisma ORM",
+      "url": "https://github.com/prisma/prisma",
+      "description": "Toolkit Node/TypeScript para modelagem, migrations, Prisma Client tipado e Studio.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "violet",
+      "tags": [
+        "orm",
+        "migrate",
+        "studio"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"server\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Database toolkit</span><span class=\"card-badge\">ORM</span></div>\n          <h3 class=\"card-title\">Prisma ORM</h3>\n          <p class=\"card-body\">Toolkit Node/TypeScript para modelagem, migrations, Prisma Client tipado e Studio.</p>\n          <div class=\"card-tags\"><span>orm</span><span>migrate</span><span>studio</span></div>\n          <a class=\"card-link\" href=\"https://github.com/prisma/prisma\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Neon",
+      "url": "https://github.com/neondatabase/neon",
+      "description": "Postgres serverless com separação de compute/storage, autoscaling, branching e scale-to-zero.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "postgres",
+        "branching"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"server\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Postgres serverless</span><span class=\"card-badge\">Neon</span></div>\n          <h3 class=\"card-title\">Neon</h3>\n          <p class=\"card-body\">Postgres serverless com separação de compute/storage, autoscaling, branching e scale-to-zero.</p>\n          <div class=\"card-tags\"><span>postgres</span><span>branching</span></div>\n          <a class=\"card-link\" href=\"https://github.com/neondatabase/neon\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Upstash",
+      "url": "https://upstash.com/",
+      "description": "Plataforma serverless para Redis, Vector, QStash e workflows — cache, filas e AI apps.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "redis",
+        "vector"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"server agents\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Dados serverless</span><span class=\"card-badge\">Upstash</span></div>\n          <h3 class=\"card-title\">Upstash</h3>\n          <p class=\"card-body\">Plataforma serverless para Redis, Vector, QStash e workflows — cache, filas e AI apps.</p>\n          <div class=\"card-tags\"><span>redis</span><span>vector</span></div>\n          <a class=\"card-link\" href=\"https://upstash.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Scalar",
+      "url": "https://github.com/scalar/scalar",
+      "description": "Plataforma open source para documentar, descobrir e testar APIs com suporte a OpenAPI/Swagger.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "kit"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "openapi",
+        "api client"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"server kit\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Docs de API</span><span class=\"card-badge\">OpenAPI</span></div>\n          <h3 class=\"card-title\">Scalar</h3>\n          <p class=\"card-body\">Plataforma open source para documentar, descobrir e testar APIs com suporte a OpenAPI/Swagger.</p>\n          <div class=\"card-tags\"><span>openapi</span><span>api client</span></div>\n          <a class=\"card-link\" href=\"https://github.com/scalar/scalar\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "description": "Framework adaptativo de web scraping com fetchers stealth, spiders, seleção resiliente a mudanças de DOM, proxy rotation e servidor MCP para extração assistida por IA.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "backend",
+        "agents",
+        "recent"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "scraping",
+        "mcp",
+        "python"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server backend agents recent\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Scraping · Python</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Scrapling</h3>\n          <p class=\"card-body\">Framework adaptativo de web scraping com fetchers stealth, spiders, seleção resiliente a mudanças de DOM, proxy rotation e servidor MCP para extração assistida por IA.</p>\n          <div class=\"card-tags\"><span>scraping</span><span>mcp</span><span>python</span></div>\n          <a class=\"card-link\" href=\"https://github.com/D4Vinci/Scrapling\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Infinite Monitor",
+      "url": "https://github.com/homanp/infinite-monitor",
+      "description": "Dashboard builder com IA: descreva o widget em linguagem natural e o agente escreve, builda e publica monitores em tempo real.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents",
+        "run",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "dashboard",
+        "monitoring",
+        "agents"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server agents run recent\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Dashboards · Agentes</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Infinite Monitor</h3>\n          <p class=\"card-body\">Dashboard builder com IA: descreva o widget em linguagem natural e o agente escreve, builda e publica monitores em tempo real.</p>\n          <div class=\"card-tags\"><span>dashboard</span><span>monitoring</span><span>agents</span></div>\n          <a class=\"card-link\" href=\"https://github.com/homanp/infinite-monitor\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Plausible Analytics",
+      "url": "https://github.com/plausible/analytics",
+      "description": "Analytics web open source, leve e privacy-first, sem cookies e com opção cloud ou self-hosted para produtos que precisam medir sem rastrear pessoas.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "run",
+        "recent"
+      ],
+      "tone": "amber",
+      "tags": [
+        "analytics",
+        "privacy",
+        "self-host"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server run recent\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Analytics · Self-host</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Plausible Analytics</h3>\n          <p class=\"card-body\">Analytics web open source, leve e privacy-first, sem cookies e com opção cloud ou self-hosted para produtos que precisam medir sem rastrear pessoas.</p>\n          <div class=\"card-tags\"><span>analytics</span><span>privacy</span><span>self-host</span></div>\n          <a class=\"card-link\" href=\"https://github.com/plausible/analytics\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "description": "Plataforma self-hostable de workflow automation com 400+ integrações, código quando necessário e recursos nativos para fluxos com agentes e modelos.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents",
+        "mcp",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "automation",
+        "workflows",
+        "ai"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server agents mcp recent\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Automação · IA nativa</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">n8n</h3>\n          <p class=\"card-body\">Plataforma self-hostable de workflow automation com 400+ integrações, código quando necessário e recursos nativos para fluxos com agentes e modelos.</p>\n          <div class=\"card-tags\"><span>automation</span><span>workflows</span><span>ai</span></div>\n          <a class=\"card-link\" href=\"https://github.com/n8n-io/n8n\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Zod",
+      "url": "https://github.com/colinhacks/zod",
+      "description": "Validação de schemas TypeScript com inferência automática de tipos. Padrão de fato para validar entrada de APIs, formulários e variáveis de ambiente.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "typescript",
+        "schema",
+        "validation"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Schema validation · TypeScript</span><span class=\"card-badge\">Validation</span></div>\n          <h3 class=\"card-title\">Zod</h3>\n          <p class=\"card-body\">Validação de schemas TypeScript com inferência automática de tipos. Padrão de fato para validar entrada de APIs, formulários e variáveis de ambiente.</p>\n          <div class=\"card-tags\"><span>typescript</span><span>schema</span><span>validation</span></div>\n          <a class=\"card-link\" href=\"https://github.com/colinhacks/zod\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "tRPC",
+      "url": "https://github.com/trpc/trpc",
+      "description": "APIs end-to-end typesafe sem schema. Defina no servidor, ganhe autocomplete no cliente. Ideal para monorepos full-stack TypeScript.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "typescript",
+        "rpc",
+        "monorepo"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server interface\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Typesafe APIs · End-to-end</span><span class=\"card-badge\">Typed</span></div>\n          <h3 class=\"card-title\">tRPC</h3>\n          <p class=\"card-body\">APIs end-to-end typesafe sem schema. Defina no servidor, ganhe autocomplete no cliente. Ideal para monorepos full-stack TypeScript.</p>\n          <div class=\"card-tags\"><span>typescript</span><span>rpc</span><span>monorepo</span></div>\n          <a class=\"card-link\" href=\"https://github.com/trpc/trpc\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "PocketBase",
+      "url": "https://github.com/pocketbase/pocketbase",
+      "description": "Backend-as-a-service num único binário Go: SQLite, auth, realtime, storage, admin UI. Self-hosted em qualquer VPS com zero config.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "go",
+        "sqlite",
+        "baas"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>BaaS num binário · Go</span><span class=\"card-badge\">Open</span></div>\n          <h3 class=\"card-title\">PocketBase</h3>\n          <p class=\"card-body\">Backend-as-a-service num único binário Go: SQLite, auth, realtime, storage, admin UI. Self-hosted em qualquer VPS com zero config.</p>\n          <div class=\"card-tags\"><span>go</span><span>sqlite</span><span>baas</span></div>\n          <a class=\"card-link\" href=\"https://github.com/pocketbase/pocketbase\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "pgvector",
+      "url": "https://github.com/pgvector/pgvector",
+      "description": "Extensão Postgres para vector search. Embeddings, similaridade, índices HNSW/IVFFlat. Permite RAG sem precisar de banco vetorial dedicado.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "postgres",
+        "vectors",
+        "rag"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Vector search · Postgres extension</span><span class=\"card-badge\">AI</span></div>\n          <h3 class=\"card-title\">pgvector</h3>\n          <p class=\"card-body\">Extensão Postgres para vector search. Embeddings, similaridade, índices HNSW/IVFFlat. Permite RAG sem precisar de banco vetorial dedicado.</p>\n          <div class=\"card-tags\"><span>postgres</span><span>vectors</span><span>rag</span></div>\n          <a class=\"card-link\" href=\"https://github.com/pgvector/pgvector\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Better Auth",
+      "url": "https://github.com/better-auth/better-auth",
+      "description": "Framework de autenticação TypeScript com OAuth, 2FA, organizações, SSO, plugins e suporte a vários frameworks.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "server"
+      ],
+      "tone": "pink",
+      "tags": [
+        "oauth",
+        "2fa",
+        "sso"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard server\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Autenticação</span><span class=\"card-badge\">Auth</span></div>\n          <h3 class=\"card-title\">Better Auth</h3>\n          <p class=\"card-body\">Framework de autenticação TypeScript com OAuth, 2FA, organizações, SSO, plugins e suporte a vários frameworks.</p>\n          <div class=\"card-tags\"><span>oauth</span><span>2fa</span><span>sso</span></div>\n          <a class=\"card-link\" href=\"https://github.com/better-auth/better-auth\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OWASP Cheat Sheet Series",
+      "url": "https://github.com/OWASP/CheatSheetSeries",
+      "description": "Guias práticos de segurança para autenticação, sessão, APIs, XSS, SSRF, secrets e hardening de apps.",
+      "category": "guard",
+      "kinds": [
+        "guard"
+      ],
+      "tone": "amber",
+      "tags": [
+        "owasp",
+        "appsec"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>OWASP</span><span class=\"card-badge\">Guias</span></div>\n          <h3 class=\"card-title\">OWASP Cheat Sheet Series</h3>\n          <p class=\"card-body\">Guias práticos de segurança para autenticação, sessão, APIs, XSS, SSRF, secrets e hardening de apps.</p>\n          <div class=\"card-tags\"><span>owasp</span><span>appsec</span></div>\n          <a class=\"card-link\" href=\"https://github.com/OWASP/CheatSheetSeries\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Anthropic Cybersecurity Skills",
+      "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+      "description": "Biblioteca com 754 skills estruturadas de cibersegurança para agentes, cobrindo 26 domínios e mapeamentos para MITRE ATT&CK, NIST CSF, ATLAS, D3FEND e AI RMF.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents",
+        "kit",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "skills",
+        "mitre",
+        "nist"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard agents kit recent\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Skills · Cibersegurança</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Anthropic Cybersecurity Skills</h3>\n          <p class=\"card-body\">Biblioteca com 754 skills estruturadas de cibersegurança para agentes, cobrindo 26 domínios e mapeamentos para MITRE ATT&amp;CK, NIST CSF, ATLAS, D3FEND e AI RMF.</p>\n          <div class=\"card-tags\"><span>skills</span><span>mitre</span><span>nist</span></div>\n          <a class=\"card-link\" href=\"https://github.com/mukul975/Anthropic-Cybersecurity-Skills\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Bitwarden Server",
+      "url": "https://github.com/bitwarden/server",
+      "description": "Backend oficial do Bitwarden com APIs, banco, Docker e infraestrutura para gerenciar cofres, credenciais e recursos de password manager self-hosted.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "server",
+        "recent"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "passwords",
+        "secrets",
+        "self-host"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard server recent\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Secrets · Backend</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Bitwarden Server</h3>\n          <p class=\"card-body\">Backend oficial do Bitwarden com APIs, banco, Docker e infraestrutura para gerenciar cofres, credenciais e recursos de password manager self-hosted.</p>\n          <div class=\"card-tags\"><span>passwords</span><span>secrets</span><span>self-host</span></div>\n          <a class=\"card-link\" href=\"https://github.com/bitwarden/server\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Opengrep",
+      "url": "https://github.com/opengrep/opengrep",
+      "description": "Engine open source de análise estática para vulnerabilidades em várias linguagens.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "violet",
+      "tags": [
+        "sast",
+        "sarif"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"guard run\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Análise estática</span><span class=\"card-badge\">SAST</span></div>\n          <h3 class=\"card-title\">Opengrep</h3>\n          <p class=\"card-body\">Engine open source de análise estática para vulnerabilidades em várias linguagens.</p>\n          <div class=\"card-tags\"><span>sast</span><span>sarif</span></div>\n          <a class=\"card-link\" href=\"https://github.com/opengrep/opengrep\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Gitleaks",
+      "url": "https://github.com/gitleaks/gitleaks",
+      "description": "Scanner para detectar e prevenir secrets hardcoded em repos, pre-commit e pipelines.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "tokens",
+        "pre-commit"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"guard run\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Secrets</span><span class=\"card-badge\">Scan</span></div>\n          <h3 class=\"card-title\">Gitleaks</h3>\n          <p class=\"card-body\">Scanner para detectar e prevenir secrets hardcoded em repos, pre-commit e pipelines.</p>\n          <div class=\"card-tags\"><span>tokens</span><span>pre-commit</span></div>\n          <a class=\"card-link\" href=\"https://github.com/gitleaks/gitleaks\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "TruffleHog",
+      "url": "https://github.com/trufflesecurity/trufflehog",
+      "description": "Scanner que classifica credenciais, verifica se estão ativas e prioriza vazamentos reais.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "verified",
+        "docker"
+      ],
+      "layout": [],
+      "markup": "<article class=\"card\" data-kind=\"guard run\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Secrets verificados</span><span class=\"card-badge\">Scan</span></div>\n          <h3 class=\"card-title\">TruffleHog</h3>\n          <p class=\"card-body\">Scanner que classifica credenciais, verifica se estão ativas e prioriza vazamentos reais.</p>\n          <div class=\"card-tags\"><span>verified</span><span>docker</span></div>\n          <a class=\"card-link\" href=\"https://github.com/trufflesecurity/trufflehog\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OSV-Scanner",
+      "url": "https://github.com/google/osv-scanner",
+      "description": "Scanner oficial do OSV para vulnerabilidades em dependências, lockfiles e imagens de container.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "pink",
+      "tags": [
+        "dependências",
+        "sbom",
+        "containers"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard run\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Google · Dependências</span><span class=\"card-badge\">Vulns</span></div>\n          <h3 class=\"card-title\">OSV-Scanner</h3>\n          <p class=\"card-body\">Scanner oficial do OSV para vulnerabilidades em dependências, lockfiles e imagens de container.</p>\n          <div class=\"card-tags\"><span>dependências</span><span>sbom</span><span>containers</span></div>\n          <a class=\"card-link\" href=\"https://github.com/google/osv-scanner\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "NeMo Guardrails",
+      "url": "https://github.com/NVIDIA-NeMo/Guardrails",
+      "description": "Toolkit pra adicionar guardrails programáveis a apps LLM — protege contra jailbreaks e prompt injection, e modela o diálogo usuário↔agente com a DSL Colang.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "jailbreak",
+        "prompt injection",
+        "dialog"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Guardrails LLM · NVIDIA</span><span class=\"card-badge\">Colang</span></div>\n          <h3 class=\"card-title\">NeMo Guardrails</h3>\n          <p class=\"card-body\">Toolkit pra adicionar guardrails programáveis a apps LLM — protege contra jailbreaks e prompt injection, e modela o diálogo usuário↔agente com a DSL Colang.</p>\n          <div class=\"card-tags\"><span>jailbreak</span><span>prompt injection</span><span>dialog</span></div>\n          <a class=\"card-link\" href=\"https://github.com/NVIDIA-NeMo/Guardrails\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Guardrails AI",
+      "url": "https://github.com/guardrails-ai/guardrails",
+      "description": "Framework pra validar saídas do LLM contra schemas e regras (validators) — garante outputs estruturados e seguros do agente.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "validação",
+        "schema",
+        "output"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Validação de output · OSS</span><span class=\"card-badge\">Validators</span></div>\n          <h3 class=\"card-title\">Guardrails AI</h3>\n          <p class=\"card-body\">Framework pra validar saídas do LLM contra schemas e regras (validators) — garante outputs estruturados e seguros do agente.</p>\n          <div class=\"card-tags\"><span>validação</span><span>schema</span><span>output</span></div>\n          <a class=\"card-link\" href=\"https://github.com/guardrails-ai/guardrails\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "LLM Guard",
+      "url": "https://github.com/protectai/llm-guard",
+      "description": "Toolkit de segurança com 15 scanners de input e 20 de output. O scanner de PromptInjection usa ML treinado em padrões reais — pega injeção indireta.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "scanners",
+        "prompt injection",
+        "pii"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Scanners I/O · Protect AI</span><span class=\"card-badge\">MIT</span></div>\n          <h3 class=\"card-title\">LLM Guard</h3>\n          <p class=\"card-body\">Toolkit de segurança com 15 scanners de input e 20 de output. O scanner de PromptInjection usa ML treinado em padrões reais — pega injeção indireta.</p>\n          <div class=\"card-tags\"><span>scanners</span><span>prompt injection</span><span>pii</span></div>\n          <a class=\"card-link\" href=\"https://github.com/protectai/llm-guard\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Garak",
+      "url": "https://github.com/NVIDIA/garak",
+      "description": "Scanner de vulnerabilidades pra LLMs — sonda jailbreak, prompt injection, vazamento de dados, toxicidade e mais. O nmap dos modelos.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "red-team",
+        "vuln scan",
+        "jailbreak"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard agents\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Red-team LLM · NVIDIA</span><span class=\"card-badge\">Scanner</span></div>\n          <h3 class=\"card-title\">Garak</h3>\n          <p class=\"card-body\">Scanner de vulnerabilidades pra LLMs — sonda jailbreak, prompt injection, vazamento de dados, toxicidade e mais. O nmap dos modelos.</p>\n          <div class=\"card-tags\"><span>red-team</span><span>vuln scan</span><span>jailbreak</span></div>\n          <a class=\"card-link\" href=\"https://github.com/NVIDIA/garak\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Biome",
+      "url": "https://github.com/biomejs/biome",
+      "description": "Toolchain rápido para formatar e lintar JavaScript, TypeScript, JSX, JSON, CSS e GraphQL.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "formatter",
+        "linter"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Lint &amp; format</span><span class=\"card-badge\">Tool</span></div>\n          <h3 class=\"card-title\">Biome</h3>\n          <p class=\"card-body\">Toolchain rápido para formatar e lintar JavaScript, TypeScript, JSX, JSON, CSS e GraphQL.</p>\n          <div class=\"card-tags\"><span>formatter</span><span>linter</span></div>\n          <a class=\"card-link\" href=\"https://github.com/biomejs/biome\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "pnpm",
+      "url": "https://github.com/pnpm/pnpm",
+      "description": "Gerenciador de pacotes rápido e eficiente em disco, ótimo para workspaces e monorepos.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "workspaces",
+        "monorepo"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Gerenciador</span><span class=\"card-badge\">pnpm</span></div>\n          <h3 class=\"card-title\">pnpm</h3>\n          <p class=\"card-body\">Gerenciador de pacotes rápido e eficiente em disco, ótimo para workspaces e monorepos.</p>\n          <div class=\"card-tags\"><span>workspaces</span><span>monorepo</span></div>\n          <a class=\"card-link\" href=\"https://github.com/pnpm/pnpm\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Turborepo",
+      "url": "https://github.com/vercel/turborepo",
+      "description": "Sistema de build de alta performance para JS/TS com cache e pipelines por pacote.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "violet",
+      "tags": [
+        "cache",
+        "tasks"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Monorepo</span><span class=\"card-badge\">Build</span></div>\n          <h3 class=\"card-title\">Turborepo</h3>\n          <p class=\"card-body\">Sistema de build de alta performance para JS/TS com cache e pipelines por pacote.</p>\n          <div class=\"card-tags\"><span>cache</span><span>tasks</span></div>\n          <a class=\"card-link\" href=\"https://github.com/vercel/turborepo\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Renovate",
+      "url": "https://github.com/renovatebot/renovate",
+      "description": "Automação de atualização de dependências com PRs, suporte amplo a linguagens e configuração granular.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "guard"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "dependências",
+        "prs",
+        "automação"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"run guard\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Atualização de deps</span><span class=\"card-badge\">Bot</span></div>\n          <h3 class=\"card-title\">Renovate</h3>\n          <p class=\"card-body\">Automação de atualização de dependências com PRs, suporte amplo a linguagens e configuração granular.</p>\n          <div class=\"card-tags\"><span>dependências</span><span>prs</span><span>automação</span></div>\n          <a class=\"card-link\" href=\"https://github.com/renovatebot/renovate\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OpenTelemetry JS",
+      "url": "https://github.com/open-telemetry/opentelemetry-js",
+      "description": "SDK JavaScript para instrumentar traces, métricas e logs em Node.js e web com padrão aberto.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "pink",
+      "tags": [
+        "traces",
+        "métricas",
+        "logs"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"run\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>OpenTelemetry</span><span class=\"card-badge\">Tracing</span></div>\n          <h3 class=\"card-title\">OpenTelemetry JS</h3>\n          <p class=\"card-body\">SDK JavaScript para instrumentar traces, métricas e logs em Node.js e web com padrão aberto.</p>\n          <div class=\"card-tags\"><span>traces</span><span>métricas</span><span>logs</span></div>\n          <a class=\"card-link\" href=\"https://github.com/open-telemetry/opentelemetry-js\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Grafana",
+      "url": "https://github.com/grafana/grafana",
+      "description": "Plataforma aberta para visualizar métricas, logs e traces com dashboards e alertas.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "métricas",
+        "logs"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Observabilidade</span><span class=\"card-badge\">Dashboards</span></div>\n          <h3 class=\"card-title\">Grafana</h3>\n          <p class=\"card-body\">Plataforma aberta para visualizar métricas, logs e traces com dashboards e alertas.</p>\n          <div class=\"card-tags\"><span>métricas</span><span>logs</span></div>\n          <a class=\"card-link\" href=\"https://github.com/grafana/grafana\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Sentry",
+      "url": "https://github.com/getsentry/sentry",
+      "description": "Rastrear erros, performance, releases e falhas em apps web, backend e mobile.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "guard"
+      ],
+      "tone": "pink",
+      "tags": [
+        "erros",
+        "apm"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run guard\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Tracking de erros</span><span class=\"card-badge\">APM</span></div>\n          <h3 class=\"card-title\">Sentry</h3>\n          <p class=\"card-body\">Rastrear erros, performance, releases e falhas em apps web, backend e mobile.</p>\n          <div class=\"card-tags\"><span>erros</span><span>apm</span></div>\n          <a class=\"card-link\" href=\"https://github.com/getsentry/sentry\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Playwright",
+      "url": "https://github.com/microsoft/playwright",
+      "description": "Testes e automação web com Chromium, Firefox, WebKit, CLI para agentes e Playwright MCP.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "e2e",
+        "mcp"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>E2E browser</span><span class=\"card-badge\">Teste</span></div>\n          <h3 class=\"card-title\">Playwright</h3>\n          <p class=\"card-body\">Testes e automação web com Chromium, Firefox, WebKit, CLI para agentes e Playwright MCP.</p>\n          <div class=\"card-tags\"><span>e2e</span><span>mcp</span></div>\n          <a class=\"card-link\" href=\"https://github.com/microsoft/playwright\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Vitest",
+      "url": "https://github.com/vitest-dev/vitest",
+      "description": "Test runner rápido, compatível com Jest, integrado ao ecossistema Vite.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "unit",
+        "coverage"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run interface\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Testes unitários</span><span class=\"card-badge\">Vitest</span></div>\n          <h3 class=\"card-title\">Vitest</h3>\n          <p class=\"card-body\">Test runner rápido, compatível com Jest, integrado ao ecossistema Vite.</p>\n          <div class=\"card-tags\"><span>unit</span><span>coverage</span></div>\n          <a class=\"card-link\" href=\"https://github.com/vitest-dev/vitest\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Bun",
+      "url": "https://github.com/oven-sh/bun",
+      "description": "Runtime JavaScript drop-in para Node, com bundler, test runner e package manager nativos. Escrito em Zig, muito mais rápido em todos os benchmarks.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "server"
+      ],
+      "tone": "amber",
+      "tags": [
+        "runtime",
+        "bundler",
+        "zig"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"run server\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Runtime · JS/TS</span><span class=\"card-badge\">Runtime</span></div>\n          <h3 class=\"card-title\">Bun</h3>\n          <p class=\"card-body\">Runtime JavaScript drop-in para Node, com bundler, test runner e package manager nativos. Escrito em Zig, muito mais rápido em todos os benchmarks.</p>\n          <div class=\"card-tags\"><span>runtime</span><span>bundler</span><span>zig</span></div>\n          <a class=\"card-link\" href=\"https://github.com/oven-sh/bun\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Flutter",
+      "url": "https://github.com/flutter/flutter",
+      "description": "O framework mobile mais popular do mundo. UI nativa de alta fidelidade pra iOS e Android a partir de um único código Dart — compila pra código nativo. Suporta GenAI on-device via LiteRT-LM.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "dart",
+        "ios",
+        "android",
+        "genai"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"ship interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Cross-platform · Google</span><span class=\"card-badge\">~176k ★</span></div>\n          <h3 class=\"card-title\">Flutter</h3>\n          <p class=\"card-body\">O framework mobile mais popular do mundo. UI nativa de alta fidelidade pra iOS e Android a partir de um único código Dart — compila pra código nativo. Suporta GenAI on-device via LiteRT-LM.</p>\n          <div class=\"card-tags\"><span>dart</span><span>ios</span><span>android</span><span>genai</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://github.com/flutter/flutter\" target=\"_blank\" rel=\"noopener\">Abrir repositório<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "React Native",
+      "url": "https://github.com/facebook/react-native",
+      "description": "Base pra apps iOS/Android nativos a partir de um código JavaScript. New Architecture com comunicação JS↔nativo direta. Ecossistema enorme pra apps de IA.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "ios",
+        "android"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship interface\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Mobile · Meta</span><span class=\"card-badge\">~126k ★</span></div>\n          <h3 class=\"card-title\">React Native</h3>\n          <p class=\"card-body\">Base pra apps iOS/Android nativos a partir de um código JavaScript. New Architecture com comunicação JS↔nativo direta. Ecossistema enorme pra apps de IA.</p>\n          <div class=\"card-tags\"><span>react</span><span>ios</span><span>android</span></div>\n          <a class=\"card-link\" href=\"https://github.com/facebook/react-native\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Expo",
+      "url": "https://github.com/expo/expo",
+      "description": "Framework para criar apps mobile nativos com React Native — iOS, Android e serviços EAS de build/deploy. Stack de fato pra apps de agentes mobile.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "react native",
+        "eas",
+        "otas"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship interface\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Apps universais · React Native</span><span class=\"card-badge\">Mobile</span></div>\n          <h3 class=\"card-title\">Expo</h3>\n          <p class=\"card-body\">Framework para criar apps mobile nativos com React Native — iOS, Android e serviços EAS de build/deploy. Stack de fato pra apps de agentes mobile.</p>\n          <div class=\"card-tags\"><span>react native</span><span>eas</span><span>otas</span></div>\n          <a class=\"card-link\" href=\"https://github.com/expo/expo\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "MLC LLM",
+      "url": "https://github.com/mlc-ai/mlc-llm",
+      "description": "Compilador e engine que roda LLMs nativamente no celular (iOS/Android), GPU local, sem servidor. Base pra agentes que rodam 100% no dispositivo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "on-device",
+        "ios",
+        "android"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>LLM on-device · MLC AI</span><span class=\"card-badge\">On-device</span></div>\n          <h3 class=\"card-title\">MLC LLM</h3>\n          <p class=\"card-body\">Compilador e engine que roda LLMs nativamente no celular (iOS/Android), GPU local, sem servidor. Base pra agentes que rodam 100% no dispositivo.</p>\n          <div class=\"card-tags\"><span>on-device</span><span>ios</span><span>android</span></div>\n          <a class=\"card-link\" href=\"https://github.com/mlc-ai/mlc-llm\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "ExecuTorch",
+      "url": "https://github.com/pytorch/executorch",
+      "description": "Solução do PyTorch pra inferência on-device em mobile e edge. Roda a IA on-device do Instagram, WhatsApp, Quest 3 e Ray-Ban Meta.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "pytorch",
+        "on-device",
+        "edge"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>On-device · PyTorch</span><span class=\"card-badge\">Meta</span></div>\n          <h3 class=\"card-title\">ExecuTorch</h3>\n          <p class=\"card-body\">Solução do PyTorch pra inferência on-device em mobile e edge. Roda a IA on-device do Instagram, WhatsApp, Quest 3 e Ray-Ban Meta.</p>\n          <div class=\"card-tags\"><span>pytorch</span><span>on-device</span><span>edge</span></div>\n          <a class=\"card-link\" href=\"https://github.com/pytorch/executorch\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "react-native-executorch",
+      "url": "https://github.com/software-mansion/react-native-executorch",
+      "description": "Forma declarativa de rodar LLMs e modelos de visão on-device em React Native, sobre o ExecuTorch.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react native",
+        "on-device"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"ship agents interface\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>RN on-device · Software Mansion</span><span class=\"card-badge\">RN</span></div>\n          <h3 class=\"card-title\">react-native-executorch</h3>\n          <p class=\"card-body\">Forma declarativa de rodar LLMs e modelos de visão on-device em React Native, sobre o ExecuTorch.</p>\n          <div class=\"card-tags\"><span>react native</span><span>on-device</span></div>\n          <a class=\"card-link\" href=\"https://github.com/software-mansion/react-native-executorch\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "MediaPipe",
+      "url": "https://github.com/google-ai-edge/mediapipe",
+      "description": "Suite do Google AI Edge pra ML/LLM on-device em mobile — visão, áudio e LLM Inference API direto no celular.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "on-device",
+        "llm",
+        "vision"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"ship agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>On-device ML · Google</span><span class=\"card-badge\">Edge</span></div>\n          <h3 class=\"card-title\">MediaPipe</h3>\n          <p class=\"card-body\">Suite do Google AI Edge pra ML/LLM on-device em mobile — visão, áudio e LLM Inference API direto no celular.</p>\n          <div class=\"card-tags\"><span>on-device</span><span>llm</span><span>vision</span></div>\n          <a class=\"card-link\" href=\"https://github.com/google-ai-edge/mediapipe\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Capacitor",
+      "url": "https://github.com/ionic-team/capacitor",
+      "description": "Empacota apps web (incl. clientes de agente) como apps nativos iOS/Android com acesso a APIs do dispositivo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "web",
+        "ios",
+        "android"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"ship interface\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Web → nativo · Ionic</span><span class=\"card-badge\">Bridge</span></div>\n          <h3 class=\"card-title\">Capacitor</h3>\n          <p class=\"card-body\">Empacota apps web (incl. clientes de agente) como apps nativos iOS/Android com acesso a APIs do dispositivo.</p>\n          <div class=\"card-tags\"><span>web</span><span>ios</span><span>android</span></div>\n          <a class=\"card-link\" href=\"https://github.com/ionic-team/capacitor\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "react-native-ai",
+      "url": "https://github.com/callstackincubator/react-native-ai",
+      "description": "Roda LLMs on-device em apps React Native via MLC Engine, integrado ao Vercel AI SDK — agentes que funcionam offline no celular.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "react native",
+        "on-device",
+        "ai sdk"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>RN on-device · Callstack</span><span class=\"card-badge\">AI SDK</span></div>\n          <h3 class=\"card-title\">react-native-ai</h3>\n          <p class=\"card-body\">Roda LLMs on-device em apps React Native via MLC Engine, integrado ao Vercel AI SDK — agentes que funcionam offline no celular.</p>\n          <div class=\"card-tags\"><span>react native</span><span>on-device</span><span>ai sdk</span></div>\n          <a class=\"card-link\" href=\"https://github.com/callstackincubator/react-native-ai\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Cactus",
+      "url": "https://github.com/cactus-compute/cactus",
+      "description": "Framework cross-platform de inferência de LLM/VLM no celular — roda agentes locais em iOS e Android com baixo consumo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "on-device",
+        "llm",
+        "vlm"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Inference mobile · Cactus</span><span class=\"card-badge\">Cross</span></div>\n          <h3 class=\"card-title\">Cactus</h3>\n          <p class=\"card-body\">Framework cross-platform de inferência de LLM/VLM no celular — roda agentes locais em iOS e Android com baixo consumo.</p>\n          <div class=\"card-tags\"><span>on-device</span><span>llm</span><span>vlm</span></div>\n          <a class=\"card-link\" href=\"https://github.com/cactus-compute/cactus\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "AppFlowy",
+      "url": "https://github.com/appflowy-io/appflowy",
+      "description": "Workspace colaborativo open source com IA para projetos, wikis e times, pensado como alternativa ao Notion com controle de dados e deploy próprio.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "workspace",
+        "notion",
+        "ai"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents recent\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Workspace · IA</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">AppFlowy</h3>\n          <p class=\"card-body\">Workspace colaborativo open source com IA para projetos, wikis e times, pensado como alternativa ao Notion com controle de dados e deploy próprio.</p>\n          <div class=\"card-tags\"><span>workspace</span><span>notion</span><span>ai</span></div>\n          <a class=\"card-link\" href=\"https://github.com/appflowy-io/appflowy\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Chatterbox",
+      "url": "https://github.com/resemble-ai/chatterbox",
+      "description": "Modelo open source de text-to-speech para gerar voz em produtos, agentes conversacionais, narração e protótipos multimodais.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "tts",
+        "voice",
+        "python"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents recent\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>TTS · Resemble AI</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Chatterbox</h3>\n          <p class=\"card-body\">Modelo open source de text-to-speech para gerar voz em produtos, agentes conversacionais, narração e protótipos multimodais.</p>\n          <div class=\"card-tags\"><span>tts</span><span>voice</span><span>python</span></div>\n          <a class=\"card-link\" href=\"https://github.com/resemble-ai/chatterbox\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Fooocus",
+      "url": "https://github.com/lllyasviel/Fooocus",
+      "description": "Software open source de geração de imagens baseado em SDXL, focado em prompts e presets simples para produzir assets visuais sem ajuste manual pesado.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "image ai",
+        "sdxl",
+        "assets"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship recent\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Imagem IA · SDXL</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Fooocus</h3>\n          <p class=\"card-body\">Software open source de geração de imagens baseado em SDXL, focado em prompts e presets simples para produzir assets visuais sem ajuste manual pesado.</p>\n          <div class=\"card-tags\"><span>image ai</span><span>sdxl</span><span>assets</span></div>\n          <a class=\"card-link\" href=\"https://github.com/lllyasviel/Fooocus\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Cal.com DIY",
+      "url": "https://github.com/calcom/cal.diy",
+      "description": "Infraestrutura de agendamento aberta para produtos que precisam embutir calendário, reservas e fluxos de disponibilidade sem começar do zero.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "scheduling",
+        "calendar",
+        "infra"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship recent\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Scheduling · Produto</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Cal.com DIY</h3>\n          <p class=\"card-body\">Infraestrutura de agendamento aberta para produtos que precisam embutir calendário, reservas e fluxos de disponibilidade sem começar do zero.</p>\n          <div class=\"card-tags\"><span>scheduling</span><span>calendar</span><span>infra</span></div>\n          <a class=\"card-link\" href=\"https://github.com/calcom/cal.diy\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Whisper",
+      "url": "https://github.com/openai/whisper",
+      "description": "Modelo open source de reconhecimento de fala para transcrição multilíngue, tradução de fala e identificação de idioma em pipelines de áudio e agentes.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "asr",
+        "speech",
+        "python"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship agents recent\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Speech recognition · OpenAI</span><span class=\"card-badge\">Novo</span></div>\n          <h3 class=\"card-title\">Whisper</h3>\n          <p class=\"card-body\">Modelo open source de reconhecimento de fala para transcrição multilíngue, tradução de fala e identificação de idioma em pipelines de áudio e agentes.</p>\n          <div class=\"card-tags\"><span>asr</span><span>speech</span><span>python</span></div>\n          <a class=\"card-link\" href=\"https://github.com/openai/whisper\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "description": "Framework de trading com múltiplos agentes LLM que imita uma mesa real: analistas fundamentalista, de sentimento e técnico colaboram para decidir. v0.2 (2026) com GPT-5.x, Gemini 3, Claude 4, Grok, DeepSeek, Qwen e Ollama local.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "multi-agente",
+        "llm",
+        "finance"
+      ],
+      "layout": [
+        "feature"
+      ],
+      "markup": "<article class=\"card feature\" data-kind=\"trade agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Multi-agente LLM · Tauric</span><span class=\"card-badge\">Destaque</span></div>\n          <h3 class=\"card-title\">TradingAgents</h3>\n          <p class=\"card-body\">Framework de trading com múltiplos agentes LLM que imita uma mesa real: analistas fundamentalista, de sentimento e técnico colaboram para decidir. v0.2 (2026) com GPT-5.x, Gemini 3, Claude 4, Grok, DeepSeek, Qwen e Ollama local.</p>\n          <div class=\"card-tags\"><span>multi-agente</span><span>llm</span><span>finance</span></div>\n          <div class=\"card-visual\" aria-hidden=\"true\"></div>\n          <a class=\"card-link\" href=\"https://github.com/TauricResearch/TradingAgents\" target=\"_blank\" rel=\"noopener\">Abrir repositório<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "AI-Trader",
+      "url": "https://github.com/HKUDS/AI-Trader",
+      "description": "Trading 100% automatizado agent-native, modular e fácil de operar por agentes. Inclui paper trading no Polymarket com dados reais e auto-settlement.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "agent-native",
+        "polymarket",
+        "auto"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"trade agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agent-native · HKUDS</span><span class=\"card-badge\">Auto</span></div>\n          <h3 class=\"card-title\">AI-Trader</h3>\n          <p class=\"card-body\">Trading 100% automatizado agent-native, modular e fácil de operar por agentes. Inclui paper trading no Polymarket com dados reais e auto-settlement.</p>\n          <div class=\"card-tags\"><span>agent-native</span><span>polymarket</span><span>auto</span></div>\n          <a class=\"card-link\" href=\"https://github.com/HKUDS/AI-Trader\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "AgenticTrading",
+      "url": "https://github.com/Open-Finance-Lab/AgenticTrading",
+      "description": "Agentes LLM com memória Neo4j para contexto longo, memória vetorial semântica, comunicação A2A entre agentes e execução em DAG dinâmico.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "neo4j",
+        "a2a",
+        "dag"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"trade agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>LLM + memória · Open Finance Lab</span><span class=\"card-badge\">Memory</span></div>\n          <h3 class=\"card-title\">AgenticTrading</h3>\n          <p class=\"card-body\">Agentes LLM com memória Neo4j para contexto longo, memória vetorial semântica, comunicação A2A entre agentes e execução em DAG dinâmico.</p>\n          <div class=\"card-tags\"><span>neo4j</span><span>a2a</span><span>dag</span></div>\n          <a class=\"card-link\" href=\"https://github.com/Open-Finance-Lab/AgenticTrading\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Freqtrade",
+      "url": "https://github.com/freqtrade/freqtrade",
+      "description": "Bot de trading de cripto livre e open source. Suporta os principais exchanges, controle via Telegram, backtest, otimização de hiperparâmetros e ML.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "crypto",
+        "telegram",
+        "backtest"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"trade\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Bot crypto · Open source</span><span class=\"card-badge\">~50k ★</span></div>\n          <h3 class=\"card-title\">Freqtrade</h3>\n          <p class=\"card-body\">Bot de trading de cripto livre e open source. Suporta os principais exchanges, controle via Telegram, backtest, otimização de hiperparâmetros e ML.</p>\n          <div class=\"card-tags\"><span>crypto</span><span>telegram</span><span>backtest</span></div>\n          <a class=\"card-link\" href=\"https://github.com/freqtrade/freqtrade\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Hummingbot",
+      "url": "https://github.com/hummingbot/hummingbot",
+      "description": "Software open source para criar e rodar estratégias de high-frequency trading e market making em exchanges centralizados e DEXs.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "amber",
+      "tags": [
+        "hft",
+        "market making",
+        "dex"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"trade\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>HFT &amp; market making</span><span class=\"card-badge\">~18k ★</span></div>\n          <h3 class=\"card-title\">Hummingbot</h3>\n          <p class=\"card-body\">Software open source para criar e rodar estratégias de high-frequency trading e market making em exchanges centralizados e DEXs.</p>\n          <div class=\"card-tags\"><span>hft</span><span>market making</span><span>dex</span></div>\n          <a class=\"card-link\" href=\"https://github.com/hummingbot/hummingbot\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Backtrader",
+      "url": "https://github.com/mementum/backtrader",
+      "description": "Biblioteca Python event-driven, madura, para backtest de estratégias com indicadores, brokers e live trading.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "pink",
+      "tags": [
+        "backtest",
+        "python"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"trade\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Backtesting · Python</span><span class=\"card-badge\">~21k ★</span></div>\n          <h3 class=\"card-title\">Backtrader</h3>\n          <p class=\"card-body\">Biblioteca Python event-driven, madura, para backtest de estratégias com indicadores, brokers e live trading.</p>\n          <div class=\"card-tags\"><span>backtest</span><span>python</span></div>\n          <a class=\"card-link\" href=\"https://github.com/mementum/backtrader\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Zipline",
+      "url": "https://github.com/quantopian/zipline",
+      "description": "Biblioteca Pythonic event-driven para backtest de estratégias algorítmicas, usada pela Quantopian.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "backtest",
+        "quant"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"trade\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Algo trading lib</span><span class=\"card-badge\">~20k ★</span></div>\n          <h3 class=\"card-title\">Zipline</h3>\n          <p class=\"card-body\">Biblioteca Pythonic event-driven para backtest de estratégias algorítmicas, usada pela Quantopian.</p>\n          <div class=\"card-tags\"><span>backtest</span><span>quant</span></div>\n          <a class=\"card-link\" href=\"https://github.com/quantopian/zipline\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Lean",
+      "url": "https://github.com/QuantConnect/Lean",
+      "description": "Engine de trading algorítmico da QuantConnect, suporta Python e C#, backtest e live em múltiplos ativos e mercados.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "violet",
+      "tags": [
+        "c#",
+        "python",
+        "engine"
+      ],
+      "layout": [
+        "x2"
+      ],
+      "markup": "<article class=\"card x2\" data-kind=\"trade\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Engine · QuantConnect</span><span class=\"card-badge\">~19k ★</span></div>\n          <h3 class=\"card-title\">Lean</h3>\n          <p class=\"card-body\">Engine de trading algorítmico da QuantConnect, suporta Python e C#, backtest e live em múltiplos ativos e mercados.</p>\n          <div class=\"card-tags\"><span>c#</span><span>python</span><span>engine</span></div>\n          <a class=\"card-link\" href=\"https://github.com/QuantConnect/Lean\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "bybit-exchange/skills",
+      "url": "https://github.com/bybit-exchange/skills",
+      "description": "Skills oficiais da Bybit para agentes de IA — ferramentas prontas pra consultar mercado, executar ordens e gerenciar conta na exchange via agentes.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "bybit",
+        "skills",
+        "exchange"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"trade agents kit\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Skills oficiais · Bybit</span><span class=\"card-badge\">Exchange</span></div>\n          <h3 class=\"card-title\">bybit-exchange/skills</h3>\n          <p class=\"card-body\">Skills oficiais da Bybit para agentes de IA — ferramentas prontas pra consultar mercado, executar ordens e gerenciar conta na exchange via agentes.</p>\n          <div class=\"card-tags\"><span>bybit</span><span>skills</span><span>exchange</span></div>\n          <a class=\"card-link\" href=\"https://github.com/bybit-exchange/skills\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "awesome-ai-in-finance",
+      "url": "https://github.com/georgezouq/awesome-ai-in-finance",
+      "description": "Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "curado",
+        "llm",
+        "deep learning"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"trade agents kit\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Lista curada · LLM in finance</span><span class=\"card-badge\">Awesome</span></div>\n          <h3 class=\"card-title\">awesome-ai-in-finance</h3>\n          <p class=\"card-body\">Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading.</p>\n          <div class=\"card-tags\"><span>curado</span><span>llm</span><span>deep learning</span></div>\n          <a class=\"card-link\" href=\"https://github.com/georgezouq/awesome-ai-in-finance\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    }
+  ]
+}

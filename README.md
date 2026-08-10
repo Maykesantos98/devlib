@@ -17,8 +17,10 @@ O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha de
 ```text
 .
 |-- index.html          # Pagina principal
+|-- data/catalog.json   # Fonte unica dos 133 itens
 |-- css/                # CSS modular
 |-- js/                 # JavaScript principal
+|-- scripts/            # Geracao e validacao do catalogo
 |-- tests/              # Jornadas automatizadas no navegador
 `-- public/             # Logo e favicon
 ```
@@ -43,9 +45,9 @@ Depois acesse `http://localhost:8080`.
 
 ## Como editar
 
-1. Edite os cards em `index.html`.
-2. Atualize os contadores das secoes quando adicionar ou remover itens.
-3. Se alterar estilos ou scripts em `css/*.css` ou `js/*.js`, execute as jornadas automatizadas antes de publicar.
+1. Edite os itens em `data/catalog.json`.
+2. Execute `python scripts/catalog_tool.py build` para atualizar o HTML estatico.
+3. Execute `python scripts/catalog_tool.py check` e os testes antes de publicar.
 
 ## Testes
 
