@@ -34,7 +34,8 @@ services:
     read_only: true
     security_opt: [no-new-privileges:true]
     cap_drop: [ALL]
-    tmpfs: [/tmp:rw,noexec,nosuid,size=32m]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/v1/healthz', timeout=2)"]
       interval: 30s
