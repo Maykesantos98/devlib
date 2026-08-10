@@ -95,6 +95,22 @@ class DevlibJourneys(unittest.TestCase):
         finally:
             context.close()
 
+    def test_recent_filter_shows_only_latest_catalog_batch(self):
+        context, page, errors = self.open_page()
+        try:
+            expected = {
+                "GitHub Spec Kit", "Claude SEO", "Shannon", "Huashu Design",
+                "Taste Skill", "Coolify", "OpenHands", "Maxun", "Open WebUI",
+                "Browser Use", "Langflow", "Stirling PDF", "Crawl4AI", "Dify", "WAHA",
+            }
+            page.locator('.filter[data-filter="recent"]').click()
+            visible = set(page.locator('.card:not(.hidden) .card-title').all_inner_texts())
+            self.assertEqual(visible, expected)
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "15")
+            self.assertEqual(errors, [])
+        finally:
+            context.close()
+
     def test_empty_search_has_recovery_action_and_live_count(self):
         context, page, errors = self.open_page()
         try:
