@@ -95,7 +95,8 @@ def generated_region(payload: dict) -> str:
         chunks.append(chapter["headerMarkup"])
         chunks.append('      <div class="bento">')
         for item in grouped[chapter["id"]]:
-            chunks.append("        " + item["markup"].replace("\n", "\n        "))
+            safe_markup = item["markup"].replace('rel="noopener"', 'rel="noopener noreferrer"')
+            chunks.append("        " + safe_markup.replace("\n", "\n        "))
         chunks.append("      </div>")
         chunks.append("")
     chunks.append(END)

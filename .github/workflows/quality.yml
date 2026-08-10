@@ -23,5 +23,13 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Start static server
         run: python -m http.server 8099 --bind 127.0.0.1 &
+      - name: Validate catalog and links
+        run: |
+          python scripts/catalog_tool.py check
+          python scripts/check_links.py
+          python tests/catalog_test.py
+          python tests/production_test.py
       - name: Run user journeys
-        run: python tests/site.spec.py
+        run: |
+          sleep 2
+          python tests/site.spec.py

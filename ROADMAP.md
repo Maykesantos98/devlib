@@ -33,7 +33,7 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 - [x] Extrair os 133 itens para uma fonte de dados única e validável.
 - [x] Definir campos estáveis: nome, URL, descrição, categoria, tags, tom e layout.
 - [x] Gerar os cards estáticos a partir dessa fonte.
-- [ ] Adicionar verificador de URLs externas e relatório de links inativos.
+- [x] Adicionar verificador de URLs externas e relatório de links inativos.
 - [ ] Definir processo editorial para inclusão, revisão e remoção de ferramentas.
 
 **Critério de saída:** um item é adicionado em um único lugar e todo o site se atualiza sem edição manual de contadores.
@@ -63,7 +63,7 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 ### P4 — qualidade contínua
 
 - [x] Adicionar testes dos fluxos críticos com Playwright.
-- [x] Criar CI para testes de interface em navegador.
+- [x] Criar CI para catálogo, links, contrato estático e testes de interface em navegador.
 - [ ] Incluir auditorias periódicas de acessibilidade e dependências, caso uma toolchain seja adotada.
 - [ ] Definir checklist de release e versionamento.
 - [ ] Registrar métricas úteis sem coleta invasiva: buscas sem resultado, cliques e categorias visitadas.

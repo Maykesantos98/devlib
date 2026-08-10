@@ -54,10 +54,16 @@ Depois acesse `http://localhost:8080`.
 Com o Playwright para Python e o Chromium instalados, inicie um servidor na porta 8099 e execute:
 
 ```bash
-python tests/site.spec.py
+python scripts/verify.py
 ```
 
 O GitHub Actions repete essas jornadas em todo push e pull request.
+
+Para também consultar os 133 destinos externos e atualizar o relatório:
+
+```bash
+python scripts/check_links.py --external
+```
 
 ## Deploy
 

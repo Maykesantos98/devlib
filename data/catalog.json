@@ -1013,7 +1013,7 @@
     },
     {
       "name": "Ali Imam Components",
-      "url": "https://aliimam.in/components",
+      "url": "https://aliimam.in/docs/components",
       "description": "Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações.",
       "category": "interface",
       "kinds": [
@@ -1029,7 +1029,7 @@
       "layout": [
         "x3"
       ],
-      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Coleção pessoal · Components</span><span class=\"card-badge\">Free</span></div>\n          <h3 class=\"card-title\">Ali Imam Components</h3>\n          <p class=\"card-body\">Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações.</p>\n          <div class=\"card-tags\"><span>components</span><span>effects</span><span>registry</span></div>\n          <a class=\"card-link\" href=\"https://aliimam.in/components\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Coleção pessoal · Components</span><span class=\"card-badge\">Free</span></div>\n          <h3 class=\"card-title\">Ali Imam Components</h3>\n          <p class=\"card-body\">Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações.</p>\n          <div class=\"card-tags\"><span>components</span><span>effects</span><span>registry</span></div>\n          <a class=\"card-link\" href=\"https://aliimam.in/docs/components\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     },
     {
       "name": "21st.dev",
