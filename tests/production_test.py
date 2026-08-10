@@ -25,6 +25,15 @@ class StaticProductionContract(unittest.TestCase):
             self.assertIn(selector, script)
             self.assertIn(selector, styles)
 
+    def test_remote_mcp_examples_use_production_url_and_secret_environment_header(self):
+        hub = (ROOT / "integracoes.html").read_text(encoding="utf-8")
+        self.assertNotIn("devlib.seudominio.com", hub)
+        self.assertIn("https://devlib.46-202-147-251.sslip.io/mcp", hub)
+        self.assertIn("DEVLIB_MCP_AUTH", hub)
+        self.assertIn('env_http_headers = { Authorization = "DEVLIB_MCP_AUTH" }', hub)
+        self.assertIn('--header &quot;Authorization: $env:DEVLIB_MCP_AUTH&quot;', hub)
+        self.assertNotIn('Authorization: Basic devlib:', hub)
+
     def test_home_hero_uses_product_focused_message(self):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("A stack certa", home)
