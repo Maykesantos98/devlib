@@ -51,6 +51,39 @@ class DevlibJourneys(unittest.TestCase):
         finally:
             context.close()
 
+    def test_empty_search_has_recovery_action_and_live_count(self):
+        context, page, errors = self.open_page()
+        try:
+            search = page.get_by_role("searchbox", name="Buscar no acervo")
+            search.fill("termo-impossivel-sem-resultados")
+            page.wait_for_timeout(250)
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "0")
+            self.assertEqual(page.locator(".count").get_attribute("aria-live"), "polite")
+            empty = page.get_by_role("status")
+            self.assertTrue(empty.is_visible())
+            empty.get_by_role("button", name="Mostrar todas as bibliotecas").click()
+            self.assertEqual(search.input_value(), "")
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "133")
+            self.assertEqual(errors, [])
+        finally:
+            context.close()
+
+    def test_command_palette_is_named_and_keyboard_operable(self):
+        context, page, errors = self.open_page()
+        try:
+            page.keyboard.press("Control+k")
+            dialog = page.get_by_role("dialog", name="Paleta de comandos")
+            self.assertTrue(dialog.is_visible())
+            command_search = dialog.get_by_role("searchbox", name="Buscar comandos e bibliotecas")
+            self.assertTrue(command_search.evaluate("el => el === document.activeElement"))
+            command_search.fill("shadcn")
+            self.assertGreater(dialog.get_by_role("option").count(), 0)
+            page.keyboard.press("Escape")
+            self.assertFalse(dialog.is_visible())
+            self.assertEqual(errors, [])
+        finally:
+            context.close()
+
     def test_mobile_navigation_is_operable(self):
         context, page, errors = self.open_page(width=390, height=844)
         try:

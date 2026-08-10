@@ -77,6 +77,18 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 3. Busca, filtros, acessibilidade e experiência móvel.
 4. Performance, SEO e segurança da entrega.
 5. Testes, CI e processo editorial contínuo.
+6. Empacotamento, implantação e operação segura em VPS.
+
+## P5 — implantação em VPS
+
+- [ ] Servir os arquivos estáticos com Nginx em imagem Docker mínima.
+- [ ] Definir cache de assets, compressão e cabeçalhos de segurança.
+- [ ] Adicionar healthcheck local e verificação pós-deploy.
+- [ ] Criar configuração por domínio sem credenciais no repositório.
+- [ ] Documentar deploy inicial, atualização, logs e rollback.
+- [ ] Validar a imagem em container antes de acessar a VPS.
+
+**Critério de saída:** uma VPS limpa consegue publicar o site com passos documentados, healthcheck verde e rollback testável.
 
 ## Decisões que devem ser confirmadas
 
