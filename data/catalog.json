@@ -4,7 +4,7 @@
     "kit": 12,
     "agents": 13,
     "mcp": 10,
-    "interface": 34,
+    "interface": 35,
     "server": 17,
     "guard": 12,
     "run": 10,
@@ -1273,6 +1273,25 @@
         "x3"
       ],
       "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animações React · Motion</span><span class=\"card-badge\">Motion</span></div>\n          <h3 class=\"card-title\">Framer Motion</h3>\n          <p class=\"card-body\">Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.</p>\n          <div class=\"card-tags\"><span>react</span><span>motion</span><span>gestures</span></div>\n          <a class=\"card-link\" href=\"https://github.com/motiondivision/motion\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "GSAP",
+      "url": "https://gsap.com/",
+      "description": "Plataforma profissional de animação JavaScript para interfaces, SVG, scroll e sequências complexas com alto desempenho.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "javascript",
+        "motion",
+        "scrolltrigger"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animação web · JavaScript</span><span class=\"card-badge\">GSAP</span></div>\n          <h3 class=\"card-title\">GSAP</h3>\n          <p class=\"card-body\">Plataforma profissional de animação JavaScript para interfaces, SVG, scroll e sequências complexas com alto desempenho.</p>\n          <div class=\"card-tags\"><span>javascript</span><span>motion</span><span>scrolltrigger</span></div>\n          <a class=\"card-link\" href=\"https://gsap.com/\" target=\"_blank\" rel=\"noopener\">Abrir gsap.com<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     },
     {
       "name": "Liquid Metal",

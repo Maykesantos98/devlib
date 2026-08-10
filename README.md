@@ -1,6 +1,6 @@
 # DEVLIB
 
-Acervo curado com 133 bibliotecas, frameworks e ferramentas para desenvolvedores que constroem produtos com agentes de IA.
+Acervo curado com 134 bibliotecas, frameworks e ferramentas para desenvolvedores que constroem produtos com agentes de IA.
 
 O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha dependencias obrigatorias, build step ou framework.
 
@@ -17,7 +17,7 @@ O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha de
 ```text
 .
 |-- index.html          # Pagina principal
-|-- data/catalog.json   # Fonte unica dos 133 itens
+|-- data/catalog.json   # Fonte unica dos 134 itens
 |-- css/                # CSS modular
 |-- js/                 # JavaScript principal
 |-- scripts/            # Geracao e validacao do catalogo
@@ -69,7 +69,7 @@ Opcionalmente, defina `NVIDIA_API_KEY` apenas no `.env` privado da VPS. A NVIDIA
 
 O GitHub Actions repete essas jornadas em todo push e pull request.
 
-Para também consultar os 133 destinos externos e atualizar o relatório:
+Para também consultar os 134 destinos externos e atualizar o relatório:
 
 ```bash
 python scripts/check_links.py --external

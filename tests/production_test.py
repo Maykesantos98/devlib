@@ -57,7 +57,7 @@ class StaticProductionContract(unittest.TestCase):
     def test_catalog_exposes_structured_collection_metadata(self):
         markup = self.pages["index.html"]
         self.assertIn('itemscope itemtype="https://schema.org/CollectionPage"', markup)
-        self.assertIn('itemprop="numberOfItems" content="133"', markup)
+        self.assertIn('itemprop="numberOfItems" content="134"', markup)
         self.assertIn('itemprop="name" content="DEVLIB"', markup)
 
     def test_images_reserve_layout_space(self):

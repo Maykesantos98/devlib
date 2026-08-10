@@ -7,7 +7,7 @@ from mcp.server.transport_security import TransportSecuritySettings
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from starlette.routing import Route
-from agent.catalog_core import explain_concept, get_library, list_categories, recommend_stack, search_catalog
+from agent.catalog_core import catalog_total, explain_concept, get_library, list_categories, recommend_stack, search_catalog
 from agent.rest_api import ApiInputError, explain_payload, recommend_payload, search_payload
 
 domain = os.getenv("DEVLIB_DOMAIN", "localhost")
@@ -57,7 +57,7 @@ def explain_dev_concept(question: str) -> dict:
 
 if __name__ == "__main__":
     async def health(_: Request) -> JSONResponse:
-        return JSONResponse({"status": "ok", "catalog": 133})
+        return JSONResponse({"status": "ok", "catalog": catalog_total()})
 
     async def recommend(request: Request) -> JSONResponse:
         try:

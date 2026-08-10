@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "total": 133,
+  "total": 134,
   "categoryCounts": {
     "kit": 12,
     "agents": 13,
     "mcp": 10,
-    "interface": 34,
+    "interface": 35,
     "server": 17,
     "guard": 12,
     "run": 10,
@@ -1169,6 +1169,24 @@
         "react",
         "motion",
         "gestures"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "GSAP",
+      "url": "https://gsap.com/",
+      "description": "Plataforma profissional de animação JavaScript para interfaces, SVG, scroll e sequências complexas com alto desempenho.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "javascript",
+        "motion",
+        "scrolltrigger"
       ],
       "layout": [
         "x3"

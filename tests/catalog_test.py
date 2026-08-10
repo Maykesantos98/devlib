@@ -15,7 +15,7 @@ class CatalogData(unittest.TestCase):
 
     def test_catalog_has_expected_schema_and_total(self):
         self.assertEqual(self.catalog["schemaVersion"], 1)
-        self.assertEqual(len(self.catalog["items"]), 133)
+        self.assertEqual(len(self.catalog["items"]), 134)
         required = {"name", "url", "description", "category", "kinds", "tone", "tags"}
         for item in self.catalog["items"]:
             self.assertTrue(required.issubset(item), item.get("name", "item sem nome"))
@@ -43,7 +43,7 @@ class CatalogData(unittest.TestCase):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("<!-- CATALOG:GENERATED:START -->", html)
         self.assertIn("<!-- CATALOG:GENERATED:END -->", html)
-        self.assertEqual(html.count('class="card-title"'), 133)
+        self.assertEqual(html.count('class="card-title"'), 134)
         for item in self.catalog["items"]:
             self.assertIn(f'>{item["name"]}</h3>', html)
             self.assertIn(f'href="{item["url"]}"', html)

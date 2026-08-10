@@ -12,7 +12,7 @@ def render() -> dict[str, str]:
     catalog = {"schemaVersion": 1, "total": len(items), "categoryCounts": source["categoryCounts"], "items": items}
     categories = {"total": len(source["chapters"]), "categories": [{"id": c["id"], "count": source["categoryCounts"][c["id"]]} for c in source["chapters"]]}
     openapi = {"openapi": "3.1.0", "info": {"title": "DEVLIB Catalog API", "version": "1.0.0"}, "paths": {
-        "/api/catalog.json": {"get": {"summary": "Catálogo completo para agentes", "responses": {"200": {"description": "133 recursos DEVLIB"}}}},
+        "/api/catalog.json": {"get": {"summary": "Catálogo completo para agentes", "responses": {"200": {"description": f"{len(items)} recursos DEVLIB"}}}},
         "/api/categories.json": {"get": {"summary": "Categorias e totais", "responses": {"200": {"description": "Categorias"}}}},
         "/llms.txt": {"get": {"summary": "Instruções de descoberta para LLMs", "responses": {"200": {"description": "Guia"}}}},
         "/mcp": {"post": {"summary": "MCP Streamable HTTP", "responses": {"200": {"description": "Resposta MCP"}}}}

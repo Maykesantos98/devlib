@@ -29,6 +29,10 @@ def _catalog() -> dict:
     return json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 
 
+def catalog_total() -> int:
+    return len(_catalog()["items"])
+
+
 def _plain(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", value)
     return " ".join(re.findall(r"[a-z0-9+#.-]+", normalized.encode("ascii", "ignore").decode().lower()))
