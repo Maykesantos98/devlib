@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "categoryCounts": {
     "kit": 14,
-    "agents": 13,
+    "agents": 17,
     "mcp": 10,
-    "interface": 38,
-    "server": 17,
-    "guard": 13,
-    "run": 10,
-    "ship": 15,
-    "trade": 10
+    "interface": 41,
+    "server": 20,
+    "guard": 14,
+    "run": 11,
+    "ship": 16,
+    "trade": 11
   },
   "chapters": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "id": "agents",
-      "headerMarkup": "<!-- §02 AGENTES -->\n      <div class=\"chapter-bar\" data-chapter=\"agents\" id=\"agentes\">\n        <span class=\"chapter-num\">§02 · Agentes</span>\n        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>\n        <span class=\"count-pill\">13 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §02 AGENTES -->\n      <div class=\"chapter-bar\" data-chapter=\"agents\" id=\"agentes\">\n        <span class=\"chapter-num\">§02 · Agentes</span>\n        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>\n        <span class=\"count-pill\">17 itens</span>\n      </div>"
     },
     {
       "id": "mcp",
@@ -26,27 +26,27 @@
     },
     {
       "id": "interface",
-      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">38 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">41 itens</span>\n      </div>"
     },
     {
       "id": "server",
-      "headerMarkup": "<!-- §05 SERVIDOR -->\n      <div class=\"chapter-bar\" data-chapter=\"server\" id=\"servidor\">\n        <span class=\"chapter-num\">§05 · Servidor</span>\n        <h3>Infra &amp; APIs <em>— serviços, dados e automação.</em></h3>\n        <span class=\"count-pill\">17 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §05 SERVIDOR -->\n      <div class=\"chapter-bar\" data-chapter=\"server\" id=\"servidor\">\n        <span class=\"chapter-num\">§05 · Servidor</span>\n        <h3>Infra &amp; APIs <em>— serviços, dados e automação.</em></h3>\n        <span class=\"count-pill\">20 itens</span>\n      </div>"
     },
     {
       "id": "guard",
-      "headerMarkup": "<!-- §06 SEGURANÇA -->\n      <div class=\"chapter-bar\" data-chapter=\"guard\" id=\"seguranca\">\n        <span class=\"chapter-num\">§06 · Segurança</span>\n        <h3>Auth &amp; appsec <em>— chato até deixar de ser.</em></h3>\n        <span class=\"count-pill\">13 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §06 SEGURANÇA -->\n      <div class=\"chapter-bar\" data-chapter=\"guard\" id=\"seguranca\">\n        <span class=\"chapter-num\">§06 · Segurança</span>\n        <h3>Auth &amp; appsec <em>— chato até deixar de ser.</em></h3>\n        <span class=\"count-pill\">14 itens</span>\n      </div>"
     },
     {
       "id": "run",
-      "headerMarkup": "<!-- §07 BUILD -->\n      <div class=\"chapter-bar\" data-chapter=\"run\" id=\"build\">\n        <span class=\"chapter-num\">§07 · Build</span>\n        <h3>Build, test, observar <em>— a coreografia invisível.</em></h3>\n        <span class=\"count-pill\">10 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §07 BUILD -->\n      <div class=\"chapter-bar\" data-chapter=\"run\" id=\"build\">\n        <span class=\"chapter-num\">§07 · Build</span>\n        <h3>Build, test, observar <em>— a coreografia invisível.</em></h3>\n        <span class=\"count-pill\">11 itens</span>\n      </div>"
     },
     {
       "id": "ship",
-      "headerMarkup": "<!-- §08 APPS -->\n      <div class=\"chapter-bar\" data-chapter=\"ship\" id=\"apps\">\n        <span class=\"chapter-num\">§08 · Apps</span>\n        <h3>Produtos <em>— apps, IA e mobile.</em></h3>\n        <span class=\"count-pill\">15 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §08 APPS -->\n      <div class=\"chapter-bar\" data-chapter=\"ship\" id=\"apps\">\n        <span class=\"chapter-num\">§08 · Apps</span>\n        <h3>Produtos <em>— apps, IA e mobile.</em></h3>\n        <span class=\"count-pill\">16 itens</span>\n      </div>"
     },
     {
       "id": "trade",
-      "headerMarkup": "<!-- §09 TRADE -->\n      <div class=\"chapter-bar\" data-chapter=\"trade\" id=\"trade\">\n        <span class=\"chapter-num\">§09 · Trade</span>\n        <h3>Agentes &amp; quant <em>— mercados, bots, backtest.</em></h3>\n        <span class=\"count-pill\">10 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §09 TRADE -->\n      <div class=\"chapter-bar\" data-chapter=\"trade\" id=\"trade\">\n        <span class=\"chapter-num\">§09 · Trade</span>\n        <h3>Agentes &amp; quant <em>— mercados, bots, backtest.</em></h3>\n        <span class=\"count-pill\">11 itens</span>\n      </div>"
     }
   ],
   "items": [
@@ -230,23 +230,23 @@
     },
     {
       "name": "OpenHands",
-      "url": "https://github.com/All-Hands-AI/OpenHands",
-      "description": "Agente autônomo que entrega features ponta a ponta. Planning Mode escreve um plano pra você revisar antes de executar. O coding agent open source mais estrelado.",
-      "category": "kit",
+      "url": "https://www.openhands.dev/",
+      "description": "Plataforma open source para agentes de desenvolvimento que planejam e executam trabalho real em código, via SDK, CLI, cloud ou infraestrutura própria.",
+      "category": "agents",
       "kinds": [
-        "kit",
-        "agents"
+        "agents",
+        "kit"
       ],
       "tone": "emerald",
       "tags": [
-        "autônomo",
-        "features",
-        "planning"
+        "coding agent",
+        "SDK",
+        "self-hosted"
       ],
       "layout": [
         "x3"
       ],
-      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agente autônomo · MIT</span><span class=\"card-badge\">~72k ★</span></div>\n          <h3 class=\"card-title\">OpenHands</h3>\n          <p class=\"card-body\">Agente autônomo que entrega features ponta a ponta. Planning Mode escreve um plano pra você revisar antes de executar. O coding agent open source mais estrelado.</p>\n          <div class=\"card-tags\"><span>autônomo</span><span>features</span><span>planning</span></div>\n          <a class=\"card-link\" href=\"https://github.com/All-Hands-AI/OpenHands\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+      "markup": "<article class=\"card x3\" data-kind=\"agents kit\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Software agents · open source</span><span class=\"card-badge\">autônomo</span></div>\n          <h3 class=\"card-title\">OpenHands</h3>\n          <p class=\"card-body\">Plataforma open source para agentes de desenvolvimento que planejam e executam trabalho real em código, via SDK, CLI, cloud ou infraestrutura própria.</p>\n          <div class=\"card-tags\"><span>coding agent</span><span>SDK</span><span>self-hosted</span></div>\n          <a class=\"card-link\" href=\"https://www.openhands.dev/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     },
     {
       "name": "Cline",
@@ -2781,6 +2781,286 @@
         "x3"
       ],
       "markup": "<article class=\"card x3\" data-kind=\"interface skills recent\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Motion design · LottieFiles</span><span class=\"card-badge\">Skill</span></div>\n          <h3 class=\"card-title\">Motion Design Skill</h3>\n          <p class=\"card-body\">Skill da LottieFiles com princípios universais de motion design para agentes: timing, easing, coreografia e animação aplicada a interfaces.</p>\n          <div class=\"card-tags\"><span>lottie</span><span>motion-design</span><span>agent-skills</span></div>\n          <a class=\"card-link\" href=\"https://github.com/lottiefiles/motion-design-skill\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "GitHub Spec Kit",
+      "url": "https://github.com/github/spec-kit",
+      "description": "Toolkit do GitHub para desenvolvimento orientado a especificações. Conduz agentes por Spec, Plan, Tasks e Implement com artefatos estruturados e integrações para dezenas de assistentes.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "spec-driven",
+        "planejamento",
+        "GitHub"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Spec-driven development · GitHub</span><span class=\"card-badge\">SDD</span></div>\n          <h3 class=\"card-title\">GitHub Spec Kit</h3>\n          <p class=\"card-body\">Toolkit do GitHub para desenvolvimento orientado a especificações. Conduz agentes por Spec, Plan, Tasks e Implement com artefatos estruturados e integrações para dezenas de assistentes.</p>\n          <div class=\"card-tags\"><span>spec-driven</span><span>planejamento</span><span>GitHub</span></div>\n          <a class=\"card-link\" href=\"https://github.com/github/spec-kit\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Claude SEO",
+      "url": "https://claude-seo.md/",
+      "description": "Toolkit open source de SEO para Claude Code com skills, agentes especialistas e comandos para auditoria técnica, conteúdo, schema, GEO, local e e-commerce.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "SEO",
+        "auditoria",
+        "marketing"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"trade agents\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>SEO agentic toolkit · MIT</span><span class=\"card-badge\">25 skills</span></div>\n          <h3 class=\"card-title\">Claude SEO</h3>\n          <p class=\"card-body\">Toolkit open source de SEO para Claude Code com skills, agentes especialistas e comandos para auditoria técnica, conteúdo, schema, GEO, local e e-commerce.</p>\n          <div class=\"card-tags\"><span>SEO</span><span>auditoria</span><span>marketing</span></div>\n          <a class=\"card-link\" href=\"https://claude-seo.md/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Shannon",
+      "url": "https://github.com/KeygraphHQ/shannon",
+      "description": "Pentester autônomo white-box para aplicações e APIs. Analisa o código, mapeia vetores de ataque e valida vulnerabilidades com exploits reproduzíveis.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "red",
+      "tags": [
+        "pentest",
+        "AppSec",
+        "OWASP"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard agents\" data-tone=\"red\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>AI pentester · AGPL-3.0</span><span class=\"card-badge\">white-box</span></div>\n          <h3 class=\"card-title\">Shannon</h3>\n          <p class=\"card-body\">Pentester autônomo white-box para aplicações e APIs. Analisa o código, mapeia vetores de ataque e valida vulnerabilidades com exploits reproduzíveis.</p>\n          <div class=\"card-tags\"><span>pentest</span><span>AppSec</span><span>OWASP</span></div>\n          <a class=\"card-link\" href=\"https://github.com/KeygraphHQ/shannon\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Huashu Design",
+      "url": "https://github.com/alchaincyf/huashu-design",
+      "description": "Skill de design HTML-native para criar protótipos, apresentações, animações, infográficos e exportações MP4 a partir de uma instrução para o agente.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "pink",
+      "tags": [
+        "design skill",
+        "HTML",
+        "motion"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Design skill · MIT</span><span class=\"card-badge\">agent-ready</span></div>\n          <h3 class=\"card-title\">Huashu Design</h3>\n          <p class=\"card-body\">Skill de design HTML-native para criar protótipos, apresentações, animações, infográficos e exportações MP4 a partir de uma instrução para o agente.</p>\n          <div class=\"card-tags\"><span>design skill</span><span>HTML</span><span>motion</span></div>\n          <a class=\"card-link\" href=\"https://github.com/alchaincyf/huashu-design\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Taste Skill",
+      "url": "https://www.tasteskill.dev/",
+      "description": "Skill que ensina agentes a produzir frontends com direção visual, disciplina de layout, dark mode, animações e regras anti-slop adaptadas ao briefing.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "UI taste",
+        "frontend",
+        "skill"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface kit\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Frontend design skill · v2</span><span class=\"card-badge\">anti-slop</span></div>\n          <h3 class=\"card-title\">Taste Skill</h3>\n          <p class=\"card-body\">Skill que ensina agentes a produzir frontends com direção visual, disciplina de layout, dark mode, animações e regras anti-slop adaptadas ao briefing.</p>\n          <div class=\"card-tags\"><span>UI taste</span><span>frontend</span><span>skill</span></div>\n          <a class=\"card-link\" href=\"https://www.tasteskill.dev/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Coolify",
+      "url": "https://coolify.io/",
+      "description": "PaaS open source e self-hosted para implantar aplicações, bancos e serviços Docker em qualquer servidor via SSH, com SSL, backups e deploy por Git.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "server"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "PaaS",
+        "self-hosted",
+        "deploy"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"ship server\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Self-hosted PaaS · Apache-2.0</span><span class=\"card-badge\">open source</span></div>\n          <h3 class=\"card-title\">Coolify</h3>\n          <p class=\"card-body\">PaaS open source e self-hosted para implantar aplicações, bancos e serviços Docker em qualquer servidor via SSH, com SSL, backups e deploy por Git.</p>\n          <div class=\"card-tags\"><span>PaaS</span><span>self-hosted</span><span>deploy</span></div>\n          <a class=\"card-link\" href=\"https://coolify.io/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Maxun",
+      "url": "https://github.com/getmaxun/maxun",
+      "description": "Plataforma no-code e self-hosted para scraping, crawling, busca e extração de dados com IA, capaz de transformar sites em APIs estruturadas.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "scraping",
+        "no-code",
+        "data API"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server agents\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Web data platform · AGPL-3.0</span><span class=\"card-badge\">self-hosted</span></div>\n          <h3 class=\"card-title\">Maxun</h3>\n          <p class=\"card-body\">Plataforma no-code e self-hosted para scraping, crawling, busca e extração de dados com IA, capaz de transformar sites em APIs estruturadas.</p>\n          <div class=\"card-tags\"><span>scraping</span><span>no-code</span><span>data API</span></div>\n          <a class=\"card-link\" href=\"https://github.com/getmaxun/maxun\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Open WebUI",
+      "url": "https://github.com/open-webui/open-webui",
+      "description": "Interface de IA extensível e self-hosted para Ollama e APIs compatíveis com OpenAI, com conhecimento, ferramentas e experiência de chat pronta para equipes.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "agents"
+      ],
+      "tone": "slate",
+      "tags": [
+        "AI UI",
+        "Ollama",
+        "self-hosted"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface agents\" data-tone=\"slate\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>AI interface · self-hosted</span><span class=\"card-badge\">popular</span></div>\n          <h3 class=\"card-title\">Open WebUI</h3>\n          <p class=\"card-body\">Interface de IA extensível e self-hosted para Ollama e APIs compatíveis com OpenAI, com conhecimento, ferramentas e experiência de chat pronta para equipes.</p>\n          <div class=\"card-tags\"><span>AI UI</span><span>Ollama</span><span>self-hosted</span></div>\n          <a class=\"card-link\" href=\"https://github.com/open-webui/open-webui\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Browser Use",
+      "url": "https://github.com/browser-use/browser-use",
+      "description": "Framework que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes e ciclos de recuperação para automatizar tarefas na web.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "run"
+      ],
+      "tone": "blue",
+      "tags": [
+        "browser",
+        "automação",
+        "Python"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents run\" data-tone=\"blue\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Browser agents · open source</span><span class=\"card-badge\">automation</span></div>\n          <h3 class=\"card-title\">Browser Use</h3>\n          <p class=\"card-body\">Framework que oferece navegador e computador reais a agentes de IA, com ferramentas persistentes e ciclos de recuperação para automatizar tarefas na web.</p>\n          <div class=\"card-tags\"><span>browser</span><span>automação</span><span>Python</span></div>\n          <a class=\"card-link\" href=\"https://github.com/browser-use/browser-use\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Langflow",
+      "url": "https://www.langflow.org/",
+      "description": "Framework Python visual e open source para criar aplicações de IA, agentes, fluxos RAG e servidores ou clientes MCP sem ficar preso a um modelo.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "mcp"
+      ],
+      "tone": "violet",
+      "tags": [
+        "low-code",
+        "RAG",
+        "MCP"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents mcp\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Visual AI builder · Python</span><span class=\"card-badge\">low-code</span></div>\n          <h3 class=\"card-title\">Langflow</h3>\n          <p class=\"card-body\">Framework Python visual e open source para criar aplicações de IA, agentes, fluxos RAG e servidores ou clientes MCP sem ficar preso a um modelo.</p>\n          <div class=\"card-tags\"><span>low-code</span><span>RAG</span><span>MCP</span></div>\n          <a class=\"card-link\" href=\"https://www.langflow.org/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Stirling PDF",
+      "url": "https://github.com/Stirling-Tools/Stirling-PDF",
+      "description": "Plataforma PDF open source para editar, assinar, ocultar, converter, aplicar OCR e automatizar documentos localmente, no navegador ou em servidor próprio.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "server"
+      ],
+      "tone": "red",
+      "tags": [
+        "PDF",
+        "OCR",
+        "self-hosted"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"run server\" data-tone=\"red\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>PDF platform · open source</span><span class=\"card-badge\">50+ tools</span></div>\n          <h3 class=\"card-title\">Stirling PDF</h3>\n          <p class=\"card-body\">Plataforma PDF open source para editar, assinar, ocultar, converter, aplicar OCR e automatizar documentos localmente, no navegador ou em servidor próprio.</p>\n          <div class=\"card-tags\"><span>PDF</span><span>OCR</span><span>self-hosted</span></div>\n          <a class=\"card-link\" href=\"https://github.com/Stirling-Tools/Stirling-PDF\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Crawl4AI",
+      "url": "https://github.com/unclecode/crawl4AI",
+      "description": "Crawler e scraper open source voltado a LLMs que transforma a web em Markdown limpo para RAG, agentes e pipelines, com SDK, CLI e Docker.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "crawler",
+        "Markdown",
+        "RAG"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>LLM web crawler · Python</span><span class=\"card-badge\">LLM-ready</span></div>\n          <h3 class=\"card-title\">Crawl4AI</h3>\n          <p class=\"card-body\">Crawler e scraper open source voltado a LLMs que transforma a web em Markdown limpo para RAG, agentes e pipelines, com SDK, CLI e Docker.</p>\n          <div class=\"card-tags\"><span>crawler</span><span>Markdown</span><span>RAG</span></div>\n          <a class=\"card-link\" href=\"https://github.com/unclecode/crawl4AI\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Dify",
+      "url": "https://dify.ai/",
+      "description": "Plataforma visual para criar e publicar workflows agentic, pipelines RAG e aplicações de IA com modelos, ferramentas, conhecimento, revisão humana e observabilidade.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "server"
+      ],
+      "tone": "blue",
+      "tags": [
+        "workflow",
+        "RAG",
+        "low-code"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents server\" data-tone=\"blue\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Agentic workflow platform</span><span class=\"card-badge\">production</span></div>\n          <h3 class=\"card-title\">Dify</h3>\n          <p class=\"card-body\">Plataforma visual para criar e publicar workflows agentic, pipelines RAG e aplicações de IA com modelos, ferramentas, conhecimento, revisão humana e observabilidade.</p>\n          <div class=\"card-tags\"><span>workflow</span><span>RAG</span><span>low-code</span></div>\n          <a class=\"card-link\" href=\"https://dify.ai/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "WAHA",
+      "url": "https://waha.devlike.pro/",
+      "description": "API HTTP de WhatsApp self-hosted para enviar e receber textos, imagens, vídeos e áudios, com documentação Swagger e instalação rápida em servidor próprio.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "mcp"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "WhatsApp",
+        "HTTP API",
+        "self-hosted"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server mcp\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>WhatsApp HTTP API</span><span class=\"card-badge\">open source</span></div>\n          <h3 class=\"card-title\">WAHA</h3>\n          <p class=\"card-body\">API HTTP de WhatsApp self-hosted para enviar e receber textos, imagens, vídeos e áudios, com documentação Swagger e instalação rápida em servidor próprio.</p>\n          <div class=\"card-tags\"><span>WhatsApp</span><span>HTTP API</span><span>self-hosted</span></div>\n          <a class=\"card-link\" href=\"https://waha.devlike.pro/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     }
   ]
 }

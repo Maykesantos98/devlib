@@ -107,7 +107,7 @@ class DevlibJourneys(unittest.TestCase):
             self.assertTrue(empty.is_visible())
             empty.get_by_role("button", name="Mostrar todas as bibliotecas").click()
             self.assertEqual(search.input_value(), "")
-            self.assertEqual(page.locator("#visibleCount").inner_text(), "140")
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "154")
             self.assertEqual(errors, [])
         finally:
             context.close()

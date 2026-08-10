@@ -9,7 +9,7 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 ## Diagnóstico inicial
 
 - Site estático em HTML, CSS e JavaScript, sem dependências ou etapa de build.
-- Catálogo principal com 140 itens e nove categorias.
+- Catálogo principal com 154 itens e nove categorias.
 - Busca, filtros, command palette, atalhos e página de jogos já existem.
 - `index.html` e `Dev2.html` têm atualmente o mesmo tamanho e precisam de uma fonte única de verdade.
 - O conteúdo do catálogo está misturado à marcação, o que torna contagens, links e atualizações trabalhosos.
@@ -30,7 +30,7 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 
 ### P1 — separar conteúdo da interface
 
-- [x] Extrair os 140 itens para uma fonte de dados única e validável.
+- [x] Extrair os 154 itens para uma fonte de dados única e validável.
 - [x] Definir campos estáveis: nome, URL, descrição, categoria, tags, tom e layout.
 - [x] Gerar os cards estáticos a partir dessa fonte.
 - [x] Adicionar verificador de URLs externas e relatório de links inativos.
