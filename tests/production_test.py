@@ -16,6 +16,12 @@ class StaticProductionContract(unittest.TestCase):
         self.assertIn("data-copy", hub)
         self.assertIn('href="integracoes.html"', (ROOT / "index.html").read_text(encoding="utf-8"))
 
+    def test_home_hero_uses_product_focused_message(self):
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn("A stack certa", home)
+        self.assertIn("para cada ideia.", home)
+        self.assertNotIn("que</span> <span class=\"word\">viram produto", home)
+
     @classmethod
     def setUpClass(cls):
         cls.pages = {
