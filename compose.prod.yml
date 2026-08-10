@@ -12,7 +12,7 @@ services:
       devlib:
         condition: service_healthy
       agent:
-        condition: service_started
+        condition: service_healthy
     environment:
       DEVLIB_DOMAIN: ${DEVLIB_DOMAIN:?Defina DEVLIB_DOMAIN no arquivo .env}
       DEVLIB_MCP_PASSWORD_HASH: ${DEVLIB_MCP_PASSWORD_HASH:?Defina DEVLIB_MCP_PASSWORD_HASH no arquivo .env}

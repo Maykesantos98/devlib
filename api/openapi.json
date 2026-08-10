@@ -44,6 +44,39 @@
           }
         }
       }
+    },
+    "/api/ai/recommend": {
+      "post": {
+        "summary": "Recomenda stack fundamentada",
+        "responses": {
+          "200": {
+            "description": "Stack por camadas"
+          },
+          "400": {
+            "description": "Entrada inválida"
+          }
+        }
+      }
+    },
+    "/api/ai/search": {
+      "get": {
+        "summary": "Busca dinâmica no catálogo",
+        "responses": {
+          "200": {
+            "description": "Resultados"
+          }
+        }
+      }
+    },
+    "/api/ai/explain": {
+      "get": {
+        "summary": "Explica conceitos com fontes",
+        "responses": {
+          "200": {
+            "description": "Explicação fundamentada"
+          }
+        }
+      }
     }
   }
 }

@@ -236,8 +236,23 @@ body {
 .code-wrap button { position: absolute; z-index: 1; top: .55rem; right: .55rem; padding: .35rem .65rem; border: 1px solid var(--border-bright); border-radius: 7px; background: #11141a; cursor: pointer; }
 .security-note { display: flex; gap: 1rem; margin-top: 1rem; padding: 1rem; border: 1px solid rgba(255,190,80,.25); border-radius: 12px; background: rgba(255,190,80,.05); }
 .security-note p { margin: 0; color: var(--text-soft); }
+.advisor { border-color: rgb(var(--accent-rgb) / .32); background: radial-gradient(70% 100% at 0 0, rgb(var(--accent-rgb) / .09), transparent 65%), rgba(12,14,18,.9); }
+.advisor-form { display: grid; gap: .8rem; }
+.advisor-form label { font-weight: 650; }
+.advisor-form textarea { width: 100%; min-height: 130px; resize: vertical; padding: 1rem; border: 1px solid var(--border-bright); border-radius: 12px; background: #080a0d; color: var(--text); font: inherit; line-height: 1.5; }
+.advisor-form textarea:focus { border-color: var(--accent); outline: 2px solid rgb(var(--accent-rgb) / .15); }
+.advisor-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.advisor-actions span { color: var(--text-soft); font-size: .82rem; }
+.advisor-result { margin-top: 1.5rem; }
+.advisor-result h3 { margin: 0 0 1rem; }
+.advisor-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .75rem; }
+.advisor-grid a { display: grid; gap: .35rem; padding: 1rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.advisor-grid a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.advisor-grid span { color: var(--accent); font: .68rem var(--font-mono); text-transform: uppercase; }
+.advisor-grid small { color: var(--text-soft); }
 @media (max-width: 720px) { .agent-hub { padding-top: 6rem; } .agent-hero { padding: 2rem 0 3rem; } .endpoint-grid,.tool-grid,.client-grid { grid-template-columns: 1fr; } .client-wide { grid-column: auto; } .security-note { display: block; } }
 
 @media (max-width: 720px) {
   .home-main .hero-title { max-width: 12ch; font-size: clamp(3rem, 14vw, 4rem); }
+  .advisor-grid { grid-template-columns: 1fr; }
 }

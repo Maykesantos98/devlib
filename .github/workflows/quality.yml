@@ -32,6 +32,7 @@ jobs:
           python tests/production_test.py
           python tests/deployment_test.py
           python tests/agent_catalog_test.py
+          python tests/rest_api_test.py
       - name: Run user journeys
         run: |
           sleep 2

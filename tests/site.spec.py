@@ -11,11 +11,28 @@ class DevlibJourneys(unittest.TestCase):
         context, page, errors = self.open_page("/integracoes.html")
         try:
             self.assertIn("API & MCP", page.locator("h1").inner_text())
-            self.assertEqual(4, page.locator(".endpoint-card").count())
+            self.assertEqual(6, page.locator(".endpoint-card").count())
             self.assertEqual(5, page.locator(".tool-grid article").count())
             self.assertTrue(page.get_by_role("heading", name="Claude Code").is_visible())
             self.assertTrue(page.get_by_role("heading", name="Codex").is_visible())
             self.assertEqual([], errors)
+        finally:
+            context.close()
+
+    def test_stack_advisor_renders_grounded_api_result(self):
+        context = self.browser.new_context(viewport={"width": 390, "height": 844})
+        page = context.new_page()
+        page.route("**/api/ai/recommend", lambda route: route.fulfill(
+            status=200,
+            content_type="application/json",
+            body='{"engine":"local","recommendations":[{"name":"Next.js","url":"https://nextjs.org/","layer":"frontend","reason":"Cobre a camada frontend solicitada."}]}'
+        ))
+        try:
+            page.goto(f"{BASE_URL}/integracoes.html", wait_until="networkidle")
+            page.get_by_label("O que você quer construir?").fill("SaaS com Next.js")
+            page.get_by_role("button", name="Montar minha stack").click()
+            page.get_by_role("heading", name="Stack recomendada").wait_for(state="visible")
+            self.assertIn("Next.js", page.locator(".advisor-grid a").inner_text())
         finally:
             context.close()
 

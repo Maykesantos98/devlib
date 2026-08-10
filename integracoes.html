@@ -27,8 +27,19 @@
       <div class="agent-status"><span><b>133</b> recursos</span><span><b>5</b> tools MCP</span><span><b>1</b> fonte de verdade</span></div>
     </section>
 
-    <section class="agent-section" id="endpoints"><div class="section-head"><span>01</span><div><h2>Endpoints da API</h2><p>Leitura pública, estática e rápida. Ideal para crawlers, scripts e RAG.</p></div></div>
+    <section class="agent-section advisor" id="stack-advisor"><div class="section-head"><span>01</span><div><h2>AI Stack Advisor</h2><p>Descreva o produto. O DEVLIB organiza uma stack por camadas usando apenas recursos verificados do catálogo.</p></div></div>
+      <form class="advisor-form" id="advisor-form">
+        <label for="project-description">O que você quer construir?</label>
+        <textarea id="project-description" name="project" maxlength="2000" required placeholder="Ex.: SaaS Next.js com agentes, PostgreSQL, pagamentos, testes, segurança e deploy"></textarea>
+        <div class="advisor-actions"><button class="btn primary" type="submit">Montar minha stack</button><span id="advisor-status" role="status" aria-live="polite">Motor local fundamentado · NVIDIA opcional no servidor</span></div>
+      </form>
+      <div class="advisor-result" id="advisor-result" hidden></div>
+    </section>
+
+    <section class="agent-section" id="endpoints"><div class="section-head"><span>02</span><div><h2>Endpoints da API</h2><p>Leitura pública e inteligência fundamentada para sites, scripts, agentes e RAG.</p></div></div>
       <div class="endpoint-grid">
+        <a href="/api/ai/healthz" class="endpoint-card"><code>GET</code><div><b>/api/ai/healthz</b><small>Saúde do motor inteligente</small></div><span>↗</span></a>
+        <div class="endpoint-card"><code>POST</code><div><b>/api/ai/recommend</b><small>Stack por camadas e justificativas</small></div><span>AI</span></div>
         <a href="api/catalog.json" class="endpoint-card"><code>GET</code><div><b>/api/catalog.json</b><small>Catálogo completo, sem markup HTML</small></div><span>↗</span></a>
         <a href="api/categories.json" class="endpoint-card"><code>GET</code><div><b>/api/categories.json</b><small>Categorias e quantidades</small></div><span>↗</span></a>
         <a href="api/openapi.json" class="endpoint-card"><code>GET</code><div><b>/api/openapi.json</b><small>Contrato OpenAPI 3.1</small></div><span>↗</span></a>
@@ -36,11 +47,11 @@
       </div>
     </section>
 
-    <section class="agent-section" id="tools"><div class="section-head"><span>02</span><div><h2>Ferramentas disponíveis</h2><p>O MCP responde em <code>/mcp</code> via Streamable HTTP e nunca recomenda fora do catálogo.</p></div></div>
+    <section class="agent-section" id="tools"><div class="section-head"><span>03</span><div><h2>Ferramentas disponíveis</h2><p>O MCP responde em <code>/mcp</code> via Streamable HTTP e nunca recomenda fora do catálogo.</p></div></div>
       <div class="tool-grid"><article><b>search_devlib</b><p>Busca por necessidade, tag ou categoria.</p></article><article><b>inspect_library</b><p>Valida nome, descrição, tags e URL.</p></article><article><b>catalog_categories</b><p>Lista as nove áreas do acervo.</p></article><article><b>recommend_project_stack</b><p>Compõe frontend, backend, dados, testes, segurança e agentes.</p></article><article><b>explain_dev_concept</b><p>Explica MCP e skills com fontes verificáveis do catálogo.</p></article></div>
     </section>
 
-    <section class="agent-section" id="clientes"><div class="section-head"><span>03</span><div><h2>Conectar seu agente</h2><p>Troque <code>devlib.seudominio.com</code> pelo domínio definitivo da VPS. A senha fica somente no cliente.</p></div></div>
+    <section class="agent-section" id="clientes"><div class="section-head"><span>04</span><div><h2>Conectar seu agente</h2><p>Troque <code>devlib.seudominio.com</code> pelo domínio definitivo da VPS. A senha fica somente no cliente.</p></div></div>
       <div class="client-grid">
         <article class="client-card"><div class="client-title"><span>CC</span><div><h3>Claude Code</h3><p>Comando direto</p></div></div><div class="code-wrap"><button type="button" data-copy="#claude-code">Copiar</button><pre id="claude-code"><code>claude mcp add --transport http devlib https://devlib.seudominio.com/mcp</code></pre></div></article>
         <article class="client-card"><div class="client-title"><span>CX</span><div><h3>Codex</h3><p>Configuração TOML</p></div></div><div class="code-wrap"><button type="button" data-copy="#codex-config">Copiar</button><pre id="codex-config"><code>[mcp_servers.devlib]

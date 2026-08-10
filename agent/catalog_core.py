@@ -21,7 +21,7 @@ LAYER_RULES = {
     "mcp": ({"mcp", "model context protocol"}, ["MCP Specification", "MCP Inspector", "Playwright MCP"]),
     "skills": ({"skill", "skills"}, ["skills.sh", "Superpowers", "everything-claude-code"]),
     "mobile": ({"mobile", "android", "ios", "expo", "react native"}, ["Expo", "React Native", "Capacitor"]),
-    "devops": ({"deploy", "devops", "docker", "vps", "infra", "ci", "cd"}, ["Docker", "GitHub Actions", "Coolify"]),
+    "devops": ({"deploy", "devops", "docker", "vps", "infra", "ci", "cd", "observabilidade"}, ["Renovate", "OpenTelemetry JS", "Grafana"]),
 }
 
 
@@ -73,11 +73,11 @@ def list_categories() -> list[dict]:
     return [{"id": chapter["id"], "count": data["categoryCounts"][chapter["id"]]} for chapter in data["chapters"]]
 
 
-def recommend_stack(project: str, limit: int = 10) -> dict:
+def recommend_stack(project: str, limit: int = 10, use_ai: bool = True) -> dict:
     """Compose a project stack by requested architectural layers."""
     normalized = _plain(project)
     requested = [layer for layer, (signals, _) in LAYER_RULES.items() if any(signal in normalized for signal in signals)]
-    for layer in classify_intent(project):
+    for layer in classify_intent(project) if use_ai else []:
         if layer not in requested:
             requested.append(layer)
     if "database" in requested and "backend" not in requested:

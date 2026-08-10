@@ -27,6 +27,7 @@ def main() -> None:
     run(python, "tests/production_test.py")
     run(python, "tests/deployment_test.py")
     run(python, "tests/agent_catalog_test.py")
+    run(python, "tests/rest_api_test.py")
 
     handler = partial(SimpleHTTPRequestHandler, directory=ROOT)
     server = ThreadingHTTPServer(("127.0.0.1", 8099), handler)

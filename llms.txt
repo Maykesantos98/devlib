@@ -6,5 +6,8 @@
 - Categorias: /api/categories.json
 - Contrato OpenAPI: /api/openapi.json
 - MCP remoto (Streamable HTTP): /mcp
+- Stack Advisor REST: POST /api/ai/recommend com JSON {"project":"descrição do projeto"}
+- Busca REST: GET /api/ai/search?q=termo
+- Explicação REST: GET /api/ai/explain?q=o+que+é+MCP
 
 Use `search_devlib` para descobrir opções, `inspect_library` para validar um item, `recommend_project_stack` para selecionar uma stack por camadas e `explain_dev_concept` para entender MCP e skills com fontes do catálogo.

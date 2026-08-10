@@ -16,6 +16,9 @@ def render() -> dict[str, str]:
         "/api/categories.json": {"get": {"summary": "Categorias e totais", "responses": {"200": {"description": "Categorias"}}}},
         "/llms.txt": {"get": {"summary": "Instruções de descoberta para LLMs", "responses": {"200": {"description": "Guia"}}}},
         "/mcp": {"post": {"summary": "MCP Streamable HTTP", "responses": {"200": {"description": "Resposta MCP"}}}}
+        ,"/api/ai/recommend": {"post": {"summary": "Recomenda stack fundamentada", "responses": {"200": {"description": "Stack por camadas"}, "400": {"description": "Entrada inválida"}}}}
+        ,"/api/ai/search": {"get": {"summary": "Busca dinâmica no catálogo", "responses": {"200": {"description": "Resultados"}}}}
+        ,"/api/ai/explain": {"get": {"summary": "Explica conceitos com fontes", "responses": {"200": {"description": "Explicação fundamentada"}}}}
     }}
     return {"api/catalog.json": json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", "api/categories.json": json.dumps(categories, ensure_ascii=False, indent=2) + "\n", "api/openapi.json": json.dumps(openapi, ensure_ascii=False, indent=2) + "\n"}
 
