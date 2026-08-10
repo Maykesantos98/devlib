@@ -21,7 +21,7 @@ class StaticProductionContract(unittest.TestCase):
     def test_stack_advisor_renders_quality_analysis_sections(self):
         script = (ROOT / "js" / "integracoes.js").read_text(encoding="utf-8")
         styles = (ROOT / "css" / "enhancements.css").read_text(encoding="utf-8")
-        for selector in ("advisor-summary", "advisor-requirements", "advisor-insights", "advisor-questions"):
+        for selector in ("advisor-summary", "advisor-requirements", "advisor-blueprint", "advisor-insights", "advisor-questions"):
             self.assertIn(selector, script)
             self.assertIn(selector, styles)
 

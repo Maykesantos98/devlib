@@ -43,6 +43,20 @@ class AgentCatalogTest(unittest.TestCase):
         self.assertNotIn("Ali Imam Components", [row["name"] for row in result["recommendations"][:3]])
         self.assertEqual([], result["missing_layers"])
 
+    def test_fullstack_blueprint_is_deep_actionable_and_links_repositories(self):
+        result = recommend_stack("Quero criar uma plataforma web completa", limit=15)
+        recommendations = result["recommendations"]
+        frontend = [row for row in recommendations if row["layer"] == "frontend"]
+
+        self.assertGreaterEqual(len(recommendations), 10)
+        self.assertGreaterEqual(len(frontend), 2)
+        self.assertTrue(all(row["url"].startswith("https://github.com/") for row in recommendations))
+        self.assertTrue(all(row["role"] and row["reason"] and row["adoption"] in {"principal", "complementar"} for row in recommendations))
+        self.assertTrue(result["architecture"])
+        self.assertTrue(result["implementation_steps"])
+        self.assertTrue(result["alternatives"])
+        self.assertIn("frontend", result["alternatives"])
+
     def test_devops_uses_catalog_operations_tools_not_generic_directory(self):
         result = recommend_stack("preciso de DevOps, CI e observabilidade", limit=5)
         names = {row["name"] for row in result["recommendations"]}
