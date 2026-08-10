@@ -25,7 +25,11 @@ class DevlibJourneys(unittest.TestCase):
         page.route("**/api/ai/recommend", lambda route: route.fulfill(
             status=200,
             content_type="application/json",
-            body='{"engine":"local","recommendations":[{"name":"Next.js","url":"https://nextjs.org/","layer":"frontend","reason":"Cobre a camada frontend solicitada."}]}'
+            body='{"schema_version":"2","engine":"local","summary":"Arquitetura inicial fundamentada.",'
+                 '"requirements":[{"id":"payments","label":"pagamentos e cobrança","coverage":"architecture_decision","layers":["backend"]}],'
+                 '"tradeoffs":["Controle versus velocidade de entrega."],"risks":["Webhooks exigem idempotência."],'
+                 '"next_questions":["Quais moedas serão aceitas?"],'
+                 '"recommendations":[{"name":"Next.js","url":"https://nextjs.org/","layer":"frontend","reason":"Next.js foi priorizado para a interface."}]}'
         ))
         try:
             page.goto(f"{BASE_URL}/integracoes.html", wait_until="networkidle")
@@ -33,6 +37,10 @@ class DevlibJourneys(unittest.TestCase):
             page.get_by_role("button", name="Montar minha stack").click()
             page.get_by_role("heading", name="Stack recomendada").wait_for(state="visible")
             self.assertIn("Next.js", page.locator(".advisor-grid a").inner_text())
+            self.assertIn("Arquitetura inicial fundamentada", page.locator(".advisor-summary").inner_text())
+            self.assertIn("pagamentos e cobrança", page.locator(".advisor-requirements").inner_text())
+            self.assertIn("Controle versus velocidade", page.locator(".advisor-insights").inner_text())
+            self.assertIn("Quais moedas", page.locator(".advisor-questions").inner_text())
         finally:
             context.close()
 

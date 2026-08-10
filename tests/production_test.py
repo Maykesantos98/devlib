@@ -18,6 +18,13 @@ class StaticProductionContract(unittest.TestCase):
         self.assertIn('/api/ai/recommend', hub)
         self.assertIn('href="integracoes.html"', (ROOT / "index.html").read_text(encoding="utf-8"))
 
+    def test_stack_advisor_renders_quality_analysis_sections(self):
+        script = (ROOT / "js" / "integracoes.js").read_text(encoding="utf-8")
+        styles = (ROOT / "css" / "enhancements.css").read_text(encoding="utf-8")
+        for selector in ("advisor-summary", "advisor-requirements", "advisor-insights", "advisor-questions"):
+            self.assertIn(selector, script)
+            self.assertIn(selector, styles)
+
     def test_home_hero_uses_product_focused_message(self):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("A stack certa", home)
