@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from agent.catalog_core import get_library, list_categories, recommend_stack, search_catalog
+from agent.catalog_core import explain_concept, get_library, list_categories, recommend_stack, search_catalog
 
 
 class AgentCatalogTest(unittest.TestCase):
@@ -32,6 +32,28 @@ class AgentCatalogTest(unittest.TestCase):
         result = recommend_stack("SaaS com agentes, Next.js, Postgres e segurança", limit=10)
         self.assertTrue(result["recommendations"])
         self.assertTrue(all(row["name"] in self.names and row["reason"] for row in result["recommendations"]))
+
+    def test_fullstack_recommendation_covers_requested_layers_without_noise(self):
+        result = recommend_stack("SaaS Next.js com agentes, PostgreSQL, testes e segurança", limit=10)
+        layers = {row["layer"] for row in result["recommendations"]}
+        self.assertTrue({"frontend", "backend", "database", "testing", "security", "agents"}.issubset(layers))
+        self.assertNotIn("AgenticTrading", {row["name"] for row in result["recommendations"]})
+        self.assertNotIn("Ali Imam Components", [row["name"] for row in result["recommendations"][:3]])
+        self.assertEqual([], result["missing_layers"])
+
+    def test_concepts_are_explained_with_grounded_sources(self):
+        mcp = explain_concept("o que é MCP")
+        self.assertEqual("mcp", mcp["concept"])
+        self.assertIn("Model Context Protocol", mcp["answer"])
+        self.assertTrue(all(source["name"] in self.names for source in mcp["sources"]))
+        skills = explain_concept("onde encontro skills para agentes")
+        self.assertEqual("skills", skills["concept"])
+        self.assertEqual("skills.sh", skills["sources"][0]["name"])
+
+    def test_search_ignores_portuguese_stopwords_and_uses_exact_tokens(self):
+        names = [row["name"] for row in search_catalog("backend API PostgreSQL", limit=5)]
+        self.assertIn("Supabase", names[:3])
+        self.assertNotIn("MediaPipe", names)
 
     def test_categories_and_openapi_contract(self):
         self.assertEqual(133, sum(row["count"] for row in list_categories()))
