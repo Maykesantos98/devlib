@@ -44,7 +44,6 @@
     intro
       .from('.nav-inner', { y: -18, opacity: 0, duration: 0.55 })
       .from('.hero-pill', { y: 18, opacity: 0, duration: 0.45 }, '-=0.25')
-      .from('.hero-title .word', { yPercent: 110, opacity: 0, duration: 0.72, stagger: 0.065 }, '-=0.25')
       .from('.hero-lead, .home-search, .home-actions', { y: 20, opacity: 0, duration: 0.55, stagger: 0.08 }, '-=0.4')
       .from('.home-preview', { x: 28, opacity: 0, duration: 0.65 }, '-=0.5');
 

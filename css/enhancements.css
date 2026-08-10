@@ -42,6 +42,13 @@ body {
   letter-spacing: -0.065em;
 }
 
+/* Keep the headline readable immediately; surrounding elements carry motion. */
+.motion-ready .hero-title .word {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
 .hero-title .line-grad,
 .section-title em {
   background: linear-gradient(105deg, #f2f2f2 12%, var(--accent) 58%, #70f6ca 92%);
