@@ -384,7 +384,7 @@
           <button class="search-clear" id="searchClear" type="button" aria-label="Limpar busca" hidden>×</button>
           <kbd>⌘ K</kbd>
         </label>
-        <span class="count"><b id="visibleCount">133</b>bibliotecas</span>
+        <span class="count" aria-live="polite" aria-atomic="true"><b id="visibleCount">133</b>bibliotecas</span>
       </div>
 
       <div class="filters" role="group" aria-label="Filtrar por categoria" style="margin-bottom: 2rem;">
@@ -1428,7 +1428,9 @@
       <!-- CATALOG:GENERATED:END -->
 
       <div class="empty hidden" id="emptyState" role="status">
-        <b>Nada encontrado para essa busca.</b> Tente outro termo ou limpe o filtro.
+        <b>Nada encontrado para essa busca.</b>
+        <span>Tente outro termo ou volte ao catálogo completo.</span>
+        <button class="btn ghost" id="resetCatalog" type="button">Mostrar todas as bibliotecas</button>
       </div>
 
     </section>
@@ -1563,7 +1565,7 @@
     <div class="cmdk-box">
       <div class="cmdk-input-row">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input id="cmdkInput" type="text" placeholder="Buscar biblioteca ou comando…" autocomplete="off" spellcheck="false" aria-controls="cmdkList">
+        <input id="cmdkInput" type="search" aria-label="Buscar comandos e bibliotecas" placeholder="Buscar biblioteca ou comando…" autocomplete="off" spellcheck="false" aria-controls="cmdkList">
         <kbd>esc</kbd>
       </div>
       <ul class="cmdk-list" id="cmdkList" role="listbox" aria-label="Resultados"></ul>

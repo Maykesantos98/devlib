@@ -105,6 +105,18 @@ body {
   display: none;
 }
 
+.empty:not(.hidden) {
+  display: grid;
+  justify-items: start;
+  gap: 0.65rem;
+  padding: 1.25rem;
+  border: 1px dashed var(--border-bright);
+  border-radius: 12px;
+  background: rgb(var(--accent-rgb) / 0.035);
+}
+
+.empty .btn { margin-top: 0.25rem; }
+
 .nav-toggle {
   display: none;
   width: 44px;

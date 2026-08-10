@@ -59,7 +59,7 @@ class DevlibJourneys(unittest.TestCase):
             page.wait_for_timeout(250)
             self.assertEqual(page.locator("#visibleCount").inner_text(), "0")
             self.assertEqual(page.locator(".count").get_attribute("aria-live"), "polite")
-            empty = page.get_by_role("status")
+            empty = page.locator("#emptyState")
             self.assertTrue(empty.is_visible())
             empty.get_by_role("button", name="Mostrar todas as bibliotecas").click()
             self.assertEqual(search.input_value(), "")

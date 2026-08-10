@@ -22,6 +22,7 @@
   const filterBtns  = document.querySelectorAll('.filter');
   const visibleEl   = document.getElementById('visibleCount');
   const emptyEl     = document.getElementById('emptyState');
+  const resetCatalog = document.getElementById('resetCatalog');
   const toTopBtn    = document.getElementById('toTop');
   const yearEl      = document.getElementById('year');
   const counters    = document.querySelectorAll('[data-count]');
@@ -570,6 +571,13 @@
     searchInput.focus();
   });
 
+  resetCatalog?.addEventListener('click', () => {
+    searchInput.value = '';
+    if (searchClear) searchClear.hidden = true;
+    document.querySelector('.filter[data-filter="all"]')?.click();
+    searchInput.focus();
+  });
+
   /* ─── Keyboard shortcuts ──────────────────────────────── */
   // ⌘K → focus search   ·   ? → shortcuts dialog
   // Esc → clear search / close dialog
@@ -597,6 +605,7 @@
 
     // Esc → close dialog OR clear search
     if (e.key === 'Escape') {
+      if (cmdk?.open) { cmdk.close(); return; }
       if (dialog?.open) { dialog.close(); return; }
       if (document.activeElement === searchInput) {
         searchInput.value = '';
