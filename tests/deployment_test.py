@@ -27,6 +27,10 @@ class VpsDeploymentContract(unittest.TestCase):
             "location = /healthz",
         ):
             self.assertIn(expected, config)
+        self.assertGreaterEqual(
+            config.count("include /etc/nginx/snippets/security-headers.conf;"),
+            4,
+        )
 
     def test_compose_drops_privileges_and_defines_health(self):
         compose = (ROOT / "compose.yml").read_text(encoding="utf-8")
