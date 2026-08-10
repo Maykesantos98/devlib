@@ -14,6 +14,8 @@ class StaticProductionContract(unittest.TestCase):
         self.assertIn("/api/catalog.json", hub)
         self.assertIn("/mcp", hub)
         self.assertIn("data-copy", hub)
+        self.assertIn('id="stack-advisor"', hub)
+        self.assertIn('/api/ai/recommend', hub)
         self.assertIn('href="integracoes.html"', (ROOT / "index.html").read_text(encoding="utf-8"))
 
     def test_home_hero_uses_product_focused_message(self):

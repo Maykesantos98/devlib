@@ -43,6 +43,12 @@ class AgentCatalogTest(unittest.TestCase):
         self.assertNotIn("Ali Imam Components", [row["name"] for row in result["recommendations"][:3]])
         self.assertEqual([], result["missing_layers"])
 
+    def test_devops_uses_catalog_operations_tools_not_generic_directory(self):
+        result = recommend_stack("preciso de DevOps, CI e observabilidade", limit=5)
+        names = {row["name"] for row in result["recommendations"]}
+        self.assertNotIn("free-for-dev", names)
+        self.assertTrue(names & {"Renovate", "OpenTelemetry JS", "Grafana"})
+
     def test_concepts_are_explained_with_grounded_sources(self):
         mcp = explain_concept("o que é MCP")
         self.assertEqual("mcp", mcp["concept"])
