@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Central DEVLIB para conectar Claude Code, Codex e outros agentes à API e ao MCP do catálogo.">
+  <meta name="theme-color" content="#07080F">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <title>DEVLIB · API & MCP para agentes</title>
+  <link rel="icon" type="image/png" href="public/favicon.png">
+  <link rel="stylesheet" href="css/tokens.css"><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/layout.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/motion.css"><link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="css/enhancements.css?v=devlib-v07">
+  <script src="js/script.js?v=devlib-v06" defer></script><script src="js/integracoes.js?v=devlib-v01" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#integracoes">Pular para as integrações</a>
+  <div class="aurora" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div><div class="grid-bg" aria-hidden="true"></div>
+  <header class="nav"><div class="nav-inner">
+    <a href="index.html" class="logo"><img class="logo-mark-img" src="public/favicon.png" alt="" width="30" height="30"><b>DEVLIB</b><span>· agents</span></a>
+    <nav class="nav-links nav-menu" id="primary-menu" aria-label="Navegação principal"><div class="nav-group"><span>DEVLIB</span><a href="index.html">Acervo</a><a href="integracoes.html" class="is-active">API & MCP</a><a href="jogos.html">Jogos</a></div></nav>
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu"><span></span><span></span></button>
+    <a class="nav-cta" href="#clientes"><span>Conectar agente</span><kbd>↘</kbd></a>
+  </div></header>
+  <main id="integracoes" class="agent-hub shell">
+    <section class="agent-hero">
+      <p class="hero-pill"><span class="pulse-dot"></span>API pública + MCP remoto</p>
+      <h1>API &amp; MCP para agentes.<br><em>Escolhe sem inventar.</em></h1>
+      <p>Claude Code, Codex e qualquer cliente compatível com MCP podem pesquisar as 133 ferramentas, inspecionar cada item e receber uma stack explicada para o projeto.</p>
+      <div class="agent-status"><span><b>133</b> recursos</span><span><b>4</b> tools MCP</span><span><b>1</b> fonte de verdade</span></div>
+    </section>
+
+    <section class="agent-section" id="endpoints"><div class="section-head"><span>01</span><div><h2>Endpoints da API</h2><p>Leitura pública, estática e rápida. Ideal para crawlers, scripts e RAG.</p></div></div>
+      <div class="endpoint-grid">
+        <a href="api/catalog.json" class="endpoint-card"><code>GET</code><div><b>/api/catalog.json</b><small>Catálogo completo, sem markup HTML</small></div><span>↗</span></a>
+        <a href="api/categories.json" class="endpoint-card"><code>GET</code><div><b>/api/categories.json</b><small>Categorias e quantidades</small></div><span>↗</span></a>
+        <a href="api/openapi.json" class="endpoint-card"><code>GET</code><div><b>/api/openapi.json</b><small>Contrato OpenAPI 3.1</small></div><span>↗</span></a>
+        <a href="llms.txt" class="endpoint-card"><code>GET</code><div><b>/llms.txt</b><small>Descoberta e instruções para LLMs</small></div><span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="agent-section" id="tools"><div class="section-head"><span>02</span><div><h2>Ferramentas disponíveis</h2><p>O MCP responde em <code>/mcp</code> via Streamable HTTP e nunca recomenda fora do catálogo.</p></div></div>
+      <div class="tool-grid"><article><b>search_devlib</b><p>Busca por necessidade, tag ou categoria.</p></article><article><b>inspect_library</b><p>Valida nome, descrição, tags e URL.</p></article><article><b>catalog_categories</b><p>Lista as nove áreas do acervo.</p></article><article><b>recommend_project_stack</b><p>Cria seleção fundamentada e explica cada escolha.</p></article></div>
+    </section>
+
+    <section class="agent-section" id="clientes"><div class="section-head"><span>03</span><div><h2>Conectar seu agente</h2><p>Troque <code>devlib.seudominio.com</code> pelo domínio definitivo da VPS. A senha fica somente no cliente.</p></div></div>
+      <div class="client-grid">
+        <article class="client-card"><div class="client-title"><span>CC</span><div><h3>Claude Code</h3><p>Comando direto</p></div></div><div class="code-wrap"><button type="button" data-copy="#claude-code">Copiar</button><pre id="claude-code"><code>claude mcp add --transport http devlib https://devlib.seudominio.com/mcp</code></pre></div></article>
+        <article class="client-card"><div class="client-title"><span>CX</span><div><h3>Codex</h3><p>Configuração TOML</p></div></div><div class="code-wrap"><button type="button" data-copy="#codex-config">Copiar</button><pre id="codex-config"><code>[mcp_servers.devlib]
+url = "https://devlib.seudominio.com/mcp"</code></pre></div></article>
+        <article class="client-card client-wide"><div class="client-title"><span>M</span><div><h3>Clientes MCP</h3><p>Cursor, VS Code e outros clientes com servidor HTTP remoto</p></div></div><div class="code-wrap"><button type="button" data-copy="#generic-config">Copiar</button><pre id="generic-config"><code>{
+  "mcpServers": {
+    "devlib": {
+      "type": "http",
+      "url": "https://devlib.seudominio.com/mcp"
+    }
+  }
+}</code></pre></div></article>
+      </div>
+      <aside class="security-note"><b>Segurança</b><p>O endpoint da VPS usa HTTPS e autenticação. Nunca coloque senha ou token em arquivo versionado; use o armazenamento seguro ou variável de ambiente do cliente.</p></aside>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell"><div class="footer-brand"><img src="public/favicon.png" alt="" width="28" height="28"><b>DEVLIB</b></div><p>Catálogo legível por humanos e agentes.</p></div></footer>
+</body></html>

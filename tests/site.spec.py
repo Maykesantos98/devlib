@@ -7,6 +7,18 @@ BASE_URL = "http://127.0.0.1:8099"
 
 
 class DevlibJourneys(unittest.TestCase):
+    def test_agent_integration_hub_is_visible_and_complete(self):
+        context, page, errors = self.open_page("/integracoes.html")
+        try:
+            self.assertIn("API & MCP", page.locator("h1").inner_text())
+            self.assertEqual(4, page.locator(".endpoint-card").count())
+            self.assertEqual(4, page.locator(".tool-grid article").count())
+            self.assertTrue(page.get_by_role("heading", name="Claude Code").is_visible())
+            self.assertTrue(page.get_by_role("heading", name="Codex").is_visible())
+            self.assertEqual([], errors)
+        finally:
+            context.close()
+
     @classmethod
     def setUpClass(cls):
         cls.playwright = sync_playwright().start()

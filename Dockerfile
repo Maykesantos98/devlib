@@ -2,7 +2,7 @@ FROM nginxinc/nginx-unprivileged:1.29.1-alpine
 
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 COPY deploy/security-headers.conf /etc/nginx/snippets/security-headers.conf
-COPY index.html jogos.html 404.html robots.txt sitemap.xml .nojekyll /usr/share/nginx/html/
+COPY index.html jogos.html integracoes.html 404.html robots.txt sitemap.xml .nojekyll /usr/share/nginx/html/
 COPY css /usr/share/nginx/html/css
 COPY js /usr/share/nginx/html/js
 COPY public /usr/share/nginx/html/public
