@@ -12,6 +12,10 @@
   <meta property="og:title" content="DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes" />
   <meta property="og:description" content="Acervo curado de 133 bibliotecas, protocolos e skills para quem constrói com agentes." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://maykesantos98.github.io/devlib/public/logo.png" />
+  <meta property="og:url" content="https://maykesantos98.github.io/devlib/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://maykesantos98.github.io/devlib/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +31,12 @@
   <link rel="stylesheet" href="css/components.css?v=devlib-v05">
   <link rel="stylesheet" href="css/motion.css?v=devlib-v05">
   <link rel="stylesheet" href="css/responsive.css?v=devlib-v05">
+  <link rel="stylesheet" href="css/enhancements.css?v=devlib-v06">
 
-  <script src="js/script.js?v=devlib-v05" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js" defer></script>
+  <script src="js/script.js?v=devlib-v06" defer></script>
+  <script src="js/motion-gsap.js?v=devlib-v06" defer></script>
 
   <!-- Safety net: if JS is disabled, force-reveal content (cards start hidden
        for the scroll-reveal; no-JS + no view-timeline would blank the page). -->
@@ -65,7 +73,7 @@
         <b>DEVLIB</b>
         <span>·&nbsp;v02</span>
       </a>
-      <nav class="nav-links nav-menu" aria-label="Navegação principal">
+      <nav class="nav-links nav-menu" id="primary-menu" aria-label="Navegação principal">
         <div class="nav-group">
           <span>Explore</span>
           <a href="#acervo">Componentes</a>
@@ -83,6 +91,9 @@
           <a href="jogos.html">Jogos</a>
         </div>
       </nav>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
+        <span></span><span></span>
+      </button>
       <button class="nav-cta nav-search" type="button" data-open-command data-magnetic>
         <span>Search</span>
         <kbd>⌘K</kbd>
@@ -370,6 +381,7 @@
         <label class="search">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
           <input id="searchInput" type="search" placeholder="Buscar — react, mcp, postgres…" autocomplete="off" aria-label="Buscar no acervo">
+          <button class="search-clear" id="searchClear" type="button" aria-label="Limpar busca" hidden>×</button>
           <kbd>⌘ K</kbd>
         </label>
         <span class="count"><b id="visibleCount">133</b>bibliotecas</span>

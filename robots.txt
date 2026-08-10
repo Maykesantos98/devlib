@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maykesantos98.github.io/devlib/sitemap.xml

@@ -18,6 +18,7 @@
   const tocItems    = document.querySelectorAll('.toc a');
   const chapters    = document.querySelectorAll('.chapter-bar');
   const searchInput = document.getElementById('searchInput');
+  const searchClear = document.getElementById('searchClear');
   const filterBtns  = document.querySelectorAll('.filter');
   const visibleEl   = document.getElementById('visibleCount');
   const emptyEl     = document.getElementById('emptyState');
@@ -557,8 +558,16 @@
 
   let searchDebounce;
   searchInput?.addEventListener('input', () => {
+    if (searchClear) searchClear.hidden = !searchInput.value;
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(applyFilters, 120);
+  });
+
+  searchClear?.addEventListener('click', () => {
+    searchInput.value = '';
+    searchClear.hidden = true;
+    applyFilters();
+    searchInput.focus();
   });
 
   /* ─── Keyboard shortcuts ──────────────────────────────── */

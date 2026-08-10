@@ -17,9 +17,9 @@ O projeto e um site estatico feito com HTML, CSS e JavaScript vanilla. Nao ha de
 ```text
 .
 |-- index.html          # Pagina principal
-|-- Dev2.html           # Variante/backup da pagina
 |-- css/                # CSS modular
 |-- js/                 # JavaScript principal
+|-- tests/              # Jornadas automatizadas no navegador
 `-- public/             # Logo e favicon
 ```
 
@@ -44,9 +44,18 @@ Depois acesse `http://localhost:8080`.
 ## Como editar
 
 1. Edite os cards em `index.html`.
-2. Mantenha `Dev2.html` sincronizado se ele continuar sendo usado como variante.
-3. Atualize os contadores das secoes quando adicionar ou remover itens.
-4. Se alterar estilos ou scripts de origem em `css/*.css` ou `js/script.js`, confira a pagina principal e a variante antes de publicar.
+2. Atualize os contadores das secoes quando adicionar ou remover itens.
+3. Se alterar estilos ou scripts em `css/*.css` ou `js/*.js`, execute as jornadas automatizadas antes de publicar.
+
+## Testes
+
+Com o Playwright para Python e o Chromium instalados, inicie um servidor na porta 8099 e execute:
+
+```bash
+python tests/site.spec.py
+```
+
+O GitHub Actions repete essas jornadas em todo push e pull request.
 
 ## Deploy
 

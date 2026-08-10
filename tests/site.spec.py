@@ -54,8 +54,9 @@ class DevlibJourneys(unittest.TestCase):
     def test_mobile_navigation_is_operable(self):
         context, page, errors = self.open_page(width=390, height=844)
         try:
-            menu = page.get_by_role("button", name="Abrir menu")
+            menu = page.locator(".nav-toggle")
             self.assertTrue(menu.is_visible())
+            self.assertEqual(menu.get_attribute("aria-label"), "Abrir menu")
             menu.click()
             self.assertTrue(page.locator(".nav-menu").is_visible())
             self.assertEqual(menu.get_attribute("aria-expanded"), "true")
