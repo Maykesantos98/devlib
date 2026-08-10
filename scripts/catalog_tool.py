@@ -172,6 +172,13 @@ def promote() -> None:
             by_name[item["name"].casefold()] = item
         promoted += 1
     payload["categoryCounts"] = dict(Counter(item["category"] for item in payload["items"]))
+    for chapter in payload["chapters"]:
+        count = payload["categoryCounts"].get(chapter["id"], 0)
+        chapter["headerMarkup"] = re.sub(
+            r'<span class="count-pill">\d+ itens</span>',
+            f'<span class="count-pill">{count} itens</span>',
+            chapter["headerMarkup"],
+        )
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     intake["items"] = [item for item in intake["items"] if item.get("status") not in {"ready", "update"}]
     INTAKE_PATH.write_text(json.dumps(intake, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "categoryCounts": {
-    "kit": 14,
-    "agents": 17,
-    "mcp": 10,
-    "interface": 41,
-    "server": 20,
+    "kit": 19,
+    "agents": 18,
+    "mcp": 12,
+    "interface": 43,
+    "server": 21,
     "guard": 14,
     "run": 11,
     "ship": 16,
@@ -14,23 +14,23 @@
   "chapters": [
     {
       "id": "kit",
-      "headerMarkup": "<!-- §01 KIT -->\n      <div class=\"chapter-bar\" data-chapter=\"kit\" id=\"kit\">\n        <span class=\"chapter-num\">§01 · Kit</span>\n        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>\n        <span class=\"count-pill\">14 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §01 KIT -->\n      <div class=\"chapter-bar\" data-chapter=\"kit\" id=\"kit\">\n        <span class=\"chapter-num\">§01 · Kit</span>\n        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>\n        <span class=\"count-pill\">19 itens</span>\n      </div>"
     },
     {
       "id": "agents",
-      "headerMarkup": "<!-- §02 AGENTES -->\n      <div class=\"chapter-bar\" data-chapter=\"agents\" id=\"agentes\">\n        <span class=\"chapter-num\">§02 · Agentes</span>\n        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>\n        <span class=\"count-pill\">17 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §02 AGENTES -->\n      <div class=\"chapter-bar\" data-chapter=\"agents\" id=\"agentes\">\n        <span class=\"chapter-num\">§02 · Agentes</span>\n        <h3>Frameworks &amp; SDKs <em>— escolha seu runtime.</em></h3>\n        <span class=\"count-pill\">18 itens</span>\n      </div>"
     },
     {
       "id": "mcp",
-      "headerMarkup": "<!-- §03 MCP -->\n      <div class=\"chapter-bar\" data-chapter=\"mcp\" id=\"mcp\">\n        <span class=\"chapter-num\">§03 · MCP</span>\n        <h3>Model Context Protocol <em>— a fiação.</em></h3>\n        <span class=\"count-pill\">10 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §03 MCP -->\n      <div class=\"chapter-bar\" data-chapter=\"mcp\" id=\"mcp\">\n        <span class=\"chapter-num\">§03 · MCP</span>\n        <h3>Model Context Protocol <em>— a fiação.</em></h3>\n        <span class=\"count-pill\">12 itens</span>\n      </div>"
     },
     {
       "id": "interface",
-      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">41 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">43 itens</span>\n      </div>"
     },
     {
       "id": "server",
-      "headerMarkup": "<!-- §05 SERVIDOR -->\n      <div class=\"chapter-bar\" data-chapter=\"server\" id=\"servidor\">\n        <span class=\"chapter-num\">§05 · Servidor</span>\n        <h3>Infra &amp; APIs <em>— serviços, dados e automação.</em></h3>\n        <span class=\"count-pill\">20 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §05 SERVIDOR -->\n      <div class=\"chapter-bar\" data-chapter=\"server\" id=\"servidor\">\n        <span class=\"chapter-num\">§05 · Servidor</span>\n        <h3>Infra &amp; APIs <em>— serviços, dados e automação.</em></h3>\n        <span class=\"count-pill\">21 itens</span>\n      </div>"
     },
     {
       "id": "guard",
@@ -3061,6 +3061,227 @@
         "x3"
       ],
       "markup": "<article class=\"card x3\" data-kind=\"server mcp\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>WhatsApp HTTP API</span><span class=\"card-badge\">open source</span></div>\n          <h3 class=\"card-title\">WAHA</h3>\n          <p class=\"card-body\">API HTTP de WhatsApp self-hosted para enviar e receber textos, imagens, vídeos e áudios, com documentação Swagger e instalação rápida em servidor próprio.</p>\n          <div class=\"card-tags\"><span>WhatsApp</span><span>HTTP API</span><span>self-hosted</span></div>\n          <a class=\"card-link\" href=\"https://waha.devlike.pro/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "System Design 101",
+      "url": "https://github.com/ByteByteGoHq/system-design-101",
+      "description": "Coleção visual que explica sistemas complexos em termos simples, cobrindo APIs, bancos, redes, arquitetura e preparação para entrevistas de system design.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "server"
+      ],
+      "tone": "blue",
+      "tags": [
+        "system design",
+        "arquitetura",
+        "estudo"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit server\" data-tone=\"blue\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Visual system design guide</span><span class=\"card-badge\">101</span></div>\n          <h3 class=\"card-title\">System Design 101</h3>\n          <p class=\"card-body\">Coleção visual que explica sistemas complexos em termos simples, cobrindo APIs, bancos, redes, arquitetura e preparação para entrevistas de system design.</p>\n          <div class=\"card-tags\"><span>system design</span><span>arquitetura</span><span>estudo</span></div>\n          <a class=\"card-link\" href=\"https://github.com/ByteByteGoHq/system-design-101\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Haikei",
+      "url": "https://haikei.app/",
+      "description": "Gerador visual gratuito de assets SVG e PNG com ondas, blobs, gradientes, grids e padrões personalizáveis para interfaces, apresentações e conteúdo.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend"
+      ],
+      "tone": "violet",
+      "tags": [
+        "SVG",
+        "backgrounds",
+        "generator"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface frontend\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Visual asset generator</span><span class=\"card-badge\">free</span></div>\n          <h3 class=\"card-title\">Haikei</h3>\n          <p class=\"card-body\">Gerador visual gratuito de assets SVG e PNG com ondas, blobs, gradientes, grids e padrões personalizáveis para interfaces, apresentações e conteúdo.</p>\n          <div class=\"card-tags\"><span>SVG</span><span>backgrounds</span><span>generator</span></div>\n          <a class=\"card-link\" href=\"https://haikei.app/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Claude Code Templates",
+      "url": "https://aitmpl.com/",
+      "description": "Biblioteca modular de templates, agentes, comandos, MCPs, hooks e configurações pré-construídas para ampliar fluxos de desenvolvimento com Claude Code.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "templates",
+        "Claude Code",
+        "components"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Claude Code component library</span><span class=\"card-badge\">400+ agents</span></div>\n          <h3 class=\"card-title\">Claude Code Templates</h3>\n          <p class=\"card-body\">Biblioteca modular de templates, agentes, comandos, MCPs, hooks e configurações pré-construídas para ampliar fluxos de desenvolvimento com Claude Code.</p>\n          <div class=\"card-tags\"><span>templates</span><span>Claude Code</span><span>components</span></div>\n          <a class=\"card-link\" href=\"https://aitmpl.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OpenManus",
+      "url": "https://github.com/FoundationAgents/OpenManus",
+      "description": "Framework open source em Python para construir e executar agentes gerais com ferramentas, planejamento, sandbox e suporte a fluxos MCP.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "general agent",
+        "Python",
+        "MCP"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"agents kit\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>General AI agent · MIT</span><span class=\"card-badge\">open source</span></div>\n          <h3 class=\"card-title\">OpenManus</h3>\n          <p class=\"card-body\">Framework open source em Python para construir e executar agentes gerais com ferramentas, planejamento, sandbox e suporte a fluxos MCP.</p>\n          <div class=\"card-tags\"><span>general agent</span><span>Python</span><span>MCP</span></div>\n          <a class=\"card-link\" href=\"https://github.com/FoundationAgents/OpenManus\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Sequential Thinking",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+      "description": "Servidor MCP de referência para decompor problemas em etapas, revisar hipóteses, ramificar alternativas e ajustar dinamicamente o processo de raciocínio.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "MCP",
+        "reasoning",
+        "planning"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Reference MCP server · MIT</span><span class=\"card-badge\">official</span></div>\n          <h3 class=\"card-title\">Sequential Thinking</h3>\n          <p class=\"card-body\">Servidor MCP de referência para decompor problemas em etapas, revisar hipóteses, ramificar alternativas e ajustar dinamicamente o processo de raciocínio.</p>\n          <div class=\"card-tags\"><span>MCP</span><span>reasoning</span><span>planning</span></div>\n          <a class=\"card-link\" href=\"https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Sentry MCP",
+      "url": "https://mcp.sentry.dev/",
+      "description": "Servidor MCP oficial do Sentry para conectar agentes a organizações e projetos, investigar erros e operar dados de observabilidade com autenticação OAuth.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "guard"
+      ],
+      "tone": "red",
+      "tags": [
+        "Sentry",
+        "observability",
+        "OAuth"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"mcp guard\" data-tone=\"red\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Remote MCP server · Sentry</span><span class=\"card-badge\">official</span></div>\n          <h3 class=\"card-title\">Sentry MCP</h3>\n          <p class=\"card-body\">Servidor MCP oficial do Sentry para conectar agentes a organizações e projetos, investigar erros e operar dados de observabilidade com autenticação OAuth.</p>\n          <div class=\"card-tags\"><span>Sentry</span><span>observability</span><span>OAuth</span></div>\n          <a class=\"card-link\" href=\"https://mcp.sentry.dev/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "UI Ball Loaders",
+      "url": "https://uiball.com/",
+      "description": "Coleção gratuita e open source de loaders e spinners leves para interfaces web, disponíveis como componentes fáceis de instalar e personalizar.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "loaders",
+        "spinners",
+        "web components"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface frontend\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Open-source UI loaders</span><span class=\"card-badge\">LDRS</span></div>\n          <h3 class=\"card-title\">UI Ball Loaders</h3>\n          <p class=\"card-body\">Coleção gratuita e open source de loaders e spinners leves para interfaces web, disponíveis como componentes fáceis de instalar e personalizar.</p>\n          <div class=\"card-tags\"><span>loaders</span><span>spinners</span><span>web components</span></div>\n          <a class=\"card-link\" href=\"https://uiball.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "OmniRoute",
+      "url": "https://omniroute.online/",
+      "description": "Gateway open source para múltiplos provedores de LLM com roteamento inteligente, controle de cotas e custos, além de servidores MCP e A2A integrados.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "mcp",
+        "agents"
+      ],
+      "tone": "blue",
+      "tags": [
+        "AI gateway",
+        "routing",
+        "A2A"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"server mcp agents\" data-tone=\"blue\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Multi-provider AI gateway</span><span class=\"card-badge\">open source</span></div>\n          <h3 class=\"card-title\">OmniRoute</h3>\n          <p class=\"card-body\">Gateway open source para múltiplos provedores de LLM com roteamento inteligente, controle de cotas e custos, além de servidores MCP e A2A integrados.</p>\n          <div class=\"card-tags\"><span>AI gateway</span><span>routing</span><span>A2A</span></div>\n          <a class=\"card-link\" href=\"https://omniroute.online/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "description": "Plugin e conjunto de skills que orienta agentes a evitar over-engineering, reutilizar o que já existe e escrever apenas o mínimo necessário sem cortar segurança.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "YAGNI",
+        "simplicidade",
+        "code review"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Minimal-code agent skill · MIT</span><span class=\"card-badge\">less code</span></div>\n          <h3 class=\"card-title\">Ponytail</h3>\n          <p class=\"card-body\">Plugin e conjunto de skills que orienta agentes a evitar over-engineering, reutilizar o que já existe e escrever apenas o mínimo necessário sem cortar segurança.</p>\n          <div class=\"card-tags\"><span>YAGNI</span><span>simplicidade</span><span>code review</span></div>\n          <a class=\"card-link\" href=\"https://github.com/DietrichGebert/ponytail\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Claude Code Spec Workflow",
+      "url": "https://github.com/Pimzino/claude-code-spec-workflow",
+      "description": "Workflow estruturado para Claude Code que conduz features por requisitos, design, tarefas e implementação, além de um ciclo dedicado para correção de bugs.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "spec-driven",
+        "workflow",
+        "Claude Code"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Spec workflow · Claude Code</span><span class=\"card-badge\">structured</span></div>\n          <h3 class=\"card-title\">Claude Code Spec Workflow</h3>\n          <p class=\"card-body\">Workflow estruturado para Claude Code que conduz features por requisitos, design, tarefas e implementação, além de um ciclo dedicado para correção de bugs.</p>\n          <div class=\"card-tags\"><span>spec-driven</span><span>workflow</span><span>Claude Code</span></div>\n          <a class=\"card-link\" href=\"https://github.com/Pimzino/claude-code-spec-workflow\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Karpathy Guidelines",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "description": "Diretrizes para agentes de código baseadas em observações de Andrej Karpathy: pensar antes de editar, priorizar simplicidade, mudanças cirúrgicas e metas verificáveis.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "guidelines",
+        "simplicidade",
+        "TDD"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit agents\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Coding agent guidelines · MIT</span><span class=\"card-badge\">4 principles</span></div>\n          <h3 class=\"card-title\">Karpathy Guidelines</h3>\n          <p class=\"card-body\">Diretrizes para agentes de código baseadas em observações de Andrej Karpathy: pensar antes de editar, priorizar simplicidade, mudanças cirúrgicas e metas verificáveis.</p>\n          <div class=\"card-tags\"><span>guidelines</span><span>simplicidade</span><span>TDD</span></div>\n          <a class=\"card-link\" href=\"https://github.com/multica-ai/andrej-karpathy-skills\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     }
   ]
 }

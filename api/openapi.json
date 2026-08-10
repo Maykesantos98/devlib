@@ -10,7 +10,7 @@
         "summary": "Catálogo completo para agentes",
         "responses": {
           "200": {
-            "description": "154 recursos DEVLIB"
+            "description": "165 recursos DEVLIB"
           }
         }
       }

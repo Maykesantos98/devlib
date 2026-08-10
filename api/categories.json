@@ -3,23 +3,23 @@
   "categories": [
     {
       "id": "kit",
-      "count": 14
+      "count": 19
     },
     {
       "id": "agents",
-      "count": 17
+      "count": 18
     },
     {
       "id": "mcp",
-      "count": 10
+      "count": 12
     },
     {
       "id": "interface",
-      "count": 41
+      "count": 43
     },
     {
       "id": "server",
-      "count": 20
+      "count": 21
     },
     {
       "id": "guard",

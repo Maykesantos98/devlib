@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "total": 154,
+  "total": 165,
   "categoryCounts": {
-    "kit": 14,
-    "agents": 17,
-    "mcp": 10,
-    "interface": 41,
-    "server": 20,
+    "kit": 19,
+    "agents": 18,
+    "mcp": 12,
+    "interface": 43,
+    "server": 21,
     "guard": 14,
     "run": 11,
     "ship": 16,
@@ -2866,6 +2866,216 @@
         "WhatsApp",
         "HTTP API",
         "self-hosted"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "System Design 101",
+      "url": "https://github.com/ByteByteGoHq/system-design-101",
+      "description": "Coleção visual que explica sistemas complexos em termos simples, cobrindo APIs, bancos, redes, arquitetura e preparação para entrevistas de system design.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "server"
+      ],
+      "tone": "blue",
+      "tags": [
+        "system design",
+        "arquitetura",
+        "estudo"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Haikei",
+      "url": "https://haikei.app/",
+      "description": "Gerador visual gratuito de assets SVG e PNG com ondas, blobs, gradientes, grids e padrões personalizáveis para interfaces, apresentações e conteúdo.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend"
+      ],
+      "tone": "violet",
+      "tags": [
+        "SVG",
+        "backgrounds",
+        "generator"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Claude Code Templates",
+      "url": "https://aitmpl.com/",
+      "description": "Biblioteca modular de templates, agentes, comandos, MCPs, hooks e configurações pré-construídas para ampliar fluxos de desenvolvimento com Claude Code.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "templates",
+        "Claude Code",
+        "components"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "OpenManus",
+      "url": "https://github.com/FoundationAgents/OpenManus",
+      "description": "Framework open source em Python para construir e executar agentes gerais com ferramentas, planejamento, sandbox e suporte a fluxos MCP.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "general agent",
+        "Python",
+        "MCP"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Sequential Thinking",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+      "description": "Servidor MCP de referência para decompor problemas em etapas, revisar hipóteses, ramificar alternativas e ajustar dinamicamente o processo de raciocínio.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "MCP",
+        "reasoning",
+        "planning"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Sentry MCP",
+      "url": "https://mcp.sentry.dev/",
+      "description": "Servidor MCP oficial do Sentry para conectar agentes a organizações e projetos, investigar erros e operar dados de observabilidade com autenticação OAuth.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "guard"
+      ],
+      "tone": "red",
+      "tags": [
+        "Sentry",
+        "observability",
+        "OAuth"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "UI Ball Loaders",
+      "url": "https://uiball.com/",
+      "description": "Coleção gratuita e open source de loaders e spinners leves para interfaces web, disponíveis como componentes fáceis de instalar e personalizar.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "loaders",
+        "spinners",
+        "web components"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "OmniRoute",
+      "url": "https://omniroute.online/",
+      "description": "Gateway open source para múltiplos provedores de LLM com roteamento inteligente, controle de cotas e custos, além de servidores MCP e A2A integrados.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "mcp",
+        "agents"
+      ],
+      "tone": "blue",
+      "tags": [
+        "AI gateway",
+        "routing",
+        "A2A"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "description": "Plugin e conjunto de skills que orienta agentes a evitar over-engineering, reutilizar o que já existe e escrever apenas o mínimo necessário sem cortar segurança.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "YAGNI",
+        "simplicidade",
+        "code review"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Claude Code Spec Workflow",
+      "url": "https://github.com/Pimzino/claude-code-spec-workflow",
+      "description": "Workflow estruturado para Claude Code que conduz features por requisitos, design, tarefas e implementação, além de um ciclo dedicado para correção de bugs.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "spec-driven",
+        "workflow",
+        "Claude Code"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Karpathy Guidelines",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "description": "Diretrizes para agentes de código baseadas em observações de Andrej Karpathy: pensar antes de editar, priorizar simplicidade, mudanças cirúrgicas e metas verificáveis.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "guidelines",
+        "simplicidade",
+        "TDD"
       ],
       "layout": [
         "x3"
