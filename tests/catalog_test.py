@@ -15,7 +15,7 @@ class CatalogData(unittest.TestCase):
 
     def test_catalog_has_expected_schema_and_total(self):
         self.assertEqual(self.catalog["schemaVersion"], 1)
-        self.assertEqual(len(self.catalog["items"]), 154)
+        self.assertEqual(len(self.catalog["items"]), 165)
         required = {"name", "url", "description", "category", "kinds", "tone", "tags"}
         for item in self.catalog["items"]:
             self.assertTrue(required.issubset(item), item.get("name", "item sem nome"))
@@ -70,6 +70,23 @@ class CatalogData(unittest.TestCase):
         found = {item["name"]: item["url"] for item in self.catalog["items"] if item["name"] in expected}
         self.assertEqual(found, expected)
 
+    def test_system_design_and_agent_tools_batch_is_curated(self):
+        expected = {
+            "System Design 101": "https://github.com/ByteByteGoHq/system-design-101",
+            "Haikei": "https://haikei.app/",
+            "Claude Code Templates": "https://aitmpl.com/",
+            "OpenManus": "https://github.com/FoundationAgents/OpenManus",
+            "Sequential Thinking": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+            "Sentry MCP": "https://mcp.sentry.dev/",
+            "UI Ball Loaders": "https://uiball.com/",
+            "OmniRoute": "https://omniroute.online/",
+            "Ponytail": "https://github.com/DietrichGebert/ponytail",
+            "Claude Code Spec Workflow": "https://github.com/Pimzino/claude-code-spec-workflow",
+            "Karpathy Guidelines": "https://github.com/multica-ai/andrej-karpathy-skills",
+        }
+        found = {item["name"]: item["url"] for item in self.catalog["items"] if item["name"] in expected}
+        self.assertEqual(found, expected)
+
     def test_declared_category_counts_match_items(self):
         actual = Counter(item["category"] for item in self.catalog["items"])
         self.assertEqual(actual, Counter(self.catalog["categoryCounts"]))
@@ -78,7 +95,7 @@ class CatalogData(unittest.TestCase):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("<!-- CATALOG:GENERATED:START -->", html)
         self.assertIn("<!-- CATALOG:GENERATED:END -->", html)
-        self.assertEqual(html.count('class="card-title"'), 154)
+        self.assertEqual(html.count('class="card-title"'), 165)
         for item in self.catalog["items"]:
             self.assertIn(f'>{item["name"]}</h3>', html)
             self.assertIn(f'href="{item["url"]}"', html)

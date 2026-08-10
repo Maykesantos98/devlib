@@ -99,14 +99,14 @@ class DevlibJourneys(unittest.TestCase):
         context, page, errors = self.open_page()
         try:
             expected = {
-                "GitHub Spec Kit", "Claude SEO", "Shannon", "Huashu Design",
-                "Taste Skill", "Coolify", "OpenHands", "Maxun", "Open WebUI",
-                "Browser Use", "Langflow", "Stirling PDF", "Crawl4AI", "Dify", "WAHA",
+                "System Design 101", "Haikei", "Claude Code Templates", "OpenManus",
+                "Sequential Thinking", "Sentry MCP", "UI Ball Loaders", "OmniRoute",
+                "Ponytail", "Claude Code Spec Workflow", "Karpathy Guidelines",
             }
             page.locator('.filter[data-filter="recent"]').click()
             visible = set(page.locator('.card:not(.hidden) .card-title').all_inner_texts())
             self.assertEqual(visible, expected)
-            self.assertEqual(page.locator("#visibleCount").inner_text(), "15")
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "11")
             self.assertEqual(errors, [])
         finally:
             context.close()
@@ -123,7 +123,7 @@ class DevlibJourneys(unittest.TestCase):
             self.assertTrue(empty.is_visible())
             empty.get_by_role("button", name="Mostrar todas as bibliotecas").click()
             self.assertEqual(search.input_value(), "")
-            self.assertEqual(page.locator("#visibleCount").inner_text(), "154")
+            self.assertEqual(page.locator("#visibleCount").inner_text(), "165")
             self.assertEqual(errors, [])
         finally:
             context.close()
