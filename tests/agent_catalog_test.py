@@ -49,6 +49,37 @@ class AgentCatalogTest(unittest.TestCase):
         self.assertNotIn("free-for-dev", names)
         self.assertTrue(names & {"Renovate", "OpenTelemetry JS", "Grafana"})
 
+    def test_plain_business_words_do_not_trigger_ai_agents(self):
+        result = recommend_stack("Quero uma landing page simples para uma confeitaria")
+        self.assertNotIn("agents", result["requested_layers"])
+        self.assertNotIn("Claude Code", {row["name"] for row in result["recommendations"]})
+        self.assertIn("frontend", result["requested_layers"])
+
+    def test_complex_saas_analysis_covers_explicit_requirements_and_tradeoffs(self):
+        result = recommend_stack(
+            "SaaS B2B multi-tenant com Next.js, PostgreSQL, filas, pagamentos "
+            "recorrentes, RBAC, auditoria, observabilidade, testes e deploy na VPS"
+        )
+        requirements = {row["id"]: row for row in result["requirements"]}
+        for requirement in {"multi_tenancy", "queues", "payments", "authorization", "audit", "observability"}:
+            self.assertIn(requirement, requirements)
+        self.assertIn("security", result["requested_layers"])
+        self.assertTrue(result["summary"])
+        self.assertTrue(result["tradeoffs"])
+        self.assertTrue(result["risks"])
+        self.assertTrue(result["next_questions"])
+        self.assertTrue(all(row["reason"] != f'Cobre a camada {row["layer"]} solicitada no projeto.' for row in result["recommendations"]))
+
+    def test_mobile_offline_project_gets_supporting_architecture_not_one_card(self):
+        result = recommend_stack(
+            "Aplicativo mobile offline-first para técnicos de campo, com sincronização, "
+            "fotos, mapas, autenticação e notificações push"
+        )
+        self.assertTrue({"mobile", "backend", "database", "security"}.issubset(result["requested_layers"]))
+        requirement_ids = {row["id"] for row in result["requirements"]}
+        self.assertTrue({"offline", "sync", "media", "maps", "authentication", "notifications"}.issubset(requirement_ids))
+        self.assertGreaterEqual(len(result["recommendations"]), 4)
+
     def test_concepts_are_explained_with_grounded_sources(self):
         mcp = explain_concept("o que é MCP")
         self.assertEqual("mcp", mcp["concept"])

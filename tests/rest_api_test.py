@@ -16,6 +16,12 @@ class RestApiTest(unittest.TestCase):
         self.assertEqual("local", result["engine"])
         self.assertTrue(result["recommendations"])
         self.assertTrue(all(row["name"] and row["url"].startswith("https://") for row in result["recommendations"]))
+        self.assertEqual("2", result["schema_version"])
+        self.assertTrue(result["summary"])
+        self.assertIn("requirements", result)
+        self.assertIn("tradeoffs", result)
+        self.assertIn("risks", result)
+        self.assertIn("next_questions", result)
 
     def test_request_rejects_empty_oversized_and_unknown_fields(self):
         for payload in ({}, {"project": ""}, {"project": "x" * 2001}, {"project": "site", "token": "secret"}):
