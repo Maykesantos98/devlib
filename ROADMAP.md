@@ -53,10 +53,10 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 
 - [ ] Medir LCP, INP e CLS antes de otimizar.
 - [ ] Reduzir CSS/JavaScript não utilizado e custo de efeitos visuais.
-- [ ] Hospedar ou aplicar fallback adequado às fontes externas.
-- [x] Completar canonical URL, Open Graph, Twitter cards e sitemap.
+- [x] Remover fontes externas e auto-hospedar o runtime GSAP.
+- [x] Completar canonical URL, Open Graph, Twitter cards, sitemap e dados estruturados.
 - [ ] Otimizar imagens e definir dimensões explícitas.
-- [ ] Configurar cabeçalhos de segurança compatíveis com hospedagem estática.
+- [x] Configurar CSP estática; os cabeçalhos HTTP completos entram na imagem Nginx da VPS.
 
 **Critério de saída:** metas de Core Web Vitals atendidas em mobile e metadados válidos nas páginas públicas.
 

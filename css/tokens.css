@@ -45,9 +45,9 @@
   --emerald-400: var(--accent-alt);
 
   /* ── Typography stack ─────────────────────────────── */
-  --font-display: 'Bricolage Grotesque', 'Geist', system-ui, -apple-system, sans-serif;
-  --font-sans:    'Geist', system-ui, sans-serif;
-  --font-mono:    'Geist Mono', ui-monospace, monospace;
+  --font-display: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans:    system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 
   /* ── Fluid type scale (clamp: min, fluid, max) ────── */
   --t-xs:   clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);

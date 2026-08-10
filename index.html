@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="DEVLIB — acervo curado de bibliotecas, protocolos e skills para desenvolvedores que constroem com agentes." />
   <meta name="theme-color" content="#07080F" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
   <title>DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes</title>
 
   <meta property="og:title" content="DEVLIB · Bibliotecas para desenvolvedores que constroem com agentes" />
@@ -16,10 +17,6 @@
   <meta property="og:url" content="https://maykesantos98.github.io/devlib/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://maykesantos98.github.io/devlib/" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap">
 
   <link rel="icon" type="image/png" href="public/favicon.png">
   <link rel="apple-touch-icon" href="public/favicon.png">
@@ -33,8 +30,8 @@
   <link rel="stylesheet" href="css/responsive.css?v=devlib-v05">
   <link rel="stylesheet" href="css/enhancements.css?v=devlib-v06">
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js" defer></script>
+  <script src="public/vendor/gsap/gsap.min.js" defer></script>
+  <script src="public/vendor/gsap/ScrollTrigger.min.js" defer></script>
   <script src="js/script.js?v=devlib-v06" defer></script>
   <script src="js/motion-gsap.js?v=devlib-v06" defer></script>
 
@@ -49,7 +46,10 @@
     </style>
   </noscript>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/CollectionPage">
+  <meta itemprop="name" content="DEVLIB" />
+  <meta itemprop="description" content="Acervo curado de bibliotecas e ferramentas para desenvolvimento com agentes." />
+  <meta itemprop="numberOfItems" content="133" />
 
   <!-- A11y: skip-link (only visible on keyboard focus) -->
   <a class="skip-link" href="#acervo">Pular para o acervo</a>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="DEVLIB Arcade — jogos clássicos direto no navegador, sem download. Cobrinha, 2048, Quebra-blocos, Memória e Jogo da Velha, no estilo museu de cultura da internet." />
   <meta name="theme-color" content="#07080F" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
   <title>DEVLIB · Arcade — jogos clássicos no navegador</title>
 
   <meta property="og:title" content="DEVLIB · Arcade — jogos clássicos no navegador" />
@@ -14,10 +15,6 @@
   <meta property="og:url" content="https://maykesantos98.github.io/devlib/jogos.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://maykesantos98.github.io/devlib/jogos.html" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap">
 
   <link rel="icon" type="image/png" href="public/favicon.png">
   <link rel="apple-touch-icon" href="public/favicon.png">
@@ -32,8 +29,8 @@
   <link rel="stylesheet" href="css/jogos.css">
   <link rel="stylesheet" href="css/enhancements.css?v=devlib-v06">
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js" defer></script>
+  <script src="public/vendor/gsap/gsap.min.js" defer></script>
+  <script src="public/vendor/gsap/ScrollTrigger.min.js" defer></script>
   <script src="js/jogos.js" defer></script>
   <script src="js/motion-gsap.js?v=devlib-v06" defer></script>
 
