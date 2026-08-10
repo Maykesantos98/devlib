@@ -17,6 +17,22 @@ const advisorForm = document.querySelector("#advisor-form");
 const advisorResult = document.querySelector("#advisor-result");
 const advisorStatus = document.querySelector("#advisor-status");
 
+function advisorSection(className, title, items) {
+  if (!Array.isArray(items) || !items.length) return null;
+  const section = document.createElement("section");
+  section.className = className;
+  const heading = document.createElement("h4");
+  heading.textContent = title;
+  const list = document.createElement("ul");
+  items.forEach((text) => {
+    const item = document.createElement("li");
+    item.textContent = text;
+    list.append(item);
+  });
+  section.append(heading, list);
+  return section;
+}
+
 advisorForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const project = new FormData(advisorForm).get("project")?.toString().trim();
@@ -34,7 +50,27 @@ advisorForm?.addEventListener("submit", async (event) => {
     advisorResult.replaceChildren();
     const heading = document.createElement("h3");
     heading.textContent = "Stack recomendada";
-    advisorResult.append(heading);
+    const summary = document.createElement("p");
+    summary.className = "advisor-summary";
+    summary.textContent = data.summary || "Seleção inicial fundamentada no catálogo DEVLIB.";
+    advisorResult.append(heading, summary);
+
+    if (Array.isArray(data.requirements) && data.requirements.length) {
+      const requirements = document.createElement("section");
+      requirements.className = "advisor-requirements";
+      const requirementsTitle = document.createElement("h4");
+      requirementsTitle.textContent = "Requisitos detectados";
+      const requirementList = document.createElement("div");
+      data.requirements.forEach((requirement) => {
+        const badge = document.createElement("span");
+        badge.dataset.coverage = requirement.coverage;
+        badge.textContent = requirement.label;
+        requirementList.append(badge);
+      });
+      requirements.append(requirementsTitle, requirementList);
+      advisorResult.append(requirements);
+    }
+
     const grid = document.createElement("div");
     grid.className = "advisor-grid";
     data.recommendations.forEach((item) => {
@@ -48,8 +84,19 @@ advisorForm?.addEventListener("submit", async (event) => {
       card.append(layer, name, reason); grid.append(card);
     });
     advisorResult.append(grid);
+
+    const insights = document.createElement("div");
+    insights.className = "advisor-insights";
+    const tradeoffs = advisorSection("advisor-tradeoffs", "Trade-offs", data.tradeoffs);
+    const risks = advisorSection("advisor-risks", "Riscos e lacunas", data.risks);
+    if (tradeoffs) insights.append(tradeoffs);
+    if (risks) insights.append(risks);
+    if (insights.childElementCount) advisorResult.append(insights);
+
+    const questions = advisorSection("advisor-questions", "Antes de implementar", data.next_questions);
+    if (questions) advisorResult.append(questions);
     advisorResult.hidden = false;
-    advisorStatus.textContent = `${data.recommendations.length} camadas · motor ${data.engine}`;
+    advisorStatus.textContent = `${data.recommendations.length} escolhas · análise ${data.engine}`;
   } catch (error) {
     advisorStatus.textContent = error.message;
   } finally {

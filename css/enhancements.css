@@ -245,14 +245,25 @@ body {
 .advisor-actions span { color: var(--text-soft); font-size: .82rem; }
 .advisor-result { margin-top: 1.5rem; }
 .advisor-result h3 { margin: 0 0 1rem; }
+.advisor-result h4 { margin: 0 0 .7rem; font-size: .78rem; font-family: var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
+.advisor-summary { max-width: 780px; margin: -.35rem 0 1.25rem; color: var(--text-soft); font-size: 1rem; line-height: 1.6; }
+.advisor-requirements { margin-bottom: 1.25rem; }
+.advisor-requirements > div { display: flex; flex-wrap: wrap; gap: .5rem; }
+.advisor-requirements span { padding: .4rem .65rem; border: 1px solid rgb(var(--accent-rgb) / .3); border-radius: 999px; background: rgb(var(--accent-rgb) / .08); color: var(--text-soft); font-size: .76rem; }
+.advisor-requirements span[data-coverage="architecture_decision"] { border-color: rgba(255,190,80,.35); background: rgba(255,190,80,.07); }
 .advisor-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .75rem; }
-.advisor-grid a { display: grid; gap: .35rem; padding: 1rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.advisor-grid a { display: grid; align-content: start; gap: .45rem; min-height: 150px; padding: 1rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
 .advisor-grid a:hover { border-color: var(--accent); transform: translateY(-2px); }
 .advisor-grid span { color: var(--accent); font: .68rem var(--font-mono); text-transform: uppercase; }
-.advisor-grid small { color: var(--text-soft); }
+.advisor-grid small { color: var(--text-soft); line-height: 1.5; }
+.advisor-insights { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; margin-top: 1.25rem; }
+.advisor-insights section,.advisor-questions { padding: 1rem; border: 1px solid var(--border); border-radius: 12px; background: rgba(7,8,11,.55); }
+.advisor-insights ul,.advisor-questions ul { display: grid; gap: .55rem; margin: 0; padding-left: 1.1rem; color: var(--text-soft); font-size: .86rem; line-height: 1.5; }
+.advisor-risks { border-color: rgba(255,190,80,.24) !important; }
+.advisor-questions { margin-top: .75rem; border-color: rgb(var(--accent-rgb) / .24); }
 @media (max-width: 720px) { .agent-hub { padding-top: 6rem; } .agent-hero { padding: 2rem 0 3rem; } .endpoint-grid,.tool-grid,.client-grid { grid-template-columns: 1fr; } .client-wide { grid-column: auto; } .security-note { display: block; } }
 
 @media (max-width: 720px) {
   .home-main .hero-title { max-width: 12ch; font-size: clamp(3rem, 14vw, 4rem); }
-  .advisor-grid { grid-template-columns: 1fr; }
+  .advisor-grid,.advisor-insights { grid-template-columns: 1fr; }
 }

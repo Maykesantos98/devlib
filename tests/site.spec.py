@@ -34,7 +34,7 @@ class DevlibJourneys(unittest.TestCase):
         try:
             page.goto(f"{BASE_URL}/integracoes.html", wait_until="networkidle")
             page.get_by_label("O que você quer construir?").fill("SaaS com Next.js")
-            page.get_by_role("button", name="Montar minha stack").click()
+            page.get_by_role("button", name="Analisar arquitetura").click()
             page.get_by_role("heading", name="Stack recomendada").wait_for(state="visible")
             self.assertIn("Next.js", page.locator(".advisor-grid a").inner_text())
             self.assertIn("Arquitetura inicial fundamentada", page.locator(".advisor-summary").inner_text())

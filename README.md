@@ -59,7 +59,7 @@ python scripts/verify.py
 
 ## API e MCP para agentes
 
-O catálogo completo está em `/api/catalog.json`, com descoberta em `/llms.txt`. Na VPS, o MCP remoto usa Streamable HTTP em `/mcp` e oferece busca, inspeção, categorias e recomendação. Toda recomendação é limitada a `data/catalog.json`.
+O catálogo completo está em `/api/catalog.json`, com descoberta em `/llms.txt`. Na VPS, o MCP remoto usa Streamable HTTP em `/mcp` e oferece busca, inspeção, categorias e recomendação. O Stack Advisor v2 identifica requisitos explícitos, separa escolhas de ferramentas de decisões arquiteturais e retorna riscos, trade-offs e perguntas de refinamento. Toda recomendação de ferramenta é limitada a `data/catalog.json`.
 
 Gere a senha com `docker run --rm caddy:2.10.2-alpine caddy hash-password --plaintext SUA_SENHA` e grave somente o hash no `.env`.
 

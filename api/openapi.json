@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "DEVLIB Catalog API",
-    "version": "1.0.0"
+    "version": "2.0.0"
   },
   "paths": {
     "/api/catalog.json": {
@@ -47,10 +47,88 @@
     },
     "/api/ai/recommend": {
       "post": {
-        "summary": "Recomenda stack fundamentada",
+        "summary": "Analisa requisitos e recomenda uma arquitetura fundamentada",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "project"
+                ],
+                "properties": {
+                  "project": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Stack por camadas"
+            "description": "Análise com stack, requisitos, riscos, trade-offs e perguntas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "summary",
+                    "requirements",
+                    "recommendations",
+                    "tradeoffs",
+                    "risks",
+                    "next_questions"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "2"
+                    },
+                    "engine": {
+                      "type": "string"
+                    },
+                    "summary": {
+                      "type": "string"
+                    },
+                    "requirements": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "recommendations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "tradeoffs": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "risks": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "next_questions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "Entrada inválida"
