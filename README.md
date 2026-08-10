@@ -63,6 +63,8 @@ O catálogo completo está em `/api/catalog.json`, com descoberta em `/llms.txt`
 
 Gere a senha com `docker run --rm caddy:2.10.2-alpine caddy hash-password --plaintext SUA_SENHA` e grave somente o hash no `.env`.
 
+Clientes MCP remotos enviam `Authorization` por uma variável local chamada `DEVLIB_MCP_AUTH`. O valor é um cabeçalho Basic calculado em memória a partir do usuário `devlib` e da senha; não deve ser salvo no repositório nem diretamente no TOML.
+
 A configuração segura dos sete conectores MCP da Hostinger está em `deploy/hostinger-mcp.json.example`; veja `deploy/HOSTINGER.md`. O token da Hostinger permanece exclusivamente no ambiente local.
 
 Opcionalmente, defina `NVIDIA_API_KEY` apenas no `.env` privado da VPS. A NVIDIA melhora a classificação semântica; timeout, erro ou ausência da chave acionam automaticamente o motor local.

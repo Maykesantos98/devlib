@@ -51,21 +51,33 @@
       <div class="tool-grid"><article><b>search_devlib</b><p>Busca por necessidade, tag ou categoria.</p></article><article><b>inspect_library</b><p>Valida nome, descrição, tags e URL.</p></article><article><b>catalog_categories</b><p>Lista as nove áreas do acervo.</p></article><article><b>recommend_project_stack</b><p>Compõe frontend, backend, dados, testes, segurança e agentes.</p></article><article><b>explain_dev_concept</b><p>Explica MCP e skills com fontes verificáveis do catálogo.</p></article></div>
     </section>
 
-    <section class="agent-section" id="clientes"><div class="section-head"><span>04</span><div><h2>Conectar seu agente</h2><p>Troque <code>devlib.seudominio.com</code> pelo domínio definitivo da VPS. A senha fica somente no cliente.</p></div></div>
+    <section class="agent-section" id="clientes"><div class="section-head"><span>04</span><div><h2>Conectar seu agente</h2><p>Endpoint de produção protegido por HTTPS. Prepare o cabeçalho no ambiente e escolha seu cliente.</p></div></div>
+      <article class="client-card auth-setup"><div class="client-title"><span>01</span><div><h3>Preparar autenticação</h3><p>PowerShell · a senha não é gravada no histórico nem no arquivo de configuração</p></div></div><div class="code-wrap"><button type="button" data-copy="#auth-powershell">Copiar</button><pre id="auth-powershell"><code>$secure = Read-Host "Senha MCP" -AsSecureString
+$ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
+try {
+  $password = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
+  $bytes = [Text.Encoding]::UTF8.GetBytes("devlib:$password")
+  $env:DEVLIB_MCP_AUTH = "Basic $([Convert]::ToBase64String($bytes))"
+} finally {
+  [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr)
+  Remove-Variable password, bytes -ErrorAction SilentlyContinue
+}</code></pre></div></article>
       <div class="client-grid">
-        <article class="client-card"><div class="client-title"><span>CC</span><div><h3>Claude Code</h3><p>Comando direto</p></div></div><div class="code-wrap"><button type="button" data-copy="#claude-code">Copiar</button><pre id="claude-code"><code>claude mcp add --transport http devlib https://devlib.seudominio.com/mcp</code></pre></div></article>
+        <article class="client-card"><div class="client-title"><span>CC</span><div><h3>Claude Code</h3><p>Execute no mesmo terminal após preparar a autenticação</p></div></div><div class="code-wrap"><button type="button" data-copy="#claude-code">Copiar</button><pre id="claude-code"><code>claude mcp add --transport http devlib https://devlib.46-202-147-251.sslip.io/mcp --header &quot;Authorization: $env:DEVLIB_MCP_AUTH&quot;</code></pre></div></article>
         <article class="client-card"><div class="client-title"><span>CX</span><div><h3>Codex</h3><p>Configuração TOML</p></div></div><div class="code-wrap"><button type="button" data-copy="#codex-config">Copiar</button><pre id="codex-config"><code>[mcp_servers.devlib]
-url = "https://devlib.seudominio.com/mcp"</code></pre></div></article>
+url = "https://devlib.46-202-147-251.sslip.io/mcp"
+env_http_headers = { Authorization = "DEVLIB_MCP_AUTH" }</code></pre></div></article>
         <article class="client-card client-wide"><div class="client-title"><span>M</span><div><h3>Clientes MCP</h3><p>Cursor, VS Code e outros clientes com servidor HTTP remoto</p></div></div><div class="code-wrap"><button type="button" data-copy="#generic-config">Copiar</button><pre id="generic-config"><code>{
   "mcpServers": {
     "devlib": {
       "type": "http",
-      "url": "https://devlib.seudominio.com/mcp"
+      "url": "https://devlib.46-202-147-251.sslip.io/mcp",
+      "headers": { "Authorization": "${DEVLIB_MCP_AUTH}" }
     }
   }
 }</code></pre></div></article>
       </div>
-      <aside class="security-note"><b>Segurança</b><p>O endpoint da VPS usa HTTPS e autenticação. Nunca coloque senha ou token em arquivo versionado; use o armazenamento seguro ou variável de ambiente do cliente.</p></aside>
+      <aside class="security-note"><b>Segurança</b><p>Solicite a senha MCP ao administrador. A variável existe apenas no terminal atual. Nunca cole a senha, o cabeçalho calculado ou qualquer token em Git, TOML versionado, screenshots ou mensagens.</p></aside>
     </section>
   </main>
   <footer class="footer"><div class="shell"><div class="footer-brand"><img src="public/favicon.png" alt="" width="28" height="28"><b>DEVLIB</b></div><p>Catálogo legível por humanos e agentes.</p></div></footer>

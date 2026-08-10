@@ -228,6 +228,8 @@ body {
 .tool-grid article b { color: var(--violet-300); font-family: var(--font-mono); }
 .client-card { padding: 1.25rem; min-width: 0; }
 .client-wide { grid-column: 1/-1; }
+.auth-setup { margin-bottom: 1rem; border-color: rgb(var(--accent-rgb) / .3); }
+.auth-setup .code-wrap pre { min-height: 0; }
 .client-title { display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; }
 .client-title > span { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--border-bright); border-radius: 10px; color: var(--violet-300); font-family: var(--font-mono); }
 .client-title h3,.client-title p { margin: 0; }
