@@ -473,23 +473,11 @@
     s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
   // Special filters that don't map to a single data-kind token.
-  // RECENT — newest additions (coding agents, MCP tooling, guardrails,
-  // trade agents, mobile on-device, UI). Updated for the 154-lib archive.
+  // RECENT — only the latest curated intake batch. Replace this set whenever
+  // a new batch is promoted so the filter remains genuinely chronological.
   const RECENT = new Set([
-    'Claude Code', 'OpenHands', 'Cline', 'Goose',
-    'FastMCP', 'MCP Inspector', 'GitHub MCP Server', 'Playwright MCP', 'Composio',
-    'NeMo Guardrails', 'Guardrails AI', 'LLM Guard', 'Garak',
-    'TradingAgents', 'AI-Trader', 'AgenticTrading', 'Freqtrade',
-    'bybit-exchange/skills', 'awesome-ai-in-finance',
-    'Flutter', 'React Native', 'MLC LLM', 'ExecuTorch',
-    'react-native-executorch', 'MediaPipe', 'Capacitor',
-    'react-native-ai', 'Cactus', 'UIverse', 'Mobbin',
-    'ReUI', 'Magic UI', 'Aceternity UI', 'HeroUI', 'Shadcn Blocks',
-    'Eldora UI', 'Cult UI', 'Skiper UI', 'Square UI',
-    'Ali Imam Components', 'Liquid Metal', 'Dot Matrix', 'Balloons.js',
-    'Strix', 'Grill Me', 'Anime.js', 'Book to Skill', 'Design DNA', 'Motion Design Skill',
     'GitHub Spec Kit', 'Claude SEO', 'Shannon', 'Huashu Design', 'Taste Skill',
-    'Coolify', 'Maxun', 'Open WebUI', 'Browser Use', 'Langflow', 'Stirling PDF',
+    'Coolify', 'OpenHands', 'Maxun', 'Open WebUI', 'Browser Use', 'Langflow', 'Stirling PDF',
     'Crawl4AI', 'Dify', 'WAHA',
   ]);
   // TOP — highest GitHub-star / iconic repos across the archive.
