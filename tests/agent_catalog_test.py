@@ -21,7 +21,7 @@ class AgentCatalogTest(unittest.TestCase):
         cls.names = {item["name"] for item in cls.source["items"]}
 
     def test_public_api_contains_every_item_without_html_markup(self):
-        self.assertEqual(134, len(self.public["items"]))
+        self.assertEqual(140, len(self.public["items"]))
         self.assertTrue(all("markup" not in item for item in self.public["items"]))
 
     def test_search_and_lookup_are_grounded(self):
@@ -71,7 +71,7 @@ class AgentCatalogTest(unittest.TestCase):
             self.assertEqual([], classify_intent("um SaaS", api_key="test"))
 
     def test_categories_and_openapi_contract(self):
-        self.assertEqual(134, sum(row["count"] for row in list_categories()))
+        self.assertEqual(140, sum(row["count"] for row in list_categories()))
         spec = json.loads((ROOT / "api/openapi.json").read_text(encoding="utf-8"))
         self.assertEqual("3.1.0", spec["openapi"])
         self.assertIn("/api/catalog.json", spec["paths"])

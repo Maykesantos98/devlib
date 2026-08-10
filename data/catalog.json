@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "categoryCounts": {
-    "kit": 12,
+    "kit": 14,
     "agents": 13,
     "mcp": 10,
-    "interface": 35,
+    "interface": 38,
     "server": 17,
-    "guard": 12,
+    "guard": 13,
     "run": 10,
     "ship": 15,
     "trade": 10
@@ -14,7 +14,7 @@
   "chapters": [
     {
       "id": "kit",
-      "headerMarkup": "<!-- §01 KIT -->\n      <div class=\"chapter-bar\" data-chapter=\"kit\" id=\"kit\">\n        <span class=\"chapter-num\">§01 · Kit</span>\n        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>\n        <span class=\"count-pill\">12 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §01 KIT -->\n      <div class=\"chapter-bar\" data-chapter=\"kit\" id=\"kit\">\n        <span class=\"chapter-num\">§01 · Kit</span>\n        <h3>Fundações <em>— a gaveta ao lado do teclado.</em></h3>\n        <span class=\"count-pill\">14 itens</span>\n      </div>"
     },
     {
       "id": "agents",
@@ -26,7 +26,7 @@
     },
     {
       "id": "interface",
-      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">34 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §04 INTERFACE -->\n      <div class=\"chapter-bar\" data-chapter=\"interface\" id=\"interface\">\n        <span class=\"chapter-num\">§04 · Interface</span>\n        <h3>UI kits &amp; referências <em>— a superfície do produto.</em></h3>\n        <span class=\"count-pill\">38 itens</span>\n      </div>"
     },
     {
       "id": "server",
@@ -34,7 +34,7 @@
     },
     {
       "id": "guard",
-      "headerMarkup": "<!-- §06 SEGURANÇA -->\n      <div class=\"chapter-bar\" data-chapter=\"guard\" id=\"seguranca\">\n        <span class=\"chapter-num\">§06 · Segurança</span>\n        <h3>Auth &amp; appsec <em>— chato até deixar de ser.</em></h3>\n        <span class=\"count-pill\">12 itens</span>\n      </div>"
+      "headerMarkup": "<!-- §06 SEGURANÇA -->\n      <div class=\"chapter-bar\" data-chapter=\"guard\" id=\"seguranca\">\n        <span class=\"chapter-num\">§06 · Segurança</span>\n        <h3>Auth &amp; appsec <em>— chato até deixar de ser.</em></h3>\n        <span class=\"count-pill\">13 itens</span>\n      </div>"
     },
     {
       "id": "run",
@@ -1238,8 +1238,8 @@
     },
     {
       "name": "Three.js",
-      "url": "https://github.com/mrdoob/three.js",
-      "description": "Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shaders, animações. Por trás de quase toda experiência 3D moderna.",
+      "url": "https://threejs.org/",
+      "description": "Biblioteca JavaScript para experiências 3D na web com WebGL, cenas, materiais, shaders, animações e amplo ecossistema.",
       "category": "interface",
       "kinds": [
         "interface"
@@ -1253,12 +1253,12 @@
       "layout": [
         "x3"
       ],
-      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>3D na web · WebGL</span><span class=\"card-badge\">3D</span></div>\n          <h3 class=\"card-title\">Three.js</h3>\n          <p class=\"card-body\">Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shaders, animações. Por trás de quase toda experiência 3D moderna.</p>\n          <div class=\"card-tags\"><span>webgl</span><span>3d</span><span>shaders</span></div>\n          <a class=\"card-link\" href=\"https://github.com/mrdoob/three.js\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"cyan\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>3D na web · WebGL</span><span class=\"card-badge\">3D</span></div>\n          <h3 class=\"card-title\">Three.js</h3>\n          <p class=\"card-body\">Biblioteca JavaScript para experiências 3D na web com WebGL, cenas, materiais, shaders, animações e amplo ecossistema.</p>\n          <div class=\"card-tags\"><span>webgl</span><span>3d</span><span>shaders</span></div>\n          <a class=\"card-link\" href=\"https://threejs.org/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     },
     {
-      "name": "Framer Motion",
-      "url": "https://github.com/motiondivision/motion",
-      "description": "Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.",
+      "name": "Motion",
+      "url": "https://motion.dev/",
+      "description": "Biblioteca de animação pronta para produção em React, JavaScript e Vue, com gestos, layout, scroll e springs em um pacote compacto.",
       "category": "interface",
       "kinds": [
         "interface"
@@ -1266,13 +1266,13 @@
       "tone": "amber",
       "tags": [
         "react",
-        "motion",
-        "gestures"
+        "javascript",
+        "vue"
       ],
       "layout": [
         "x3"
       ],
-      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animações React · Motion</span><span class=\"card-badge\">Motion</span></div>\n          <h3 class=\"card-title\">Framer Motion</h3>\n          <p class=\"card-body\">Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.</p>\n          <div class=\"card-tags\"><span>react</span><span>motion</span><span>gestures</span></div>\n          <a class=\"card-link\" href=\"https://github.com/motiondivision/motion\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+      "markup": "<article class=\"card x3\" data-kind=\"interface\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animação UI · Multiframework</span><span class=\"card-badge\">Motion</span></div>\n          <h3 class=\"card-title\">Motion</h3>\n          <p class=\"card-body\">Biblioteca de animação pronta para produção em React, JavaScript e Vue, com gestos, layout, scroll e springs em um pacote compacto.</p>\n          <div class=\"card-tags\"><span>react</span><span>javascript</span><span>vue</span></div>\n          <a class=\"card-link\" href=\"https://motion.dev/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     },
     {
       "name": "GSAP",
@@ -2656,6 +2656,131 @@
         "x3"
       ],
       "markup": "<article class=\"card x3\" data-kind=\"trade agents kit\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Lista curada · LLM in finance</span><span class=\"card-badge\">Awesome</span></div>\n          <h3 class=\"card-title\">awesome-ai-in-finance</h3>\n          <p class=\"card-body\">Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading.</p>\n          <div class=\"card-tags\"><span>curado</span><span>llm</span><span>deep learning</span></div>\n          <a class=\"card-link\" href=\"https://github.com/georgezouq/awesome-ai-in-finance\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Strix",
+      "url": "https://github.com/usestrix/strix",
+      "description": "Ferramenta open source de pentest com agentes de IA para encontrar, explorar e ajudar a corrigir vulnerabilidades em aplicações.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "pentest",
+        "ai-security",
+        "red-team"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"guard agents recent\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Pentest com IA · Open source</span><span class=\"card-badge\">50k+ ★</span></div>\n          <h3 class=\"card-title\">Strix</h3>\n          <p class=\"card-body\">Ferramenta open source de pentest com agentes de IA para encontrar, explorar e ajudar a corrigir vulnerabilidades em aplicações.</p>\n          <div class=\"card-tags\"><span>pentest</span><span>ai-security</span><span>red-team</span></div>\n          <a class=\"card-link\" href=\"https://github.com/usestrix/strix\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Grill Me",
+      "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me",
+      "description": "Skill de produtividade que conduz uma entrevista rigorosa para testar premissas, revelar lacunas e fortalecer planos ou decisões de design.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "recent"
+      ],
+      "tone": "amber",
+      "tags": [
+        "skill",
+        "planejamento",
+        "review"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit skills recent\" data-tone=\"amber\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Skill · Entrevista crítica</span><span class=\"card-badge\">Skill</span></div>\n          <h3 class=\"card-title\">Grill Me</h3>\n          <p class=\"card-body\">Skill de produtividade que conduz uma entrevista rigorosa para testar premissas, revelar lacunas e fortalecer planos ou decisões de design.</p>\n          <div class=\"card-tags\"><span>skill</span><span>planejamento</span><span>review</span></div>\n          <a class=\"card-link\" href=\"https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Anime.js",
+      "url": "https://animejs.com/",
+      "description": "Biblioteca JavaScript leve e multipropósito para animar CSS, SVG, atributos DOM e objetos com timelines e controles precisos.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "javascript",
+        "animation",
+        "svg"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface recent\" data-tone=\"pink\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Animação web · JavaScript</span><span class=\"card-badge\">Motion</span></div>\n          <h3 class=\"card-title\">Anime.js</h3>\n          <p class=\"card-body\">Biblioteca JavaScript leve e multipropósito para animar CSS, SVG, atributos DOM e objetos com timelines e controles precisos.</p>\n          <div class=\"card-tags\"><span>javascript</span><span>animation</span><span>svg</span></div>\n          <a class=\"card-link\" href=\"https://animejs.com/\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Book to Skill",
+      "url": "https://github.com/virgiliojr94/book-to-skill",
+      "description": "Transforma livros técnicos em PDF em skills para Claude Code, organizadas para estudo, consulta e aplicação durante o trabalho.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "books",
+        "skills",
+        "claude-code"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"kit skills recent\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>PDF para skill · Claude Code</span><span class=\"card-badge\">19k+ ★</span></div>\n          <h3 class=\"card-title\">Book to Skill</h3>\n          <p class=\"card-body\">Transforma livros técnicos em PDF em skills para Claude Code, organizadas para estudo, consulta e aplicação durante o trabalho.</p>\n          <div class=\"card-tags\"><span>books</span><span>skills</span><span>claude-code</span></div>\n          <a class=\"card-link\" href=\"https://github.com/virgiliojr94/book-to-skill\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Design DNA",
+      "url": "https://github.com/zanwei/design-dna",
+      "description": "Converte interfaces de referência em Design DNA JSON com tokens, estilo e efeitos quantificados para gerar novas UIs coerentes.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "skills",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "design-tokens",
+        "ui",
+        "agent-skills"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface skills recent\" data-tone=\"violet\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Referência para tokens · UI</span><span class=\"card-badge\">DNA</span></div>\n          <h3 class=\"card-title\">Design DNA</h3>\n          <p class=\"card-body\">Converte interfaces de referência em Design DNA JSON com tokens, estilo e efeitos quantificados para gerar novas UIs coerentes.</p>\n          <div class=\"card-tags\"><span>design-tokens</span><span>ui</span><span>agent-skills</span></div>\n          <a class=\"card-link\" href=\"https://github.com/zanwei/design-dna\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
+    },
+    {
+      "name": "Motion Design Skill",
+      "url": "https://github.com/lottiefiles/motion-design-skill",
+      "description": "Skill da LottieFiles com princípios universais de motion design para agentes: timing, easing, coreografia e animação aplicada a interfaces.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "skills",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "lottie",
+        "motion-design",
+        "agent-skills"
+      ],
+      "layout": [
+        "x3"
+      ],
+      "markup": "<article class=\"card x3\" data-kind=\"interface skills recent\" data-tone=\"emerald\">\n          <div class=\"card-head\"><span class=\"card-meta\"><span class=\"dot\"></span>Motion design · LottieFiles</span><span class=\"card-badge\">Skill</span></div>\n          <h3 class=\"card-title\">Motion Design Skill</h3>\n          <p class=\"card-body\">Skill da LottieFiles com princípios universais de motion design para agentes: timing, easing, coreografia e animação aplicada a interfaces.</p>\n          <div class=\"card-tags\"><span>lottie</span><span>motion-design</span><span>agent-skills</span></div>\n          <a class=\"card-link\" href=\"https://github.com/lottiefiles/motion-design-skill\" target=\"_blank\" rel=\"noopener\">Abrir<svg viewBox=\"0 0 24 24\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></a>\n        </article>"
     }
   ]
 }

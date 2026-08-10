@@ -3,7 +3,7 @@
   "categories": [
     {
       "id": "kit",
-      "count": 12
+      "count": 14
     },
     {
       "id": "agents",
@@ -15,7 +15,7 @@
     },
     {
       "id": "interface",
-      "count": 35
+      "count": 38
     },
     {
       "id": "server",
@@ -23,7 +23,7 @@
     },
     {
       "id": "guard",
-      "count": 12
+      "count": 13
     },
     {
       "id": "run",

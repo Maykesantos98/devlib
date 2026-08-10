@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "total": 134,
+  "total": 140,
   "categoryCounts": {
-    "kit": 12,
+    "kit": 14,
     "agents": 13,
     "mcp": 10,
-    "interface": 35,
+    "interface": 38,
     "server": 17,
-    "guard": 12,
+    "guard": 13,
     "run": 10,
     "ship": 15,
     "trade": 10
@@ -1140,8 +1140,8 @@
     },
     {
       "name": "Three.js",
-      "url": "https://github.com/mrdoob/three.js",
-      "description": "Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shaders, animações. Por trás de quase toda experiência 3D moderna.",
+      "url": "https://threejs.org/",
+      "description": "Biblioteca JavaScript para experiências 3D na web com WebGL, cenas, materiais, shaders, animações e amplo ecossistema.",
       "category": "interface",
       "kinds": [
         "interface"
@@ -1157,9 +1157,9 @@
       ]
     },
     {
-      "name": "Framer Motion",
-      "url": "https://github.com/motiondivision/motion",
-      "description": "Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.",
+      "name": "Motion",
+      "url": "https://motion.dev/",
+      "description": "Biblioteca de animação pronta para produção em React, JavaScript e Vue, com gestos, layout, scroll e springs em um pacote compacto.",
       "category": "interface",
       "kinds": [
         "interface"
@@ -1167,8 +1167,8 @@
       "tone": "amber",
       "tags": [
         "react",
-        "motion",
-        "gestures"
+        "javascript",
+        "vue"
       ],
       "layout": [
         "x3"
@@ -2481,6 +2481,125 @@
         "curado",
         "llm",
         "deep learning"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Strix",
+      "url": "https://github.com/usestrix/strix",
+      "description": "Ferramenta open source de pentest com agentes de IA para encontrar, explorar e ajudar a corrigir vulnerabilidades em aplicações.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "pentest",
+        "ai-security",
+        "red-team"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Grill Me",
+      "url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me",
+      "description": "Skill de produtividade que conduz uma entrevista rigorosa para testar premissas, revelar lacunas e fortalecer planos ou decisões de design.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "recent"
+      ],
+      "tone": "amber",
+      "tags": [
+        "skill",
+        "planejamento",
+        "review"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Anime.js",
+      "url": "https://animejs.com/",
+      "description": "Biblioteca JavaScript leve e multipropósito para animar CSS, SVG, atributos DOM e objetos com timelines e controles precisos.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "javascript",
+        "animation",
+        "svg"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Book to Skill",
+      "url": "https://github.com/virgiliojr94/book-to-skill",
+      "description": "Transforma livros técnicos em PDF em skills para Claude Code, organizadas para estudo, consulta e aplicação durante o trabalho.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "books",
+        "skills",
+        "claude-code"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Design DNA",
+      "url": "https://github.com/zanwei/design-dna",
+      "description": "Converte interfaces de referência em Design DNA JSON com tokens, estilo e efeitos quantificados para gerar novas UIs coerentes.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "skills",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "design-tokens",
+        "ui",
+        "agent-skills"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Motion Design Skill",
+      "url": "https://github.com/lottiefiles/motion-design-skill",
+      "description": "Skill da LottieFiles com princípios universais de motion design para agentes: timing, easing, coreografia e animação aplicada a interfaces.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "skills",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "lottie",
+        "motion-design",
+        "agent-skills"
       ],
       "layout": [
         "x3"

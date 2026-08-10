@@ -17,6 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = ROOT / "index.html"
 DATA_PATH = ROOT / "data" / "catalog.json"
+INTAKE_PATH = ROOT / "data" / "catalog-intake.json"
 START = "      <!-- CATALOG:GENERATED:START -->"
 END = "      <!-- CATALOG:GENERATED:END -->"
 ARTICLE_RE = re.compile(r"<article\b[^>]*\bclass=\"card[^\"]*\"[^>]*>.*?</article>", re.S)
@@ -129,14 +130,65 @@ def check() -> None:
     print(f"catalog ok: {len(payload['items'])} items")
 
 
+def standard_markup(item: dict) -> str:
+    tags = "".join(f"<span>{html.escape(tag)}</span>" for tag in item["tags"])
+    kinds = " ".join(item["kinds"])
+    return (
+        f'<article class="card x3" data-kind="{html.escape(kinds)}" data-tone="{html.escape(item["tone"])}">\n'
+        f'          <div class="card-head"><span class="card-meta"><span class="dot"></span>{html.escape(item["meta"])}</span><span class="card-badge">{html.escape(item["badge"])}</span></div>\n'
+        f'          <h3 class="card-title">{html.escape(item["name"])}</h3>\n'
+        f'          <p class="card-body">{html.escape(item["description"])}</p>\n'
+        f'          <div class="card-tags">{tags}</div>\n'
+        f'          <a class="card-link" href="{html.escape(item["url"], quote=True)}" target="_blank" rel="noopener">Abrir<svg viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>\n'
+        "        </article>"
+    )
+
+
+def promote() -> None:
+    payload = load()
+    intake = json.loads(INTAKE_PATH.read_text(encoding="utf-8"))
+    chapters = {chapter["id"] for chapter in payload["chapters"]}
+    by_name = {item["name"].casefold(): item for item in payload["items"]}
+    promoted = 0
+    for queued in intake["items"]:
+        if queued.get("status") not in {"ready", "update"}:
+            continue
+        if queued["category"] not in chapters:
+            raise SystemExit(f"Categoria inválida: {queued['category']}")
+        target = by_name.get(queued.get("matchName", queued["name"]).casefold())
+        if queued["status"] == "update":
+            if target is None:
+                raise SystemExit(f"Item para atualização não encontrado: {queued.get('matchName')}")
+            target.update({key: queued[key] for key in ("name", "url", "description", "category", "kinds", "tone", "tags")})
+            target["layout"] = ["x3"]
+            target["markup"] = standard_markup(queued)
+        else:
+            if target is not None:
+                raise SystemExit(f"Nome duplicado: {queued['name']}")
+            item = {key: queued[key] for key in ("name", "url", "description", "category", "kinds", "tone", "tags")}
+            item["layout"] = ["x3"]
+            item["markup"] = standard_markup(queued)
+            payload["items"].append(item)
+            by_name[item["name"].casefold()] = item
+        promoted += 1
+    payload["categoryCounts"] = dict(Counter(item["category"] for item in payload["items"]))
+    DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    intake["items"] = [item for item in intake["items"] if item.get("status") not in {"ready", "update"}]
+    INTAKE_PATH.write_text(json.dumps(intake, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    render(payload)
+    print(f"catalog promote ok: {promoted} processados; {len(payload['items'])} itens")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=("bootstrap", "build", "check"))
+    parser.add_argument("command", choices=("bootstrap", "build", "check", "promote"))
     args = parser.parse_args()
     if args.command == "bootstrap":
         bootstrap()
     elif args.command == "build":
         render(load())
+    elif args.command == "promote":
+        promote()
     else:
         check()
 
