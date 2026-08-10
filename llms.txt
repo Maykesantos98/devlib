@@ -1,0 +1,10 @@
+# DEVLIB
+
+> Catálogo curado de recursos para desenvolvimento. O catálogo é a fonte de verdade: não invente bibliotecas ausentes.
+
+- Catálogo completo: /api/catalog.json
+- Categorias: /api/categories.json
+- Contrato OpenAPI: /api/openapi.json
+- MCP remoto (Streamable HTTP): /mcp
+
+Use `search_devlib` para descobrir opções, `inspect_library` para validar um item e `recommend_project_stack` para selecionar uma stack explicada.

@@ -1,0 +1,10 @@
+.git
+.github
+.codex
+.agents
+deploy/VPS.md
+reports
+scripts
+tests
+*.md
+compose*.yml

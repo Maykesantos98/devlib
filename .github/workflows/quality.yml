@@ -26,10 +26,15 @@ jobs:
       - name: Validate catalog and links
         run: |
           python scripts/catalog_tool.py check
+          python scripts/build_agent_api.py --check
           python scripts/check_links.py
           python tests/catalog_test.py
           python tests/production_test.py
+          python tests/deployment_test.py
+          python tests/agent_catalog_test.py
       - name: Run user journeys
         run: |
           sleep 2
           python tests/site.spec.py
+      - name: Build production image
+        run: docker compose build

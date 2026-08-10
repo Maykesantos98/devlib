@@ -21,9 +21,12 @@ def run(*arguments: str) -> None:
 def main() -> None:
     python = sys.executable
     run(python, "scripts/catalog_tool.py", "check")
+    run(python, "scripts/build_agent_api.py", "--check")
     run(python, "scripts/check_links.py")
     run(python, "tests/catalog_test.py")
     run(python, "tests/production_test.py")
+    run(python, "tests/deployment_test.py")
+    run(python, "tests/agent_catalog_test.py")
 
     handler = partial(SimpleHTTPRequestHandler, directory=ROOT)
     server = ThreadingHTTPServer(("127.0.0.1", 8099), handler)

@@ -1,0 +1,35 @@
+services:
+  devlib:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: devlib:${DEVLIB_TAG:-local}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${DEVLIB_PORT:-8080}:8080"
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  agent:
+    build:
+      context: .
+      dockerfile: agent/Dockerfile
+    image: devlib-agent:${DEVLIB_TAG:-local}
+    restart: unless-stopped
+    environment:
+      DEVLIB_DOMAIN: ${DEVLIB_DOMAIN:-localhost}
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    tmpfs: [/tmp:rw,noexec,nosuid,size=32m]

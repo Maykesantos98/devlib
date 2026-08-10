@@ -81,12 +81,12 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 
 ## P5 — implantação em VPS
 
-- [ ] Servir os arquivos estáticos com Nginx em imagem Docker mínima.
-- [ ] Definir cache de assets, compressão e cabeçalhos de segurança.
-- [ ] Adicionar healthcheck local e verificação pós-deploy.
-- [ ] Criar configuração por domínio sem credenciais no repositório.
-- [ ] Documentar deploy inicial, atualização, logs e rollback.
-- [ ] Validar a imagem em container antes de acessar a VPS.
+- [x] Servir os arquivos estáticos com Nginx em imagem Docker mínima e não privilegiada.
+- [x] Definir cache de assets, compressão e cabeçalhos de segurança.
+- [x] Adicionar healthcheck local e verificação pós-deploy.
+- [x] Criar configuração por domínio sem credenciais no repositório.
+- [x] Documentar deploy inicial, atualização, logs e rollback.
+- [x] Validar a imagem em container antes de acessar a VPS.
 
 **Critério de saída:** uma VPS limpa consegue publicar o site com passos documentados, healthcheck verde e rollback testável.
 
@@ -101,3 +101,9 @@ Transformar o DEVLIB em um catálogo rápido, confiável e fácil de manter para
 ## Regra de escopo
 
 Cada fase deve começar com uma medição e terminar com evidência: relatório, teste ou comparação. Mudanças visuais grandes entram depois da estabilização, evitando esconder falhas estruturais sob um redesign.
+# Fase 6 — API e MCP para agentes na VPS
+
+- [x] API JSON pública, `llms.txt` e OpenAPI 3.1
+- [x] MCP com busca, inspeção, categorias e recomendação fundamentada
+- [x] container isolado, proxy HTTPS e autenticação externa
+- [x] testes de sincronização e de recomendações

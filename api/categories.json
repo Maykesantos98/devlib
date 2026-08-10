@@ -1,0 +1,41 @@
+{
+  "total": 9,
+  "categories": [
+    {
+      "id": "kit",
+      "count": 12
+    },
+    {
+      "id": "agents",
+      "count": 13
+    },
+    {
+      "id": "mcp",
+      "count": 10
+    },
+    {
+      "id": "interface",
+      "count": 34
+    },
+    {
+      "id": "server",
+      "count": 17
+    },
+    {
+      "id": "guard",
+      "count": 12
+    },
+    {
+      "id": "run",
+      "count": 10
+    },
+    {
+      "id": "ship",
+      "count": 15
+    },
+    {
+      "id": "trade",
+      "count": 10
+    }
+  ]
+}

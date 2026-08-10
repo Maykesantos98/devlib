@@ -57,6 +57,12 @@ Com o Playwright para Python e o Chromium instalados, inicie um servidor na port
 python scripts/verify.py
 ```
 
+## API e MCP para agentes
+
+O catálogo completo está em `/api/catalog.json`, com descoberta em `/llms.txt`. Na VPS, o MCP remoto usa Streamable HTTP em `/mcp` e oferece busca, inspeção, categorias e recomendação. Toda recomendação é limitada a `data/catalog.json`.
+
+Gere a senha com `docker run --rm caddy:2.10.2-alpine caddy hash-password --plaintext SUA_SENHA` e grave somente o hash no `.env`.
+
 O GitHub Actions repete essas jornadas em todo push e pull request.
 
 Para também consultar os 133 destinos externos e atualizar o relatório:
@@ -64,6 +70,10 @@ Para também consultar os 133 destinos externos e atualizar o relatório:
 ```bash
 python scripts/check_links.py --external
 ```
+
+## VPS
+
+O projeto inclui imagem Nginx não privilegiada, Docker Compose e Caddy para HTTPS automático. Consulte o runbook completo em `deploy/VPS.md` antes da primeira publicação.
 
 ## Deploy
 

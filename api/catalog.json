@@ -1,0 +1,2472 @@
+{
+  "schemaVersion": 1,
+  "total": 133,
+  "categoryCounts": {
+    "kit": 12,
+    "agents": 13,
+    "mcp": 10,
+    "interface": 34,
+    "server": 17,
+    "guard": 12,
+    "run": 10,
+    "ship": 15,
+    "trade": 10
+  },
+  "items": [
+    {
+      "name": "Context7",
+      "url": "https://context7.com/",
+      "description": "Documentação e exemplos atualizados sob demanda. Antes de implementar qualquer biblioteca, verifique aqui — reduz drasticamente alucinação de API em agentes e elimina código baseado em versões obsoletas.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "docs"
+      ],
+      "tone": "violet",
+      "tags": [
+        "npx ctx7",
+        "docs",
+        "contexto"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "skills.sh",
+      "url": "https://skills.sh/",
+      "description": "Catálogo de skills prontas para acelerar a configuração de agentes especializados. Padrões reutilizáveis para evitar reinventar a roda.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "skills",
+        "templates",
+        "agentes"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "description": "Sistema de memória que captura sessões, comprime o histórico com IA e injeta contexto relevante em sessões futuras de Claude Code, Codex, Gemini e outros agentes.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "memória",
+        "contexto",
+        "codex"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "Framework de skills e metodologia para agentes de código, com workflows de brainstorming, plano, TDD, subagentes, revisão e finalização de branches.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "skills",
+        "tdd",
+        "codex"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "frontend-design",
+      "url": "https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md",
+      "description": "Skill focada em criar interfaces bem desenhadas, organizadas e com acabamento profissional.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "ui",
+        "frontend"
+      ],
+      "layout": []
+    },
+    {
+      "name": "webapp-testing",
+      "url": "https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md",
+      "description": "Teste o sistema como usuário — abrir páginas, clicar, preencher fluxos e capturar evidências.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "skills",
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "playwright",
+        "navegador"
+      ],
+      "layout": []
+    },
+    {
+      "name": "everything-claude-code",
+      "url": "https://github.com/affaan-m/everything-claude-code",
+      "description": "Sistema de otimização de performance para agentes — skills, instintos, memória e segurança para Claude Code, Cursor, Codex e outros.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "agentes",
+        "skills",
+        "performance"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "free-for-dev",
+      "url": "https://github.com/jixserver/free-for-dev",
+      "description": "Serviços com planos gratuitos para desenvolvimento, protótipos, testes, deploy, banco, observabilidade e infra.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "plano grátis",
+        "infra",
+        "ferramentas"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Claude Code",
+      "url": "https://github.com/anthropics/claude-code",
+      "description": "O agente de código no terminal da Anthropic — edita arquivos, roda comandos, usa MCP e trabalha o codebase inteiro. Base de boa parte do dev com agentes hoje.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "cli",
+        "agente",
+        "mcp"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "OpenHands",
+      "url": "https://github.com/All-Hands-AI/OpenHands",
+      "description": "Agente autônomo que entrega features ponta a ponta. Planning Mode escreve um plano pra você revisar antes de executar. O coding agent open source mais estrelado.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "autônomo",
+        "features",
+        "planning"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Cline",
+      "url": "https://github.com/cline/cline",
+      "description": "Agente autônomo model-agnostic no VS Code: planeja, edita arquivos, roda comandos e usa o browser, com aprovação humana em cada passo.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "vs code",
+        "autônomo",
+        "browser"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Goose",
+      "url": "https://github.com/block/goose",
+      "description": "Agente extensível que roda localmente, on-device, e se integra a qualquer servidor MCP — automatiza tarefas de engenharia no seu ambiente.",
+      "category": "kit",
+      "kinds": [
+        "kit",
+        "agents",
+        "mcp"
+      ],
+      "tone": "amber",
+      "tags": [
+        "local",
+        "mcp",
+        "extensível"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "OpenAI Agents SDK · JS",
+      "url": "https://github.com/openai/openai-agents-js",
+      "description": "Framework TypeScript para agentes com ferramentas, handoffs, guardrails, sessões, tracing e integração nativa com MCP. Stack oficial para construir agentes em produção.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "typescript",
+        "tools",
+        "handoffs",
+        "mcp"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "OpenAI Agents SDK · Python",
+      "url": "https://github.com/openai/openai-agents-python",
+      "description": "SDK Python leve para workflows multiagente, ferramentas, guardrails, tracing e orquestração com handoffs.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "python",
+        "multi-agente",
+        "tracing"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "LangGraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "description": "Orquestração em grafos para agentes stateful, workflows longos e execução durável.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "grafos",
+        "memória"
+      ],
+      "layout": []
+    },
+    {
+      "name": "CrewAI",
+      "url": "https://github.com/crewAIInc/crewAI",
+      "description": "Framework para montar equipes de agentes com papéis, tarefas e workflows estruturados.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "papéis",
+        "times"
+      ],
+      "layout": []
+    },
+    {
+      "name": "PydanticAI",
+      "url": "https://github.com/pydantic/pydantic-ai",
+      "description": "Framework Python para agentes com tipagem forte, validação, ferramentas e outputs estruturados.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "guard"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "tipado",
+        "validação",
+        "estruturado"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "LlamaIndex",
+      "url": "https://github.com/run-llama/llama_index",
+      "description": "Framework para agentes sobre dados, RAG, documentos, integrações, memória e pipelines de conhecimento.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "rag",
+        "documentos",
+        "dados"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Agno",
+      "url": "https://github.com/agno-agi/agno",
+      "description": "Stack Python para construir, rodar e gerenciar agentes multimodais e sistemas multiagente.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "multimodal",
+        "memória"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Microsoft Agent Framework",
+      "url": "https://github.com/microsoft/agent-framework",
+      "description": "Framework Python/.NET para agentes e workflows multiagente com MCP, A2A, checkpointing, telemetry e DevUI.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "mcp"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "python",
+        ".net",
+        "workflows"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Ollama",
+      "url": "https://github.com/ollama/ollama",
+      "description": "Rode modelos como Llama, Mistral e Gemma localmente com uma CLI simples. Padrão de fato para LLMs no seu próprio hardware.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "llms",
+        "local",
+        "cli"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "llama.cpp",
+      "url": "https://github.com/ggerganov/llama.cpp",
+      "description": "Inference de LLMs em C/C++ puro com quantização GGUF. Roda em CPU, GPU, Apple Silicon — engine por trás do Ollama.",
+      "category": "agents",
+      "kinds": [
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "c++",
+        "ggml",
+        "quantização"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Continue.dev",
+      "url": "https://github.com/continuedev/continue",
+      "description": "Assistente de IA open source — alternativa ao Cursor/Copilot. Roda com qualquer modelo, inclusive local via Ollama, em VS Code e JetBrains.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "ide",
+        "autocomplete",
+        "chat"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Aider",
+      "url": "https://github.com/Aider-AI/aider",
+      "description": "Edita código no seu terminal usando LLMs. Funciona via git, faz commits semânticos, trabalha em qualquer linguagem com qualquer modelo.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "cli",
+        "git",
+        "pair programming"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Agent Browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "CLI nativa em Rust para automação de navegador por agentes de IA. Abre páginas, captura snapshots de acessibilidade, clica, preenche campos, tira screenshots e gera PDFs.",
+      "category": "agents",
+      "kinds": [
+        "agents",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "browser",
+        "automation",
+        "rust cli"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "MCP Specification",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+      "description": "Documentação e especificação oficial do Model Context Protocol para conectar agentes a dados, ferramentas e serviços.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "violet",
+      "tags": [
+        "mcp",
+        "spec",
+        "agentes"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "description": "Referências de servidores MCP como filesystem, git, memory, fetch e exemplos para criar integrações próprias.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "filesystem",
+        "git",
+        "memory"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "MCP Registry",
+      "url": "https://github.com/modelcontextprotocol/registry",
+      "description": "Registro comunitário de servidores MCP para descoberta, publicação e organização de integrações.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "registro",
+        "discovery"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "awesome-mcp-servers",
+      "url": "https://github.com/appcypher/awesome-mcp-servers",
+      "description": "Lista curada de servidores MCP para descobrir integrações úteis antes de instalar algo no ambiente.",
+      "category": "mcp",
+      "kinds": [
+        "mcp"
+      ],
+      "tone": "amber",
+      "tags": [
+        "curado",
+        "servers"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "mcp-scan",
+      "url": "https://github.com/invariantlabs-ai/mcp-scan",
+      "description": "Descobrir, registrar, restringir e escanear conexões MCP locais ou remotas contra riscos de segurança.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "guard"
+      ],
+      "tone": "pink",
+      "tags": [
+        "prompt injection",
+        "scan"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "FastMCP",
+      "url": "https://github.com/jlowin/fastmcp",
+      "description": "A forma rápida e pythônica de construir servidores e clientes MCP. Roda ~70% de todos os servidores MCP do ecossistema — decorators, auth, deploy e tooling completo.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "python",
+        "server",
+        "client",
+        "auth"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "MCP Inspector",
+      "url": "https://github.com/modelcontextprotocol/inspector",
+      "description": "Ferramenta oficial pra inspecionar e debugar servidores MCP — logs em tempo real, validação de protocolo e suporte a múltiplos transports.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "debug",
+        "inspector",
+        "oficial"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "GitHub MCP Server",
+      "url": "https://github.com/github/github-mcp-server",
+      "description": "Servidor MCP oficial do GitHub: repos, pull requests, issues, code search e operações de arquivo — dá ao agente acesso completo à API do GitHub.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "github",
+        "pr",
+        "issues"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Playwright MCP",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "description": "Servidor MCP que deixa o agente navegar a web via árvore de acessibilidade (não screenshots) — mais rápido, menos tokens e mais preciso.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "browser",
+        "automation",
+        "a11y"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Composio",
+      "url": "https://github.com/ComposioHQ/composio",
+      "description": "Plataforma de integração agêntica com MCP Gateway: 500+ integrações gerenciadas (Slack, GitHub, Jira, Salesforce…) prontas pra dar ferramentas ao agente.",
+      "category": "mcp",
+      "kinds": [
+        "mcp",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "integrações",
+        "gateway",
+        "tools"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "React Bits",
+      "url": "https://reactbits.dev/",
+      "description": "Coleção open source de componentes React interativos, animados e customizáveis para interfaces memoráveis.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "animações"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "shadcn/ui",
+      "url": "https://github.com/shadcn-ui/ui",
+      "description": "Componentes acessíveis e editáveis para criar sua própria biblioteca UI em React, Next.js, Tailwind e Radix.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "react",
+        "tailwind",
+        "radix"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "ReUI",
+      "url": "https://reui.io/",
+      "description": "Catálogo amplo de componentes e blocks para shadcn/ui, com versões Base UI e Radix. Bom ponto de partida para fluxos reais como data grid, filtros, uploads e kanban.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "shadcn",
+        "base ui",
+        "radix",
+        "blocks"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "Magic UI",
+      "url": "https://magicui.design/",
+      "description": "Componentes animados, backgrounds e efeitos para React, Tailwind e Motion. Excelente para dar acabamento visual a landing pages sem criar tudo do zero.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "pink",
+      "tags": [
+        "motion",
+        "tailwind",
+        "landing"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Aceternity UI",
+      "url": "https://ui.aceternity.com/",
+      "description": "Componentes e blocks com Tailwind e Motion para landing pages, pricing, hero sections, backgrounds e interações de alto impacto.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "tailwind",
+        "motion",
+        "blocks"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Refero Styles",
+      "url": "https://styles.refero.design/",
+      "description": "Galeria de estilos de interface para acelerar direção visual, referências de composição e decisões de linguagem antes de codar a tela.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend",
+        "recent"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "inspiração",
+        "ui",
+        "styles"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Componetry",
+      "url": "https://componetry.fun/",
+      "description": "Hub curado para inspiração de UI e componentes, útil para comparar padrões visuais antes de montar dashboards, landing pages e tool surfaces.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend",
+        "recent"
+      ],
+      "tone": "amber",
+      "tags": [
+        "components",
+        "inspiration",
+        "ui"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Penpot",
+      "url": "https://github.com/penpot/penpot",
+      "description": "Plataforma open source de design e prototipagem com colaboração em tempo real, tokens, inspect mode, API, plugins e MCP para fluxo design-code.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "frontend",
+        "ship",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "design system",
+        "mcp",
+        "open source"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "HeroUI",
+      "url": "https://www.heroui.com/",
+      "description": "Sistema de design React completo, sucessor do NextUI, com acessibilidade via React Aria, Tailwind, temas e componentes prontos para apps.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react aria",
+        "design system",
+        "tailwind"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Shadcn Blocks",
+      "url": "https://www.shadcnblocks.com/",
+      "description": "Biblioteca grande de blocos, componentes e templates para shadcn/ui e Tailwind. Útil para montar páginas inteiras a partir de padrões prontos.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "blocks",
+        "templates",
+        "tailwind"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Eldora UI",
+      "url": "https://www.eldoraui.site/",
+      "description": "Coleção open source de componentes, blocks e efeitos animados com React, TypeScript, Tailwind e Motion, instaláveis pelo shadcn CLI.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "animated",
+        "motion",
+        "shadcn"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Cult UI",
+      "url": "https://www.cult-ui.com/",
+      "description": "Componentes animados, blocks e templates compatíveis com shadcn. Bom para marketing pages, SaaS e interfaces com microinterações mais refinadas.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "shadcn",
+        "templates",
+        "motion"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Skiper UI",
+      "url": "https://skiper-ui.com/",
+      "description": "Coleções de componentes shadcn com animações e padrões menos comuns. Bom para detalhes visuais quando a base padrão já está pronta.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "pink",
+      "tags": [
+        "shadcn",
+        "premium",
+        "animations"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Square UI",
+      "url": "https://square.lndev.me/",
+      "description": "Layouts completos construídos com shadcn/ui, úteis para dashboards, trackers e páginas que precisam sair do wireframe rapidamente.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "layouts",
+        "dashboard",
+        "shadcn"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Ali Imam Components",
+      "url": "https://aliimam.in/docs/components",
+      "description": "Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "components",
+        "effects",
+        "registry"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "21st.dev",
+      "url": "https://21st.dev/",
+      "description": "Biblioteca e inspiração para componentes React modernos.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "componentes",
+        "react"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Storybook",
+      "url": "https://github.com/storybookjs/storybook",
+      "description": "Construir, documentar e testar componentes isolados, com testes de interação e visual review.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "docs",
+        "componentes"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Vite",
+      "url": "https://github.com/vitejs/vite",
+      "description": "Build tool moderno com dev server rápido, HMR, plugins, TypeScript e builds otimizados.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "build",
+        "hmr"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Tailwind CSS",
+      "url": "https://github.com/tailwindlabs/tailwindcss",
+      "description": "Framework CSS utility-first para interfaces responsivas com design consistente.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "css",
+        "utility"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Radix Primitives",
+      "url": "https://github.com/radix-ui/primitives",
+      "description": "Primitivas React acessíveis para dialogs, menus, selects, tooltips e design systems customizados.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "a11y",
+        "primitives"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "TanStack Query",
+      "url": "https://github.com/TanStack/query",
+      "description": "Gerenciamento de server state para buscar, cachear, sincronizar e atualizar dados.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "server"
+      ],
+      "tone": "pink",
+      "tags": [
+        "cache",
+        "fetching"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Spline",
+      "url": "https://spline.design/",
+      "description": "Ferramenta para criar cenas 3D interativas e experiências visuais para web.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "3d",
+        "interativo"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Framer",
+      "url": "https://www.framer.com/",
+      "description": "Plataforma para criar, prototipar e publicar sites com foco em design visual e animações.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "protótipo",
+        "motion"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "awesome-design-md",
+      "url": "https://github.com/voltagent/awesome-design-md",
+      "description": "Modelos DESIGN.md para orientar estética, componentes e consistência visual.",
+      "category": "interface",
+      "kinds": [
+        "interface",
+        "kit"
+      ],
+      "tone": "violet",
+      "tags": [
+        "design.md",
+        "inspiração"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Next.js",
+      "url": "https://github.com/vercel/next.js",
+      "description": "O framework React mais usado em produção. App Router, Server Components, file-based routing, otimizações automáticas, suporte nativo a streaming e ISR. Padrão da indústria.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "ssr",
+        "app router",
+        "server components"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "Astro",
+      "url": "https://github.com/withastro/astro",
+      "description": "Framework #1 pra sites de conteúdo. Zero JS por default, islands architecture, suporte a React/Vue/Svelte no mesmo projeto.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "ssg",
+        "islands",
+        "content"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Three.js",
+      "url": "https://github.com/mrdoob/three.js",
+      "description": "Biblioteca padrão para 3D na web. WebGL, geometrias, materiais, shaders, animações. Por trás de quase toda experiência 3D moderna.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "webgl",
+        "3d",
+        "shaders"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Framer Motion",
+      "url": "https://github.com/motiondivision/motion",
+      "description": "Animações declarativas para React. Spring physics, gestos, layout animations e scroll-driven. A biblioteca de motion mais usada do ecossistema.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "react",
+        "motion",
+        "gestures"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Liquid Metal",
+      "url": "https://metal.jakubantalik.com/",
+      "description": "Efeito WebGL de metal líquido para botões, chips e controles. Use como tempero visual pontual, não como base de design system.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "webgl",
+        "buttons",
+        "effect"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Dot Matrix",
+      "url": "https://dotmatrix.zzzzshawn.cloud/",
+      "description": "Loaders em estilo dot matrix feitos com React, TypeScript, Tailwind e shadcn. Nichado, mas ótimo para estados de carregamento com personalidade.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "loaders",
+        "react",
+        "shadcn"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Balloons.js",
+      "url": "https://arturbien.github.io/balloons-js/",
+      "description": "Biblioteca pequena para animações de balões em tela cheia. Útil para celebrações, sucesso de onboarding e momentos de recompensa.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "celebration",
+        "animation",
+        "vanilla"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "cmdk",
+      "url": "https://github.com/pacocoursey/cmdk",
+      "description": "Componente React para command palettes estilo Raycast. Headless, acessível, com fuzzy search. Por trás do Command do shadcn/ui.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "⌘k",
+        "palette"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "UIverse",
+      "url": "https://uiverse.io/",
+      "description": "Biblioteca enorme de elementos UI open source — botões, checkboxes, cards, loaders — prontos pra copiar e colar (CSS/Tailwind) no projeto.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "ui",
+        "css",
+        "copy-paste"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Mobbin",
+      "url": "https://mobbin.com/",
+      "description": "Maior biblioteca de design mobile e web — 300k+ telas de apps reais bem desenhados pra estudar padrões de UX e buscar inspiração.",
+      "category": "interface",
+      "kinds": [
+        "interface"
+      ],
+      "tone": "pink",
+      "tags": [
+        "design",
+        "ux",
+        "inspiração"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Supabase",
+      "url": "https://github.com/supabase/supabase",
+      "description": "Plataforma Postgres completa para banco, autenticação, storage, APIs, realtime, edge functions e recursos para apps com AI. A backend-as-a-service mais popular para projetos modernos.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "postgres",
+        "auth",
+        "realtime",
+        "edge"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "Appwrite",
+      "url": "https://github.com/appwrite/appwrite",
+      "description": "Infra backend open source com auth, databases, storage, functions, messaging, realtime e hosting integrado.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "pink",
+      "tags": [
+        "baas",
+        "self-host",
+        "functions"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Hono",
+      "url": "https://github.com/honojs/hono",
+      "description": "Framework TypeScript ultraleve para Node, Bun, Deno, Workers e edge.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "violet",
+      "tags": [
+        "typescript",
+        "edge"
+      ],
+      "layout": []
+    },
+    {
+      "name": "Fastify",
+      "url": "https://github.com/fastify/fastify",
+      "description": "Framework Node.js de baixa sobrecarga para APIs com plugins, validação e performance.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "node.js",
+        "plugins"
+      ],
+      "layout": []
+    },
+    {
+      "name": "Drizzle ORM",
+      "url": "https://github.com/drizzle-team/drizzle-orm",
+      "description": "ORM TypeScript leve e SQL-first para PostgreSQL, MySQL, SQLite e ambientes serverless/edge.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "amber",
+      "tags": [
+        "sql",
+        "migrations",
+        "tipos"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Prisma ORM",
+      "url": "https://github.com/prisma/prisma",
+      "description": "Toolkit Node/TypeScript para modelagem, migrations, Prisma Client tipado e Studio.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "violet",
+      "tags": [
+        "orm",
+        "migrate",
+        "studio"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Neon",
+      "url": "https://github.com/neondatabase/neon",
+      "description": "Postgres serverless com separação de compute/storage, autoscaling, branching e scale-to-zero.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "postgres",
+        "branching"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Upstash",
+      "url": "https://upstash.com/",
+      "description": "Plataforma serverless para Redis, Vector, QStash e workflows — cache, filas e AI apps.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "redis",
+        "vector"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Scalar",
+      "url": "https://github.com/scalar/scalar",
+      "description": "Plataforma open source para documentar, descobrir e testar APIs com suporte a OpenAPI/Swagger.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "kit"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "openapi",
+        "api client"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "description": "Framework adaptativo de web scraping com fetchers stealth, spiders, seleção resiliente a mudanças de DOM, proxy rotation e servidor MCP para extração assistida por IA.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "backend",
+        "agents",
+        "recent"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "scraping",
+        "mcp",
+        "python"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Infinite Monitor",
+      "url": "https://github.com/homanp/infinite-monitor",
+      "description": "Dashboard builder com IA: descreva o widget em linguagem natural e o agente escreve, builda e publica monitores em tempo real.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents",
+        "run",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "dashboard",
+        "monitoring",
+        "agents"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Plausible Analytics",
+      "url": "https://github.com/plausible/analytics",
+      "description": "Analytics web open source, leve e privacy-first, sem cookies e com opção cloud ou self-hosted para produtos que precisam medir sem rastrear pessoas.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "run",
+        "recent"
+      ],
+      "tone": "amber",
+      "tags": [
+        "analytics",
+        "privacy",
+        "self-host"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "description": "Plataforma self-hostable de workflow automation com 400+ integrações, código quando necessário e recursos nativos para fluxos com agentes e modelos.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents",
+        "mcp",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "automation",
+        "workflows",
+        "ai"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Zod",
+      "url": "https://github.com/colinhacks/zod",
+      "description": "Validação de schemas TypeScript com inferência automática de tipos. Padrão de fato para validar entrada de APIs, formulários e variáveis de ambiente.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "typescript",
+        "schema",
+        "validation"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "tRPC",
+      "url": "https://github.com/trpc/trpc",
+      "description": "APIs end-to-end typesafe sem schema. Defina no servidor, ganhe autocomplete no cliente. Ideal para monorepos full-stack TypeScript.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "typescript",
+        "rpc",
+        "monorepo"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "PocketBase",
+      "url": "https://github.com/pocketbase/pocketbase",
+      "description": "Backend-as-a-service num único binário Go: SQLite, auth, realtime, storage, admin UI. Self-hosted em qualquer VPS com zero config.",
+      "category": "server",
+      "kinds": [
+        "server"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "go",
+        "sqlite",
+        "baas"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "pgvector",
+      "url": "https://github.com/pgvector/pgvector",
+      "description": "Extensão Postgres para vector search. Embeddings, similaridade, índices HNSW/IVFFlat. Permite RAG sem precisar de banco vetorial dedicado.",
+      "category": "server",
+      "kinds": [
+        "server",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "postgres",
+        "vectors",
+        "rag"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Better Auth",
+      "url": "https://github.com/better-auth/better-auth",
+      "description": "Framework de autenticação TypeScript com OAuth, 2FA, organizações, SSO, plugins e suporte a vários frameworks.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "server"
+      ],
+      "tone": "pink",
+      "tags": [
+        "oauth",
+        "2fa",
+        "sso"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "OWASP Cheat Sheet Series",
+      "url": "https://github.com/OWASP/CheatSheetSeries",
+      "description": "Guias práticos de segurança para autenticação, sessão, APIs, XSS, SSRF, secrets e hardening de apps.",
+      "category": "guard",
+      "kinds": [
+        "guard"
+      ],
+      "tone": "amber",
+      "tags": [
+        "owasp",
+        "appsec"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Anthropic Cybersecurity Skills",
+      "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+      "description": "Biblioteca com 754 skills estruturadas de cibersegurança para agentes, cobrindo 26 domínios e mapeamentos para MITRE ATT&CK, NIST CSF, ATLAS, D3FEND e AI RMF.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents",
+        "kit",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "skills",
+        "mitre",
+        "nist"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Bitwarden Server",
+      "url": "https://github.com/bitwarden/server",
+      "description": "Backend oficial do Bitwarden com APIs, banco, Docker e infraestrutura para gerenciar cofres, credenciais e recursos de password manager self-hosted.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "server",
+        "recent"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "passwords",
+        "secrets",
+        "self-host"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Opengrep",
+      "url": "https://github.com/opengrep/opengrep",
+      "description": "Engine open source de análise estática para vulnerabilidades em várias linguagens.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "violet",
+      "tags": [
+        "sast",
+        "sarif"
+      ],
+      "layout": []
+    },
+    {
+      "name": "Gitleaks",
+      "url": "https://github.com/gitleaks/gitleaks",
+      "description": "Scanner para detectar e prevenir secrets hardcoded em repos, pre-commit e pipelines.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "tokens",
+        "pre-commit"
+      ],
+      "layout": []
+    },
+    {
+      "name": "TruffleHog",
+      "url": "https://github.com/trufflesecurity/trufflehog",
+      "description": "Scanner que classifica credenciais, verifica se estão ativas e prioriza vazamentos reais.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "verified",
+        "docker"
+      ],
+      "layout": []
+    },
+    {
+      "name": "OSV-Scanner",
+      "url": "https://github.com/google/osv-scanner",
+      "description": "Scanner oficial do OSV para vulnerabilidades em dependências, lockfiles e imagens de container.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "run"
+      ],
+      "tone": "pink",
+      "tags": [
+        "dependências",
+        "sbom",
+        "containers"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "NeMo Guardrails",
+      "url": "https://github.com/NVIDIA-NeMo/Guardrails",
+      "description": "Toolkit pra adicionar guardrails programáveis a apps LLM — protege contra jailbreaks e prompt injection, e modela o diálogo usuário↔agente com a DSL Colang.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "jailbreak",
+        "prompt injection",
+        "dialog"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Guardrails AI",
+      "url": "https://github.com/guardrails-ai/guardrails",
+      "description": "Framework pra validar saídas do LLM contra schemas e regras (validators) — garante outputs estruturados e seguros do agente.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "validação",
+        "schema",
+        "output"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "LLM Guard",
+      "url": "https://github.com/protectai/llm-guard",
+      "description": "Toolkit de segurança com 15 scanners de input e 20 de output. O scanner de PromptInjection usa ML treinado em padrões reais — pega injeção indireta.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "scanners",
+        "prompt injection",
+        "pii"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Garak",
+      "url": "https://github.com/NVIDIA/garak",
+      "description": "Scanner de vulnerabilidades pra LLMs — sonda jailbreak, prompt injection, vazamento de dados, toxicidade e mais. O nmap dos modelos.",
+      "category": "guard",
+      "kinds": [
+        "guard",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "red-team",
+        "vuln scan",
+        "jailbreak"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Biome",
+      "url": "https://github.com/biomejs/biome",
+      "description": "Toolchain rápido para formatar e lintar JavaScript, TypeScript, JSX, JSON, CSS e GraphQL.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "formatter",
+        "linter"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "pnpm",
+      "url": "https://github.com/pnpm/pnpm",
+      "description": "Gerenciador de pacotes rápido e eficiente em disco, ótimo para workspaces e monorepos.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "workspaces",
+        "monorepo"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Turborepo",
+      "url": "https://github.com/vercel/turborepo",
+      "description": "Sistema de build de alta performance para JS/TS com cache e pipelines por pacote.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "violet",
+      "tags": [
+        "cache",
+        "tasks"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Renovate",
+      "url": "https://github.com/renovatebot/renovate",
+      "description": "Automação de atualização de dependências com PRs, suporte amplo a linguagens e configuração granular.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "guard"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "dependências",
+        "prs",
+        "automação"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "OpenTelemetry JS",
+      "url": "https://github.com/open-telemetry/opentelemetry-js",
+      "description": "SDK JavaScript para instrumentar traces, métricas e logs em Node.js e web com padrão aberto.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "pink",
+      "tags": [
+        "traces",
+        "métricas",
+        "logs"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Grafana",
+      "url": "https://github.com/grafana/grafana",
+      "description": "Plataforma aberta para visualizar métricas, logs e traces com dashboards e alertas.",
+      "category": "run",
+      "kinds": [
+        "run"
+      ],
+      "tone": "amber",
+      "tags": [
+        "métricas",
+        "logs"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Sentry",
+      "url": "https://github.com/getsentry/sentry",
+      "description": "Rastrear erros, performance, releases e falhas em apps web, backend e mobile.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "guard"
+      ],
+      "tone": "pink",
+      "tags": [
+        "erros",
+        "apm"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Playwright",
+      "url": "https://github.com/microsoft/playwright",
+      "description": "Testes e automação web com Chromium, Firefox, WebKit, CLI para agentes e Playwright MCP.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "e2e",
+        "mcp"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Vitest",
+      "url": "https://github.com/vitest-dev/vitest",
+      "description": "Test runner rápido, compatível com Jest, integrado ao ecossistema Vite.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "unit",
+        "coverage"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Bun",
+      "url": "https://github.com/oven-sh/bun",
+      "description": "Runtime JavaScript drop-in para Node, com bundler, test runner e package manager nativos. Escrito em Zig, muito mais rápido em todos os benchmarks.",
+      "category": "run",
+      "kinds": [
+        "run",
+        "server"
+      ],
+      "tone": "amber",
+      "tags": [
+        "runtime",
+        "bundler",
+        "zig"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Flutter",
+      "url": "https://github.com/flutter/flutter",
+      "description": "O framework mobile mais popular do mundo. UI nativa de alta fidelidade pra iOS e Android a partir de um único código Dart — compila pra código nativo. Suporta GenAI on-device via LiteRT-LM.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "dart",
+        "ios",
+        "android",
+        "genai"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "React Native",
+      "url": "https://github.com/facebook/react-native",
+      "description": "Base pra apps iOS/Android nativos a partir de um código JavaScript. New Architecture com comunicação JS↔nativo direta. Ecossistema enorme pra apps de IA.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react",
+        "ios",
+        "android"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Expo",
+      "url": "https://github.com/expo/expo",
+      "description": "Framework para criar apps mobile nativos com React Native — iOS, Android e serviços EAS de build/deploy. Stack de fato pra apps de agentes mobile.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "react native",
+        "eas",
+        "otas"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "MLC LLM",
+      "url": "https://github.com/mlc-ai/mlc-llm",
+      "description": "Compilador e engine que roda LLMs nativamente no celular (iOS/Android), GPU local, sem servidor. Base pra agentes que rodam 100% no dispositivo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "amber",
+      "tags": [
+        "on-device",
+        "ios",
+        "android"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "ExecuTorch",
+      "url": "https://github.com/pytorch/executorch",
+      "description": "Solução do PyTorch pra inferência on-device em mobile e edge. Roda a IA on-device do Instagram, WhatsApp, Quest 3 e Ray-Ban Meta.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "pink",
+      "tags": [
+        "pytorch",
+        "on-device",
+        "edge"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "react-native-executorch",
+      "url": "https://github.com/software-mansion/react-native-executorch",
+      "description": "Forma declarativa de rodar LLMs e modelos de visão on-device em React Native, sobre o ExecuTorch.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "interface"
+      ],
+      "tone": "violet",
+      "tags": [
+        "react native",
+        "on-device"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "MediaPipe",
+      "url": "https://github.com/google-ai-edge/mediapipe",
+      "description": "Suite do Google AI Edge pra ML/LLM on-device em mobile — visão, áudio e LLM Inference API direto no celular.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "on-device",
+        "llm",
+        "vision"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Capacitor",
+      "url": "https://github.com/ionic-team/capacitor",
+      "description": "Empacota apps web (incl. clientes de agente) como apps nativos iOS/Android com acesso a APIs do dispositivo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "interface"
+      ],
+      "tone": "amber",
+      "tags": [
+        "web",
+        "ios",
+        "android"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "react-native-ai",
+      "url": "https://github.com/callstackincubator/react-native-ai",
+      "description": "Roda LLMs on-device em apps React Native via MLC Engine, integrado ao Vercel AI SDK — agentes que funcionam offline no celular.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "react native",
+        "on-device",
+        "ai sdk"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Cactus",
+      "url": "https://github.com/cactus-compute/cactus",
+      "description": "Framework cross-platform de inferência de LLM/VLM no celular — roda agentes locais em iOS e Android com baixo consumo.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "on-device",
+        "llm",
+        "vlm"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "AppFlowy",
+      "url": "https://github.com/appflowy-io/appflowy",
+      "description": "Workspace colaborativo open source com IA para projetos, wikis e times, pensado como alternativa ao Notion com controle de dados e deploy próprio.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "recent"
+      ],
+      "tone": "violet",
+      "tags": [
+        "workspace",
+        "notion",
+        "ai"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Chatterbox",
+      "url": "https://github.com/resemble-ai/chatterbox",
+      "description": "Modelo open source de text-to-speech para gerar voz em produtos, agentes conversacionais, narração e protótipos multimodais.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "tts",
+        "voice",
+        "python"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Fooocus",
+      "url": "https://github.com/lllyasviel/Fooocus",
+      "description": "Software open source de geração de imagens baseado em SDXL, focado em prompts e presets simples para produzir assets visuais sem ajuste manual pesado.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "image ai",
+        "sdxl",
+        "assets"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Cal.com DIY",
+      "url": "https://github.com/calcom/cal.diy",
+      "description": "Infraestrutura de agendamento aberta para produtos que precisam embutir calendário, reservas e fluxos de disponibilidade sem começar do zero.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "recent"
+      ],
+      "tone": "pink",
+      "tags": [
+        "scheduling",
+        "calendar",
+        "infra"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Whisper",
+      "url": "https://github.com/openai/whisper",
+      "description": "Modelo open source de reconhecimento de fala para transcrição multilíngue, tradução de fala e identificação de idioma em pipelines de áudio e agentes.",
+      "category": "ship",
+      "kinds": [
+        "ship",
+        "agents",
+        "recent"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "asr",
+        "speech",
+        "python"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "description": "Framework de trading com múltiplos agentes LLM que imita uma mesa real: analistas fundamentalista, de sentimento e técnico colaboram para decidir. v0.2 (2026) com GPT-5.x, Gemini 3, Claude 4, Grok, DeepSeek, Qwen e Ollama local.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "multi-agente",
+        "llm",
+        "finance"
+      ],
+      "layout": [
+        "feature"
+      ]
+    },
+    {
+      "name": "AI-Trader",
+      "url": "https://github.com/HKUDS/AI-Trader",
+      "description": "Trading 100% automatizado agent-native, modular e fácil de operar por agentes. Inclui paper trading no Polymarket com dados reais e auto-settlement.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "agent-native",
+        "polymarket",
+        "auto"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "AgenticTrading",
+      "url": "https://github.com/Open-Finance-Lab/AgenticTrading",
+      "description": "Agentes LLM com memória Neo4j para contexto longo, memória vetorial semântica, comunicação A2A entre agentes e execução em DAG dinâmico.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents"
+      ],
+      "tone": "violet",
+      "tags": [
+        "neo4j",
+        "a2a",
+        "dag"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Freqtrade",
+      "url": "https://github.com/freqtrade/freqtrade",
+      "description": "Bot de trading de cripto livre e open source. Suporta os principais exchanges, controle via Telegram, backtest, otimização de hiperparâmetros e ML.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "emerald",
+      "tags": [
+        "crypto",
+        "telegram",
+        "backtest"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Hummingbot",
+      "url": "https://github.com/hummingbot/hummingbot",
+      "description": "Software open source para criar e rodar estratégias de high-frequency trading e market making em exchanges centralizados e DEXs.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "amber",
+      "tags": [
+        "hft",
+        "market making",
+        "dex"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "Backtrader",
+      "url": "https://github.com/mementum/backtrader",
+      "description": "Biblioteca Python event-driven, madura, para backtest de estratégias com indicadores, brokers e live trading.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "pink",
+      "tags": [
+        "backtest",
+        "python"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Zipline",
+      "url": "https://github.com/quantopian/zipline",
+      "description": "Biblioteca Pythonic event-driven para backtest de estratégias algorítmicas, usada pela Quantopian.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "cyan",
+      "tags": [
+        "backtest",
+        "quant"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "Lean",
+      "url": "https://github.com/QuantConnect/Lean",
+      "description": "Engine de trading algorítmico da QuantConnect, suporta Python e C#, backtest e live em múltiplos ativos e mercados.",
+      "category": "trade",
+      "kinds": [
+        "trade"
+      ],
+      "tone": "violet",
+      "tags": [
+        "c#",
+        "python",
+        "engine"
+      ],
+      "layout": [
+        "x2"
+      ]
+    },
+    {
+      "name": "bybit-exchange/skills",
+      "url": "https://github.com/bybit-exchange/skills",
+      "description": "Skills oficiais da Bybit para agentes de IA — ferramentas prontas pra consultar mercado, executar ordens e gerenciar conta na exchange via agentes.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "bybit",
+        "skills",
+        "exchange"
+      ],
+      "layout": [
+        "x3"
+      ]
+    },
+    {
+      "name": "awesome-ai-in-finance",
+      "url": "https://github.com/georgezouq/awesome-ai-in-finance",
+      "description": "Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading.",
+      "category": "trade",
+      "kinds": [
+        "trade",
+        "agents",
+        "kit"
+      ],
+      "tone": "amber",
+      "tags": [
+        "curado",
+        "llm",
+        "deep learning"
+      ],
+      "layout": [
+        "x3"
+      ]
+    }
+  ]
+}

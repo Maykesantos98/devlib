@@ -16,6 +16,7 @@ class VpsDeploymentContract(unittest.TestCase):
 
     def test_nginx_has_security_cache_and_compression(self):
         config = (ROOT / "deploy" / "nginx.conf").read_text(encoding="utf-8")
+        headers = (ROOT / "deploy" / "security-headers.conf").read_text(encoding="utf-8")
         for expected in (
             "listen 8080",
             "gzip on",
@@ -26,7 +27,7 @@ class VpsDeploymentContract(unittest.TestCase):
             "Cache-Control",
             "location = /healthz",
         ):
-            self.assertIn(expected, config)
+            self.assertIn(expected, config + headers)
         self.assertGreaterEqual(
             config.count("include /etc/nginx/snippets/security-headers.conf;"),
             4,

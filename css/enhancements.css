@@ -175,3 +175,12 @@ body {
   opacity: 1 !important;
   transform: none !important;
 }
+
+.error-page {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  width: min(680px, calc(100% - 2rem));
+  min-height: 100vh;
+  margin: auto;
+}
