@@ -83,6 +83,16 @@ class DevlibJourneys(unittest.TestCase):
         finally:
             context.close()
 
+    def test_catalog_can_be_sorted_alphabetically(self):
+        context, page, errors = self.open_page()
+        try:
+            page.locator("#sortSelect").select_option("az")
+            titles = page.locator('.bento .card:not(.hidden) .card-title').all_inner_texts()
+            self.assertEqual(titles, sorted(titles, key=str.casefold))
+            self.assertEqual(errors, [])
+        finally:
+            context.close()
+
     def test_empty_search_has_recovery_action_and_live_count(self):
         context, page, errors = self.open_page()
         try:

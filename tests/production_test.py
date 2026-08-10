@@ -24,6 +24,11 @@ class StaticProductionContract(unittest.TestCase):
         self.assertIn("para cada ideia.", home)
         self.assertNotIn("que</span> <span class=\"word\">viram produto", home)
 
+    def test_large_catalog_has_sorting_and_filter_summary(self):
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn('id="sortSelect"', home)
+        self.assertIn('id="activeCatalogState"', home)
+
     @classmethod
     def setUpClass(cls):
         cls.pages = {
