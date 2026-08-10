@@ -29,6 +29,9 @@ services:
     restart: unless-stopped
     environment:
       DEVLIB_DOMAIN: ${DEVLIB_DOMAIN:-localhost}
+      DEVLIB_RATE_LIMIT: ${DEVLIB_RATE_LIMIT:-120}
+      DEVLIB_RATE_WINDOW: ${DEVLIB_RATE_WINDOW:-60}
+      DEVLIB_RATE_LIMIT_RECOMMEND: ${DEVLIB_RATE_LIMIT_RECOMMEND:-20}
       NVIDIA_API_KEY: ${NVIDIA_API_KEY:-}
       NVIDIA_MODEL: ${NVIDIA_MODEL:-meta/llama-3.1-8b-instruct}
     read_only: true

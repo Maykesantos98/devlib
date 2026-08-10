@@ -25,14 +25,20 @@ class StaticProductionContract(unittest.TestCase):
             self.assertIn(selector, script)
             self.assertIn(selector, styles)
 
-    def test_remote_mcp_examples_use_production_url_and_secret_environment_header(self):
+    def test_remote_mcp_examples_use_production_url_without_credentials(self):
         hub = (ROOT / "integracoes.html").read_text(encoding="utf-8")
         self.assertNotIn("devlib.seudominio.com", hub)
         self.assertIn("https://devlib.46-202-147-251.sslip.io/mcp", hub)
-        self.assertIn("DEVLIB_MCP_AUTH", hub)
-        self.assertIn('env_http_headers = { Authorization = "DEVLIB_MCP_AUTH" }', hub)
-        self.assertIn('--header &quot;Authorization: $env:DEVLIB_MCP_AUTH&quot;', hub)
-        self.assertNotIn('Authorization: Basic devlib:', hub)
+        self.assertIn("claude mcp add --transport http devlib https://devlib.46-202-147-251.sslip.io/mcp", hub)
+        for credential in ("DEVLIB_MCP_AUTH", "Authorization", "env_http_headers", "Basic "):
+            self.assertNotIn(credential, hub)
+
+    def test_discovery_states_the_public_contract_and_its_limits(self):
+        guide = (ROOT / "llms.txt").read_text(encoding="utf-8")
+        self.assertIn("/mcp", guide)
+        self.assertNotIn("Authorization", guide)
+        for term in ("público", "429", "Retry-After", "CORS"):
+            self.assertIn(term, guide)
 
     def test_home_hero_uses_product_focused_message(self):
         home = (ROOT / "index.html").read_text(encoding="utf-8")

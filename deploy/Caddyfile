@@ -1,20 +1,44 @@
 {$DEVLIB_DOMAIN} {
 	encode zstd gzip
-	handle /mcp* {
-		basic_auth {
-			devlib {$DEVLIB_MCP_PASSWORD_HASH}
-		}
-		reverse_proxy agent:8000
-	}
-	handle_path /api/ai/* {
-		rewrite * /v1{path}
-		reverse_proxy agent:8000
-	}
-	reverse_proxy devlib:8080
 
 	header {
 		-Server
 		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	}
+
+	# O catálogo é leitura pública: agentes e páginas de qualquer origem podem consumir
+	# /mcp, /api e /llms.txt. O limite de requisições é aplicado no serviço agent.
+	@agents path /mcp* /api/* /llms.txt
+	header @agents {
+		Access-Control-Allow-Origin "*"
+		Access-Control-Allow-Methods "GET, POST, DELETE, OPTIONS"
+		Access-Control-Allow-Headers "Content-Type, Accept, Mcp-Session-Id, Mcp-Protocol-Version, Last-Event-ID"
+		Access-Control-Expose-Headers "Mcp-Session-Id"
+		Access-Control-Max-Age "86400"
+		defer
+	}
+
+	# Ordem explícita: fora de um route o Caddy ordena `respond` depois de `handle`,
+	# e o preflight acabaria repassado ao upstream em vez de responder 204 aqui.
+	route {
+		@preflight {
+			method OPTIONS
+			path /mcp* /api/* /llms.txt
+		}
+		respond @preflight 204
+
+		handle /mcp* {
+			reverse_proxy agent:8000
+		}
+
+		handle_path /api/ai/* {
+			rewrite * /v1{path}
+			reverse_proxy agent:8000
+		}
+
+		handle {
+			reverse_proxy devlib:8080
+		}
 	}
 
 	log {

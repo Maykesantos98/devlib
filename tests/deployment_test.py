@@ -49,6 +49,38 @@ class VpsDeploymentContract(unittest.TestCase):
         self.assertIn("DEVLIB_DOMAIN", caddy)
         self.assertIn("reverse_proxy devlib:8080", caddy)
 
+    def test_agent_surface_is_reachable_without_credentials(self):
+        caddy = (ROOT / "deploy" / "Caddyfile").read_text(encoding="utf-8")
+        overlay = (ROOT / "compose.prod.yml").read_text(encoding="utf-8")
+        example = (ROOT / ".env.vps.example").read_text(encoding="utf-8")
+        self.assertNotIn("basic_auth", caddy)
+        self.assertIn("reverse_proxy agent:8000", caddy)
+        # A senha deixou de existir: nenhum arquivo pode voltar a exigi-la no boot.
+        for source in (caddy, overlay, example):
+            self.assertNotIn("DEVLIB_MCP_PASSWORD_HASH", source)
+
+    def test_agent_surface_answers_cross_origin_callers(self):
+        caddy = (ROOT / "deploy" / "Caddyfile").read_text(encoding="utf-8")
+        self.assertIn('Access-Control-Allow-Origin "*"', caddy)
+        self.assertIn("Access-Control-Allow-Headers", caddy)
+        self.assertIn("Mcp-Session-Id", caddy)
+        self.assertIn("method OPTIONS", caddy)
+        self.assertIn("respond @preflight 204", caddy)
+        self.assertIn("path /mcp* /api/* /llms.txt", caddy)
+        # Fora de um route o Caddy ordena `respond` depois de `handle`, e o preflight
+        # chega ao upstream como OPTIONS: 405 em vez de 204, quebrando clientes web.
+        self.assertIn("route {", caddy)
+        self.assertLess(caddy.index("respond @preflight"), caddy.index("handle /mcp*"))
+        self.assertLess(caddy.index("route {"), caddy.index("respond @preflight"))
+
+    def test_open_endpoint_is_rate_limited_per_client(self):
+        server = (ROOT / "agent" / "server.py").read_text(encoding="utf-8")
+        self.assertIn("class RateLimiter", server)
+        self.assertIn("status_code=429", server)
+        self.assertIn("Retry-After", server)
+        self.assertIn("x-forwarded-for", server)
+        self.assertIn("DEVLIB_RATE_LIMIT", server)
+
     def test_operations_runbook_covers_deploy_and_rollback(self):
         runbook = (ROOT / "deploy" / "VPS.md").read_text(encoding="utf-8").casefold()
         for term in ("pré-requisitos", "deploy", "healthcheck", "logs", "rollback", "backup"):

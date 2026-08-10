@@ -11,3 +11,5 @@
 - Explicação REST: GET /api/ai/explain?q=o+que+é+MCP
 
 Use `search_devlib` para descobrir opções, `inspect_library` para validar um item, `recommend_project_stack` para selecionar uma stack por camadas e `explain_dev_concept` para entender MCP e skills com fontes do catálogo.
+
+Acesso público e somente leitura: nenhum endpoint exige token, chave ou cabeçalho de autenticação, e o CORS está liberado para qualquer origem. O limite é de 120 requisições por minuto por IP, com 20 por minuto em `/api/ai/recommend`; ao exceder, a resposta é `429` com `Retry-After`.

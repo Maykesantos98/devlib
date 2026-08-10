@@ -61,9 +61,13 @@ python scripts/verify.py
 
 O catálogo completo está em `/api/catalog.json`, com descoberta em `/llms.txt`. Na VPS, o MCP remoto usa Streamable HTTP em `/mcp` e oferece busca, inspeção, categorias e recomendação. O Stack Advisor v2 identifica requisitos explícitos, separa escolhas de ferramentas de decisões arquiteturais e retorna riscos, trade-offs e perguntas de refinamento. Toda recomendação de ferramenta é limitada a `data/catalog.json`.
 
-Gere a senha com `docker run --rm caddy:2.10.2-alpine caddy hash-password --plaintext SUA_SENHA` e grave somente o hash no `.env`.
+Todo esse conjunto é público e somente leitura: nenhum endpoint pede token ou `Authorization`, e o CORS está liberado para qualquer origem, então clientes de navegador também conectam. Conecte um agente com um comando:
 
-Clientes MCP remotos enviam `Authorization` por uma variável local chamada `DEVLIB_MCP_AUTH`. O valor é um cabeçalho Basic calculado em memória a partir do usuário `devlib` e da senha; não deve ser salvo no repositório nem diretamente no TOML.
+```bash
+claude mcp add --transport http devlib https://devlib.46-202-147-251.sslip.io/mcp
+```
+
+Como não há credencial, o abuso é contido por limite de requisições no serviço `agent`: `DEVLIB_RATE_LIMIT` (120) por `DEVLIB_RATE_WINDOW` (60s) por IP, e `DEVLIB_RATE_LIMIT_RECOMMEND` (20) para `/api/ai/recommend`, que é o endpoint mais caro. Ao exceder, a resposta é `429` com `Retry-After`. O IP vem da última entrada de `X-Forwarded-For`, a única que o Caddy garante; as anteriores são enviadas pelo cliente e podem ser forjadas.
 
 A configuração segura dos sete conectores MCP da Hostinger está em `deploy/hostinger-mcp.json.example`; veja `deploy/HOSTINGER.md`. O token da Hostinger permanece exclusivamente no ambiente local.
 

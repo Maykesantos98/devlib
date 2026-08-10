@@ -21,6 +21,13 @@ jobs:
         run: |
           python -m pip install playwright
           python -m playwright install --with-deps chromium
+      - name: Install agent runtime
+        run: python -m pip install -r agent/requirements.txt
+      - name: Validate reverse proxy config
+        run: |
+          docker run --rm -v "$PWD/deploy/Caddyfile:/etc/caddy/Caddyfile:ro" \
+            -e DEVLIB_DOMAIN=localhost caddy:2.10.2-alpine \
+            caddy validate --config /etc/caddy/Caddyfile
       - name: Start static server
         run: python -m http.server 8099 --bind 127.0.0.1 &
       - name: Validate catalog and links
