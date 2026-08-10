@@ -12,7 +12,7 @@ class DevlibJourneys(unittest.TestCase):
         try:
             self.assertIn("API & MCP", page.locator("h1").inner_text())
             self.assertEqual(4, page.locator(".endpoint-card").count())
-            self.assertEqual(4, page.locator(".tool-grid article").count())
+            self.assertEqual(5, page.locator(".tool-grid article").count())
             self.assertTrue(page.get_by_role("heading", name="Claude Code").is_visible())
             self.assertTrue(page.get_by_role("heading", name="Codex").is_visible())
             self.assertEqual([], errors)

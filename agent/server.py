@@ -3,7 +3,7 @@
 import os
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
-from agent.catalog_core import get_library, list_categories, recommend_stack, search_catalog
+from agent.catalog_core import explain_concept, get_library, list_categories, recommend_stack, search_catalog
 
 domain = os.getenv("DEVLIB_DOMAIN", "localhost")
 mcp = FastMCP(
@@ -42,6 +42,12 @@ def catalog_categories() -> list[dict]:
 def recommend_project_stack(project_description: str, limit: int = 10) -> dict:
     """Monta uma seleção explicada usando exclusivamente o catálogo DEVLIB."""
     return recommend_stack(project_description, limit)
+
+
+@mcp.tool()
+def explain_dev_concept(question: str) -> dict:
+    """Explica MCP, skills e outros conceitos usando fontes existentes no DEVLIB."""
+    return explain_concept(question)
 
 
 if __name__ == "__main__":

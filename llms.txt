@@ -7,4 +7,4 @@
 - Contrato OpenAPI: /api/openapi.json
 - MCP remoto (Streamable HTTP): /mcp
 
-Use `search_devlib` para descobrir opções, `inspect_library` para validar um item e `recommend_project_stack` para selecionar uma stack explicada.
+Use `search_devlib` para descobrir opções, `inspect_library` para validar um item, `recommend_project_stack` para selecionar uma stack por camadas e `explain_dev_concept` para entender MCP e skills com fontes do catálogo.
