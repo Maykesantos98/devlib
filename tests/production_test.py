@@ -1,0 +1,54 @@
+import re
+import unittest
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+class StaticProductionContract(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.pages = {
+            name: (ROOT / name).read_text(encoding="utf-8")
+            for name in ("index.html", "jogos.html")
+        }
+
+    def test_runtime_resources_are_local_and_deferred(self):
+        for name, markup in self.pages.items():
+            styles = re.findall(r'<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"', markup)
+            scripts = re.findall(r"<script\s+([^>]+)></script>", markup)
+            self.assertTrue(styles, name)
+            self.assertTrue(all(not value.startswith("http") for value in styles), name)
+            for attributes in scripts:
+                source = re.search(r'src="([^"]+)"', attributes)
+                if source:
+                    self.assertFalse(source.group(1).startswith("http"), (name, source.group(1)))
+                    self.assertIn("defer", attributes, (name, source.group(1)))
+
+    def test_pages_define_static_content_security_policy(self):
+        for name, markup in self.pages.items():
+            match = re.search(
+                r'<meta\s+http-equiv="Content-Security-Policy"\s+content="([^"]+)"',
+                markup,
+            )
+            self.assertIsNotNone(match, name)
+            policy = match.group(1)
+            for directive in ("default-src 'self'", "object-src 'none'", "base-uri 'self'"):
+                self.assertIn(directive, policy, name)
+
+    def test_catalog_exposes_structured_collection_metadata(self):
+        markup = self.pages["index.html"]
+        self.assertIn('itemscope itemtype="https://schema.org/CollectionPage"', markup)
+        self.assertIn('itemprop="numberOfItems" content="133"', markup)
+        self.assertIn('itemprop="name" content="DEVLIB"', markup)
+
+    def test_images_reserve_layout_space(self):
+        for name, markup in self.pages.items():
+            for image in re.findall(r"<img\b[^>]+>", markup):
+                self.assertRegex(image, r'\bwidth="\d+"', (name, image))
+                self.assertRegex(image, r'\bheight="\d+"', (name, image))
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
