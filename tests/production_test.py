@@ -7,6 +7,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class StaticProductionContract(unittest.TestCase):
+    def test_agent_hub_documents_api_and_supported_clients(self):
+        hub = (ROOT / "integracoes.html").read_text(encoding="utf-8")
+        self.assertIn("Claude Code", hub)
+        self.assertIn("Codex", hub)
+        self.assertIn("/api/catalog.json", hub)
+        self.assertIn("/mcp", hub)
+        self.assertIn("data-copy", hub)
+        self.assertIn('href="integracoes.html"', (ROOT / "index.html").read_text(encoding="utf-8"))
+
     @classmethod
     def setUpClass(cls):
         cls.pages = {
