@@ -46,6 +46,9 @@ class DevlibJourneys(unittest.TestCase):
             self.assertEqual(page.locator('link[rel="canonical"]').count(), 1)
             self.assertEqual(page.locator('meta[property="og:image"]').count(), 1)
             self.assertEqual(errors, [])
+            words = page.locator(".hero-title .word")
+            opacities = [float(words.nth(i).evaluate("el => getComputedStyle(el).opacity")) for i in range(words.count())]
+            self.assertTrue(all(opacity >= 0.95 for opacity in opacities), opacities)
         finally:
             context.close()
 
