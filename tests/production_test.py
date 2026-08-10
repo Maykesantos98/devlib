@@ -49,6 +49,32 @@ class StaticProductionContract(unittest.TestCase):
                 self.assertRegex(image, r'\bwidth="\d+"', (name, image))
                 self.assertRegex(image, r'\bheight="\d+"', (name, image))
 
+    def test_internal_fragments_resolve(self):
+        for name, markup in self.pages.items():
+            ids = set(re.findall(r'\bid="([^"]+)"', markup))
+            for fragment in re.findall(r'href="#([^"]+)"', markup):
+                self.assertIn(fragment, ids, (name, fragment))
+
+    def test_external_tabs_are_isolated(self):
+        for name, markup in self.pages.items():
+            external_tabs = re.findall(r'<a\b[^>]*href="https://[^"]+"[^>]*target="_blank"[^>]*>', markup)
+            for anchor in external_tabs:
+                rel = re.search(r'rel="([^"]+)"', anchor)
+                self.assertIsNotNone(rel, (name, anchor))
+                tokens = set(rel.group(1).split())
+                self.assertTrue({"noopener", "noreferrer"}.issubset(tokens), (name, anchor))
+
+    def test_quality_pipeline_covers_all_local_checks(self):
+        workflow = (ROOT / ".github" / "workflows" / "quality.yml").read_text(encoding="utf-8")
+        for command in (
+            "python scripts/catalog_tool.py check",
+            "python tests/catalog_test.py",
+            "python tests/production_test.py",
+            "python tests/site.spec.py",
+        ):
+            self.assertIn(command, workflow)
+        self.assertTrue((ROOT / "scripts" / "check_links.py").exists())
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
