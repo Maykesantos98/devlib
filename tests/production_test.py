@@ -110,6 +110,7 @@ class StaticProductionContract(unittest.TestCase):
             "python tests/catalog_intake_test.py",
             "python tests/production_test.py",
             "python tests/deployment_test.py",
+            "python tests/advisor_quality_eval.py",
             "python tests/site.spec.py",
         ):
             self.assertIn(command, workflow)

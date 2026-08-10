@@ -34,6 +34,7 @@ jobs:
           python tests/deployment_test.py
           python tests/agent_catalog_test.py
           python tests/rest_api_test.py
+          python tests/advisor_quality_eval.py
       - name: Run user journeys
         run: |
           sleep 2

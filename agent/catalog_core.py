@@ -15,7 +15,7 @@ LAYER_RULES = {
     "frontend": ({"frontend", "front-end", "ui", "interface", "dashboard", "landing page", "site", "next.js", "react"}, ["Next.js", "frontend-design", "Square UI"]),
     "backend": ({"backend", "back-end", "api", "server", "servidor"}, ["Hono", "Fastify", "Supabase"]),
     "database": ({"database", "banco", "postgres", "postgresql", "sql", "dados"}, ["Supabase", "Drizzle ORM", "Prisma"]),
-    "testing": ({"test", "tests", "teste", "testes", "e2e", "qualidade"}, ["Playwright", "Vitest", "Sentry"]),
+    "testing": ({"test", "tests", "teste", "testes", "e2e", "qualidade", "avaliacao", "avaliacoes"}, ["Playwright", "Vitest", "Sentry"]),
     "security": ({"security", "seguranca", "auth", "autenticacao", "autorizacao", "rbac", "secrets", "appsec"}, ["Gitleaks", "OWASP Cheat Sheet Series", "Better Auth"]),
     "agents": ({"agent", "agents", "agente", "agentes", "ia", "ai", "llm"}, ["OpenAI Agents SDK", "Claude Code", "Continue.dev"]),
     "mcp": ({"mcp", "model context protocol"}, ["MCP Specification", "MCP Inspector", "Playwright MCP"]),
@@ -29,19 +29,41 @@ REQUIREMENT_RULES = {
     "queues": ({"fila", "filas", "queue", "queues", "assincrono"}, "processamento assíncrono", {"backend", "devops"}),
     "payments": ({"pagamento", "pagamentos", "assinatura", "recorrente", "billing", "checkout"}, "pagamentos e cobrança", {"backend", "security"}),
     "authorization": ({"rbac", "permissao", "permissoes", "autorizacao", "roles"}, "autorização por papéis", {"backend", "security"}),
-    "audit": ({"auditoria", "audit", "trilha de auditoria"}, "trilha de auditoria", {"backend", "database", "security"}),
+    "audit": ({"auditoria", "audit", "trilha de auditoria", "historico"}, "trilha de auditoria", {"backend", "database", "security"}),
     "observability": ({"observabilidade", "metrics", "metricas", "tracing", "telemetria", "logs"}, "métricas, logs e tracing", {"devops"}),
     "offline": ({"offline", "offline-first"}, "operação sem conexão", {"mobile", "database"}),
-    "sync": ({"sincronizacao", "sincronizar", "sync"}, "sincronização e resolução de conflitos", {"mobile", "backend", "database"}),
+    "sync": ({"sincronizacao", "sincronizar", "sync", "conflito", "conflitos"}, "sincronização e resolução de conflitos", {"backend", "database"}),
     "media": ({"foto", "fotos", "imagem", "imagens", "upload", "storage"}, "captura e armazenamento de mídia", {"mobile", "backend", "database"}),
     "maps": ({"mapa", "mapas", "geolocalizacao", "gps"}, "mapas e geolocalização", {"mobile"}),
     "authentication": ({"login", "auth", "autenticacao", "sso"}, "autenticação e sessões", {"backend", "security"}),
-    "notifications": ({"notificacao", "notificacoes", "push"}, "notificações push", {"mobile", "backend"}),
+    "notifications": ({"notificacao", "notificacoes", "push"}, "notificações", {"backend"}),
     "cache": ({"redis", "cache"}, "cache e coordenação distribuída", {"backend", "devops"}),
-    "reliability": ({"alta disponibilidade", "disaster recovery", "recuperacao de desastre", "idempotencia"}, "resiliência e recuperação", {"backend", "database", "devops"}),
+    "reliability": ({"alta disponibilidade", "disaster recovery", "recuperacao de desastre", "idempotencia", "backup", "backups"}, "resiliência e recuperação", {"backend", "database", "devops"}),
+    "seo": ({"seo", "buscadores", "search engine optimization"}, "descoberta orgânica e metadados", {"frontend"}),
+    "accessibility": ({"acessibilidade", "acessivel", "wcag", "a11y"}, "acessibilidade da interface", {"frontend", "testing"}),
+    "search": ({"busca", "pesquisa", "search"}, "busca e indexação", {"frontend", "backend", "database"}),
+    "inventory": ({"estoque", "inventario", "inventory"}, "consistência de estoque", {"backend", "database"}),
+    "rag": ({"rag", "retrieval augmented generation"}, "recuperação aumentada por geração", {"agents", "backend", "database"}),
+    "vector_search": ({"vetorial", "vector", "embeddings", "embedding"}, "busca vetorial e embeddings", {"agents", "database"}),
+    "realtime": ({"tempo real", "realtime", "websocket", "presenca"}, "colaboração em tempo real", {"frontend", "backend", "database", "security"}),
+    "automation": ({"automatizar", "automacao", "agendado", "scheduler", "cron"}, "automação operacional", {"backend", "devops"}),
+    "exports": ({"exportacao", "exportar", "csv", "relatorio"}, "exportação de dados", {"backend", "database"}),
+    "data_pipeline": ({"pipeline de dados", "ingestao", "etl", "elt"}, "pipeline e ingestão de dados", {"backend", "database", "devops"}),
+    "retries": ({"retry", "retries", "retentativa", "retentativas"}, "retentativas e tolerância a falhas", {"backend", "devops"}),
 }
 
-ARCHITECTURE_ONLY = {"multi_tenancy", "queues", "payments", "authorization", "audit", "offline", "sync", "maps", "notifications", "reliability"}
+ARCHITECTURE_ONLY = {
+    "multi_tenancy", "queues", "payments", "authorization", "audit", "offline", "sync", "maps",
+    "notifications", "reliability", "seo", "accessibility", "search", "inventory", "rag",
+    "vector_search", "realtime", "automation", "exports", "data_pipeline", "retries",
+}
+
+PRODUCT_PROFILES = (
+    ({"landing page", "site institucional", "portfolio"}, ("frontend", "testing", "security")),
+    ({"e-commerce", "ecommerce", "loja virtual"}, ("frontend", "backend", "database", "testing", "security")),
+    ({"saas", "plataforma", "marketplace"}, ("frontend", "backend", "database", "testing", "security")),
+    ({"cli", "linha de comando"}, ("backend", "testing", "devops")),
+)
 
 
 def _catalog() -> dict:
@@ -114,12 +136,15 @@ def recommend_stack(project: str, limit: int = 10, use_ai: bool = True) -> dict:
     normalized = _plain(project)
     requirements = _detected_requirements(normalized)
     requested = [layer for layer, (signals, _) in LAYER_RULES.items() if any(_matches(normalized, signal) for signal in signals)]
-    if any(_matches(normalized, signal) for signal in {"saas", "plataforma", "marketplace"}):
-        requested.extend(layer for layer in ("frontend", "backend", "database", "testing", "security") if layer not in requested)
+    for signals, layers in PRODUCT_PROFILES:
+        if any(_matches(normalized, signal) for signal in signals):
+            requested.extend(layer for layer in layers if layer not in requested)
     if "mobile" in requested:
         requested.extend(layer for layer in ("backend", "database", "security") if layer not in requested)
     for requirement in requirements:
         requested.extend(layer for layer in requirement["layers"] if layer not in requested)
+    if any(_matches(normalized, phrase) for phrase in {"sem interface web", "sem frontend", "sem interface grafica"}):
+        requested = [layer for layer in requested if layer != "frontend"]
     for layer in classify_intent(project) if use_ai else []:
         if layer not in requested:
             requested.append(layer)
