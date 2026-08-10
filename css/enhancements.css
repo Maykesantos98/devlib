@@ -49,6 +49,17 @@ body {
   transform: none;
 }
 
+.home-main .hero-title {
+  max-width: 15ch;
+  font-size: clamp(3.25rem, 5.2vw, 5.4rem);
+  line-height: .9;
+  text-wrap: balance;
+}
+
+.home-main .hero-title .line + .line {
+  margin-top: .08em;
+}
+
 .hero-title .line-grad,
 .section-title em {
   background: linear-gradient(105deg, #f2f2f2 12%, var(--accent) 58%, #70f6ca 92%);
@@ -226,3 +237,7 @@ body {
 .security-note { display: flex; gap: 1rem; margin-top: 1rem; padding: 1rem; border: 1px solid rgba(255,190,80,.25); border-radius: 12px; background: rgba(255,190,80,.05); }
 .security-note p { margin: 0; color: var(--text-soft); }
 @media (max-width: 720px) { .agent-hub { padding-top: 6rem; } .agent-hero { padding: 2rem 0 3rem; } .endpoint-grid,.tool-grid,.client-grid { grid-template-columns: 1fr; } .client-wide { grid-column: auto; } .security-note { display: block; } }
+
+@media (max-width: 720px) {
+  .home-main .hero-title { max-width: 12ch; font-size: clamp(3rem, 14vw, 4rem); }
+}
