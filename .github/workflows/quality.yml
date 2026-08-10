@@ -29,6 +29,7 @@ jobs:
           python scripts/build_agent_api.py --check
           python scripts/check_links.py
           python tests/catalog_test.py
+          python tests/catalog_intake_test.py
           python tests/production_test.py
           python tests/deployment_test.py
           python tests/agent_catalog_test.py

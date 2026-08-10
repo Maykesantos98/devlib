@@ -923,7 +923,7 @@
   top: 78px;
   z-index: 40;
   display: grid;
-  grid-template-columns: minmax(240px, 1fr) auto;
+  grid-template-columns: minmax(240px, 1fr) auto auto;
   align-items: center;
   gap: 1rem;
   margin: 3rem 0 1.5rem;
@@ -932,6 +932,31 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   contain: layout style;
+}
+
+.sort-control {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+.sort-control select {
+  min-height: 34px;
+  padding: 0 2rem 0 0.7rem;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.catalog-state {
+  margin: -0.75rem 0 1rem;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
 }
 
 .search {

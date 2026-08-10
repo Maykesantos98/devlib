@@ -87,8 +87,10 @@ class DevlibJourneys(unittest.TestCase):
         context, page, errors = self.open_page()
         try:
             page.locator("#sortSelect").select_option("az")
-            titles = page.locator('.bento .card:not(.hidden) .card-title').all_inner_texts()
-            self.assertEqual(titles, sorted(titles, key=str.casefold))
+            grids = page.locator('.bento')
+            for index in range(grids.count()):
+                titles = grids.nth(index).locator('.card:not(.hidden) .card-title').all_inner_texts()
+                self.assertEqual(titles, sorted(titles, key=str.casefold))
             self.assertEqual(errors, [])
         finally:
             context.close()

@@ -21,6 +21,8 @@
   const searchClear = document.getElementById('searchClear');
   const filterBtns  = document.querySelectorAll('.filter');
   const visibleEl   = document.getElementById('visibleCount');
+  const sortSelect  = document.getElementById('sortSelect');
+  const catalogState = document.getElementById('activeCatalogState');
   const emptyEl     = document.getElementById('emptyState');
   const resetCatalog = document.getElementById('resetCatalog');
   const toTopBtn    = document.getElementById('toTop');
@@ -499,6 +501,19 @@
   const cardTitle = new Map(
     [...cards].map((c) => [c, (c.querySelector('.card-title')?.textContent || '').trim()])
   );
+  const curatedOrder = new Map([...cards].map((card, index) => [card, index]));
+
+  function sortCatalog() {
+    const direction = sortSelect?.value || 'curated';
+    document.querySelectorAll('.bento').forEach((grid) => {
+      const ordered = [...grid.querySelectorAll('.card')].sort((left, right) => {
+        if (direction === 'curated') return curatedOrder.get(left) - curatedOrder.get(right);
+        const result = cardTitle.get(left).localeCompare(cardTitle.get(right), 'pt-BR', { sensitivity: 'base' });
+        return direction === 'za' ? -result : result;
+      });
+      ordered.forEach((card) => grid.appendChild(card));
+    });
+  }
 
   function matchesFilter(card, kinds) {
     switch (activeFilter) {
@@ -533,11 +548,19 @@
 
     if (visibleEl) visibleEl.textContent = count;
     if (emptyEl)   emptyEl.classList.toggle('hidden', count > 0);
+    if (catalogState) {
+      const filterLabel = document.querySelector('.filter.active')?.textContent.trim() || 'Todos';
+      const sortLabel = sortSelect?.selectedOptions[0]?.textContent || 'Curadoria';
+      catalogState.textContent = `${filterLabel} · ${sortLabel} · ${count} resultados`;
+    }
   }
 
   function applyFilters() {
+    sortCatalog();
     runFilterPass();
   }
+
+  sortSelect?.addEventListener('change', applyFilters);
 
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {

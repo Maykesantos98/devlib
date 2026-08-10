@@ -86,3 +86,13 @@ O repositorio pode ser publicado diretamente pelo GitHub Pages ou qualquer hospe
 ## Repositorio
 
 GitHub: <https://github.com/Maykesantos98/devlib>
+
+## Entrada em lote
+
+Cole URLs HTTPS, uma por linha, em um arquivo de texto e execute:
+
+```bash
+python scripts/catalog_intake.py novos-repos.txt
+```
+
+As URLs são normalizadas e comparadas com o catálogo e a fila em `data/catalog-intake.json`. Duplicatas, links inseguros e lotes inválidos são recusados antes da curadoria de categoria, descrição e tags.

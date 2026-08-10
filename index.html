@@ -385,8 +385,18 @@
           <button class="search-clear" id="searchClear" type="button" aria-label="Limpar busca" hidden>×</button>
           <kbd>⌘ K</kbd>
         </label>
+        <label class="sort-control">
+          <span>Ordenar</span>
+          <select id="sortSelect" aria-label="Ordenar catálogo">
+            <option value="curated">Curadoria</option>
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+          </select>
+        </label>
         <span class="count" aria-live="polite" aria-atomic="true"><b id="visibleCount">134</b>bibliotecas</span>
       </div>
+
+      <p class="catalog-state" id="activeCatalogState" aria-live="polite">Todos · Curadoria · 134 resultados</p>
 
       <div class="filters" role="group" aria-label="Filtrar por categoria" style="margin-bottom: 2rem;">
         <button class="filter active" data-filter="all" aria-pressed="true">Todos</button>

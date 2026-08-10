@@ -177,6 +177,8 @@
     filter: none !important;
   }
   .card { will-change: auto; }
+  .toolbar { grid-template-columns: 1fr; }
+  .sort-control { grid-template-columns: auto minmax(0, 1fr); align-items: center; }
 
   /* 22 decorative particle animations — drop entirely */
   .hero-particles { display: none; }

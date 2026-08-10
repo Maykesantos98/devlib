@@ -24,6 +24,7 @@ def main() -> None:
     run(python, "scripts/build_agent_api.py", "--check")
     run(python, "scripts/check_links.py")
     run(python, "tests/catalog_test.py")
+    run(python, "tests/catalog_intake_test.py")
     run(python, "tests/production_test.py")
     run(python, "tests/deployment_test.py")
     run(python, "tests/agent_catalog_test.py")
