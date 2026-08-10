@@ -29,6 +29,12 @@ class CatalogData(unittest.TestCase):
         self.assertEqual(len(names), len(set(names)))
         self.assertEqual(len(urls), len(set(urls)))
 
+    def test_gsap_is_available_in_interface_catalog(self):
+        matches = [item for item in self.catalog["items"] if item["name"] == "GSAP"]
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0]["url"], "https://gsap.com/")
+        self.assertEqual(matches[0]["category"], "interface")
+
     def test_declared_category_counts_match_items(self):
         actual = Counter(item["category"] for item in self.catalog["items"])
         self.assertEqual(actual, Counter(self.catalog["categoryCounts"]))
