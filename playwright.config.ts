@@ -16,21 +16,26 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
+  workers: process.env.CI ? 2 : 1,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:4173',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    reducedMotion: 'reduce',
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    /*
+     * Firefox roda sempre, não só no CI. Ele é o único motor sem
+     * `animation-timeline`, então é o único que exercita o caminho de fallback
+     * do motion.css. Um bug que apagou o índice inteiro passou despercebido
+     * justamente porque só o Chromium era testado localmente.
+     */
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
     ...(process.env.CI
-      ? [
-          { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-          { name: 'webkit',  use: { ...devices['Desktop Safari'] } },
-        ]
+      ? [{ name: 'webkit', use: { ...devices['Desktop Safari'] } }]
       : []),
   ],
   webServer: {

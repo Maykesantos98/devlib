@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Search } from 'lucide-react';
 import { libraries, recipes, guides } from '../lib/content';
 import { CATEGORIES } from '../lib/schema';
+import { BrandLogo } from './BrandLogo';
 
 function GithubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -46,12 +47,7 @@ export function Footer({ onOpenCmdk }: FooterProps) {
   return (
     <footer className="footer-v05">
       <div className="footer-v05-inner shell">
-        <Link to="/" className="footer-v05-brand" aria-label="DEVLIB · home">
-          <span className="navbar-logo-mark" aria-hidden="true">
-            <span /><span /><span /><span />
-          </span>
-          <span>DEVLIB</span>
-        </Link>
+        <BrandLogo size="footer" showText={false} />
 
         <nav className="footer-v05-links" aria-label="Navegação do rodapé">
           {NAV_LINKS.map((l) => (

@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import type { CardData } from '../types';
 
@@ -23,20 +22,6 @@ const getCompatBadges = (tags: string[] = [], kind: string = '') => {
   if (compat.length === 0) compat.push('Web');
   
   return compat;
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 22, scale: 0.98 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: {
-      type: 'spring' as const,
-      stiffness: 90,
-      damping: 14
-    }
-  }
 };
 
 export const Card: React.FC<CardProps> = ({ data, isInStack, onToggleStack, onClick }) => {
@@ -97,13 +82,12 @@ export const Card: React.FC<CardProps> = ({ data, isInStack, onToggleStack, onCl
   const compatBadges = getCompatBadges(data.tags, data.kind);
 
   return (
-    <motion.article
+    <article
       ref={cardRef}
       className={`card in ${data.classes}`}
       data-kind={data.kind}
       data-tone={data.tone}
       style={style}
-      variants={itemVariants}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={handleCardActivate}
@@ -168,6 +152,6 @@ export const Card: React.FC<CardProps> = ({ data, isInStack, onToggleStack, onCl
 
       <div className="card-spotlight" aria-hidden="true" />
       <div className="card-visual" aria-hidden="true" />
-    </motion.article>
+    </article>
   );
 };

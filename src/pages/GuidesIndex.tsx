@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { guides, GUIDE_SERIES, guidesInSeries } from '../lib/content';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
+import { ContentIcon } from '../components/IconSystem';
 
 export default function GuidesIndex() {
   const standalone = [...guides]
@@ -39,7 +40,9 @@ export default function GuidesIndex() {
               {seriesWithItems.map(({ meta, items }) => (
                 <article key={meta.id} className="series-card">
                   <header className="series-card-head">
-                    <span className="series-card-emoji" aria-hidden="true">{meta.emoji}</span>
+                    <span className="series-card-emoji" aria-hidden="true">
+                      <ContentIcon kind="series" size={20} />
+                    </span>
                     <div>
                       <h3 className="series-card-title">{meta.title}</h3>
                       <p className="series-card-desc">{meta.description}</p>

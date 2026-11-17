@@ -36,7 +36,7 @@ function contentFrontmatter(): Plugin {
       for (const kind of kinds) {
         result[kind] = []
         const dir = join(root, 'content', kind)
-        let files: string[] = []
+        let files: string[]
         try {
           files = await readdir(dir)
         } catch {
@@ -53,7 +53,7 @@ function contentFrontmatter(): Plugin {
             data.tags = data.tags.map((t) => String(t))
           }
           const slug = file.replace(/\.mdx$/, '')
-          result[kind].push({ ...data, slug, body: match[2].trim() })
+          result[kind].push({ ...data, slug, body: match[2].trim().slice(0, 120) })
         }
       }
 
@@ -132,7 +132,6 @@ function sitemapAndRobots(): Plugin {
         `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`
       await writeFile(join(outDir, 'robots.txt'), robots, 'utf8')
 
-      // eslint-disable-next-line no-console
       console.log(`✓ sitemap.xml: ${routes.length} URLs · robots.txt emitted`)
     },
   }

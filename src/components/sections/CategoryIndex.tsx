@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { libraries } from '../../lib/content';
 import { CATEGORIES } from '../../lib/schema';
+import { CategoryIcon } from '../IconSystem';
 
 /**
  * Table of contents section. Renders one entry per v04 category
@@ -29,7 +30,8 @@ export function CategoryIndex() {
               <span className="toc-num">§{String(idx + 1).padStart(2, '0')}</span>
               <span className="toc-meta">
                 <span className="toc-name">
-                  <span aria-hidden="true">{c.emoji}</span> {c.name}
+                  <CategoryIcon id={c.id} className="ui-icon" />
+                  {c.name}
                 </span>
                 <span className="toc-desc">{c.description}</span>
               </span>

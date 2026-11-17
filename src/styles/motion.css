@@ -1,4 +1,4 @@
-/* ─────────────────────────────────────────────────────────────
+﻿/* ─────────────────────────────────────────────────────────────
  * motion.css — Award-grade animations (2026 techniques)
  *   1. Scroll progress bar            (animation-timeline: scroll)
  *   2. Cards reveal via view-timeline (native compositor reveal)
@@ -8,10 +8,15 @@
  *   6. Magnetic button transform       (variables driven by JS)
  *   7. Sticky chapter bars on scroll
  *
- * All effects degrade gracefully:
- *   - Browsers without animation-timeline: JS IntersectionObserver
- *     still adds `.in` class via script.js (kept as fallback).
- *   - prefers-reduced-motion disables all motion in responsive.css.
+ * Degradação, na ordem:
+ *   - Com animation-timeline (Chrome/Edge/Safari 18+): view-timelines nativos,
+ *     sem JS, no compositor.
+ *   - Sem animation-timeline (Firefox): src/lib/motionFallback.ts marca o
+ *     <html> com `js-motion` e revela via IntersectionObserver — ver o bloco 7c.
+ *   - Sem JS: nada fica escondido. O estado inicial mora sob `.js-motion`,
+ *     que só existe se o script rodou.
+ *   - prefers-reduced-motion: o fallback nem inicializa, e responsive.css
+ *     mata as animações nativas.
  * ───────────────────────────────────────────────────────────── */
 
 
@@ -195,11 +200,16 @@
   .section-eyebrow,
   .section-title,
   .section-desc,
-  .toolbar,
   .filters,
   .stats-strip,
   .principle,
-  .footer-grid > div {
+  /* `.footer-grid` era de uma versão antiga do rodapé e não existe mais
+     no DOM — o seletor animava o vazio. O rodapé atual é `.footer-v05`.
+
+     `.toolbar` saiu daqui: é `sticky`, então o `view()` media um elemento que
+     mal se move e a opacidade travava em ~0.36. Uma barra de busca meio
+     transparente é defeito, não coreografia. */
+  .footer-v05-inner > * {
     animation: revealUp linear both;
     animation-timeline: view();
     animation-range: entry 2% cover 22%;
@@ -212,6 +222,129 @@
 @keyframes revealUp {
   from { opacity: 0; transform: translateY(26px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  7d · Barra de capítulo: gruda no topo enquanto o capítulo   */
+/*       está em tela, com um traço de progresso preenchendo    */
+/*       conforme o acervo daquele capítulo passa.              */
+/* ═══════════════════════════════════════════════════════════ */
+/* O sticky é escopado ao pai. Cada capítulo é uma <section class="chapter">,
+   então cada barra gruda só enquanto o próprio capítulo está passando. */
+.chapter {
+  position: relative;
+}
+
+.chapter-bar {
+  position: sticky;
+  /* Abaixo do navbar flutuante, senão a barra some atrás dele. */
+  top: 5.25rem;
+  z-index: 20;
+  /* O fundo precisa ser opaco: cards passam por baixo. */
+  background: linear-gradient(180deg, var(--bg-base) 72%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.chapter-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--violet-500), var(--cyan-400));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@supports (animation-timeline: view()) {
+  /*
+   * O timeline mede a SEÇÃO, não a barra.
+   *
+   * `animation-timeline: view()` na própria barra media a barra — e a barra é
+   * `sticky`: enquanto o capítulo passa, ela fica parada na tela. O progresso
+   * congelava perto de zero. Um timeline nomeado no ancestral resolve: o
+   * progresso é a passagem do capítulo inteiro pela viewport.
+   */
+  .chapter {
+    view-timeline-name: --chapter-scroll;
+    view-timeline-axis: block;
+  }
+
+  .chapter-bar::after {
+    animation: chapterProgress linear both;
+    animation-timeline: --chapter-scroll;
+    animation-range: contain 0% contain 100%;
+  }
+}
+
+/* Sem view-timeline (Firefox) não há progresso para mostrar. Uma linha parada
+   em zero é lixo visual; uma linha cheia mentiria sobre o progresso. Some. */
+@supports not (animation-timeline: view()) {
+  .chapter-bar::after {
+    display: none;
+  }
+}
+
+@keyframes chapterProgress {
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-bar { position: static; }
+  .chapter-bar::after { display: none; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════ */
+/*  7c · Fallback para navegadores sem view-timeline (Firefox) */
+/*                                                             */
+/*  A classe `js-motion` é posta por src/lib/motionFallback.ts */
+/*  e SÓ existe quando o script rodou e vai revelar os          */
+/*  elementos de volta. Sem JS, nada aqui se aplica e o         */
+/*  conteúdo aparece normalmente — é o inverso do bug do        */
+/*  `opacity: 0` órfão que apagava o índice no Firefox.         */
+/* ═══════════════════════════════════════════════════════════ */
+html.js-motion .card,
+html.js-motion .toc a,
+html.js-motion .chapter-bar,
+html.js-motion .section-eyebrow,
+html.js-motion .section-title,
+html.js-motion .section-desc,
+html.js-motion .filters,
+html.js-motion .stats-strip,
+html.js-motion .principle,
+html.js-motion .footer-v05-inner > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+  /* Vizinhos entram em cascata, como o view-timeline faz naturalmente. */
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+
+html.js-motion .card {
+  transform: translateY(48px) scale(0.96);
+}
+
+html.js-motion .chapter-bar {
+  transform: translateX(-24px);
+}
+
+html.js-motion .card.is-in,
+html.js-motion .toc a.is-in,
+html.js-motion .chapter-bar.is-in,
+html.js-motion .section-eyebrow.is-in,
+html.js-motion .section-title.is-in,
+html.js-motion .section-desc.is-in,
+html.js-motion .filters.is-in,
+html.js-motion .principle.is-in,
+html.js-motion .stats-strip.is-in,
+html.js-motion .footer-v05-inner > .is-in {
+  opacity: 1;
+  transform: none;
 }
 
 

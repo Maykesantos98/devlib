@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import type { CardData } from './types';
 import type { DevlibConsoleApi } from './devlib';
 import { chapters as librariesData } from './lib/content';
@@ -8,17 +8,14 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { BentoGrid } from './components/BentoGrid';
-import { Dock } from './components/Dock';
-import { CardDetailModal } from './components/CardDetailModal';
-import { CmdkPalette } from './components/CmdkPalette';
-import { Mascot } from './components/Mascot';
 import { Footer } from './components/Footer';
 import { EditorialStrip } from './components/sections/EditorialStrip';
 import { Stats } from './components/sections/Stats';
 import { CategoryIndex } from './components/sections/CategoryIndex';
 import { Method } from './components/sections/Method';
-import { Filters, INITIAL_FILTERS } from './components/Filters';
-import type { FilterState } from './components/Filters';
+import { Filters } from './components/Filters';
+import { ActiveFilters } from './components/ActiveFilters';
+import { useUrlFilters } from './hooks/useUrlFilters';
 
 // Global styles import (Vite handles this)
 import './styles/tokens.css';
@@ -29,13 +26,19 @@ import './styles/motion.css';
 import './styles/responsive.css';
 import './styles/editorial.css';
 
+const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'] as const;
+const Dock = lazy(() => import('./components/Dock').then((module) => ({ default: module.Dock })));
+const CardDetailModal = lazy(() => import('./components/CardDetailModal').then((module) => ({ default: module.CardDetailModal })));
+const CmdkPalette = lazy(() => import('./components/CmdkPalette').then((module) => ({ default: module.CmdkPalette })));
+const Mascot = lazy(() => import('./components/Mascot').then((module) => ({ default: module.Mascot })));
+
 export const App: React.FC = () => {
   // ── States ──────────────────────────────────────────────
   const [selectedStack, setSelectedStack] = useLocalStorage<string[]>('devlib_stack', []);
   const [theme, setTheme] = useLocalStorage<'nebula' | 'cyberpunk' | 'slate'>('devlib_theme', 'nebula');
-  const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS);
-  const [searchQuery, setSearchQuery] = useState('');
-  const totalLibraries = librariesData.reduce((sum, c) => sum + c.cards.length, 0);
+  // Filtros e busca vivem na URL: link compartilhável, botão voltar desfaz.
+  const { filters, searchQuery, setFilters, setSearchQuery, clearAll } = useUrlFilters();
+  const totalLibraries = useMemo(() => librariesData.reduce((sum, c) => sum + c.cards.length, 0), []);
   const [visibleCount, setVisibleCount] = useState(totalLibraries);
   
   // Modals & Panels
@@ -45,7 +48,6 @@ export const App: React.FC = () => {
   const [isMatrixMode, setIsMatrixMode] = useState(false);
 
   // ── Keyboard Shortcuts (Vim gt, 1-8, Esc, Konami) ───────
-  const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
   const konamiBuffer = useRef<string[]>([]);
   const lastKeyRef = useRef<string>('');
 
@@ -66,14 +68,15 @@ export const App: React.FC = () => {
   }, []);
 
   const handleFilterSelect = useCallback((filter: string) => {
-    setFilters((prev) => ({ ...prev, category: filter }));
+    // `setFilters` escreve na URL e não aceita updater — passa o estado inteiro.
+    setFilters({ ...filters, category: filter });
 
     // Smooth scroll to acervo section
     const target = document.getElementById('acervo');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, []);
+  }, [filters, setFilters]);
 
   const handleTriggerMatrix = useCallback(() => {
     setIsMatrixMode((prev) => !prev);
@@ -237,7 +240,7 @@ export const App: React.FC = () => {
       }
     };
     window.devlib = api;
-  }, [isMatrixMode, visibleCount, handleFilterSelect, handleTriggerMatrix]);
+  }, [isMatrixMode, visibleCount, totalLibraries, handleFilterSelect, handleTriggerMatrix, setSearchQuery]);
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -295,12 +298,20 @@ export const App: React.FC = () => {
               <kbd>⌘ K</kbd>
             </label>
             <span className="count" aria-live="polite" aria-atomic="true">
-              <b id="visibleCount">{visibleCount}</b>bibliotecas
+              <b id="visibleCount">{visibleCount}</b> bibliotecas
             </span>
           </div>
 
           {/* Multi-axis filters: category + difficulty + type */}
           <Filters value={filters} onChange={setFilters} />
+
+          <ActiveFilters
+            filters={filters}
+            searchQuery={searchQuery}
+            onChange={setFilters}
+            onClearSearch={() => setSearchQuery('')}
+            onClearAll={clearAll}
+          />
 
           {/* Render the Bento Grid of chapters & cards */}
           <BentoGrid
@@ -341,23 +352,37 @@ export const App: React.FC = () => {
       </button>
 
       {/* Droid Mascot */}
-      <Mascot />
+      <Suspense fallback={null}>
+        <Mascot />
+      </Suspense>
 
       {/* macOS Dock panel */}
-      <Dock selectedStack={selectedStack} onRemoveItem={toggleStackItem} onClearStack={() => setSelectedStack([])} />
+      {selectedStack.length > 0 && (
+        <Suspense fallback={null}>
+          <Dock selectedStack={selectedStack} onRemoveItem={toggleStackItem} onClearStack={() => setSelectedStack([])} />
+        </Suspense>
+      )}
 
       {/* Global Command Palette */}
-      <CmdkPalette
-        isOpen={isCmdkOpen}
-        onClose={() => setIsCmdkOpen(false)}
-      />
+      {isCmdkOpen && (
+        <Suspense fallback={null}>
+          <CmdkPalette
+            isOpen={isCmdkOpen}
+            onClose={() => setIsCmdkOpen(false)}
+          />
+        </Suspense>
+      )}
 
       {/* Card Detail Modal */}
-      <CardDetailModal
-        card={selectedCard}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      {selectedCard && (
+        <Suspense fallback={null}>
+          <CardDetailModal
+            card={selectedCard}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        </Suspense>
+      )}
 
       {/* Native Keyboard Shortcuts Help dialog wrapper */}
       <dialog className="shortcuts" id="shortcutsDialog" style={{ border: 0, background: 'transparent' }}>

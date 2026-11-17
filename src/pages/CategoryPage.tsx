@@ -3,6 +3,7 @@ import { libraries } from '../lib/content';
 import { CATEGORIES, CategoryId, categoryMeta } from '../lib/schema';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
+import { CategoryIcon } from '../components/IconSystem';
 
 export default function CategoryPage() {
   const { id } = useParams<{ id: string }>();
@@ -29,8 +30,9 @@ export default function CategoryPage() {
         </nav>
 
         <span className="section-eyebrow">— Categoria</span>
-        <h1 className="section-title" style={{ marginTop: '0.5rem' }}>
-          {meta.emoji} {meta.name}
+        <h1 className="section-title title-with-icon" style={{ marginTop: '0.5rem' }}>
+          <CategoryIcon id={meta.id} className="title-icon" size={34} />
+          {meta.name}
         </h1>
         <p className="section-desc" style={{ fontSize: 'var(--t-lead)' }}>
           {meta.description}
@@ -105,7 +107,10 @@ export default function CategoryPage() {
                   textDecoration: 'none',
                   fontSize: '0.9rem',
                 }}>
-                  {c.emoji} {c.name}
+                  <span className="inline-icon-label">
+                    <CategoryIcon id={c.id} className="ui-icon" />
+                    {c.name}
+                  </span>
                 </Link>
               </li>
             ))}

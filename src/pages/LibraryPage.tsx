@@ -10,6 +10,7 @@ import { categoryMeta } from '../lib/schema';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
 import { MdxBody } from '../components/MdxBody';
+import { CategoryIcon, ContentIcon } from '../components/IconSystem';
 
 export default function LibraryPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -33,7 +34,10 @@ export default function LibraryPage() {
           <Link to="/" style={{ color: 'var(--text-soft)' }}>Acervo</Link>
           <span style={{ color: 'var(--text-dim)' }}> / </span>
           <Link to={`/categoria/${lib.category}`} style={{ color: 'var(--text-soft)' }}>
-            {meta.emoji} {meta.name}
+            <span className="inline-icon-label">
+              <CategoryIcon id={meta.id} className="ui-icon" />
+              {meta.name}
+            </span>
           </Link>
         </nav>
 
@@ -73,7 +77,9 @@ export default function LibraryPage() {
               {inRecipes.map((r) => (
                 <li key={r.slug}>
                   <Link to={`/receita/${r.slug}`} className="cross-card">
-                    <span className="cross-emoji" aria-hidden="true">{r.emoji ?? '📘'}</span>
+                    <span className="cross-emoji" aria-hidden="true">
+                      <ContentIcon kind="recipe" size={18} />
+                    </span>
                     <span className="cross-body">
                       <strong>{r.title}</strong>
                       <span>{r.goal} · {r.stack.length} peças no stack</span>

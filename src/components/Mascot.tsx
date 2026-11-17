@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Palette, Terminal, Sparkles, AlertCircle } from 'lucide-react';
 
 const TIPS = [
@@ -23,17 +23,44 @@ const TIPS = [
 ];
 
 export const Mascot: React.FC = () => {
-  const mascotRef = useRef<HTMLButtonElement>(null);
+  const mascotRef = useRef<HTMLDivElement>(null);
   const pupilsRef = useRef<SVGGElement>(null);
   const [bubbleText, setBubbleText] = useState('Olá! Sou o droid do DEVLIB. Clique em mim para receber dicas de dev!');
   const [isBubbleShown, setIsBubbleShown] = useState(true);
   const [isTalking, setIsTalking] = useState(false);
   const [isPop, setIsPop] = useState(false);
-  const [tipIndex, setTipIndex] = useState(0);
 
   const tipsArray = useRef<string[]>([]);
+  const tipIndexRef = useRef(0);
   const hideTimerRef = useRef<number | null>(null);
   const lastJokeTimeRef = useRef<number>(0);
+
+  const say = useCallback((htmlText: string, keepOpen = false) => {
+    lastJokeTimeRef.current = Date.now();
+    setBubbleText(htmlText);
+    setIsBubbleShown(true);
+    setIsTalking(true);
+
+    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+
+    if (!keepOpen) {
+      const cleanLength = htmlText.replace(/<[^>]+>/g, '').length;
+      const duration = Math.min(9500, Math.max(5000, cleanLength * 70));
+
+      hideTimerRef.current = window.setTimeout(() => {
+        setIsBubbleShown(false);
+        setIsTalking(false);
+      }, duration);
+    }
+  }, []);
+
+  const sayNextTip = useCallback(() => {
+    if (!tipsArray.current.length) return;
+
+    const nextText = tipsArray.current[tipIndexRef.current];
+    tipIndexRef.current = (tipIndexRef.current + 1) % tipsArray.current.length;
+    say(nextText);
+  }, [say]);
 
   // Initialize and shuffle tips once
   useEffect(() => {
@@ -114,33 +141,7 @@ export const Mascot: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimer);
     };
-  }, []);
-
-  const say = (htmlText: string, keepOpen = false) => {
-    lastJokeTimeRef.current = Date.now();
-    setBubbleText(htmlText);
-    setIsBubbleShown(true);
-    setIsTalking(true);
-
-    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-
-    if (!keepOpen) {
-      const cleanLength = htmlText.replace(/<[^>]+>/g, '').length;
-      const duration = Math.min(9500, Math.max(5000, cleanLength * 70));
-
-      hideTimerRef.current = window.setTimeout(() => {
-        setIsBubbleShown(false);
-        setIsTalking(false);
-      }, duration);
-    }
-  };
-
-  const sayNextTip = () => {
-    if (!tipsArray.current.length) return;
-    const nextText = tipsArray.current[tipIndex];
-    say(nextText);
-    setTipIndex((prev) => (prev + 1) % tipsArray.current.length);
-  };
+  }, [sayNextTip]);
 
   const handleClick = () => {
     setIsPop(true);
@@ -164,13 +165,20 @@ export const Mascot: React.FC = () => {
   };
 
   return (
-    <button
+    <div
       ref={mascotRef}
       className={`mascot ${isTalking ? 'talking' : ''} ${isPop ? 'pop' : ''}`}
       id="mascot"
-      type="button"
+      role="button"
+      tabIndex={0}
       aria-label="Mascote DEVLIB — clique para conselhos"
       onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
       onAnimationEnd={() => setIsPop(false)}
       style={{ overflow: 'visible', outline: 'none' }}
     >
@@ -313,6 +321,6 @@ export const Mascot: React.FC = () => {
           </g>
         </g>
       </svg>
-    </button>
+    </div>
   );
 };

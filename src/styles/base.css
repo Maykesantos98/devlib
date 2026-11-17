@@ -26,9 +26,17 @@ body {
   font-size: var(--t-base);
   line-height: 1.55;
   letter-spacing: -0.005em;
-  overflow-x: hidden;
+  /* `clip` em vez de `hidden`: `hidden` no body não impedia a página de rolar
+     138px para a direita (o html seguia rolável). `clip` corta sem criar
+     contêiner de scroll — e por isso não quebra o `position: sticky` das
+     barras de capítulo, o que `hidden` no html quebraria. */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  overflow-x: clip;
 }
 
 a {

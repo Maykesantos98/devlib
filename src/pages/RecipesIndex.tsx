@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { recipes } from '../lib/content';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
+import { ContentIcon } from '../components/IconSystem';
 
 export default function RecipesIndex() {
   const sorted = [...recipes].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
@@ -49,7 +50,9 @@ export default function RecipesIndex() {
                   background: 'var(--bg-card)',
                   height: '100%',
                 }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{r.emoji ?? '📘'}</div>
+                  <span className="recipe-card-emoji" aria-hidden="true">
+                    <ContentIcon kind="recipe" size={20} />
+                  </span>
                   <h2 style={{ fontSize: '1.15rem', marginBottom: '0.5rem' }}>{r.title}</h2>
                   <p style={{ color: 'var(--text-soft)', fontSize: '0.9rem' }}>{r.summary}</p>
                   <p style={{ marginTop: '1rem', fontSize: '0.8rem', color: 'var(--text-dim)' }}>

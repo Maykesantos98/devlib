@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import type { ChapterData, CardData } from '../types';
 import { Card } from './Card';
 import { libraries } from '../lib/content';
-import type { FilterState } from './Filters';
+import { useMediaQuery } from '../hooks/useMediaQuery';
+import type { FilterState } from './filterState';
 
 interface BentoGridProps {
   data: ChapterData[];
@@ -14,16 +15,6 @@ interface BentoGridProps {
   onCardClick: (card: CardData) => void;
   onVisibleCountChange: (count: number) => void;
 }
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.04
-    }
-  }
-};
 
 const RECENT = new Set([
   'Claude Code', 'OpenHands', 'Cline', 'Goose',
@@ -39,6 +30,15 @@ const RECENT = new Set([
   'Ali Imam Components', 'Liquid Metal', 'Dot Matrix', 'Balloons.js',
 ]);
 
+/*
+ * Quantos cards cada capítulo mostra na home antes do "ver categoria completa".
+ * No celular a grade vira uma coluna só: seis cards por capítulo, vezes onze
+ * capítulos, produziam uma home de ~26.000 px. Três é o suficiente para dar
+ * amostra da categoria sem transformar a página num rolo.
+ */
+const CARDS_PER_CHAPTER_DESKTOP = 6;
+const CARDS_PER_CHAPTER_MOBILE = 3;
+
 export const BentoGrid: React.FC<BentoGridProps> = ({
   data,
   searchQuery,
@@ -48,6 +48,9 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
   onCardClick,
   onVisibleCountChange,
 }) => {
+  const isMobile = useMediaQuery('(max-width: 640px)');
+  const cardsPerChapter = isMobile ? CARDS_PER_CHAPTER_MOBILE : CARDS_PER_CHAPTER_DESKTOP;
+
   const normalize = (s: string) =>
     s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
@@ -67,18 +70,16 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
     return data.map((chapter) => {
       const filteredCards = chapter.cards.filter((card) => {
         // 1. Kind/category match
-        let inKind = false;
-
-        switch (filters.category) {
-          case 'all':
-            inKind = true;
-            break;
-          case 'recent':
-            inKind = RECENT.has(card.title);
-            break;
-          default:
-            inKind = chapter.chapter === filters.category;
-        }
+        const inKind = (() => {
+          switch (filters.category) {
+            case 'all':
+              return true;
+            case 'recent':
+              return RECENT.has(card.title);
+            default:
+              return chapter.chapter === filters.category;
+          }
+        })();
         if (!inKind) return false;
 
         // Difficulty + type axes via Library lookup
@@ -132,33 +133,52 @@ export const BentoGrid: React.FC<BentoGridProps> = ({
 
   return (
     <>
-      {filteredData.map((chapter) => (
-        <React.Fragment key={chapter.id}>
+      {filteredData.map((chapter) => {
+        const limit = filters.category === 'all' && !searchQuery.trim()
+          ? cardsPerChapter
+          : chapter.cards.length;
+        const visibleCards = chapter.cards.slice(0, limit);
+        const hiddenCount = chapter.cards.length - visibleCards.length;
+
+        return (
+        /*
+         * Cada capítulo é uma <section> própria. Sem isso, as barras `sticky`
+         * dividem o mesmo bloco-contêiner e se empilham no topo umas sobre as
+         * outras. O escopo do sticky é o pai — então o pai tem que ser o capítulo.
+         */
+        <section className="chapter" key={chapter.id}>
           <div className="chapter-bar" data-chapter={chapter.chapter} id={chapter.id}>
             <span className="chapter-num">{chapter.num}</span>
             <h3>{chapter.title || getChapterTitle(chapter.chapter)}</h3>
             <span className="count-pill">{chapter.cards.length} itens</span>
           </div>
 
-          <motion.div 
-            className="bento"
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            layout
-          >
-            {chapter.cards.map((card) => (
+          <div className="bento">
+            {visibleCards.map((card) => (
               <Card
-                key={card.title}
+                key={card.slug ?? `${chapter.id}-${card.title}`}
                 data={card}
                 isInStack={selectedStack.includes(card.title)}
                 onToggleStack={onToggleStack}
                 onClick={() => onCardClick(card)}
               />
             ))}
-          </motion.div>
-        </React.Fragment>
-      ))}
+          </div>
+
+          {/* <Link>, não <a>: um <a> recarregava a SPA inteira a cada clique. */}
+          {hiddenCount > 0 && (
+            <Link
+              className="catalog-more"
+              to={`/categoria/${chapter.id}`}
+              aria-label={`Ver categoria completa: ${hiddenCount} itens restantes`}
+            >
+              <span>Ver categoria completa</span>
+              <span>{hiddenCount} itens restantes</span>
+            </Link>
+          )}
+        </section>
+        );
+      })}
 
       {filteredData.length === 0 && (
         <div className="empty" id="emptyState" role="status">

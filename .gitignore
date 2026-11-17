@@ -29,6 +29,11 @@ dist-ssr
 # Coverage output
 coverage/
 
+# Segredos — a chave do Pixabay é usada só pelo script de download de assets
+.env
+.env.*
+!.env.example
+
 # Playwright
 test-results/
 playwright-report/

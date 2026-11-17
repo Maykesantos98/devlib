@@ -1,18 +1,6 @@
+import { useState } from 'react';
 import { CATEGORIES } from '../lib/schema';
-
-export interface FilterState {
-  category: string;
-  difficulty: string;
-  type: string;
-  lang: string;
-}
-
-export const INITIAL_FILTERS: FilterState = {
-  category: 'all',
-  difficulty: 'any',
-  type: 'any',
-  lang: 'any',
-};
+import type { FilterState } from './filterState';
 
 interface FiltersProps {
   value: FilterState;
@@ -58,8 +46,8 @@ function PillGroup<K extends keyof FilterState>({
 
 const CATEGORY_OPTIONS = [
   { id: 'all',    label: 'Todas' },
-  { id: 'recent', label: '● Recentes', accent: true },
-  ...CATEGORIES.map((c) => ({ id: c.id, label: `${c.emoji} ${c.name}` })),
+  { id: 'recent', label: 'Recentes', accent: true },
+  ...CATEGORIES.map((c) => ({ id: c.id, label: c.name })),
 ] as const;
 
 const DIFFICULTY_OPTIONS = [
@@ -84,11 +72,9 @@ const LANG_OPTIONS = [
   { id: 'lang:dart',       label: 'Dart' },
 ] as const;
 
-/**
- * Multi-axis filter panel.
- * Renders 3 pill groups: category, difficulty, type.
- */
 export function Filters({ value, onChange }: FiltersProps) {
+  const [advancedOpen, setAdvancedOpen] = useState(false);
+
   return (
     <div className="filters-panel" aria-label="Filtros do acervo">
       <PillGroup
@@ -99,30 +85,42 @@ export function Filters({ value, onChange }: FiltersProps) {
         onChange={onChange}
         state={value}
       />
-      <PillGroup
-        label="Difficulty"
-        field="difficulty"
-        value={value.difficulty}
-        options={DIFFICULTY_OPTIONS}
-        onChange={onChange}
-        state={value}
-      />
-      <PillGroup
-        label="Tipo"
-        field="type"
-        value={value.type}
-        options={TYPE_OPTIONS}
-        onChange={onChange}
-        state={value}
-      />
-      <PillGroup
-        label="Linguagem"
-        field="lang"
-        value={value.lang}
-        options={LANG_OPTIONS}
-        onChange={onChange}
-        state={value}
-      />
+      <button
+        type="button"
+        className="filters-advanced-toggle"
+        aria-expanded={advancedOpen}
+        aria-controls="advanced-filters"
+        onClick={() => setAdvancedOpen((open) => !open)}
+      >
+        <span>Filtros avançados</span>
+        <span aria-hidden="true">{advancedOpen ? 'Ocultar' : 'Nível, tipo e linguagem'}</span>
+      </button>
+      <div id="advanced-filters" className="filters-advanced" hidden={!advancedOpen}>
+        <PillGroup
+          label="Nível"
+          field="difficulty"
+          value={value.difficulty}
+          options={DIFFICULTY_OPTIONS}
+          onChange={onChange}
+          state={value}
+        />
+        <PillGroup
+          label="Tipo"
+          field="type"
+          value={value.type}
+          options={TYPE_OPTIONS}
+          onChange={onChange}
+          state={value}
+        />
+        <PillGroup
+          label="Linguagem"
+          field="lang"
+          value={value.lang}
+          options={LANG_OPTIONS}
+          onChange={onChange}
+          state={value}
+        />
+      </div>
     </div>
   );
 }

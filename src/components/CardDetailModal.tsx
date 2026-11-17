@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { CardData } from '../types';
-import { getInstallCommand } from './Dock';
+import { getInstallCommand } from '../lib/installCommands';
 
 interface CardDetailModalProps {
   card: CardData | null;

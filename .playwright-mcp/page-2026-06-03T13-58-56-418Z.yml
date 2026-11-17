@@ -1,0 +1,1430 @@
+- generic [ref=e3]:
+  - link "Pular para o acervo" [ref=e4] [cursor=pointer]:
+    - /url: "#acervo"
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - link "DEVLIB · home" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]:
+          - generic [ref=e9]: DEVLIB
+          - generic [ref=e10]: v04
+      - navigation "Navegação principal" [ref=e11]:
+        - link "Acervo" [ref=e12] [cursor=pointer]:
+          - /url: /#acervo
+          - generic [ref=e13]:
+            - generic [ref=e14]: Acervo
+            - generic [ref=e15]: Acervo
+        - link "Receitas" [ref=e16] [cursor=pointer]:
+          - /url: /receitas
+          - generic [ref=e17]:
+            - generic [ref=e18]: Receitas
+            - generic [ref=e19]: Receitas
+        - link "Guias" [ref=e20] [cursor=pointer]:
+          - /url: /guias
+          - generic [ref=e21]:
+            - generic [ref=e22]: Guias
+            - generic [ref=e23]: Guias
+        - link "Método" [ref=e24] [cursor=pointer]:
+          - /url: /#metodo
+          - generic [ref=e25]:
+            - generic [ref=e26]: Método
+            - generic [ref=e27]: Método
+      - generic [ref=e28]:
+        - button "Trocar tema" [ref=e30] [cursor=pointer]:
+          - img [ref=e31]
+        - button "Abrir busca" [ref=e37] [cursor=pointer]:
+          - img [ref=e38]
+          - generic [ref=e41]: Buscar
+          - generic [ref=e42]: ⌘K
+    - generic:
+      - navigation "Navegação mobile":
+        - link "Acervo":
+          - /url: /#acervo
+        - link "Receitas":
+          - /url: /receitas
+        - link "Guias":
+          - /url: /guias
+        - link "Método":
+          - /url: /#metodo
+  - main [ref=e43]:
+    - region "Bibliotecas para quem constrói com agentes." [ref=e44]:
+      - generic [ref=e45]: Acervo curado · v04 · atualizado em 2026
+      - heading "Bibliotecas para quem constrói com agentes." [level=1] [ref=e47]:
+        - text: Bibliotecas para quem
+        - emphasis [ref=e48]: constrói com agentes.
+      - paragraph [ref=e49]: 146 bibliotecas, 6 receitas prontas e 10 guias editoriais sobre como escolher entre elas. Sem hype — trade-offs explícitos, decisões com contexto.
+      - generic [ref=e50]:
+        - button "Buscar no acervo ⌘K" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+          - text: Buscar no acervo
+          - generic [ref=e55]: ⌘K
+        - link "Ver receitas" [ref=e56] [cursor=pointer]:
+          - /url: /receitas
+          - text: Ver receitas
+          - img [ref=e57]
+        - link "Ler guias" [ref=e59] [cursor=pointer]:
+          - /url: /guias
+          - text: Ler guias
+          - img [ref=e60]
+      - list "Atalhos por categoria" [ref=e62]:
+        - listitem [ref=e63] [cursor=pointer]:
+          - img [ref=e64]
+          - text: AI Agents
+        - listitem [ref=e67] [cursor=pointer]:
+          - img [ref=e68]
+          - text: Model Context Protocol
+        - listitem [ref=e70] [cursor=pointer]:
+          - img [ref=e71]
+          - text: Frontend UI
+        - listitem [ref=e73] [cursor=pointer]:
+          - img [ref=e74]
+          - text: Frontend Frameworks
+        - listitem [ref=e78] [cursor=pointer]:
+          - img [ref=e79]
+          - text: Backend (Data)
+        - listitem [ref=e83] [cursor=pointer]:
+          - img [ref=e84]
+          - text: Backend (Toolkit)
+    - region "Resumo do acervo" [ref=e86]:
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]: "146"
+          - generic [ref=e90]: bibliotecas
+        - generic [ref=e92]:
+          - generic [ref=e93]: "10"
+          - generic [ref=e94]: categorias
+        - generic [ref=e96]:
+          - generic [ref=e97]: "6"
+          - generic [ref=e98]: receitas
+        - generic [ref=e100]:
+          - generic [ref=e101]: "10"
+          - generic [ref=e102]: guias
+        - generic [ref=e104]:
+          - generic [ref=e105]: Ativo
+          - generic [ref=e107]: status
+    - generic [ref=e108]:
+      - generic [ref=e109]: — Acervo aberto
+      - heading "Tudo, organizado." [level=2] [ref=e110]:
+        - text: Tudo,
+        - emphasis [ref=e111]: organizado.
+      - paragraph [ref=e112]: Pressione ⌘K para buscar entre as 146 entradas. Filtre por categoria para refinar.
+      - search [ref=e113]:
+        - generic [ref=e114]:
+          - img [ref=e115]
+          - searchbox "Buscar no acervo" [ref=e118]
+          - generic [ref=e119]: ⌘ K
+        - generic [ref=e120]: 146 bibliotecas
+      - generic "Filtros do acervo" [ref=e121]:
+        - group "Categoria" [ref=e122]:
+          - generic [ref=e123]: Categoria
+          - generic [ref=e124]:
+            - button "Todas" [pressed] [ref=e125] [cursor=pointer]
+            - button "Recentes" [ref=e126] [cursor=pointer]
+            - button "AI Agents" [ref=e127] [cursor=pointer]
+            - button "Model Context Protocol" [ref=e128] [cursor=pointer]
+            - button "Frontend UI" [ref=e129] [cursor=pointer]
+            - button "Frontend Frameworks" [ref=e130] [cursor=pointer]
+            - button "Backend (Data)" [ref=e131] [cursor=pointer]
+            - button "Backend (Toolkit)" [ref=e132] [cursor=pointer]
+            - button "Mobile & On-device AI" [ref=e133] [cursor=pointer]
+            - button "Segurança" [ref=e134] [cursor=pointer]
+            - button "DevOps & Build" [ref=e135] [cursor=pointer]
+            - button "Trade & Quant" [ref=e136] [cursor=pointer]
+        - button "Filtros avançados" [ref=e137] [cursor=pointer]:
+          - generic [ref=e138]: Filtros avançados
+          - generic [ref=e139]: Nível, tipo e linguagem
+      - generic [ref=e140]:
+        - generic [ref=e141]: § §01 · Agents
+        - heading "Frameworks & SDKs — escolha seu runtime." [level=3] [ref=e142]
+        - generic [ref=e143]: 25 itens
+        - text: ai-agents
+      - generic [ref=e144]:
+        - link "Adicionar à Stack ai-agents Node.js Rust CLI Agent Browser CLI nativa em Rust para automação de navegador por agentes de IA. Abre páginas, captura snapshots de acessibilidade, clica, preenche campos, tira screenshots e gera PDFs. ai:agent-framework cli lang:rust oss runtime:browser runtime:cli ↗" [ref=e145] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e146]:
+            - img [ref=e147]
+          - generic [ref=e149]:
+            - generic [ref=e150]: ai-agents
+            - generic [ref=e152]:
+              - generic [ref=e153]: Node.js
+              - generic [ref=e154]: Rust
+              - generic [ref=e155]: CLI
+          - heading "Agent Browser" [level=3] [ref=e156]
+          - paragraph [ref=e157]: CLI nativa em Rust para automação de navegador por agentes de IA. Abre páginas, captura snapshots de acessibilidade, clica, preenche campos, tira screenshots e gera PDFs.
+          - generic [ref=e158]:
+            - generic [ref=e159]: ai:agent-framework
+            - generic [ref=e160]: cli
+            - generic [ref=e161]: lang:rust
+            - generic [ref=e162]: oss
+            - generic [ref=e163]: runtime:browser
+            - generic [ref=e164]: runtime:cli
+          - text: ↗
+        - link "Adicionar à Stack ai-agents Python Node.js Plataforma Agno Stack Python para construir, rodar e gerenciar agentes multimodais e sistemas multiagente. 2026 ai:agent-framework lang:python oss ↗" [ref=e165] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e166]:
+            - img [ref=e167]
+          - generic [ref=e169]:
+            - generic [ref=e170]: ai-agents
+            - generic [ref=e172]:
+              - generic [ref=e173]: Python
+              - generic [ref=e174]: Node.js
+              - generic [ref=e175]: Plataforma
+          - heading "Agno" [level=3] [ref=e176]
+          - paragraph [ref=e177]: Stack Python para construir, rodar e gerenciar agentes multimodais e sistemas multiagente.
+          - generic [ref=e178]:
+            - generic [ref=e179]: "2026"
+            - generic [ref=e180]: ai:agent-framework
+            - generic [ref=e181]: lang:python
+            - generic [ref=e182]: oss
+          - text: ↗
+        - link "Adicionar à Stack ai-agents Node.js Vercel AI Gateway Roteador unificado para LLMs com failover automático, observabilidade e billing centralizado. Uma chave para todos os providers. 2026 ai:agent-framework ai:provider docs observability ↗" [ref=e183] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e184]:
+            - img [ref=e185]
+          - generic [ref=e187]:
+            - generic [ref=e188]: ai-agents
+            - generic [ref=e191]: Node.js
+          - heading "Vercel AI Gateway" [level=3] [ref=e192]
+          - paragraph [ref=e193]: Roteador unificado para LLMs com failover automático, observabilidade e billing centralizado. Uma chave para todos os providers.
+          - generic [ref=e194]:
+            - generic [ref=e195]: "2026"
+            - generic [ref=e196]: ai:agent-framework
+            - generic [ref=e197]: ai:provider
+            - generic [ref=e198]: docs
+            - generic [ref=e199]: observability
+          - text: ↗
+        - link "Adicionar à Stack ai-agents Node.js SDK AI SDK SDK unificado para LLMs (Anthropic, OpenAI, Google, xAI) com streaming, tool calling, structured outputs e agents. Default em apps Next.js. 2026 ai:agent-framework ai:provider lang:typescript runtime:node ↗" [ref=e200] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e201]:
+            - img [ref=e202]
+          - generic [ref=e204]:
+            - generic [ref=e205]: ai-agents
+            - generic [ref=e207]:
+              - generic [ref=e208]: Node.js
+              - generic [ref=e209]: SDK
+          - heading "AI SDK" [level=3] [ref=e210]
+          - paragraph [ref=e211]: SDK unificado para LLMs (Anthropic, OpenAI, Google, xAI) com streaming, tool calling, structured outputs e agents. Default em apps Next.js.
+          - generic [ref=e212]:
+            - generic [ref=e213]: "2026"
+            - generic [ref=e214]: ai:agent-framework
+            - generic [ref=e215]: ai:provider
+            - generic [ref=e216]: lang:typescript
+            - generic [ref=e217]: runtime:node
+          - text: ↗
+        - link "Adicionar à Stack ai-agents Node.js CLI Aider Edita código no seu terminal usando LLMs. Funciona via git, faz commits semânticos, trabalha em qualquer linguagem com qualquer modelo. 2026 ai:agent-framework ai:provider cli oss runtime:cli ↗" [ref=e219] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e220]:
+            - img [ref=e221]
+          - generic [ref=e223]:
+            - generic [ref=e224]: ai-agents
+            - generic [ref=e226]:
+              - generic [ref=e227]: Node.js
+              - generic [ref=e228]: CLI
+          - heading "Aider" [level=3] [ref=e229]
+          - paragraph [ref=e230]: Edita código no seu terminal usando LLMs. Funciona via git, faz commits semânticos, trabalha em qualquer linguagem com qualquer modelo.
+          - generic [ref=e231]:
+            - generic [ref=e232]: "2026"
+            - generic [ref=e233]: ai:agent-framework
+            - generic [ref=e234]: ai:provider
+            - generic [ref=e235]: cli
+            - generic [ref=e236]: oss
+            - generic [ref=e237]: runtime:cli
+          - text: ↗
+        - link "Adicionar à Stack ai-agents Node.js Oficial Claude Code O agente de código no terminal da Anthropic — edita arquivos, roda comandos, usa MCP e trabalha o codebase inteiro. Base de boa parte do dev com agentes hoje. 2026 ai:agent-framework ai:provider cli oss runtime:cli ↗" [ref=e238] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e239]:
+            - img [ref=e240]
+          - generic [ref=e242]:
+            - generic [ref=e243]: ai-agents
+            - generic [ref=e245]:
+              - generic [ref=e246]: Node.js
+              - generic [ref=e247]: Oficial
+          - heading "Claude Code" [level=3] [ref=e248]
+          - paragraph [ref=e249]: O agente de código no terminal da Anthropic — edita arquivos, roda comandos, usa MCP e trabalha o codebase inteiro. Base de boa parte do dev com agentes hoje.
+          - generic [ref=e250]:
+            - generic [ref=e251]: "2026"
+            - generic [ref=e252]: ai:agent-framework
+            - generic [ref=e253]: ai:provider
+            - generic [ref=e254]: cli
+            - generic [ref=e255]: oss
+            - generic [ref=e256]: runtime:cli
+          - text: ↗
+      - 'link "Ver categoria completa: 19 itens restantes" [ref=e257] [cursor=pointer]':
+        - /url: /categoria/ai-agents
+        - generic [ref=e258]: Ver categoria completa
+        - generic [ref=e259]: 19 itens restantes
+      - generic [ref=e260]:
+        - generic [ref=e261]: § §02 · MCP
+        - heading "Model Context Protocol — a fiação." [level=3] [ref=e262]
+        - generic [ref=e263]: 10 itens
+        - text: mcp
+      - generic [ref=e264]:
+        - link "Adicionar à Stack mcp Web Curado awesome-mcp-servers Lista curada de servidores MCP para descobrir integrações úteis antes de instalar algo no ambiente. oss ↗" [ref=e265] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e266]:
+            - img [ref=e267]
+          - generic [ref=e269]:
+            - generic [ref=e270]: mcp
+            - generic [ref=e272]:
+              - generic [ref=e273]: Web
+              - generic [ref=e274]: Curado
+          - heading "awesome-mcp-servers" [level=3] [ref=e275]
+          - paragraph [ref=e276]: Lista curada de servidores MCP para descobrir integrações úteis antes de instalar algo no ambiente.
+          - generic [ref=e278]: oss
+          - text: ↗
+        - 'link "Adicionar à Stack mcp Web 500+ apps Composio Plataforma de integração agêntica com MCP Gateway: 500+ integrações gerenciadas (Slack, GitHub, Jira, Salesforce…) prontas pra dar ferramentas ao agente. 2026 ai:agent-framework oss ↗" [ref=e279] [cursor=pointer]':
+          - button "Adicionar à Stack" [ref=e280]:
+            - img [ref=e281]
+          - generic [ref=e283]:
+            - generic [ref=e284]: mcp
+            - generic [ref=e286]:
+              - generic [ref=e287]: Web
+              - generic [ref=e288]: 500+ apps
+          - heading "Composio" [level=3] [ref=e289]
+          - paragraph [ref=e290]: "Plataforma de integração agêntica com MCP Gateway: 500+ integrações gerenciadas (Slack, GitHub, Jira, Salesforce…) prontas pra dar ferramentas ao agente."
+          - generic [ref=e291]:
+            - generic [ref=e292]: "2026"
+            - generic [ref=e293]: ai:agent-framework
+            - generic [ref=e294]: oss
+          - text: ↗
+        - link "Adicionar à Stack mcp Python FastMCP A forma rápida e pythônica de construir servidores e clientes MCP. Roda ~70% de todos os servidores MCP do ecossistema — decorators, auth, deploy e tooling completo. 2026 cli lang:python oss runtime:cli security ↗" [ref=e295] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e296]:
+            - img [ref=e297]
+          - generic [ref=e299]:
+            - generic [ref=e300]: mcp
+            - generic [ref=e303]: Python
+          - heading "FastMCP" [level=3] [ref=e304]
+          - paragraph [ref=e305]: A forma rápida e pythônica de construir servidores e clientes MCP. Roda ~70% de todos os servidores MCP do ecossistema — decorators, auth, deploy e tooling completo.
+          - generic [ref=e306]:
+            - generic [ref=e307]: "2026"
+            - generic [ref=e308]: cli
+            - generic [ref=e309]: lang:python
+            - generic [ref=e310]: oss
+            - generic [ref=e311]: runtime:cli
+            - generic [ref=e312]: security
+          - text: ↗
+        - 'link "Adicionar à Stack mcp Go Go GitHub MCP Server Servidor MCP oficial do GitHub: repos, pull requests, issues, code search e operações de arquivo — dá ao agente acesso completo à API do GitHub. ai:agent-framework lang:go oss ↗" [ref=e314] [cursor=pointer]':
+          - button "Adicionar à Stack" [ref=e315]:
+            - img [ref=e316]
+          - generic [ref=e318]:
+            - generic [ref=e319]: mcp
+            - generic [ref=e321]:
+              - generic [ref=e322]: Go
+              - generic [ref=e323]: Go
+          - heading "GitHub MCP Server" [level=3] [ref=e324]
+          - paragraph [ref=e325]: "Servidor MCP oficial do GitHub: repos, pull requests, issues, code search e operações de arquivo — dá ao agente acesso completo à API do GitHub."
+          - generic [ref=e326]:
+            - generic [ref=e327]: ai:agent-framework
+            - generic [ref=e328]: lang:go
+            - generic [ref=e329]: oss
+          - text: ↗
+        - link "Adicionar à Stack mcp Web Inspector MCP Inspector Ferramenta oficial pra inspecionar e debugar servidores MCP — logs em tempo real, validação de protocolo e suporte a múltiplos transports. 2026 oss ↗" [ref=e330] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e331]:
+            - img [ref=e332]
+          - generic [ref=e334]:
+            - generic [ref=e335]: mcp
+            - generic [ref=e337]:
+              - generic [ref=e338]: Web
+              - generic [ref=e339]: Inspector
+          - heading "MCP Inspector" [level=3] [ref=e340]
+          - paragraph [ref=e341]: Ferramenta oficial pra inspecionar e debugar servidores MCP — logs em tempo real, validação de protocolo e suporte a múltiplos transports.
+          - generic [ref=e342]:
+            - generic [ref=e343]: "2026"
+            - generic [ref=e344]: oss
+          - text: ↗
+        - link "Adicionar à Stack mcp Web Registro MCP Registry Registro comunitário de servidores MCP para descoberta, publicação e organização de integrações. oss ↗" [ref=e345] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e346]:
+            - img [ref=e347]
+          - generic [ref=e349]:
+            - generic [ref=e350]: mcp
+            - generic [ref=e352]:
+              - generic [ref=e353]: Web
+              - generic [ref=e354]: Registro
+          - heading "MCP Registry" [level=3] [ref=e355]
+          - paragraph [ref=e356]: Registro comunitário de servidores MCP para descoberta, publicação e organização de integrações.
+          - generic [ref=e358]: oss
+          - text: ↗
+      - 'link "Ver categoria completa: 4 itens restantes" [ref=e359] [cursor=pointer]':
+        - /url: /categoria/mcp
+        - generic [ref=e360]: Ver categoria completa
+        - generic [ref=e361]: 4 itens restantes
+      - generic [ref=e362]:
+        - generic [ref=e363]: § §03 · Frontend UI
+        - heading "Interface — componentes & blocos." [level=3] [ref=e364]
+        - generic [ref=e365]: 24 itens
+        - text: frontend-ui
+      - generic [ref=e366]:
+        - link "Adicionar à Stack frontend-ui Web Kits 21st.dev Biblioteca e inspiração para componentes React modernos. frontend-ui ↗" [ref=e367] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e368]:
+            - img [ref=e369]
+          - generic [ref=e371]:
+            - generic [ref=e372]: frontend-ui
+            - generic [ref=e374]:
+              - generic [ref=e375]: Web
+              - generic [ref=e376]: Kits
+          - heading "21st.dev" [level=3] [ref=e377]
+          - paragraph [ref=e378]: Biblioteca e inspiração para componentes React modernos.
+          - generic [ref=e380]: frontend-ui
+          - text: ↗
+        - link "Adicionar à Stack frontend-ui Web Free + Pro Aceternity UI Componentes e blocks com Tailwind e Motion para landing pages, pricing, hero sections, backgrounds e interações de alto impacto. frontend-ui ↗" [ref=e381] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e382]:
+            - img [ref=e383]
+          - generic [ref=e385]:
+            - generic [ref=e386]: frontend-ui
+            - generic [ref=e388]:
+              - generic [ref=e389]: Web
+              - generic [ref=e390]: Free + Pro
+          - heading "Aceternity UI" [level=3] [ref=e391]
+          - paragraph [ref=e392]: Componentes e blocks com Tailwind e Motion para landing pages, pricing, hero sections, backgrounds e interações de alto impacto.
+          - generic [ref=e394]: frontend-ui
+          - text: ↗
+        - 'link "Adicionar à Stack frontend-ui Web Free Ali Imam Components Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações. frontend-ui ↗" [ref=e395] [cursor=pointer]':
+          - button "Adicionar à Stack" [ref=e396]:
+            - img [ref=e397]
+          - generic [ref=e399]:
+            - generic [ref=e400]: frontend-ui
+            - generic [ref=e402]:
+              - generic [ref=e403]: Web
+              - generic [ref=e404]: Free
+          - heading "Ali Imam Components" [level=3] [ref=e405]
+          - paragraph [ref=e406]: "Coleção de componentes e efeitos visuais para copiar, estudar e adaptar: backgrounds, shaders, typography, patterns, badges e interações."
+          - generic [ref=e408]: frontend-ui
+          - text: ↗
+        - link "Adicionar à Stack frontend-ui Web Referência awesome-design-md Modelos DESIGN.md para orientar estética, componentes e consistência visual. oss runtime:browser ↗" [ref=e409] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e410]:
+            - img [ref=e411]
+          - generic [ref=e413]:
+            - generic [ref=e414]: frontend-ui
+            - generic [ref=e416]:
+              - generic [ref=e417]: Web
+              - generic [ref=e418]: Referência
+          - heading "awesome-design-md" [level=3] [ref=e419]
+          - paragraph [ref=e420]: Modelos DESIGN.md para orientar estética, componentes e consistência visual.
+          - generic [ref=e421]:
+            - generic [ref=e422]: oss
+            - generic [ref=e423]: runtime:browser
+          - text: ↗
+        - link "Adicionar à Stack frontend-ui Web Novo Componetry Hub curado para inspiração de UI e componentes, útil para comparar padrões visuais antes de montar dashboards, landing pages e tool surfaces. dashboards runtime:browser ↗" [ref=e424] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e425]:
+            - img [ref=e426]
+          - generic [ref=e428]:
+            - generic [ref=e429]: frontend-ui
+            - generic [ref=e431]:
+              - generic [ref=e432]: Web
+              - generic [ref=e433]: Novo
+          - heading "Componetry" [level=3] [ref=e434]
+          - paragraph [ref=e435]: Hub curado para inspiração de UI e componentes, útil para comparar padrões visuais antes de montar dashboards, landing pages e tool surfaces.
+          - generic [ref=e436]:
+            - generic [ref=e437]: dashboards
+            - generic [ref=e438]: runtime:browser
+          - text: ↗
+        - link "Adicionar à Stack frontend-ui Web Free + Pro Cult UI Componentes animados, blocks e templates compatíveis com shadcn. Bom para marketing pages, SaaS e interfaces com microinterações mais refinadas. frontend-ui ↗" [ref=e439] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e440]:
+            - img [ref=e441]
+          - generic [ref=e443]:
+            - generic [ref=e444]: frontend-ui
+            - generic [ref=e446]:
+              - generic [ref=e447]: Web
+              - generic [ref=e448]: Free + Pro
+          - heading "Cult UI" [level=3] [ref=e449]
+          - paragraph [ref=e450]: Componentes animados, blocks e templates compatíveis com shadcn. Bom para marketing pages, SaaS e interfaces com microinterações mais refinadas.
+          - generic [ref=e452]: frontend-ui
+          - text: ↗
+      - 'link "Ver categoria completa: 18 itens restantes" [ref=e453] [cursor=pointer]':
+        - /url: /categoria/frontend-ui
+        - generic [ref=e454]: Ver categoria completa
+        - generic [ref=e455]: 18 itens restantes
+      - generic [ref=e456]:
+        - generic [ref=e457]: § §04 · Frontend Frameworks
+        - heading "Interface — frameworks & gráficos." [level=3] [ref=e458]
+        - generic [ref=e459]: 16 itens
+        - text: frontend-frameworks
+      - generic [ref=e460]:
+        - 'link "Adicionar à Stack frontend-frameworks Node.js SSG Astro Framework #1 pra sites de conteúdo. Zero JS por default, islands architecture, suporte a React/Vue/Svelte no mesmo projeto. lang:typescript oss production-ready runtime:browser ↗" [ref=e461] [cursor=pointer]':
+          - button "Adicionar à Stack" [ref=e462]:
+            - img [ref=e463]
+          - generic [ref=e465]:
+            - generic [ref=e466]: frontend-frameworks
+            - generic [ref=e468]:
+              - generic [ref=e469]: Node.js
+              - generic [ref=e470]: SSG
+          - heading "Astro" [level=3] [ref=e471]
+          - paragraph [ref=e472]: "Framework #1 pra sites de conteúdo. Zero JS por default, islands architecture, suporte a React/Vue/Svelte no mesmo projeto."
+          - generic [ref=e473]:
+            - generic [ref=e474]: lang:typescript
+            - generic [ref=e475]: oss
+            - generic [ref=e476]: production-ready
+            - generic [ref=e477]: runtime:browser
+          - text: ↗
+        - link "Adicionar à Stack frontend-frameworks Web JS Balloons.js Biblioteca pequena para animações de balões em tela cheia. Útil para celebrações, sucesso de onboarding e momentos de recompensa. 2026 motion runtime:browser ↗" [ref=e478] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e479]:
+            - img [ref=e480]
+          - generic [ref=e482]:
+            - generic [ref=e483]: frontend-frameworks
+            - generic [ref=e485]:
+              - generic [ref=e486]: Web
+              - generic [ref=e487]: JS
+          - heading "Balloons.js" [level=3] [ref=e488]
+          - paragraph [ref=e489]: Biblioteca pequena para animações de balões em tela cheia. Útil para celebrações, sucesso de onboarding e momentos de recompensa.
+          - generic [ref=e490]:
+            - generic [ref=e491]: "2026"
+            - generic [ref=e492]: motion
+            - generic [ref=e493]: runtime:browser
+          - text: ↗
+        - link "Adicionar à Stack frontend-frameworks Web ⌘K cmdk Componente React para command palettes estilo Raycast. Headless, acessível, com fuzzy search. Por trás do Command do shadcn/ui. cli oss runtime:browser ui:headless ↗" [ref=e494] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e495]:
+            - img [ref=e496]
+          - generic [ref=e498]:
+            - generic [ref=e499]: frontend-frameworks
+            - generic [ref=e501]:
+              - generic [ref=e502]: Web
+              - generic [ref=e503]: ⌘K
+          - heading "cmdk" [level=3] [ref=e504]
+          - paragraph [ref=e505]: Componente React para command palettes estilo Raycast. Headless, acessível, com fuzzy search. Por trás do Command do shadcn/ui.
+          - generic [ref=e506]:
+            - generic [ref=e507]: cli
+            - generic [ref=e508]: oss
+            - generic [ref=e509]: runtime:browser
+            - generic [ref=e510]: ui:headless
+          - text: ↗
+        - link "Adicionar à Stack frontend-frameworks Web 55+ Dot Matrix Loaders em estilo dot matrix feitos com React, TypeScript, Tailwind e shadcn. Nichado, mas ótimo para estados de carregamento com personalidade. frontend-frameworks ↗" [ref=e511] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e512]:
+            - img [ref=e513]
+          - generic [ref=e515]:
+            - generic [ref=e516]: frontend-frameworks
+            - generic [ref=e518]:
+              - generic [ref=e519]: Web
+              - generic [ref=e520]: 55+
+          - heading "Dot Matrix" [level=3] [ref=e521]
+          - paragraph [ref=e522]: Loaders em estilo dot matrix feitos com React, TypeScript, Tailwind e shadcn. Nichado, mas ótimo para estados de carregamento com personalidade.
+          - generic [ref=e524]: frontend-frameworks
+          - text: ↗
+        - link "Adicionar à Stack frontend-frameworks Web Tool Framer Plataforma para criar, prototipar e publicar sites com foco em design visual e animações. frontend-frameworks ↗" [ref=e525] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e526]:
+            - img [ref=e527]
+          - generic [ref=e529]:
+            - generic [ref=e530]: frontend-frameworks
+            - generic [ref=e532]:
+              - generic [ref=e533]: Web
+              - generic [ref=e534]: Tool
+          - heading "Framer" [level=3] [ref=e535]
+          - paragraph [ref=e536]: Plataforma para criar, prototipar e publicar sites com foco em design visual e animações.
+          - generic [ref=e538]: frontend-frameworks
+          - text: ↗
+        - link "Adicionar à Stack frontend-frameworks Web OSS Liquid Metal Efeito WebGL de metal líquido para botões, chips e controles. Use como tempero visual pontual, não como base de design system. frontend-frameworks ↗" [ref=e539] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e540]:
+            - img [ref=e541]
+          - generic [ref=e543]:
+            - generic [ref=e544]: frontend-frameworks
+            - generic [ref=e546]:
+              - generic [ref=e547]: Web
+              - generic [ref=e548]: OSS
+          - heading "Liquid Metal" [level=3] [ref=e549]
+          - paragraph [ref=e550]: Efeito WebGL de metal líquido para botões, chips e controles. Use como tempero visual pontual, não como base de design system.
+          - generic [ref=e552]: frontend-frameworks
+          - text: ↗
+      - 'link "Ver categoria completa: 10 itens restantes" [ref=e553] [cursor=pointer]':
+        - /url: /categoria/frontend-frameworks
+        - generic [ref=e554]: Ver categoria completa
+        - generic [ref=e555]: 10 itens restantes
+      - generic [ref=e556]:
+        - generic [ref=e557]: § §05 · Backend (Data)
+        - heading "Servidor — bancos de dados & APIs." [level=3] [ref=e558]
+        - generic [ref=e559]: 9 itens
+        - text: backend-data
+      - generic [ref=e560]:
+        - link "Adicionar à Stack backend-data Web Open Appwrite Infra backend open source com auth, databases, storage, functions, messaging, realtime e hosting integrado. oss production-ready security ↗" [ref=e561] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e562]:
+            - img [ref=e563]
+          - generic [ref=e565]:
+            - generic [ref=e566]: backend-data
+            - generic [ref=e568]:
+              - generic [ref=e569]: Web
+              - generic [ref=e570]: Open
+          - heading "Appwrite" [level=3] [ref=e571]
+          - paragraph [ref=e572]: Infra backend open source com auth, databases, storage, functions, messaging, realtime e hosting integrado.
+          - generic [ref=e573]:
+            - generic [ref=e574]: oss
+            - generic [ref=e575]: production-ready
+            - generic [ref=e576]: security
+          - text: ↗
+        - link "Adicionar à Stack backend-data Node.js Rápido Fastify Framework Node.js de baixa sobrecarga para APIs com plugins, validação e performance. lang:javascript oss production-ready runtime:node ↗" [ref=e577] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e578]:
+            - img [ref=e579]
+          - generic [ref=e581]:
+            - generic [ref=e582]: backend-data
+            - generic [ref=e584]:
+              - generic [ref=e585]: Node.js
+              - generic [ref=e586]: Rápido
+          - heading "Fastify" [level=3] [ref=e587]
+          - paragraph [ref=e588]: Framework Node.js de baixa sobrecarga para APIs com plugins, validação e performance.
+          - generic [ref=e589]:
+            - generic [ref=e590]: lang:javascript
+            - generic [ref=e591]: oss
+            - generic [ref=e592]: production-ready
+            - generic [ref=e593]: runtime:node
+          - text: ↗
+        - link "Adicionar à Stack backend-data Node.js TS Hono Framework TypeScript ultraleve para Node, Bun, Deno, Workers e edge. lang:typescript oss production-ready runtime:edge runtime:node serverless ↗" [ref=e594] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e595]:
+            - img [ref=e596]
+          - generic [ref=e598]:
+            - generic [ref=e599]: backend-data
+            - generic [ref=e601]:
+              - generic [ref=e602]: Node.js
+              - generic [ref=e603]: TS
+          - heading "Hono" [level=3] [ref=e604]
+          - paragraph [ref=e605]: Framework TypeScript ultraleve para Node, Bun, Deno, Workers e edge.
+          - generic [ref=e606]:
+            - generic [ref=e607]: lang:typescript
+            - generic [ref=e608]: oss
+            - generic [ref=e609]: production-ready
+            - generic [ref=e610]: runtime:edge
+            - generic [ref=e611]: runtime:node
+            - generic [ref=e612]: serverless
+          - text: ↗
+        - link "Adicionar à Stack backend-data Web Serverless Neon Postgres serverless com branching estilo Git. Cada PR ganha database isolada — fim do \"funciona no meu local\". db:postgres production-ready serverless ↗" [ref=e613] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e614]:
+            - img [ref=e615]
+          - generic [ref=e617]:
+            - generic [ref=e618]: backend-data
+            - generic [ref=e620]:
+              - generic [ref=e621]: Web
+              - generic [ref=e622]: Serverless
+          - heading "Neon" [level=3] [ref=e623]
+          - paragraph [ref=e624]: Postgres serverless com branching estilo Git. Cada PR ganha database isolada — fim do "funciona no meu local".
+          - generic [ref=e625]:
+            - generic [ref=e626]: db:postgres
+            - generic [ref=e627]: production-ready
+            - generic [ref=e628]: serverless
+          - text: ↗
+        - link "Adicionar à Stack backend-data Web AI pgvector Extensão Postgres para vector search. Embeddings, similaridade, índices HNSW/IVFFlat. Permite RAG sem precisar de banco vetorial dedicado. ai:rag db:postgres db:vector oss production-ready ↗" [ref=e630] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e631]:
+            - img [ref=e632]
+          - generic [ref=e634]:
+            - generic [ref=e635]: backend-data
+            - generic [ref=e637]:
+              - generic [ref=e638]: Web
+              - generic [ref=e639]: AI
+          - heading "pgvector" [level=3] [ref=e640]
+          - paragraph [ref=e641]: Extensão Postgres para vector search. Embeddings, similaridade, índices HNSW/IVFFlat. Permite RAG sem precisar de banco vetorial dedicado.
+          - generic [ref=e642]:
+            - generic [ref=e643]: ai:rag
+            - generic [ref=e644]: db:postgres
+            - generic [ref=e645]: db:vector
+            - generic [ref=e646]: oss
+            - generic [ref=e647]: production-ready
+          - text: ↗
+        - 'link "Adicionar à Stack backend-data Go Open PocketBase Backend-as-a-service num único binário Go: SQLite, auth, realtime, storage, admin UI. Self-hosted em qualquer VPS com zero config. db:sqlite lang:go oss production-ready saas security selfhost ↗" [ref=e648] [cursor=pointer]':
+          - button "Adicionar à Stack" [ref=e649]:
+            - img [ref=e650]
+          - generic [ref=e652]:
+            - generic [ref=e653]: backend-data
+            - generic [ref=e655]:
+              - generic [ref=e656]: Go
+              - generic [ref=e657]: Open
+          - heading "PocketBase" [level=3] [ref=e658]
+          - paragraph [ref=e659]: "Backend-as-a-service num único binário Go: SQLite, auth, realtime, storage, admin UI. Self-hosted em qualquer VPS com zero config."
+          - generic [ref=e660]:
+            - generic [ref=e661]: db:sqlite
+            - generic [ref=e662]: lang:go
+            - generic [ref=e663]: oss
+            - generic [ref=e664]: production-ready
+            - generic [ref=e665]: saas
+            - generic [ref=e666]: security
+            - generic [ref=e667]: selfhost
+          - text: ↗
+      - 'link "Ver categoria completa: 3 itens restantes" [ref=e668] [cursor=pointer]':
+        - /url: /categoria/backend-data
+        - generic [ref=e669]: Ver categoria completa
+        - generic [ref=e670]: 3 itens restantes
+      - generic [ref=e671]:
+        - generic [ref=e672]: § §06 · Backend (Toolkit)
+        - heading "Servidor — ORMs, auth & validação." [level=3] [ref=e673]
+        - generic [ref=e674]: 11 itens
+        - text: backend-toolkit
+      - generic [ref=e675]:
+        - link "Adicionar à Stack backend-toolkit Node.js ORM Drizzle ORM ORM TypeScript leve e SQL-first para PostgreSQL, MySQL, SQLite e ambientes serverless/edge. db:postgres db:sqlite lang:typescript oss production-ready runtime:edge runtime:node serverless ↗" [ref=e676] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e677]:
+            - img [ref=e678]
+          - generic [ref=e680]:
+            - generic [ref=e681]: backend-toolkit
+            - generic [ref=e683]:
+              - generic [ref=e684]: Node.js
+              - generic [ref=e685]: ORM
+          - heading "Drizzle ORM" [level=3] [ref=e686]
+          - paragraph [ref=e687]: ORM TypeScript leve e SQL-first para PostgreSQL, MySQL, SQLite e ambientes serverless/edge.
+          - generic [ref=e688]:
+            - generic [ref=e689]: db:postgres
+            - generic [ref=e690]: db:sqlite
+            - generic [ref=e691]: lang:typescript
+            - generic [ref=e692]: oss
+            - generic [ref=e693]: production-ready
+            - generic [ref=e694]: runtime:edge
+            - generic [ref=e695]: runtime:node
+            - generic [ref=e696]: serverless
+          - text: ↗
+        - link "Adicionar à Stack backend-toolkit Node.js SQL-first Drizzle ORM ORM TypeScript SQL-first. Type safety total, sem runtime, migrations declarativas. Default sobre Prisma em projetos performance-críticos. lang:typescript production-ready runtime:node ↗" [ref=e697] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e698]:
+            - img [ref=e699]
+          - generic [ref=e701]:
+            - generic [ref=e702]: backend-toolkit
+            - generic [ref=e704]:
+              - generic [ref=e705]: Node.js
+              - generic [ref=e706]: SQL-first
+          - heading "Drizzle ORM" [level=3] [ref=e707]
+          - paragraph [ref=e708]: ORM TypeScript SQL-first. Type safety total, sem runtime, migrations declarativas. Default sobre Prisma em projetos performance-críticos.
+          - generic [ref=e709]:
+            - generic [ref=e710]: lang:typescript
+            - generic [ref=e711]: production-ready
+            - generic [ref=e712]: runtime:node
+          - text: ↗
+        - 'link "Adicionar à Stack backend-toolkit Web Novo Infinite Monitor Dashboard builder com IA: descreva o widget em linguagem natural e o agente escreve, builda e publica monitores em tempo real. ai:agent-framework dashboards observability oss ↗" [ref=e714] [cursor=pointer]':
+          - button "Adicionar à Stack" [ref=e715]:
+            - img [ref=e716]
+          - generic [ref=e718]:
+            - generic [ref=e719]: backend-toolkit
+            - generic [ref=e721]:
+              - generic [ref=e722]: Web
+              - generic [ref=e723]: Novo
+          - heading "Infinite Monitor" [level=3] [ref=e724]
+          - paragraph [ref=e725]: "Dashboard builder com IA: descreva o widget em linguagem natural e o agente escreve, builda e publica monitores em tempo real."
+          - generic [ref=e726]:
+            - generic [ref=e727]: ai:agent-framework
+            - generic [ref=e728]: dashboards
+            - generic [ref=e729]: observability
+            - generic [ref=e730]: oss
+          - text: ↗
+        - link "Adicionar à Stack backend-toolkit Go Novo n8n Plataforma self-hostable de workflow automation com 400+ integrações, código quando necessário e recursos nativos para fluxos com agentes e modelos. ai:agent-framework lang:go oss selfhost ↗" [ref=e731] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e732]:
+            - img [ref=e733]
+          - generic [ref=e735]:
+            - generic [ref=e736]: backend-toolkit
+            - generic [ref=e738]:
+              - generic [ref=e739]: Go
+              - generic [ref=e740]: Novo
+          - heading "n8n" [level=3] [ref=e741]
+          - paragraph [ref=e742]: Plataforma self-hostable de workflow automation com 400+ integrações, código quando necessário e recursos nativos para fluxos com agentes e modelos.
+          - generic [ref=e743]:
+            - generic [ref=e744]: ai:agent-framework
+            - generic [ref=e745]: lang:go
+            - generic [ref=e746]: oss
+            - generic [ref=e747]: selfhost
+          - text: ↗
+        - link "Adicionar à Stack backend-toolkit Web Novo Plausible Analytics Analytics web open source, leve e privacy-first, sem cookies e com opção cloud ou self-hosted para produtos que precisam medir sem rastrear pessoas. oss production-ready saas selfhost ↗" [ref=e748] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e749]:
+            - img [ref=e750]
+          - generic [ref=e752]:
+            - generic [ref=e753]: backend-toolkit
+            - generic [ref=e755]:
+              - generic [ref=e756]: Web
+              - generic [ref=e757]: Novo
+          - heading "Plausible Analytics" [level=3] [ref=e758]
+          - paragraph [ref=e759]: Analytics web open source, leve e privacy-first, sem cookies e com opção cloud ou self-hosted para produtos que precisam medir sem rastrear pessoas.
+          - generic [ref=e760]:
+            - generic [ref=e761]: oss
+            - generic [ref=e762]: production-ready
+            - generic [ref=e763]: saas
+            - generic [ref=e764]: selfhost
+          - text: ↗
+        - link "Adicionar à Stack backend-toolkit Node.js ORM Prisma ORM Toolkit Node/TypeScript para modelagem, migrations, Prisma Client tipado e Studio. cli lang:typescript oss production-ready runtime:cli runtime:node ↗" [ref=e765] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e766]:
+            - img [ref=e767]
+          - generic [ref=e769]:
+            - generic [ref=e770]: backend-toolkit
+            - generic [ref=e772]:
+              - generic [ref=e773]: Node.js
+              - generic [ref=e774]: ORM
+          - heading "Prisma ORM" [level=3] [ref=e775]
+          - paragraph [ref=e776]: Toolkit Node/TypeScript para modelagem, migrations, Prisma Client tipado e Studio.
+          - generic [ref=e777]:
+            - generic [ref=e778]: cli
+            - generic [ref=e779]: lang:typescript
+            - generic [ref=e780]: oss
+            - generic [ref=e781]: production-ready
+            - generic [ref=e782]: runtime:cli
+            - generic [ref=e783]: runtime:node
+          - text: ↗
+      - 'link "Ver categoria completa: 5 itens restantes" [ref=e784] [cursor=pointer]':
+        - /url: /categoria/backend-toolkit
+        - generic [ref=e785]: Ver categoria completa
+        - generic [ref=e786]: 5 itens restantes
+      - generic [ref=e787]:
+        - generic [ref=e788]: § §07 · Mobile & AI
+        - heading "Apps — mobile & IA on-device." [level=3] [ref=e789]
+        - generic [ref=e790]: 15 itens
+        - text: mobile-ai
+      - generic [ref=e791]:
+        - link "Adicionar à Stack mobile-ai Web Novo AppFlowy Workspace colaborativo open source com IA para projetos, wikis e times, pensado como alternativa ao Notion com controle de dados e deploy próprio. oss ↗" [ref=e792] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e793]:
+            - img [ref=e794]
+          - generic [ref=e796]:
+            - generic [ref=e797]: mobile-ai
+            - generic [ref=e799]:
+              - generic [ref=e800]: Web
+              - generic [ref=e801]: Novo
+          - heading "AppFlowy" [level=3] [ref=e802]
+          - paragraph [ref=e803]: Workspace colaborativo open source com IA para projetos, wikis e times, pensado como alternativa ao Notion com controle de dados e deploy próprio.
+          - generic [ref=e805]: oss
+          - text: ↗
+        - link "Adicionar à Stack mobile-ai Web Cross Cactus Framework cross-platform de inferência de LLM/VLM no celular — roda agentes locais em iOS e Android com baixo consumo. 2026 ai:agent-framework ai:on-device ai:provider oss runtime:mobile ↗" [ref=e806] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e807]:
+            - img [ref=e808]
+          - generic [ref=e810]:
+            - generic [ref=e811]: mobile-ai
+            - generic [ref=e813]:
+              - generic [ref=e814]: Web
+              - generic [ref=e815]: Cross
+          - heading "Cactus" [level=3] [ref=e816]
+          - paragraph [ref=e817]: Framework cross-platform de inferência de LLM/VLM no celular — roda agentes locais em iOS e Android com baixo consumo.
+          - generic [ref=e818]:
+            - generic [ref=e819]: "2026"
+            - generic [ref=e820]: ai:agent-framework
+            - generic [ref=e821]: ai:on-device
+            - generic [ref=e822]: ai:provider
+            - generic [ref=e823]: oss
+            - generic [ref=e824]: runtime:mobile
+          - text: ↗
+        - link "Adicionar à Stack mobile-ai Web Novo Cal.com DIY Infraestrutura de agendamento aberta para produtos que precisam embutir calendário, reservas e fluxos de disponibilidade sem começar do zero. oss ↗" [ref=e825] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e826]:
+            - img [ref=e827]
+          - generic [ref=e829]:
+            - generic [ref=e830]: mobile-ai
+            - generic [ref=e832]:
+              - generic [ref=e833]: Web
+              - generic [ref=e834]: Novo
+          - heading "Cal.com DIY" [level=3] [ref=e835]
+          - paragraph [ref=e836]: Infraestrutura de agendamento aberta para produtos que precisam embutir calendário, reservas e fluxos de disponibilidade sem começar do zero.
+          - generic [ref=e838]: oss
+          - text: ↗
+        - link "Adicionar à Stack mobile-ai Web Bridge Capacitor Empacota apps web (incl. clientes de agente) como apps nativos iOS/Android com acesso a APIs do dispositivo. ai:agent-framework cli oss production-ready runtime:cli ↗" [ref=e839] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e840]:
+            - img [ref=e841]
+          - generic [ref=e843]:
+            - generic [ref=e844]: mobile-ai
+            - generic [ref=e846]:
+              - generic [ref=e847]: Web
+              - generic [ref=e848]: Bridge
+          - heading "Capacitor" [level=3] [ref=e849]
+          - paragraph [ref=e850]: Empacota apps web (incl. clientes de agente) como apps nativos iOS/Android com acesso a APIs do dispositivo.
+          - generic [ref=e851]:
+            - generic [ref=e852]: ai:agent-framework
+            - generic [ref=e853]: cli
+            - generic [ref=e854]: oss
+            - generic [ref=e855]: production-ready
+            - generic [ref=e856]: runtime:cli
+          - text: ↗
+        - link "Adicionar à Stack mobile-ai Web Novo Chatterbox Modelo open source de text-to-speech para gerar voz em produtos, agentes conversacionais, narração e protótipos multimodais. ai:agent-framework oss ↗" [ref=e857] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e858]:
+            - img [ref=e859]
+          - generic [ref=e861]:
+            - generic [ref=e862]: mobile-ai
+            - generic [ref=e864]:
+              - generic [ref=e865]: Web
+              - generic [ref=e866]: Novo
+          - heading "Chatterbox" [level=3] [ref=e867]
+          - paragraph [ref=e868]: Modelo open source de text-to-speech para gerar voz em produtos, agentes conversacionais, narração e protótipos multimodais.
+          - generic [ref=e869]:
+            - generic [ref=e870]: ai:agent-framework
+            - generic [ref=e871]: oss
+          - text: ↗
+        - link "Adicionar à Stack mobile-ai Python On-device ExecuTorch Runtime PyTorch otimizado para mobile/edge. Roda LLMs e modelos custom em iOS/Android sem servidor. 2026 ai:on-device ai:provider lang:python runtime:edge runtime:mobile ↗" [ref=e872] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e873]:
+            - img [ref=e874]
+          - generic [ref=e876]:
+            - generic [ref=e877]: mobile-ai
+            - generic [ref=e879]:
+              - generic [ref=e880]: Python
+              - generic [ref=e881]: On-device
+          - heading "ExecuTorch" [level=3] [ref=e882]
+          - paragraph [ref=e883]: Runtime PyTorch otimizado para mobile/edge. Roda LLMs e modelos custom em iOS/Android sem servidor.
+          - generic [ref=e884]:
+            - generic [ref=e885]: "2026"
+            - generic [ref=e886]: ai:on-device
+            - generic [ref=e887]: ai:provider
+            - generic [ref=e888]: lang:python
+            - generic [ref=e889]: runtime:edge
+            - generic [ref=e890]: runtime:mobile
+          - text: ↗
+      - 'link "Ver categoria completa: 9 itens restantes" [ref=e891] [cursor=pointer]':
+        - /url: /categoria/mobile-ai
+        - generic [ref=e892]: Ver categoria completa
+        - generic [ref=e893]: 9 itens restantes
+      - generic [ref=e894]:
+        - generic [ref=e895]: § §08 · Security
+        - heading "Segurança — auth & appsec." [level=3] [ref=e896]
+        - generic [ref=e897]: 14 itens
+        - text: security
+      - generic [ref=e898]:
+        - link "Adicionar à Stack security Web Novo Anthropic Cybersecurity Skills Biblioteca com 754 skills estruturadas de cibersegurança para agentes, cobrindo 26 domínios e mapeamentos para MITRE ATT&CK, NIST CSF, ATLAS, D3FEND e AI RMF. ai:agent-framework oss security ↗" [ref=e899] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e900]:
+            - img [ref=e901]
+          - generic [ref=e903]:
+            - generic [ref=e904]: security
+            - generic [ref=e906]:
+              - generic [ref=e907]: Web
+              - generic [ref=e908]: Novo
+          - heading "Anthropic Cybersecurity Skills" [level=3] [ref=e909]
+          - paragraph [ref=e910]: Biblioteca com 754 skills estruturadas de cibersegurança para agentes, cobrindo 26 domínios e mapeamentos para MITRE ATT&CK, NIST CSF, ATLAS, D3FEND e AI RMF.
+          - generic [ref=e911]:
+            - generic [ref=e912]: ai:agent-framework
+            - generic [ref=e913]: oss
+            - generic [ref=e914]: security
+          - text: ↗
+        - link "Adicionar à Stack security Node.js Arcjet Segurança como código para Next.js / Bun / SvelteKit — rate limit, bot detection, email validation, shield (WAF). API única, edge-native. 2026 email lang:typescript rate-limit runtime:edge runtime:node security transactional waf ↗" [ref=e915] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e916]:
+            - img [ref=e917]
+          - generic [ref=e919]:
+            - generic [ref=e920]: security
+            - generic [ref=e923]: Node.js
+          - heading "Arcjet" [level=3] [ref=e924]
+          - paragraph [ref=e925]: Segurança como código para Next.js / Bun / SvelteKit — rate limit, bot detection, email validation, shield (WAF). API única, edge-native.
+          - generic [ref=e926]:
+            - generic [ref=e927]: "2026"
+            - generic [ref=e928]: email
+            - generic [ref=e929]: lang:typescript
+            - generic [ref=e930]: rate-limit
+            - generic [ref=e931]: runtime:edge
+            - generic [ref=e932]: runtime:node
+            - generic [ref=e933]: security
+            - generic [ref=e934]: transactional
+            - generic [ref=e935]: waf
+          - text: ↗
+        - link "Adicionar à Stack security Node.js Self-host Better Auth Framework de autenticação TypeScript-first com plugins (2FA, magic link, organizações, passkey). Self-host, sem vendor lock. 2026 auth:passwordless lang:typescript production-ready security selfhost ↗" [ref=e936] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e937]:
+            - img [ref=e938]
+          - generic [ref=e940]:
+            - generic [ref=e941]: security
+            - generic [ref=e943]:
+              - generic [ref=e944]: Node.js
+              - generic [ref=e945]: Self-host
+          - heading "Better Auth" [level=3] [ref=e946]
+          - paragraph [ref=e947]: Framework de autenticação TypeScript-first com plugins (2FA, magic link, organizações, passkey). Self-host, sem vendor lock.
+          - generic [ref=e948]:
+            - generic [ref=e949]: "2026"
+            - generic [ref=e950]: auth:passwordless
+            - generic [ref=e951]: lang:typescript
+            - generic [ref=e952]: production-ready
+            - generic [ref=e953]: security
+            - generic [ref=e954]: selfhost
+          - text: ↗
+        - link "Adicionar à Stack security Web Novo Bitwarden Server Backend oficial do Bitwarden com APIs, banco, Docker e infraestrutura para gerenciar cofres, credenciais e recursos de password manager self-hosted. oss saas security selfhost ↗" [ref=e956] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e957]:
+            - img [ref=e958]
+          - generic [ref=e960]:
+            - generic [ref=e961]: security
+            - generic [ref=e963]:
+              - generic [ref=e964]: Web
+              - generic [ref=e965]: Novo
+          - heading "Bitwarden Server" [level=3] [ref=e966]
+          - paragraph [ref=e967]: Backend oficial do Bitwarden com APIs, banco, Docker e infraestrutura para gerenciar cofres, credenciais e recursos de password manager self-hosted.
+          - generic [ref=e968]:
+            - generic [ref=e969]: oss
+            - generic [ref=e970]: saas
+            - generic [ref=e971]: security
+            - generic [ref=e972]: selfhost
+          - text: ↗
+        - link "Adicionar à Stack security Web Scanner Garak Scanner de vulnerabilidades pra LLMs — sonda jailbreak, prompt injection, vazamento de dados, toxicidade e mais. O nmap dos modelos. ai:eval ai:provider oss sca security ↗" [ref=e973] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e974]:
+            - img [ref=e975]
+          - generic [ref=e977]:
+            - generic [ref=e978]: security
+            - generic [ref=e980]:
+              - generic [ref=e981]: Web
+              - generic [ref=e982]: Scanner
+          - heading "Garak" [level=3] [ref=e983]
+          - paragraph [ref=e984]: Scanner de vulnerabilidades pra LLMs — sonda jailbreak, prompt injection, vazamento de dados, toxicidade e mais. O nmap dos modelos.
+          - generic [ref=e985]:
+            - generic [ref=e986]: ai:eval
+            - generic [ref=e987]: ai:provider
+            - generic [ref=e988]: oss
+            - generic [ref=e989]: sca
+            - generic [ref=e990]: security
+          - text: ↗
+        - link "Adicionar à Stack security Web Scan Gitleaks Scanner para detectar e prevenir secrets hardcoded em repos, pre-commit e pipelines. oss sca security ↗" [ref=e991] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e992]:
+            - img [ref=e993]
+          - generic [ref=e995]:
+            - generic [ref=e996]: security
+            - generic [ref=e998]:
+              - generic [ref=e999]: Web
+              - generic [ref=e1000]: Scan
+          - heading "Gitleaks" [level=3] [ref=e1001]
+          - paragraph [ref=e1002]: Scanner para detectar e prevenir secrets hardcoded em repos, pre-commit e pipelines.
+          - generic [ref=e1003]:
+            - generic [ref=e1004]: oss
+            - generic [ref=e1005]: sca
+            - generic [ref=e1006]: security
+          - text: ↗
+      - 'link "Ver categoria completa: 8 itens restantes" [ref=e1007] [cursor=pointer]':
+        - /url: /categoria/security
+        - generic [ref=e1008]: Ver categoria completa
+        - generic [ref=e1009]: 8 itens restantes
+      - generic [ref=e1010]:
+        - generic [ref=e1011]: § §09 · DevOps
+        - heading "Build — build, testes & obs." [level=3] [ref=e1012]
+        - generic [ref=e1013]: 12 itens
+        - text: devops
+      - generic [ref=e1014]:
+        - link "Adicionar à Stack devops Node.js Tool Biome Toolchain rápido para formatar e lintar JavaScript, TypeScript, JSX, JSON, CSS e GraphQL. 2026 lang:javascript lang:typescript oss ↗" [ref=e1015] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1016]:
+            - img [ref=e1017]
+          - generic [ref=e1019]:
+            - generic [ref=e1020]: devops
+            - generic [ref=e1022]:
+              - generic [ref=e1023]: Node.js
+              - generic [ref=e1024]: Tool
+          - heading "Biome" [level=3] [ref=e1025]
+          - paragraph [ref=e1026]: Toolchain rápido para formatar e lintar JavaScript, TypeScript, JSX, JSON, CSS e GraphQL.
+          - generic [ref=e1027]:
+            - generic [ref=e1028]: "2026"
+            - generic [ref=e1029]: lang:javascript
+            - generic [ref=e1030]: lang:typescript
+            - generic [ref=e1031]: oss
+          - text: ↗
+        - link "Adicionar à Stack devops Node.js Runtime Bun Runtime JavaScript drop-in para Node, com bundler, test runner e package manager nativos. Escrito em Zig, muito mais rápido em todos os benchmarks. 2026 ai:eval lang:javascript lang:typescript oss runtime:node ↗" [ref=e1032] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1033]:
+            - img [ref=e1034]
+          - generic [ref=e1036]:
+            - generic [ref=e1037]: devops
+            - generic [ref=e1039]:
+              - generic [ref=e1040]: Node.js
+              - generic [ref=e1041]: Runtime
+          - heading "Bun" [level=3] [ref=e1042]
+          - paragraph [ref=e1043]: Runtime JavaScript drop-in para Node, com bundler, test runner e package manager nativos. Escrito em Zig, muito mais rápido em todos os benchmarks.
+          - generic [ref=e1044]:
+            - generic [ref=e1045]: "2026"
+            - generic [ref=e1046]: ai:eval
+            - generic [ref=e1047]: lang:javascript
+            - generic [ref=e1048]: lang:typescript
+            - generic [ref=e1049]: oss
+            - generic [ref=e1050]: runtime:node
+          - text: ↗
+        - link "Adicionar à Stack devops Web Context7 Documentação e exemplos atualizados sob demanda. Antes de implementar qualquer biblioteca, verifique aqui — reduz drasticamente alucinação de API em agentes e elimina código baseado em versões obsoletas. devops ↗" [ref=e1051] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1052]:
+            - img [ref=e1053]
+          - generic [ref=e1055]:
+            - generic [ref=e1056]: devops
+            - generic [ref=e1059]: Web
+          - heading "Context7" [level=3] [ref=e1060]
+          - paragraph [ref=e1061]: Documentação e exemplos atualizados sob demanda. Antes de implementar qualquer biblioteca, verifique aqui — reduz drasticamente alucinação de API em agentes e elimina código baseado em versões obsoletas.
+          - generic [ref=e1063]: devops
+          - text: ↗
+        - link "Adicionar à Stack devops Web Lista free-for-dev Serviços com planos gratuitos para desenvolvimento, protótipos, testes, deploy, banco, observabilidade e infra. observability oss ↗" [ref=e1065] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1066]:
+            - img [ref=e1067]
+          - generic [ref=e1069]:
+            - generic [ref=e1070]: devops
+            - generic [ref=e1072]:
+              - generic [ref=e1073]: Web
+              - generic [ref=e1074]: Lista
+          - heading "free-for-dev" [level=3] [ref=e1075]
+          - paragraph [ref=e1076]: Serviços com planos gratuitos para desenvolvimento, protótipos, testes, deploy, banco, observabilidade e infra.
+          - generic [ref=e1077]:
+            - generic [ref=e1078]: observability
+            - generic [ref=e1079]: oss
+          - text: ↗
+        - link "Adicionar à Stack devops Node.js Dashboards Grafana Plataforma aberta para visualizar métricas, logs e traces com dashboards e alertas. charts dashboards observability oss production-ready ↗" [ref=e1080] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1081]:
+            - img [ref=e1082]
+          - generic [ref=e1084]:
+            - generic [ref=e1085]: devops
+            - generic [ref=e1087]:
+              - generic [ref=e1088]: Node.js
+              - generic [ref=e1089]: Dashboards
+          - heading "Grafana" [level=3] [ref=e1090]
+          - paragraph [ref=e1091]: Plataforma aberta para visualizar métricas, logs e traces com dashboards e alertas.
+          - generic [ref=e1092]:
+            - generic [ref=e1093]: charts
+            - generic [ref=e1094]: dashboards
+            - generic [ref=e1095]: observability
+            - generic [ref=e1096]: oss
+            - generic [ref=e1097]: production-ready
+          - text: ↗
+        - link "Adicionar à Stack devops Node.js Tracing OpenTelemetry JS SDK JavaScript para instrumentar traces, métricas e logs em Node.js e web com padrão aberto. lang:javascript observability oss production-ready runtime:node ↗" [ref=e1098] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1099]:
+            - img [ref=e1100]
+          - generic [ref=e1102]:
+            - generic [ref=e1103]: devops
+            - generic [ref=e1105]:
+              - generic [ref=e1106]: Node.js
+              - generic [ref=e1107]: Tracing
+          - heading "OpenTelemetry JS" [level=3] [ref=e1108]
+          - paragraph [ref=e1109]: SDK JavaScript para instrumentar traces, métricas e logs em Node.js e web com padrão aberto.
+          - generic [ref=e1110]:
+            - generic [ref=e1111]: lang:javascript
+            - generic [ref=e1112]: observability
+            - generic [ref=e1113]: oss
+            - generic [ref=e1114]: production-ready
+            - generic [ref=e1115]: runtime:node
+          - text: ↗
+      - 'link "Ver categoria completa: 6 itens restantes" [ref=e1116] [cursor=pointer]':
+        - /url: /categoria/devops
+        - generic [ref=e1117]: Ver categoria completa
+        - generic [ref=e1118]: 6 itens restantes
+      - generic [ref=e1119]:
+        - generic [ref=e1120]: § §10 · Trade & Quant
+        - heading "Trade — agentes & quant." [level=3] [ref=e1121]
+        - generic [ref=e1122]: 10 itens
+        - text: trade-quant
+      - generic [ref=e1123]:
+        - link "Adicionar à Stack trade-quant Web Memory AgenticTrading Agentes LLM com memória Neo4j para contexto longo, memória vetorial semântica, comunicação A2A entre agentes e execução em DAG dinâmico. 2026 ai:agent-framework ai:provider oss ↗" [ref=e1124] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1125]:
+            - img [ref=e1126]
+          - generic [ref=e1128]:
+            - generic [ref=e1129]: trade-quant
+            - generic [ref=e1131]:
+              - generic [ref=e1132]: Web
+              - generic [ref=e1133]: Memory
+          - heading "AgenticTrading" [level=3] [ref=e1134]
+          - paragraph [ref=e1135]: Agentes LLM com memória Neo4j para contexto longo, memória vetorial semântica, comunicação A2A entre agentes e execução em DAG dinâmico.
+          - generic [ref=e1136]:
+            - generic [ref=e1137]: "2026"
+            - generic [ref=e1138]: ai:agent-framework
+            - generic [ref=e1139]: ai:provider
+            - generic [ref=e1140]: oss
+          - text: ↗
+        - link "Adicionar à Stack trade-quant Web Auto AI-Trader Trading 100% automatizado agent-native, modular e fácil de operar por agentes. Inclui paper trading no Polymarket com dados reais e auto-settlement. 2026 ai:agent-framework oss ↗" [ref=e1141] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1142]:
+            - img [ref=e1143]
+          - generic [ref=e1145]:
+            - generic [ref=e1146]: trade-quant
+            - generic [ref=e1148]:
+              - generic [ref=e1149]: Web
+              - generic [ref=e1150]: Auto
+          - heading "AI-Trader" [level=3] [ref=e1151]
+          - paragraph [ref=e1152]: Trading 100% automatizado agent-native, modular e fácil de operar por agentes. Inclui paper trading no Polymarket com dados reais e auto-settlement.
+          - generic [ref=e1153]:
+            - generic [ref=e1154]: "2026"
+            - generic [ref=e1155]: ai:agent-framework
+            - generic [ref=e1156]: oss
+          - text: ↗
+        - link "Adicionar à Stack trade-quant Web Awesome awesome-ai-in-finance Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading. 2026 ai:agent-framework ai:provider oss ↗" [ref=e1157] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1158]:
+            - img [ref=e1159]
+          - generic [ref=e1161]:
+            - generic [ref=e1162]: trade-quant
+            - generic [ref=e1164]:
+              - generic [ref=e1165]: Web
+              - generic [ref=e1166]: Awesome
+          - heading "awesome-ai-in-finance" [level=3] [ref=e1167]
+          - paragraph [ref=e1168]: Lista curada de LLMs, estratégias de deep learning e ferramentas para mercado financeiro — ponto de partida pra pesquisar agentes de trading.
+          - generic [ref=e1169]:
+            - generic [ref=e1170]: "2026"
+            - generic [ref=e1171]: ai:agent-framework
+            - generic [ref=e1172]: ai:provider
+            - generic [ref=e1173]: oss
+          - text: ↗
+        - link "Adicionar à Stack trade-quant Python ~21k ★ Backtrader Biblioteca Python event-driven, madura, para backtest de estratégias com indicadores, brokers e live trading. lang:python oss ↗" [ref=e1174] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1175]:
+            - img [ref=e1176]
+          - generic [ref=e1178]:
+            - generic [ref=e1179]: trade-quant
+            - generic [ref=e1181]:
+              - generic [ref=e1182]: Python
+              - generic [ref=e1183]: ~21k ★
+          - heading "Backtrader" [level=3] [ref=e1184]
+          - paragraph [ref=e1185]: Biblioteca Python event-driven, madura, para backtest de estratégias com indicadores, brokers e live trading.
+          - generic [ref=e1186]:
+            - generic [ref=e1187]: lang:python
+            - generic [ref=e1188]: oss
+          - text: ↗
+        - link "Adicionar à Stack trade-quant Web Exchange bybit-exchange/skills Skills oficiais da Bybit para agentes de IA — ferramentas prontas pra consultar mercado, executar ordens e gerenciar conta na exchange via agentes. 2026 ai:agent-framework oss ↗" [ref=e1189] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1190]:
+            - img [ref=e1191]
+          - generic [ref=e1193]:
+            - generic [ref=e1194]: trade-quant
+            - generic [ref=e1196]:
+              - generic [ref=e1197]: Web
+              - generic [ref=e1198]: Exchange
+          - heading "bybit-exchange/skills" [level=3] [ref=e1199]
+          - paragraph [ref=e1200]: Skills oficiais da Bybit para agentes de IA — ferramentas prontas pra consultar mercado, executar ordens e gerenciar conta na exchange via agentes.
+          - generic [ref=e1201]:
+            - generic [ref=e1202]: "2026"
+            - generic [ref=e1203]: ai:agent-framework
+            - generic [ref=e1204]: oss
+          - text: ↗
+        - link "Adicionar à Stack trade-quant Web ~50k ★ Freqtrade Bot de trading de cripto livre e open source. Suporta os principais exchanges, controle via Telegram, backtest, otimização de hiperparâmetros e ML. 2026 oss ↗" [ref=e1205] [cursor=pointer]:
+          - button "Adicionar à Stack" [ref=e1206]:
+            - img [ref=e1207]
+          - generic [ref=e1209]:
+            - generic [ref=e1210]: trade-quant
+            - generic [ref=e1212]:
+              - generic [ref=e1213]: Web
+              - generic [ref=e1214]: ~50k ★
+          - heading "Freqtrade" [level=3] [ref=e1215]
+          - paragraph [ref=e1216]: Bot de trading de cripto livre e open source. Suporta os principais exchanges, controle via Telegram, backtest, otimização de hiperparâmetros e ML.
+          - generic [ref=e1217]:
+            - generic [ref=e1218]: "2026"
+            - generic [ref=e1219]: oss
+          - text: ↗
+      - 'link "Ver categoria completa: 4 itens restantes" [ref=e1220] [cursor=pointer]':
+        - /url: /categoria/trade-quant
+        - generic [ref=e1221]: Ver categoria completa
+        - generic [ref=e1222]: 4 itens restantes
+    - region "Comece com contexto." [ref=e1223]:
+      - generic [ref=e1224]: — Editorial
+      - heading "Comece com contexto." [level=2] [ref=e1225]:
+        - text: Comece
+        - emphasis [ref=e1226]: com contexto.
+      - paragraph [ref=e1227]: "Receitas: stacks prontas por objetivo. Guias: decisões com trade-offs explícitos."
+      - generic [ref=e1228]:
+        - generic [ref=e1229]:
+          - heading "Receitas Ver todas →" [level=3] [ref=e1230]:
+            - img [ref=e1231]
+            - text: Receitas
+            - link "Ver todas →" [ref=e1233] [cursor=pointer]:
+              - /url: /receitas
+          - list [ref=e1234]:
+            - listitem [ref=e1235]:
+              - link "Agente de IA em produção Construir um agente com IA · 4 peças" [ref=e1236] [cursor=pointer]:
+                - /url: /receita/build-ai-agent
+                - img [ref=e1238]
+                - generic [ref=e1240]:
+                  - strong [ref=e1241]: Agente de IA em produção
+                  - generic [ref=e1242]: Construir um agente com IA · 4 peças
+            - listitem [ref=e1243]:
+              - link "Dashboard de Analytics Dashboard / Analytics · 7 peças" [ref=e1244] [cursor=pointer]:
+                - /url: /receita/dashboard-analytics
+                - img [ref=e1246]
+                - generic [ref=e1248]:
+                  - strong [ref=e1249]: Dashboard de Analytics
+                  - generic [ref=e1250]: Dashboard / Analytics · 7 peças
+            - listitem [ref=e1251]:
+              - link "SaaS Production-Ready 2026 Lançar um SaaS em 2026 · 7 peças" [ref=e1252] [cursor=pointer]:
+                - /url: /receita/launch-saas-2026
+                - img [ref=e1254]
+                - generic [ref=e1256]:
+                  - strong [ref=e1257]: SaaS Production-Ready 2026
+                  - generic [ref=e1258]: Lançar um SaaS em 2026 · 7 peças
+            - listitem [ref=e1259]:
+              - link "App mobile com IA on-device App mobile com IA on-device · 2 peças" [ref=e1260] [cursor=pointer]:
+                - /url: /receita/mobile-on-device-ai
+                - img [ref=e1262]
+                - generic [ref=e1264]:
+                  - strong [ref=e1265]: App mobile com IA on-device
+                  - generic [ref=e1266]: App mobile com IA on-device · 2 peças
+        - generic [ref=e1267]:
+          - heading "Guias Ver todos →" [level=3] [ref=e1268]:
+            - img [ref=e1269]
+            - text: Guias
+            - link "Ver todos →" [ref=e1271] [cursor=pointer]:
+              - /url: /guias
+          - list [ref=e1272]:
+            - listitem [ref=e1273]:
+              - 'link "Auth moderna: Better Auth, Clerk e Auth.js — qual usar Comparativo das 3 opções dominantes de auth em apps TS. Decisão por custo, controle e velocidade de implementação." [ref=e1274] [cursor=pointer]':
+                - /url: /guia/auth-moderna-better-clerk-authjs
+                - generic [ref=e1275]: 6min
+                - generic [ref=e1276]:
+                  - strong [ref=e1277]: "Auth moderna: Better Auth, Clerk e Auth.js — qual usar"
+                  - generic [ref=e1278]: Comparativo das 3 opções dominantes de auth em apps TS. Decisão por custo, controle e velocidade de implementação.
+            - listitem [ref=e1279]:
+              - 'link "Edge vs Serverless vs Node: quando usar cada Explicação prática das três arquiteturas de runtime web em 2026. Decisão por workload, latência e custo." [ref=e1280] [cursor=pointer]':
+                - /url: /guia/edge-serverless-node
+                - generic [ref=e1281]: 6min
+                - generic [ref=e1282]:
+                  - strong [ref=e1283]: "Edge vs Serverless vs Node: quando usar cada"
+                  - generic [ref=e1284]: Explicação prática das três arquiteturas de runtime web em 2026. Decisão por workload, latência e custo.
+            - listitem [ref=e1285]:
+              - link "Como escolher stack para um SaaS em 2026 Critérios práticos para escolher framework, banco, auth e pagamentos sem cair em hype. Decisão por trade-off, não por moda." [ref=e1286] [cursor=pointer]:
+                - /url: /guia/escolher-stack-saas-2026
+                - generic [ref=e1287]: 7min
+                - generic [ref=e1288]:
+                  - strong [ref=e1289]: Como escolher stack para um SaaS em 2026
+                  - generic [ref=e1290]: Critérios práticos para escolher framework, banco, auth e pagamentos sem cair em hype. Decisão por trade-off, não por moda.
+            - listitem [ref=e1291]:
+              - 'link "Observability básica: Sentry + PostHog + Vercel Analytics Stack mínimo para enxergar errors, performance e comportamento de usuário em produção. Setup em 1 hora, custo controlado." [ref=e1292] [cursor=pointer]':
+                - /url: /guia/observability-basica-sentry-posthog
+                - generic [ref=e1293]: 6min
+                - generic [ref=e1294]:
+                  - strong [ref=e1295]: "Observability básica: Sentry + PostHog + Vercel Analytics"
+                  - generic [ref=e1296]: Stack mínimo para enxergar errors, performance e comportamento de usuário em produção. Setup em 1 hora, custo controlado.
+    - region "10 categorias." [ref=e1297]:
+      - generic [ref=e1298]: — Índice
+      - heading "10 categorias." [level=2] [ref=e1299]:
+        - text: "10"
+        - emphasis [ref=e1300]: categorias.
+      - paragraph [ref=e1301]: Navegue direto para a área que interessa. Cada categoria abre na sua página própria.
+      - list [ref=e1302]:
+        - listitem [ref=e1303]:
+          - link "§01 AI Agents Frameworks, SDKs e runtimes para construir agentes 25" [ref=e1304] [cursor=pointer]:
+            - /url: /categoria/ai-agents
+            - generic [ref=e1305]: §01
+            - generic [ref=e1306]:
+              - generic [ref=e1307]:
+                - img [ref=e1308]
+                - text: AI Agents
+              - generic [ref=e1311]: Frameworks, SDKs e runtimes para construir agentes
+            - generic [ref=e1312]:
+              - generic [ref=e1313]: "25"
+              - img [ref=e1314]
+        - listitem [ref=e1316]:
+          - link "§02 Model Context Protocol Servidores MCP, ferramentas e clientes 10" [ref=e1317] [cursor=pointer]:
+            - /url: /categoria/mcp
+            - generic [ref=e1318]: §02
+            - generic [ref=e1319]:
+              - generic [ref=e1320]:
+                - img [ref=e1321]
+                - text: Model Context Protocol
+              - generic [ref=e1323]: Servidores MCP, ferramentas e clientes
+            - generic [ref=e1324]:
+              - generic [ref=e1325]: "10"
+              - img [ref=e1326]
+        - listitem [ref=e1328]:
+          - link "§03 Frontend UI Componentes, design systems e blocos visuais 24" [ref=e1329] [cursor=pointer]:
+            - /url: /categoria/frontend-ui
+            - generic [ref=e1330]: §03
+            - generic [ref=e1331]:
+              - generic [ref=e1332]:
+                - img [ref=e1333]
+                - text: Frontend UI
+              - generic [ref=e1335]: Componentes, design systems e blocos visuais
+            - generic [ref=e1336]:
+              - generic [ref=e1337]: "24"
+              - img [ref=e1338]
+        - listitem [ref=e1340]:
+          - link "§04 Frontend Frameworks Build tools, runtimes web, 3D e motion 16" [ref=e1341] [cursor=pointer]:
+            - /url: /categoria/frontend-frameworks
+            - generic [ref=e1342]: §04
+            - generic [ref=e1343]:
+              - generic [ref=e1344]:
+                - img [ref=e1345]
+                - text: Frontend Frameworks
+              - generic [ref=e1349]: Build tools, runtimes web, 3D e motion
+            - generic [ref=e1350]:
+              - generic [ref=e1351]: "16"
+              - img [ref=e1352]
+        - listitem [ref=e1354]:
+          - link "§05 Backend (Data) Bancos, BaaS, caches, filas 9" [ref=e1355] [cursor=pointer]:
+            - /url: /categoria/backend-data
+            - generic [ref=e1356]: §05
+            - generic [ref=e1357]:
+              - generic [ref=e1358]:
+                - img [ref=e1359]
+                - text: Backend (Data)
+              - generic [ref=e1363]: Bancos, BaaS, caches, filas
+            - generic [ref=e1364]:
+              - generic [ref=e1365]: "9"
+              - img [ref=e1366]
+        - listitem [ref=e1368]:
+          - link "§06 Backend (Toolkit) ORMs, validators, auth, RPC 11" [ref=e1369] [cursor=pointer]:
+            - /url: /categoria/backend-toolkit
+            - generic [ref=e1370]: §06
+            - generic [ref=e1371]:
+              - generic [ref=e1372]:
+                - img [ref=e1373]
+                - text: Backend (Toolkit)
+              - generic [ref=e1375]: ORMs, validators, auth, RPC
+            - generic [ref=e1376]:
+              - generic [ref=e1377]: "11"
+              - img [ref=e1378]
+        - listitem [ref=e1380]:
+          - link "§07 Mobile & On-device AI React Native, Expo, ExecuTorch, MLC 15" [ref=e1381] [cursor=pointer]:
+            - /url: /categoria/mobile-ai
+            - generic [ref=e1382]: §07
+            - generic [ref=e1383]:
+              - generic [ref=e1384]:
+                - img [ref=e1385]
+                - text: Mobile & On-device AI
+              - generic [ref=e1387]: React Native, Expo, ExecuTorch, MLC
+            - generic [ref=e1388]:
+              - generic [ref=e1389]: "15"
+              - img [ref=e1390]
+        - listitem [ref=e1392]:
+          - link "§08 Segurança Auth, appsec, scanners, guardrails 14" [ref=e1393] [cursor=pointer]:
+            - /url: /categoria/security
+            - generic [ref=e1394]: §08
+            - generic [ref=e1395]:
+              - generic [ref=e1396]:
+                - img [ref=e1397]
+                - text: Segurança
+              - generic [ref=e1400]: Auth, appsec, scanners, guardrails
+            - generic [ref=e1401]:
+              - generic [ref=e1402]: "14"
+              - img [ref=e1403]
+        - listitem [ref=e1405]:
+          - link "§09 DevOps & Build Build, deploy, observability, CI 12" [ref=e1406] [cursor=pointer]:
+            - /url: /categoria/devops
+            - generic [ref=e1407]: §09
+            - generic [ref=e1408]:
+              - generic [ref=e1409]:
+                - img [ref=e1410]
+                - text: DevOps & Build
+              - generic [ref=e1415]: Build, deploy, observability, CI
+            - generic [ref=e1416]:
+              - generic [ref=e1417]: "12"
+              - img [ref=e1418]
+        - listitem [ref=e1420]:
+          - link "§10 Trade & Quant Agentes financeiros, backtesting, dados 10" [ref=e1421] [cursor=pointer]:
+            - /url: /categoria/trade-quant
+            - generic [ref=e1422]: §10
+            - generic [ref=e1423]:
+              - generic [ref=e1424]:
+                - img [ref=e1425]
+                - text: Trade & Quant
+              - generic [ref=e1428]: Agentes financeiros, backtesting, dados
+            - generic [ref=e1429]:
+              - generic [ref=e1430]: "10"
+              - img [ref=e1431]
+    - region "Como usamos." [ref=e1433]:
+      - generic [ref=e1434]: — Método
+      - heading "Como usamos." [level=2] [ref=e1435]:
+        - text: Como
+        - emphasis [ref=e1436]: usamos.
+      - paragraph [ref=e1437]: Quatro princípios que organizam o uso deste acervo no dia a dia. Pequenos hábitos, grande diferença na qualidade do que entregamos.
+      - list [ref=e1438]:
+        - listitem [ref=e1439]:
+          - generic [ref=e1440]: "01"
+          - heading "Pesquise antes de codar." [level=3] [ref=e1441]
+          - paragraph [ref=e1442]: Use Context7 ou docs oficiais para confirmar APIs, versões e exemplos atuais antes de qualquer implementação.
+        - listitem [ref=e1443]:
+          - generic [ref=e1444]: "02"
+          - heading "Verifique com docs ao vivo." [level=3] [ref=e1445]
+          - paragraph [ref=e1446]: "Treine ceticismo: bibliotecas evoluem, e código baseado em versões antigas é fonte comum de bugs sutis."
+        - listitem [ref=e1447]:
+          - generic [ref=e1448]: "03"
+          - heading "Teste como o usuário." [level=3] [ref=e1449]
+          - paragraph [ref=e1450]: Use webapp-testing ou Playwright para validar o fluxo real no navegador antes de declarar pronto.
+        - listitem [ref=e1451]:
+          - generic [ref=e1452]: "04"
+          - heading "Entregue em passos pequenos." [level=3] [ref=e1453]
+          - paragraph [ref=e1454]: Commits atômicos, deploys focados, rollback fácil. A coreografia invisível que mantém o produto vivo.
+  - contentinfo [ref=e1455]:
+    - generic [ref=e1456]:
+      - link "DEVLIB · home" [ref=e1457] [cursor=pointer]:
+        - /url: /
+      - navigation "Navegação do rodapé" [ref=e1458]:
+        - link "Acervo" [ref=e1459] [cursor=pointer]:
+          - /url: /#acervo
+        - link "Receitas" [ref=e1460] [cursor=pointer]:
+          - /url: /receitas
+        - link "Guias" [ref=e1461] [cursor=pointer]:
+          - /url: /guias
+        - link "Método" [ref=e1462] [cursor=pointer]:
+          - /url: /#metodo
+        - button "Abrir busca" [ref=e1463] [cursor=pointer]:
+          - img [ref=e1464]
+          - text: Buscar
+          - generic [ref=e1467]: ⌘K
+      - list [ref=e1468]:
+        - listitem "GitHub" [ref=e1469] [cursor=pointer]:
+          - img [ref=e1470]
+        - listitem "Context7 (docs)" [ref=e1472] [cursor=pointer]:
+          - img [ref=e1473]
+      - paragraph [ref=e1475]:
+        - generic [ref=e1476]: © 2026 · DEVLIB v04
+        - generic [ref=e1477]: ·
+        - generic [ref=e1478]: 146 libs · 6 receitas · 10 guias · 10 categorias
+        - generic [ref=e1479]: ·
+        - generic [ref=e1480]: Sem tracker · Open source
+  - button "Voltar ao topo":
+    - img
+  - button "Mascote DEVLIB — clique para conselhos" [ref=e1481] [cursor=pointer]:
+    - status [ref=e1482]:
+      - generic [ref=e1483]: Olá! Sou o droid do DEVLIB. Clique em mim para receber dicas de dev!
+      - generic [ref=e1484]:
+        - button "Recomende MCP" [ref=e1485]:
+          - img [ref=e1486]
+          - text: Recomende MCP
+        - button "Bancos & ORM" [ref=e1488]:
+          - img [ref=e1489]
+          - text: Bancos & ORM
+        - button "UI Kits" [ref=e1491]:
+          - img [ref=e1492]
+          - text: UI Kits
+        - button "Outra Dica" [ref=e1498]:
+          - img [ref=e1499]
+          - text: Outra Dica
+    - img [ref=e1502]

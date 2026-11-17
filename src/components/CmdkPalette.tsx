@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Search, ArrowRight } from 'lucide-react';
 import { libraries, recipes, guides } from '../lib/content';
 import { CATEGORIES, categoryMeta } from '../lib/schema';
+import type { CategoryId } from '../lib/schema';
+import { CategoryIcon, ContentIcon, type ContentIconKind } from './IconSystem';
 
 interface CmdkPaletteProps {
   isOpen: boolean;
@@ -14,7 +16,8 @@ interface Hit {
   title: string;
   sub: string;
   to: string;
-  emoji?: string;
+  iconKind?: ContentIconKind;
+  categoryId?: CategoryId;
 }
 
 function normalize(s: string): string {
@@ -83,7 +86,7 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
           title: c.name,
           sub: c.description,
           to: `/categoria/${c.id}`,
-          emoji: c.emoji,
+          categoryId: c.id,
         });
       }
       for (const r of matchRec.slice(0, 3)) {
@@ -92,7 +95,7 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
           title: r.title,
           sub: r.goal,
           to: `/receita/${r.slug}`,
-          emoji: r.emoji,
+          iconKind: 'recipe',
         });
       }
       for (const g of matchGuide.slice(0, 3)) {
@@ -112,8 +115,9 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
       out.push({
         kind: 'library',
         title: l.title,
-        sub: `${meta.emoji} ${meta.name} · ${l.summary.slice(0, 100)}`,
+        sub: `${meta.name} · ${l.summary.slice(0, 100)}`,
         to: `/biblioteca/${l.slug}`,
+        categoryId: l.category,
       });
     }
     for (const r of matchRec.slice(0, 3)) {
@@ -122,7 +126,7 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
         title: r.title,
         sub: `Receita · ${r.goal}`,
         to: `/receita/${r.slug}`,
-        emoji: r.emoji,
+        iconKind: 'recipe',
       });
     }
     for (const g of matchGuide.slice(0, 3)) {
@@ -139,16 +143,13 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
         title: c.name,
         sub: `Categoria · ${c.description}`,
         to: `/categoria/${c.id}`,
-        emoji: c.emoji,
+        categoryId: c.id,
       });
     }
     return out;
   }, [query]);
 
-  // Reset cursor when results change
-  useEffect(() => {
-    setActive(0);
-  }, [hits.length]);
+  const activeIndex = Math.min(active, Math.max(hits.length - 1, 0));
 
   const select = (hit: Hit) => {
     onClose();
@@ -164,7 +165,7 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
       setActive((i) => Math.max(i - 1, 0));
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      const hit = hits[active];
+      const hit = hits[activeIndex];
       if (hit) select(hit);
     }
   };
@@ -180,7 +181,10 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
             className="cmdk-input"
             placeholder="Buscar bibliotecas, receitas, guias…"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setActive(0);
+            }}
             autoComplete="off"
             aria-label="Buscar"
           />
@@ -195,12 +199,18 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
               <li
                 key={`${hit.kind}-${hit.to}`}
                 role="option"
-                aria-selected={idx === active}
-                className={`cmdk-item ${idx === active ? 'is-active' : ''}`}
+                aria-selected={idx === activeIndex}
+                className={`cmdk-item ${idx === activeIndex ? 'is-active' : ''}`}
                 onMouseEnter={() => setActive(idx)}
                 onClick={() => select(hit)}
               >
-                <span className="cmdk-kind">{hit.emoji ?? kindBadge(hit.kind)}</span>
+                <span className="cmdk-kind">
+                  {hit.categoryId ? (
+                    <CategoryIcon id={hit.categoryId} size={16} />
+                  ) : (
+                    <ContentIcon kind={hit.iconKind ?? hit.kind} size={16} />
+                  )}
+                </span>
                 <span className="cmdk-meta">
                   <strong>{hit.title}</strong>
                   <span>{hit.sub}</span>
@@ -219,14 +229,4 @@ export function CmdkPalette({ isOpen, onClose }: CmdkPaletteProps) {
       </div>
     </dialog>
   );
-}
-
-function kindBadge(kind: Hit['kind']): string {
-  switch (kind) {
-    case 'library':  return '📦';
-    case 'recipe':   return '🧪';
-    case 'guide':    return '📘';
-    case 'category': return '📂';
-    case 'action':   return '⚡';
-  }
 }

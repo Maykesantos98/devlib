@@ -3,6 +3,7 @@ import { findLibrary, libraries } from '../lib/content';
 import { categoryMeta } from '../lib/schema';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
+import { CategoryIcon } from '../components/IconSystem';
 
 /**
  * Side-by-side comparison page.
@@ -115,7 +116,10 @@ export default function ComparePage() {
                   <dt>Categoria</dt>
                   <dd>
                     <Link to={`/categoria/${lib.category}`}>
-                      {categoryMeta(lib.category).emoji} {categoryMeta(lib.category).name}
+                      <span className="inline-icon-label">
+                        <CategoryIcon id={lib.category} className="ui-icon" />
+                        {categoryMeta(lib.category).name}
+                      </span>
                     </Link>
                   </dd>
 
@@ -125,7 +129,7 @@ export default function ComparePage() {
                   <dt>Badge</dt>
                   <dd>{lib.badge ?? <span className="compare-dim">—</span>}</dd>
 
-                  <dt>Difficulty</dt>
+                  <dt>Nível</dt>
                   <dd><code>{lib.difficulty}</code></dd>
 
                   <dt>Tags</dt>

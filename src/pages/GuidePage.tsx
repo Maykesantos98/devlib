@@ -11,6 +11,7 @@ import { categoryMeta } from '../lib/schema';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
 import { MdxBody } from '../components/MdxBody';
+import { CategoryIcon, ContentIcon } from '../components/IconSystem';
 
 export default function GuidePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -38,8 +39,9 @@ export default function GuidePage() {
           {seriesMeta && (
             <>
               <span style={{ color: 'var(--text-dim)' }}> · </span>
-              <span style={{ color: 'var(--text-soft)' }}>
-                {seriesMeta.emoji} {seriesMeta.title}
+              <span className="inline-icon-label" style={{ color: 'var(--text-soft)' }}>
+                <ContentIcon kind="series" className="ui-icon" />
+                {seriesMeta.title}
                 {guide.seriesOrder && ` · parte ${guide.seriesOrder}`}
               </span>
             </>
@@ -47,7 +49,10 @@ export default function GuidePage() {
         </nav>
 
         {meta && (
-          <span className="section-eyebrow">— {meta.emoji} {meta.name}</span>
+          <span className="section-eyebrow section-eyebrow-icon">
+            <CategoryIcon id={meta.id} className="ui-icon" />
+            {meta.name}
+          </span>
         )}
         <h1 className="section-title" style={{ marginTop: '0.5rem' }}>{guide.title}</h1>
         <p className="section-desc" style={{ fontSize: 'var(--t-lead)' }}>{guide.summary}</p>
@@ -90,7 +95,10 @@ export default function GuidePage() {
                 return r && (
                   <li key={`r-${s}`}>
                     <Link to={`/receita/${s}`} style={{ color: 'var(--accent)' }}>
-                      📘 {r.title}
+                      <span className="inline-icon-label">
+                        <ContentIcon kind="recipe" className="ui-icon" />
+                        {r.title}
+                      </span>
                     </Link>
                   </li>
                 );
@@ -100,7 +108,10 @@ export default function GuidePage() {
                 return l && (
                   <li key={`l-${s}`}>
                     <Link to={`/biblioteca/${s}`} style={{ color: 'var(--accent)' }}>
-                      📦 {l.title}
+                      <span className="inline-icon-label">
+                        <ContentIcon kind="library" className="ui-icon" />
+                        {l.title}
+                      </span>
                     </Link>
                   </li>
                 );

@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Palette, Search, Menu, X } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface NavbarProps {
   theme: 'nebula' | 'cyberpunk' | 'slate';
@@ -45,33 +46,13 @@ function AnimatedNavLink({ label, to }: NavLink) {
 export function Navbar({ theme, onChangeTheme, onOpenCmdk }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const [themeOpen, setThemeOpen] = useState(false);
-  const [shapeClass, setShapeClass] = useState<'navbar-pill' | 'navbar-rounded'>('navbar-pill');
-  const shapeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Animate border-radius when mobile menu opens/closes.
-  useEffect(() => {
-    if (shapeTimer.current) clearTimeout(shapeTimer.current);
-    if (open) {
-      setShapeClass('navbar-rounded');
-    } else {
-      shapeTimer.current = setTimeout(() => setShapeClass('navbar-pill'), 300);
-    }
-    return () => {
-      if (shapeTimer.current) clearTimeout(shapeTimer.current);
-    };
-  }, [open]);
+  const shapeClass = open ? 'navbar-rounded' : 'navbar-pill';
 
   return (
     <header className={`navbar-floating ${shapeClass}`}>
       <div className="navbar-row">
         {/* Logo */}
-        <Link to="/" className="navbar-logo" aria-label="DEVLIB · home">
-          <span className="navbar-logo-mark" aria-hidden="true">
-            <span /><span /><span /><span />
-          </span>
-          <b>DEVLIB</b>
-          <span className="navbar-logo-version">v04</span>
-        </Link>
+        <BrandLogo />
 
         {/* Desktop links */}
         <nav className="navbar-links" aria-label="Navegação principal">

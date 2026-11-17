@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { recipes, guides } from '../../lib/content';
+import { ContentIcon } from '../IconSystem';
 
 /**
  * Consolidates the previous FeaturedRecipes + LatestGuides + BlueprintStrip
@@ -30,14 +31,16 @@ export function EditorialStrip() {
       <div className="editorial-grid">
         <div>
           <h3 className="editorial-col-title">
-            <span aria-hidden="true">🧪</span> Receitas
+            <ContentIcon kind="recipe" className="ui-icon" /> Receitas
             <Link to="/receitas" className="editorial-col-more">Ver todas →</Link>
           </h3>
           <ul className="editorial-list">
             {featuredRecipes.map((r) => (
               <li key={r.slug}>
                 <Link to={`/receita/${r.slug}`} className="editorial-item">
-                  <span className="editorial-item-emoji" aria-hidden="true">{r.emoji ?? '📘'}</span>
+                  <span className="editorial-item-emoji" aria-hidden="true">
+                    <ContentIcon kind="recipe" size={18} />
+                  </span>
                   <span className="editorial-item-body">
                     <strong>{r.title}</strong>
                     <span>{r.goal} · {r.stack.length} peças</span>
@@ -50,7 +53,7 @@ export function EditorialStrip() {
 
         <div>
           <h3 className="editorial-col-title">
-            <span aria-hidden="true">📘</span> Guias
+            <ContentIcon kind="guide" className="ui-icon" /> Guias
             <Link to="/guias" className="editorial-col-more">Ver todos →</Link>
           </h3>
           <ul className="editorial-list">

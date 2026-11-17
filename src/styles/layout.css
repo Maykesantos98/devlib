@@ -112,6 +112,10 @@
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: minmax(180px, auto);
   gap: 1rem;
+  /* Um card largo que não cabe no resto da linha empurra tudo para a linha
+     seguinte e deixa um vão morto atrás dele. `dense` traz um card curto de
+     volta para tapar o buraco. */
+  grid-auto-flow: row dense;
   /* NOTE: content-visibility removed on purpose — combined with the
      view-timeline card reveal it collapsed section height and left
      cards stuck at opacity:0 when jumping via anchor (TOC links).

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Search, ChevronRight } from 'lucide-react';
 import { libraries, recipes, guides } from '../lib/content';
 import { CATEGORIES } from '../lib/schema';
+import { CategoryIcon } from './IconSystem';
+import { VideoBackdrop } from './VideoBackdrop';
 
 interface HeroProps {
   onOpenCmdk: () => void;
@@ -49,6 +51,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCmdk }) => {
 
   return (
     <section className="hero shell" aria-labelledby="hero-title">
+      <VideoBackdrop name="hero-loop" />
+
       <div className="hero-orbit" aria-hidden="true">
         <div className="hero-orb" ref={orbRef} />
         <div className="hero-parts" ref={partsRef} />
@@ -59,10 +63,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCmdk }) => {
         Acervo curado · v04 · atualizado em 2026
       </div>
 
+      {/*
+        As palavras são elementos de verdade. O components.css já tinha o
+        stagger (`.line:nth-child(n) .word:nth-child(n)`) e a máscara
+        (`.line { overflow: hidden }`), mas a marcação havia regredido para
+        texto solto com <br> — a animação existia sem nada para animar.
+      */}
       <h1 id="hero-title" className="hero-title">
-        Bibliotecas para quem
-        <br />
-        <em>constrói com agentes.</em>
+        <span className="line line-plain">
+          <span className="word">Bibliotecas</span>{' '}
+          <span className="word">para</span>{' '}
+          <span className="word">quem</span>
+        </span>
+        <span className="line line-plain line-italic">
+          <span className="word">constrói</span>{' '}
+          <span className="word">com</span>{' '}
+          <span className="word">agentes.</span>
+        </span>
       </h1>
 
       <p className="hero-lead">
@@ -96,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCmdk }) => {
       <div className="hero-chips" role="list" aria-label="Atalhos por categoria">
         {CATEGORIES.slice(0, 6).map((c) => (
           <Link key={c.id} to={`/categoria/${c.id}`} className="hero-chip" role="listitem">
-            <span aria-hidden="true">{c.emoji}</span>
+            <CategoryIcon id={c.id} className="ui-icon" />
             {c.name}
           </Link>
         ))}

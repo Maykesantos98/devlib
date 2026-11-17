@@ -1,30 +1,33 @@
 import { libraries, recipes, guides } from '../../lib/content';
 import { CATEGORIES } from '../../lib/schema';
+import { CountUp } from '../CountUp';
 
 /**
  * Stats strip — real counts pulled from content, not hardcoded.
+ * Os números contam ao entrar na tela; o valor final fica sempre no DOM
+ * para leitores de tela (ver CountUp).
  */
 export function Stats() {
   return (
     <section className="stats-strip" aria-label="Resumo do acervo">
       <div className="shell stats-inner">
         <div className="stat-item">
-          <span className="stat-num gradient">{libraries.length}</span>
+          <CountUp to={libraries.length} className="stat-num gradient" />
           <span className="stat-tag">bibliotecas</span>
         </div>
         <span className="stat-divider" aria-hidden="true" />
         <div className="stat-item">
-          <span className="stat-num">{CATEGORIES.length}</span>
+          <CountUp to={CATEGORIES.length} className="stat-num" />
           <span className="stat-tag">categorias</span>
         </div>
         <span className="stat-divider" aria-hidden="true" />
         <div className="stat-item">
-          <span className="stat-num">{recipes.length}</span>
+          <CountUp to={recipes.length} className="stat-num" />
           <span className="stat-tag">receitas</span>
         </div>
         <span className="stat-divider" aria-hidden="true" />
         <div className="stat-item">
-          <span className="stat-num">{guides.length}</span>
+          <CountUp to={guides.length} className="stat-num" />
           <span className="stat-tag">guias</span>
         </div>
         <span className="stat-divider" aria-hidden="true" />

@@ -68,6 +68,9 @@ function check(items, schema, kind) {
     validated.push({ ...result.data, file });
   }
   // duplicate slug check
+  // NOTA: o slug vem do nome do arquivo, então dois arquivos jamais colidem
+  // aqui. Esta checagem nunca dispara — ver a de título logo abaixo, que é a
+  // que realmente pega entrada repetida no acervo.
   const seen = new Map();
   for (const v of validated) {
     if (seen.has(v.slug)) {
@@ -76,6 +79,20 @@ function check(items, schema, kind) {
       seen.set(v.slug, v.file);
     }
   }
+
+  // duplicate title check — a mesma biblioteca cadastrada em dois arquivos
+  // infla a contagem do acervo e mostra o item duas vezes na home.
+  const titles = new Map();
+  for (const v of validated) {
+    if (typeof v.title !== 'string') continue;
+    const key = v.title.trim().toLowerCase();
+    if (titles.has(key)) {
+      err(v.file, `duplicate title "${v.title}" (also in ${titles.get(key)})`);
+    } else {
+      titles.set(key, v.file);
+    }
+  }
+
   return validated;
 }
 

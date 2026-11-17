@@ -3,6 +3,7 @@ import { findRecipe, loadRecipeBody, findLibrary } from '../lib/content';
 import { PageShell } from '../components/PageShell';
 import { Seo } from '../components/Seo';
 import { MdxBody } from '../components/MdxBody';
+import { ContentIcon } from '../components/IconSystem';
 
 export default function RecipePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -26,8 +27,9 @@ export default function RecipePage() {
         </nav>
 
         <span className="section-eyebrow">— {recipe.goal}</span>
-        <h1 className="section-title" style={{ marginTop: '0.5rem' }}>
-          {recipe.emoji} {recipe.title}
+        <h1 className="section-title title-with-icon" style={{ marginTop: '0.5rem' }}>
+          <ContentIcon kind="recipe" className="title-icon" size={34} />
+          {recipe.title}
         </h1>
         <p className="section-desc" style={{ fontSize: 'var(--t-lead)' }}>{recipe.summary}</p>
 
